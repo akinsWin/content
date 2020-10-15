@@ -1,0 +1,30 @@
+author: Lucifer Morningstar
+blocks:
+- query: _fetch * from event where $Stream=EMAIL-GATEWAY AND $Duration=1h group count_unique
+    $Subject, $SenderDomain limit 100
+  type: dql
+- query: _agg $count_unique $Subject
+  type: dql
+- query: _checkif int_compare $count_unique > 5 include
+  type: dql
+cost: null
+create_tstamp: 1602066961.7804503
+created_by: lucifer.morningstar@example.com
+cron: null
+cron_obj: {}
+description: ''
+fields: []
+id: 536c94b4e19f413b867a9e63d9a41c32
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738685.2339103
+name: Same subject detected from multiple sending servers
+path: /test
+properties: []
+reference: ''
+runtime: null
+scope_id: default
+source: custom
+tags: []
+timestamp: null
+type: standard
+user_id: lucifer.morningstar@example.com

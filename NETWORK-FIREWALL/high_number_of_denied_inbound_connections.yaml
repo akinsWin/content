@@ -1,0 +1,28 @@
+author: Dnif User
+blocks:
+- query: _fetch * from event where NOT $SrcCN=- AND $DstCN=- AND $Action=deny AND
+    $Duration=1h AND $Stream=NETWORK-FIREWALL group count_unique $SrcIP limit 100
+  type: dql
+- query: _checkif int_compare count_unique > 50 include
+  type: dql
+cost: null
+create_tstamp: 1600243622.8396015
+created_by: dnif.user@example.com
+cron: null
+cron_obj: {}
+description: ''
+fields: []
+id: 3358dcf00b1848c69c91c75cad60cb01
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738845.1429057
+name: High Number of Denied Inbound connections
+path: /test
+properties: []
+reference: ''
+runtime: null
+scope_id: default
+source: custom
+tags: []
+timestamp: null
+type: standard
+user_id: dnif.user@example.com

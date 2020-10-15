@@ -1,0 +1,28 @@
+author: Dnif User
+blocks:
+- query: _fetch * from event where NOT $User=LOCAL SERVICE NOT $User=SYSTEM AND $Stream=SYSMON-PROCESS
+    AND $Duration=1h AND $Action=PROCESS_ADDED AND $Process=regex(.*start.*|.*query.*|.*stop.*|.*service.*|.*tasklist.*)i
+    group count_unique $User, $SystemName limit 100
+  type: dql
+- type: signal
+cost: null
+create_tstamp: 1602237213.284764
+created_by: dnif.user@example.com
+cron: null
+cron_obj: {}
+description: ''
+fields: []
+id: 82037aff413b4a7fa8eb6161355d4458
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738811.6652172
+name: Process Discovery Via Tasklist
+path: /test
+properties: []
+reference: ''
+runtime: null
+scope_id: default
+source: custom
+tags: []
+timestamp: null
+type: standard
+user_id: dnif.user@example.com

@@ -1,0 +1,36 @@
+author: Dnif User
+blocks:
+- query: _fetch * from event where $Duration=15m AND $Stream=ENDPOINT-THREAT group
+    count_unique $ScopeID, $User, $DstPort limit 100
+  type: dql
+- query: _checkif lookup default commonly_used_ports join $DstPort = $DstPort str_compare
+    $DstPort eq $DstPort exclude
+  type: dql
+- DetectionConfidence: High
+  DetectionName: Rare ports used by a process for high severity endpoint alerts
+  DetectionScore: '8'
+  DetectionSeverity: High
+  DetectionTactic: Exfiltration
+  DetectionTechnique: Exfiltration Over Alternative Protocol
+  type: signal
+cost: null
+create_tstamp: 1602069657.634887
+created_by: dnif.user@example.com
+cron: null
+cron_obj: {}
+description: ''
+fields: []
+id: 9cb31e0e4ecf4a94aab22e9a76658eeb
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738264.4697788
+name: Rare ports used by a process for high severity endpoint alerts
+path: /test
+properties: []
+reference: ''
+runtime: null
+scope_id: default
+source: custom
+tags: []
+timestamp: null
+type: standard
+user_id: dnif.user@example.com

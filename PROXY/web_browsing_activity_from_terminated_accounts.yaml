@@ -1,0 +1,29 @@
+author: Dnif User
+blocks:
+- query: _fetch * from event where $Stream=PROXY AND $Duration=1h group count_unique  $Domain,
+    $User limit 100
+  type: dql
+- query: _checkif lookup default terminated_accounts join $User = $User str_compare
+    $User eq $User include
+  type: dql
+cost: null
+create_tstamp: 1602071402.750647
+created_by: dnif.user@example.com
+cron: null
+cron_obj: {}
+description: ''
+fields: []
+id: d423aad9a2f442dc9ec3d33370063867
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738583.5577283
+name: Web browsing activity from terminated accounts
+path: /test
+properties: []
+reference: ''
+runtime: null
+scope_id: default
+source: custom
+tags: []
+timestamp: null
+type: standard
+user_id: dnif.user@example.com

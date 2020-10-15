@@ -1,0 +1,30 @@
+author: Dnif User
+blocks:
+- query: _fetch * from event where $Duration=5m AND $Stream=NETWORK-FIREWALL  AND
+    $Action=PACKET_ALLOWED group count_unique $DstIP, $SrcIP limit 100
+  type: dql
+- query: _agg count_unique $DstIP
+  type: dql
+- query: _checkif int_compare count_unique > 100 include
+  type: dql
+cost: 11.175870895385742
+create_tstamp: 1601293070.8491826
+created_by: dnif.user@example.com
+cron: '*/5 * * * *'
+cron_obj: {}
+description: ''
+fields: []
+id: aac9661ba825481ca2d16ddc421fd730
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738192.4897687
+name: Excessive Firewall Accepts From Multiple Sources to a Single Destination
+path: /test
+properties: []
+reference: ''
+runtime: 7.020943999290466
+scope_id: default
+source: custom
+tags: []
+timestamp: 1602760507.0844343
+type: scheduled
+user_id: dnif.user@example.com

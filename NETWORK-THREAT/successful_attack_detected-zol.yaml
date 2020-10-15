@@ -1,0 +1,29 @@
+author: Dnif User
+blocks:
+- query: _fetch * from event where $Duration=15m AND $Action=PACK_ALLWD AND $Severity=MAJOR
+    AND $Severity=CRITICAL AND $Stream=NETWORK-THREAT group count_unique $SrcIP, $DstIP,
+    $ActionTaken, $AtkMsg limit 100
+  type: dql
+- query: _checkif int_compare $count_unique > 7 include
+  type: dql
+cost: null
+create_tstamp: 1602151547.6773236
+created_by: dnif.user@example.com
+cron: null
+cron_obj: {}
+description: ''
+fields: []
+id: b9625864aa1e4bc48ce76958593a9737
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738899.7332578
+name: Successful attack detected-zol
+path: /test
+properties: []
+reference: ''
+runtime: null
+scope_id: default
+source: custom
+tags: []
+timestamp: null
+type: standard
+user_id: dnif.user@example.com

@@ -1,0 +1,29 @@
+author: Lucifer Morningstar
+blocks:
+- query: _fetch * from event where $Stream=NETWORK-FIREWALL AND $Duration=1h group
+    count_unique $SrcIP, $DstPort limit 100
+  type: dql
+- query: _checkif lookup default vulnerable_ports join $DstPort = $DstPort str_compare
+    $DstPort eq $DstPort include
+  type: dql
+cost: null
+create_tstamp: 1602065578.5310528
+created_by: lucifer.morningstar@example.com
+cron: null
+cron_obj: {}
+description: ''
+fields: []
+id: d61a3229bab543158c2a790aedd32209
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738670.0064375
+name: Known vulnerable port used
+path: /test
+properties: []
+reference: ''
+runtime: null
+scope_id: default
+source: custom
+tags: []
+timestamp: null
+type: standard
+user_id: lucifer.morningstar@example.com

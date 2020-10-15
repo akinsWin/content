@@ -1,0 +1,29 @@
+author: Dnif User
+blocks:
+- query: '_fetch * from event where $Stream=NETWORK-FIREWALL AND $Duration=1h group
+    count_unique $SrcIP, $DstPort limit 100 '
+  type: dql
+- query: _checkif lookup default malicious_ports join $DstPort = $DstPort str_compare
+    $DstPort eq $DstPort include
+  type: dql
+cost: null
+create_tstamp: 1601293245.585827
+created_by: dnif.user@example.com
+cron: null
+cron_obj: {}
+description: ''
+fields: []
+id: 1aabb2a0964c4fb6b1691d956d631a59
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738259.8514216
+name: Known malicious port used
+path: /test
+properties: []
+reference: ''
+runtime: null
+scope_id: default
+source: custom
+tags: []
+timestamp: null
+type: standard
+user_id: dnif.user@example.com

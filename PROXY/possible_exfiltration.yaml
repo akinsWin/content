@@ -1,0 +1,31 @@
+author: Dnif User
+blocks:
+- query: _fetch * from event where $Duration=24h AND $Stream=PROXY group count_unique
+    $URL, $TXLen limit 100
+  type: dql
+- query: '>>_agg stat_unique $URL max $TXLen'
+  type: dql
+- query: _checkif lookup default txlen_ulimit join $URL = $URL int_compare $stat_unique_max
+    > $MaxTXLen include
+  type: dql
+cost: null
+create_tstamp: 1602152486.8893101
+created_by: dnif.user@example.com
+cron: null
+cron_obj: {}
+description: ''
+fields: []
+id: 6b11cb5e334c4a6c8e7546996c00bb9c
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738799.1764908
+name: Possible Exfiltration
+path: /test
+properties: []
+reference: ''
+runtime: null
+scope_id: default
+source: custom
+tags: []
+timestamp: null
+type: standard
+user_id: dnif.user@example.com

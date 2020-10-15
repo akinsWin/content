@@ -1,0 +1,36 @@
+author: Dnif User
+blocks:
+- query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=1h AND $Action=LOGIN
+    group count_unique $User limit 100
+  type: dql
+- query: _checkif lookup default terminated_accounts join $User = $User str_compare
+    $User eq $User include
+  type: dql
+- DetectionConfidence: High
+  DetectionName: Authentication activity by former employee
+  DetectionScore: '9'
+  DetectionSeverity: High
+  DetectionTactic: Credential Access
+  DetectionTechnique: Brute Force
+  type: signal
+cost: null
+create_tstamp: 1601294423.1760845
+created_by: dnif.user@example.com
+cron: null
+cron_obj: {}
+description: ''
+fields: []
+id: 9e8adc3fb1a3405095e54fa2cee7b9a4
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738002.8893888
+name: Authentication activity by former employee
+path: /test
+properties: []
+reference: ''
+runtime: null
+scope_id: default
+source: custom
+tags: []
+timestamp: null
+type: standard
+user_id: dnif.user@example.com

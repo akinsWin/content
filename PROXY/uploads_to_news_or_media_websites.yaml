@@ -1,0 +1,26 @@
+author: Dnif User
+blocks:
+- query: _fetch * from event where $Stream=PROXY AND $Duration=1h AND $Category=regex(.*NEWS-AND-MEDIA.*|.*NEWS-AND-MEDIA-ALTERNATIVE-JOURNALS.*)i
+    group count_unique $User, $SrcIP , $URL limit 100
+  type: dql
+cost: null
+create_tstamp: 1602073009.4860027
+created_by: dnif.user@example.com
+cron: null
+cron_obj: {}
+description: ''
+fields: []
+id: ac0baca441ab432191ba5cc7afd431a3
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738696.1713881
+name: Uploads to news or media websites
+path: /test
+properties: []
+reference: ''
+runtime: null
+scope_id: default
+source: custom
+tags: []
+timestamp: null
+type: standard
+user_id: dnif.user@example.com

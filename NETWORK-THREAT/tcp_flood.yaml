@@ -1,0 +1,28 @@
+author: Dnif User
+blocks:
+- query: _fetch * from event where $AtkMsg=regex(.*TCP.*)i AND $Stream=NETWORK-THREAT
+    AND $Duration=15m group count_unique $SrcIP limit 1000
+  type: dql
+- query: _checkif int_compare $count_unique > 5 include
+  type: dql
+cost: null
+create_tstamp: 1602153931.2191076
+created_by: dnif.user@example.com
+cron: null
+cron_obj: {}
+description: ''
+fields: []
+id: 38c3529197434ebc89e3684b892ab5cd
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738796.2281573
+name: TCP Flood
+path: /test
+properties: []
+reference: ''
+runtime: null
+scope_id: default
+source: custom
+tags: []
+timestamp: null
+type: standard
+user_id: dnif.user@example.com

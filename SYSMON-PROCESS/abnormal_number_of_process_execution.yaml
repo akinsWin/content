@@ -1,0 +1,28 @@
+author: Dnif User
+blocks:
+- query: _fetch * from event where $Duration=15m AND $Stream=SYSMON-PROCESS AND $EventID=1
+    AND $Action=PROCESS_ADDED group count_unique $Process, $User limit 100
+  type: dql
+- query: _agg count_unique $Process
+  type: dql
+cost: null
+create_tstamp: 1601295390.160279
+created_by: dnif.user@example.com
+cron: null
+cron_obj: {}
+description: ''
+fields: []
+id: c5253c62f0f14c698f3052c50166f5f2
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738108.8229911
+name: Abnormal number of process execution
+path: /test
+properties: []
+reference: ''
+runtime: null
+scope_id: default
+source: custom
+tags: []
+timestamp: null
+type: standard
+user_id: dnif.user@example.com

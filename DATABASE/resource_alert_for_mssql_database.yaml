@@ -1,0 +1,26 @@
+author: Dnif User
+blocks:
+- query: _fetch * from event where $Stream=DATABASE AND $Status=FAILED AND $Action=RESOURCE_ALERT
+    AND $Duration=1h group count_unique $DB, $Message limit 100
+  type: dql
+cost: null
+create_tstamp: 1602150110.7065108
+created_by: dnif.user@example.com
+cron: null
+cron_obj: {}
+description: ''
+fields: []
+id: 6fb98e7212854f4585a4cdf2d79ae6e5
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738079.2682173
+name: Resource alert for MSSQL Database
+path: /test
+properties: []
+reference: ''
+runtime: null
+scope_id: default
+source: custom
+tags: []
+timestamp: null
+type: standard
+user_id: dnif.user@example.com

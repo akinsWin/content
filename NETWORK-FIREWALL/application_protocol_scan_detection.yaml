@@ -1,0 +1,32 @@
+author: Dnif User
+blocks:
+- query: _fetch * from event where $Duration=30m AND $Stream=NETWORK-FIREWALL group
+    count_unique $SrcIP, $DstIP, $Proto limit 2
+  type: dql
+- query: _agg count_unique $SrcIP, $DstIP
+  type: dql
+- query: _checkif int_compare count_unique > 5 include
+  type: dql
+- query: _agg count_unique $SrcIP
+  type: dql
+cost: 67.05522537231445
+create_tstamp: 1600256985.5167336
+created_by: dnif.user@example.com
+cron: '*/30 * * * *'
+cron_obj: {}
+description: ''
+fields: []
+id: 2db4b59577124c7c98ffb6080ee4ac05
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738104.729498
+name: Application Protocol Scan detection
+path: /test
+properties: []
+reference: ''
+runtime: 70.56969683617353
+scope_id: default
+source: custom
+tags: []
+timestamp: 1602759693.3139079
+type: scheduled
+user_id: dnif.user@example.com

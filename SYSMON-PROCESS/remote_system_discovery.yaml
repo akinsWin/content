@@ -1,0 +1,27 @@
+author: Dnif User
+blocks:
+- query: fetch * from event where $Stream=SYSMON-PROCESS  AND $Status=PASSED AND $Action=PROCESS_ADDED
+    AND $Duration=50m AND $Process=regex(net.*group.*|nltest.*\/dclist|for.*\/.*do.*ping.*-n.*)i
+    limit group count_unique $User, $DevSrcIP 100
+  type: dql
+cost: null
+create_tstamp: 1602237601.427571
+created_by: dnif.user@example.com
+cron: null
+cron_obj: {}
+description: ''
+fields: []
+id: cbd9b082f5534a00acbccbf59ea50efd
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738836.950618
+name: Remote System Discovery
+path: /test
+properties: []
+reference: ''
+runtime: null
+scope_id: default
+source: custom
+tags: []
+timestamp: null
+type: standard
+user_id: dnif.user@example.com

@@ -1,0 +1,28 @@
+author: Dnif User
+blocks:
+- query: _fetch * from event where $AtkMsg=regex(.*UDP.*)i AND $Stream=NETWORK-THREAT
+    AND $Duration=15m group count_unique $SrcIP limit 1000
+  type: dql
+- query: _checkif int_compare $count_unique > 5 include
+  type: dql
+cost: null
+create_tstamp: 1602153996.9718528
+created_by: dnif.user@example.com
+cron: null
+cron_obj: {}
+description: ''
+fields: []
+id: 0fd16447f039445692e56dc6390d61ae
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738651.2382486
+name: UDP Flood
+path: /test
+properties: []
+reference: ''
+runtime: null
+scope_id: default
+source: custom
+tags: []
+timestamp: null
+type: standard
+user_id: dnif.user@example.com

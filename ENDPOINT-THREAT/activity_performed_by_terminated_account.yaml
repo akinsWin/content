@@ -1,0 +1,38 @@
+author: Dnif User
+blocks:
+- query: _fetch * from event where $Duration=15m AND $Stream=ENDPOINT-THREAT group
+    count_unique $User, $SystemName limit 100
+  type: dql
+- query: _checkif lookup default terminated_users join $User = $User str_compare $User
+    eq $User include
+  type: dql
+- DetectionConfidence: High
+  DetectionName: Activity Performed by Terminated Account
+  DetectionScore: 8
+  DetectionSeverity: High
+  DetectionTactic: Initial Access
+  DetectionTechnique: Valid Accounts
+  SuspectUser: $User
+  TargetHost: $SystemName
+  type: signal
+cost: null
+create_tstamp: 1600444847.403563
+created_by: dnif.user@example.com
+cron: null
+cron_obj: {}
+description: ''
+fields: []
+id: a527550c72f54a62ba395309c05d1cb1
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738699.5277085
+name: Activity Performed by Terminated Account
+path: /test
+properties: []
+reference: ''
+runtime: null
+scope_id: default
+source: custom
+tags: []
+timestamp: null
+type: standard
+user_id: dnif.user@example.com

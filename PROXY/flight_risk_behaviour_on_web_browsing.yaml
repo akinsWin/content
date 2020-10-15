@@ -1,0 +1,28 @@
+author: Dnif User
+blocks:
+- code: '_fetch * from event where $Stream=PROXY AND $Duration=1h AND $URL=regex(.*job.*search.*|.*naukri.*|.*indeed.*|.*monster.*|.*careers.*)i
+    group count_unique $URL, $User limit 100 '
+  query: '_fetch * from event where $Stream=PROXY AND $Duration=1h AND $URL=regex(.*job.*search.*|.*naukri.*|.*indeed.*|.*monster.*|.*careers.*)i
+    group count_unique $URL, $User limit 100 '
+  type: dql
+cost: null
+create_tstamp: 1602071267.779176
+created_by: dnif.user@example.com
+cron: null
+cron_obj: {}
+description: ''
+fields: []
+id: 78e3cfed9f4340bbb6c9245d0a82da67
+last_modified_by: dnif.user@example.com
+last_modified_tstamp: 1602246233.5174963
+name: Flight risk behaviour on web browsing
+path: /test
+properties: []
+reference: ''
+runtime: null
+scope_id: default
+source: custom
+tags: []
+timestamp: null
+type: standard
+user_id: dnif.user@example.com

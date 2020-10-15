@@ -1,0 +1,30 @@
+author: Lucifer Morningstar
+blocks:
+- query: _fetch * from event where $Duration=15m AND $Action=USER_ACCOUNT_DELETED
+    AND $Stream=IAM group count_unique $User, $AdminUser limit 100
+  type: dql
+- query: _agg count_unique $User
+  type: dql
+- query: _checkif int_compare count_unique > 5 include
+  type: dql
+cost: null
+create_tstamp: 1602064434.205149
+created_by: lucifer.morningstar@example.com
+cron: null
+cron_obj: {}
+description: ''
+fields: []
+id: df320450969d444ebecb42f890f7b6fd
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738662.9225354
+name: Deleting Multiple Users
+path: /test
+properties: []
+reference: ''
+runtime: null
+scope_id: default
+source: custom
+tags: []
+timestamp: null
+type: standard
+user_id: lucifer.morningstar@example.com

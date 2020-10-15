@@ -1,0 +1,32 @@
+author: Dnif User
+blocks:
+- query: '_fetch * from event where $Duration=1h AND $Stream=AUTHENTICATION AND $Action=LOGIN
+    AND $Status=FAILED group count_unique $User, $SrcIP limit 100 '
+  type: dql
+- query: _agg count_unique $User
+  type: dql
+- query: _checkif int_compare count_unique > 5 include
+  type: dql
+- TargetUser: $User
+  type: signal
+cost: null
+create_tstamp: 1600182078.8217292
+created_by: dnif.user@example.com
+cron: null
+cron_obj: {}
+description: ''
+fields: []
+id: 796084b7932841d2ad0824c8da88f0ce
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738016.6648679
+name: Multiple VPN Login Failure by same source
+path: /test
+properties: []
+reference: ''
+runtime: null
+scope_id: default
+source: custom
+tags: []
+timestamp: null
+type: standard
+user_id: dnif.user@example.com

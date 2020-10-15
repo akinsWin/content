@@ -1,0 +1,29 @@
+author: Dnif User
+blocks:
+- query: _fetch * from event where  $Duration=1h AND $Stream=SYSMON-PROCESS group
+    count_unique $ParentProcess ,$Process limit 100
+  type: dql
+- query: _checkif lookup default parent_fork join $Process=$Process str_compare $ParentProcess
+    eq $ParentProcess exclude
+  type: dql
+cost: null
+create_tstamp: 1601295574.8632987
+created_by: dnif.user@example.com
+cron: null
+cron_obj: {}
+description: ''
+fields: []
+id: db79d3bf4e97430a8976f42348dd61fa
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738152.8926952
+name: Unsual Parent Child Relationship
+path: /test
+properties: []
+reference: ''
+runtime: null
+scope_id: default
+source: custom
+tags: []
+timestamp: null
+type: standard
+user_id: dnif.user@example.com

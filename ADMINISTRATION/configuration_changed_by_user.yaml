@@ -1,0 +1,29 @@
+author: Dnif User
+blocks:
+- query: _fetch * from event where $Stream=ADMINISTRATION AND $Action=CONFIG CHANGED
+    AND $Status=PASSED AND $Duration=1h group count_unique $User, $DevSrcIP limit
+    100
+  type: dql
+- query: _checkif int_compare $count_unique >= 3 include
+  type: dql
+cost: null
+create_tstamp: 1600257689.0308926
+created_by: dnif.user@example.com
+cron: null
+cron_obj: {}
+description: ''
+fields: []
+id: 8257ce5941604dff9283b41289c02de3
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738137.4999325
+name: Configuration changed by User
+path: /test
+properties: []
+reference: ''
+runtime: null
+scope_id: default
+source: custom
+tags: []
+timestamp: null
+type: standard
+user_id: dnif.user@example.com

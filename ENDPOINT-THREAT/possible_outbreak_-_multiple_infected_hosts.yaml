@@ -1,0 +1,36 @@
+author: Dnif User
+blocks:
+- query: _fetch * from event where $Duration=15m AND $Stream=ENDPOINT-THREAT AND $AlertType=Virus
+    group count_unique $AtkMsg, $SystemName limit 100
+  type: dql
+- query: _agg count_unique $AtkMsg
+  type: dql
+- query: _checkif int_compare count_unique > 5 include
+  type: dql
+- DetectionConfidence: High
+  DetectionName: Possible Outbreak - Multiple Infected Hosts
+  DetectionSeverity: ''
+  DetectionTactic: Execution
+  DetectionTechnique: Exploitation for Client Execution
+  type: signal
+cost: null
+create_tstamp: 1602068857.5973718
+created_by: dnif.user@example.com
+cron: null
+cron_obj: {}
+description: ''
+fields: []
+id: d77cd4651284427dacb04eac8bee4be6
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738269.4526958
+name: Possible Outbreak - Multiple Infected Hosts
+path: /test
+properties: []
+reference: ''
+runtime: null
+scope_id: default
+source: custom
+tags: []
+timestamp: null
+type: standard
+user_id: dnif.user@example.com

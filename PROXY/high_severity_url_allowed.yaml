@@ -1,0 +1,27 @@
+author: Dnif User
+blocks:
+- query: _fetch * from event where $Action=URL_ALLWD AND $Severity=HIGH AND $Stream=PROXY
+    AND $Duration=15m group count_unique $Domain limit 10
+  type: dql
+- type: signal
+cost: null
+create_tstamp: 1602070119.4345188
+created_by: dnif.user@example.com
+cron: null
+cron_obj: {}
+description: ''
+fields: []
+id: 563bf202cf124f4d9b1c4ed5ed0dd630
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738681.1916316
+name: High severity URL allowed
+path: /test
+properties: []
+reference: ''
+runtime: null
+scope_id: default
+source: custom
+tags: []
+timestamp: null
+type: standard
+user_id: dnif.user@example.com

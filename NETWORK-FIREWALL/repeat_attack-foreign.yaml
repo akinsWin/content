@@ -1,0 +1,28 @@
+author: Dnif User
+blocks:
+- query: _fetch * from event where $Status=FAILED AND $Stream=NETWORK-FIREWALL AND
+    $Duration=15m NOT $SrcIP=- group count_unique $SrcIP limit 100
+  type: dql
+- query: '_checkif int_compare $count_unique > 10000 include '
+  type: dql
+cost: 33.52761268615723
+create_tstamp: 1601289376.3901937
+created_by: dnif.user@example.com
+cron: '*/15 * * * *'
+cron_obj: {}
+description: ''
+fields: []
+id: ae64ebd76295442ab1c2364400815ad8
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738893.6353834
+name: Repeat Attack-Foreign
+path: /test
+properties: []
+reference: ''
+runtime: 4.757958943024278
+scope_id: default
+source: custom
+tags: []
+timestamp: 1602760504.8265648
+type: scheduled
+user_id: dnif.user@example.com

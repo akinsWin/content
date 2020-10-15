@@ -1,0 +1,28 @@
+author: Dnif User
+blocks:
+- query: _fetch * from event where $Duration=2h AND $Stream=IAM  AND $Status=PASSED
+    AND $Action=NETWORK_SHARE_ACCESSED group count_unique $AdminUser limit 100
+  type: dql
+- query: _checkif int_compare $count_unique > 10 include
+  type: dql
+cost: null
+create_tstamp: 1601377825.106432
+created_by: dnif.user@example.com
+cron: null
+cron_obj: {}
+description: ''
+fields: []
+id: f387fa3aa88247edbb86c87c23335b83
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738140.1723454
+name: Abnormal number of network share object access
+path: /test
+properties: []
+reference: ''
+runtime: null
+scope_id: default
+source: custom
+tags: []
+timestamp: null
+type: standard
+user_id: dnif.user@example.com

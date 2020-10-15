@@ -1,0 +1,27 @@
+author: Dnif User
+blocks:
+- query: _fetch * from event where  $Stream=SYSMON-PROCESS  AND $Status=PASSED AND
+    $Action=PROCESS_ADDED AND $Duration=1h AND $Process=regex(.*winzip.*exe.*\-min.*\-a.*\-s.*|.*rar.*a.*\-hp.*|.*7z.*a.*archive.*\-p.*)i
+    group count_unique $User, $DevSrcIP, $App limit 100
+  type: dql
+cost: null
+create_tstamp: 1602235672.754723
+created_by: dnif.user@example.com
+cron: null
+cron_obj: {}
+description: ''
+fields: []
+id: 06e154b41cd0489db52d2611542a482a
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738808.524461
+name: Archive Collected Data
+path: /test
+properties: []
+reference: ''
+runtime: null
+scope_id: default
+source: custom
+tags: []
+timestamp: null
+type: standard
+user_id: dnif.user@example.com

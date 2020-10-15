@@ -1,0 +1,30 @@
+author: Lucifer Morningstar
+blocks:
+- query: _fetch * from event where $Duration=10m  AND $Action= USER_ACCOUNT_DISABLED
+    AND $Stream=IAM group count_unique $DevSrcIP, $User,$AdminUser limit 100
+  type: dql
+- query: _agg count_unique $User
+  type: dql
+- query: _checkif int_compare count_unique > 1 include
+  type: dql
+cost: null
+create_tstamp: 1602064309.1038337
+created_by: lucifer.morningstar@example.com
+cron: null
+cron_obj: {}
+description: ''
+fields: []
+id: 1538b7cec9f64a5b8d29be9171b38a0f
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738658.5739446
+name: Mutiple Accounts Disabled In Short Span
+path: /test
+properties: []
+reference: ''
+runtime: null
+scope_id: default
+source: custom
+tags: []
+timestamp: null
+type: standard
+user_id: lucifer.morningstar@example.com

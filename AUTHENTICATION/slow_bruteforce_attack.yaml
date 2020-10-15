@@ -1,0 +1,30 @@
+author: Dnif User
+blocks:
+- query: _fetch * from event where $Duration=1h AND $Stream=AUTHENTICATION AND $Action=LOGIN
+    AND $Status=FAILED group count_unique $DevSrcIP, $User limit 100
+  type: dql
+- query: _checkif lookup default slow_brutforce_profile join $DevSrcIP = $DevSrcIP
+    int_compare count_unique < $tot_count_check include
+  type: dql
+- type: signal
+cost: null
+create_tstamp: 1601296395.5894163
+created_by: dnif.user@example.com
+cron: null
+cron_obj: {}
+description: ''
+fields: []
+id: ca34ee5e55194253ab0d193cfc28c44c
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738211.9696765
+name: Slow Bruteforce Attack
+path: /test
+properties: []
+reference: ''
+runtime: null
+scope_id: default
+source: custom
+tags: []
+timestamp: null
+type: standard
+user_id: dnif.user@example.com

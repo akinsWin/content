@@ -1,0 +1,26 @@
+author: Dnif User
+blocks:
+- query: _fetch * from event where $Duration=10m AND $AtkMsg=regex(.*dos.*)i AND $Stream=NETWORK-THREAT
+    group count_unique $AtkMsg, $SrcIP limit 100 include
+  type: dql
+cost: null
+create_tstamp: 1602152627.467066
+created_by: dnif.user@example.com
+cron: null
+cron_obj: {}
+description: ''
+fields: []
+id: 2310b27bf2bc4109ae9122144f5dd4e0
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738647.037451
+name: DoS attack detected
+path: /test
+properties: []
+reference: ''
+runtime: null
+scope_id: default
+source: custom
+tags: []
+timestamp: null
+type: standard
+user_id: dnif.user@example.com

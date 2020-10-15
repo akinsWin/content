@@ -1,0 +1,36 @@
+author: Dnif User
+blocks:
+- query: _fetch * from event where $Action=USER_ACCOUNT_UNLOCKED AND $Status=PASSED
+    AND $Duration=30m group count_unique $User limit 100
+  type: dql
+- query: _checkif int_compare $count_unique > 2 include
+  type: dql
+- DetectionConfidence: High
+  DetectionName: Multiple User Accounts Locked Out
+  DetectionScore: 8
+  DetectionSeverity: High
+  DetectionTactic: Credential Access
+  DetectionTechnique: Brute Force
+  TargetUser: $User
+  type: signal
+cost: null
+create_tstamp: 1600441051.05818
+created_by: dnif.user@example.com
+cron: null
+cron_obj: {}
+description: ''
+fields: []
+id: 6c50bedaf76647b1a55284f3aff032e5
+last_modified_by: adarsh.shetty@dnif.it
+last_modified_tstamp: 1602738196.4399974
+name: Multiple User Accounts Locked Out - zol
+path: /test
+properties: []
+reference: ''
+runtime: null
+scope_id: default
+source: custom
+tags: []
+timestamp: null
+type: standard
+user_id: dnif.user@example.com
