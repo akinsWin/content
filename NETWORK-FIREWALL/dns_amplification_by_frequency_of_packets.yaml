@@ -1,3 +1,8 @@
+id: 6577956aa96249bdb01e6d5c9e49b571
+name: DNS Amplification by frequency of packets
+path: /test
+description: ''
+type: scheduled
 author: Dnif User
 blocks:
 - query: _fetch * from event where $Duration=10m AND $Stream=NETWORK-FIREWALL AND
@@ -5,24 +10,19 @@ blocks:
   type: dql
 - query: _checkif int_compare $count_unique > 1000 include
   type: dql
-cost: 22.351741790771484
-create_tstamp: 1600244182.7557402
 created_by: dnif.user@example.com
-cron: '*/10 * * * *'
-cron_obj: {}
-description: ''
-fields: []
-id: 6577956aa96249bdb01e6d5c9e49b571
+timestamp: 1602771005.639241
+create_tstamp: 1600244182.7557402
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738092.499361
-name: DNS Amplification by frequency of packets
-path: /test
+scope_id: default
+user_id: dnif.user@example.com
+cost: 22.351741790771484
+runtime: 5.49266024492681
+cron: '*/10 * * * *'
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: 0.34946687892079353
-scope_id: default
 source: custom
 tags: []
-timestamp: 1602760200.4902108
-type: scheduled
-user_id: dnif.user@example.com

@@ -1,3 +1,8 @@
+id: d76b34016fc64c7091231f1e3baa097a
+name: Abnormal amount of data uploads to external sites
+path: /test
+description: ''
+type: standard
 author: Dnif User
 blocks:
 - query: _fetch * from event where $Duration=1h AND $Stream=PROXY group count_unique
@@ -8,24 +13,19 @@ blocks:
 - query: _checkif lookup default txlen_exfil join $URL = $URL int_compare stat_unique_max
     > $MaxTXLen include
   type: dql
-cost: null
-create_tstamp: 1602231083.0407436
 created_by: dnif.user@example.com
-cron: null
-cron_obj: {}
-description: ''
-fields: []
-id: d76b34016fc64c7091231f1e3baa097a
+timestamp: null
+create_tstamp: 1602231083.0407436
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738805.4637206
-name: Abnormal amount of data uploads to external sites
-path: /test
+scope_id: default
+user_id: dnif.user@example.com
+cost: null
+runtime: null
+cron: null
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: null
-scope_id: default
 source: custom
 tags: []
-timestamp: null
-type: standard
-user_id: dnif.user@example.com

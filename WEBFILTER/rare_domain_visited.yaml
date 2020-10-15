@@ -1,3 +1,8 @@
+id: fa8ae0c704d34c03880473694378db18
+name: Rare domain visited
+path: /test
+description: ''
+type: scheduled
 author: Dnif User
 blocks:
 - query: _fetch * from event where $Action=URL_ALLOWED AND $Stream=WEBFILTER AND $Duration=1h
@@ -5,24 +10,19 @@ blocks:
   type: dql
 - query: _checkif int_compare $count_unique < 2 include
   type: dql
-cost: 134.1104507446289
-create_tstamp: 1602139844.7310503
 created_by: dnif.user@example.com
-cron: 0 * * * *
-cron_obj: {}
-description: ''
-fields: []
-id: fa8ae0c704d34c03880473694378db18
+timestamp: 1602770461.4184065
+create_tstamp: 1602139844.7310503
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738887.225386
-name: Rare domain visited
-path: /test
+scope_id: default
+user_id: dnif.user@example.com
+cost: 134.1104507446289
+runtime: 29.908977013081312
+cron: 0 * * * *
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: 31.4945633681491
-scope_id: default
 source: custom
 tags: []
-timestamp: 1602759704.6812718
-type: scheduled
-user_id: dnif.user@example.com

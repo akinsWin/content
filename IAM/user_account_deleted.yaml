@@ -1,3 +1,8 @@
+id: 38386fb1aec740199b7a1334fae0d613
+name: User Account Deleted
+path: /test
+description: ''
+type: standard
 author: Dnif User
 blocks:
 - query: _fetch * from event where $Stream=IAM AND $Action=USER_ACCOUNT_DELETED AND
@@ -5,24 +10,19 @@ blocks:
     100
   type: dql
 - type: signal
-cost: null
-create_tstamp: 1601380962.4301372
 created_by: dnif.user@example.com
-cron: null
-cron_obj: {}
-description: ''
-fields: []
-id: 38386fb1aec740199b7a1334fae0d613
+timestamp: null
+create_tstamp: 1601380962.4301372
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738223.9765394
-name: User Account Deleted
-path: /test
+scope_id: default
+user_id: dnif.user@example.com
+cost: null
+runtime: null
+cron: null
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: null
-scope_id: default
 source: custom
 tags: []
-timestamp: null
-type: standard
-user_id: dnif.user@example.com

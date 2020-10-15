@@ -1,3 +1,8 @@
+id: dc61e0e7558f4a7b917393ccaf268430
+name: Adult site access by user
+path: /test
+description: ''
+type: standard
 author: Dnif User
 blocks:
 - query: _fetch * from event where $Action=URL_ALLWD AND  $Category=regex(.*adult.*)i
@@ -5,24 +10,19 @@ blocks:
     $Domain limit 100
   type: dql
 - type: signal
-cost: null
-create_tstamp: 1602070324.301759
 created_by: dnif.user@example.com
-cron: null
-cron_obj: {}
-description: ''
-fields: []
-id: dc61e0e7558f4a7b917393ccaf268430
+timestamp: null
+create_tstamp: 1602070324.301759
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738692.6009195
-name: Adult site access by user
-path: /test
+scope_id: default
+user_id: dnif.user@example.com
+cost: null
+runtime: null
+cron: null
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: null
-scope_id: default
 source: custom
 tags: []
-timestamp: null
-type: standard
-user_id: dnif.user@example.com

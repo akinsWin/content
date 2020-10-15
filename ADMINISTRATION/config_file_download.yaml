@@ -1,26 +1,26 @@
+id: 1ee75a3006ad4ee3b2875fc7887990e3
+name: Config File Download
+path: /test
+description: ''
+type: standard
 author: Dnif User
 blocks:
 - query: _fetch * from event where $Action=CONFIGURATION DOWNLOAD AND $Stream=ADMINISTRATION
     AND $Duration=2h group count_unique $DevSrcIP, $User limit 100
   type: dql
-cost: null
-create_tstamp: 1600257393.7931643
 created_by: dnif.user@example.com
-cron: null
-cron_obj: {}
-description: ''
-fields: []
-id: 1ee75a3006ad4ee3b2875fc7887990e3
+timestamp: null
+create_tstamp: 1600257393.7931643
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738113.0674016
-name: Config File Download
-path: /test
+scope_id: default
+user_id: dnif.user@example.com
+cost: null
+runtime: null
+cron: null
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: null
-scope_id: default
 source: custom
 tags: []
-timestamp: null
-type: standard
-user_id: dnif.user@example.com

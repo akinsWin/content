@@ -1,3 +1,8 @@
+id: 8f37365e3ec4476cb918f5c2577a0f78
+name: Same signature triggered from different Source IPs
+path: /test
+description: ''
+type: standard
 author: Dnif User
 blocks:
 - query: _fetch * from event where $Duration=1h AND $Stream=NETWORK-THREAT group count_unique
@@ -7,24 +12,19 @@ blocks:
   type: dql
 - query: _checkif int_compare count_unique > 50 include
   type: dql
-cost: null
-create_tstamp: 1602150501.9569318
 created_by: dnif.user@example.com
-cron: null
-cron_obj: {}
-description: ''
-fields: []
-id: 8f37365e3ec4476cb918f5c2577a0f78
+timestamp: null
+create_tstamp: 1602150501.9569318
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738734.292459
-name: Same signature triggered from different Source IPs
-path: /test
+scope_id: default
+user_id: dnif.user@example.com
+cost: null
+runtime: null
+cron: null
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: null
-scope_id: default
 source: custom
 tags: []
-timestamp: null
-type: standard
-user_id: dnif.user@example.com

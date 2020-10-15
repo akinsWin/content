@@ -1,3 +1,9 @@
+id: f2b5c82179304d51b1963f554f82f1e7
+name: A member was added and removed from a security enabled group within a short
+  time
+path: /test
+description: ''
+type: standard
 author: Lucifer Morningstar
 blocks:
 - query: '_fetch * from event where $Duration=1h AND $Action=SECURITY_LGRP_MEMBER_ADDED
@@ -10,25 +16,19 @@ blocks:
   type: dql
 - query: _checkif int_compare count_unique = 2 include
   type: dql
-cost: null
-create_tstamp: 1602063960.361144
 created_by: lucifer.morningstar@example.com
-cron: null
-cron_obj: {}
-description: ''
-fields: []
-id: f2b5c82179304d51b1963f554f82f1e7
+timestamp: null
+create_tstamp: 1602063960.361144
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738592.1159801
-name: A member was added and removed from a security enabled group within a short
-  time
-path: /test
+scope_id: default
+user_id: lucifer.morningstar@example.com
+cost: null
+runtime: null
+cron: null
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: null
-scope_id: default
 source: custom
 tags: []
-timestamp: null
-type: standard
-user_id: lucifer.morningstar@example.com

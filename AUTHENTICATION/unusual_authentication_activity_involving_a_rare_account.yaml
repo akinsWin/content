@@ -1,3 +1,8 @@
+id: a71d3e908f2e4ff79706e871c404733f
+name: Unusual Authentication Activity involving a Rare Account
+path: /test
+description: ''
+type: standard
 author: Dnif User
 blocks:
 - query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=1h AND $Action=LOGIN
@@ -15,24 +20,19 @@ blocks:
   DetectionTactic: Initial Access
   DetectionTechnique: Valid Accounts
   type: signal
-cost: null
-create_tstamp: 1601294035.9334192
 created_by: dnif.user@example.com
-cron: null
-cron_obj: {}
-description: ''
-fields: []
-id: a71d3e908f2e4ff79706e871c404733f
+timestamp: null
+create_tstamp: 1601294035.9334192
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738706.1939785
-name: Unusual Authentication Activity involving a Rare Account
-path: /test
+scope_id: default
+user_id: dnif.user@example.com
+cost: null
+runtime: null
+cron: null
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: null
-scope_id: default
 source: custom
 tags: []
-timestamp: null
-type: standard
-user_id: dnif.user@example.com

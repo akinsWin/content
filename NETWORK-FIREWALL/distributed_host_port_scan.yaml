@@ -1,3 +1,8 @@
+id: d6241e41a464488e9e52247dec1ba723
+name: Distributed host port scan
+path: /test
+description: ''
+type: scheduled
 author: Dnif User
 blocks:
 - query: _fetch * from event where $Duration=1h AND $Stream=NETWORK-FIREWALL group
@@ -11,24 +16,19 @@ blocks:
   type: dql
 - query: _checkif int_compare $count_unique > 4 include
   type: dql
-cost: 134.1104507446289
-create_tstamp: 1600262705.2398262
 created_by: dnif.user@example.com
-cron: 0 * * * *
-cron_obj: {}
-description: ''
-fields: []
-id: d6241e41a464488e9e52247dec1ba723
+timestamp: 1602770458.6293273
+create_tstamp: 1600262705.2398262
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738865.4838054
-name: Distributed host port scan
-path: /test
+scope_id: default
+user_id: dnif.user@example.com
+cost: 134.1104507446289
+runtime: 32.22090549673885
+cron: 0 * * * *
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: 26.392737093381584
-scope_id: default
 source: custom
 tags: []
-timestamp: 1602759693.416891
-type: scheduled
-user_id: dnif.user@example.com

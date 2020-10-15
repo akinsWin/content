@@ -1,27 +1,27 @@
+id: e2c2aeb79115485aa9e58664f1ca33ce
+name: Local user account created
+path: /test
+description: ''
+type: standard
 author: Lucifer Morningstar
 blocks:
 - query: _fetch * from event where  $Stream=IAM AND $Action=SYSTEM_USER_ACCOUNT_CREATED
     AND $Duration=15m group count_unique $AdminUser, $SystemName, $Message, $User
     limit 100
   type: dql
-cost: null
-create_tstamp: 1602064638.699349
 created_by: lucifer.morningstar@example.com
-cron: null
-cron_obj: {}
-description: ''
-fields: []
-id: e2c2aeb79115485aa9e58664f1ca33ce
+timestamp: null
+create_tstamp: 1602064638.699349
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738666.2440608
-name: Local user account created
-path: /test
+scope_id: default
+user_id: lucifer.morningstar@example.com
+cost: null
+runtime: null
+cron: null
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: null
-scope_id: default
 source: custom
 tags: []
-timestamp: null
-type: standard
-user_id: lucifer.morningstar@example.com

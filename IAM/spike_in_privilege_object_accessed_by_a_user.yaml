@@ -1,3 +1,8 @@
+id: b6bb74970ff847388529a75f172d6241
+name: Spike in Privilege Object Accessed By a User
+path: /test
+description: ''
+type: standard
 author: Lucifer Morningstar
 blocks:
 - query: _fetch * from event where $Status=PASSED AND $Stream=IAM AND $Action=PRIVILEGE_OBJECT_ACCESS
@@ -5,24 +10,19 @@ blocks:
   type: dql
 - query: _checkif int_compare $count_unique > 5 include
   type: dql
-cost: null
-create_tstamp: 1602062716.4949653
 created_by: lucifer.morningstar@example.com
-cron: null
-cron_obj: {}
-description: ''
-fields: []
-id: b6bb74970ff847388529a75f172d6241
+timestamp: null
+create_tstamp: 1602062716.4949653
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738585.9340005
-name: Spike in Privilege Object Accessed By a User
-path: /test
+scope_id: default
+user_id: lucifer.morningstar@example.com
+cost: null
+runtime: null
+cron: null
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: null
-scope_id: default
 source: custom
 tags: []
-timestamp: null
-type: standard
-user_id: lucifer.morningstar@example.com

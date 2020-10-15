@@ -1,3 +1,8 @@
+id: 6b11cb5e334c4a6c8e7546996c00bb9c
+name: Possible Exfiltration
+path: /test
+description: ''
+type: standard
 author: Dnif User
 blocks:
 - query: _fetch * from event where $Duration=24h AND $Stream=PROXY group count_unique
@@ -8,24 +13,19 @@ blocks:
 - query: _checkif lookup default txlen_ulimit join $URL = $URL int_compare $stat_unique_max
     > $MaxTXLen include
   type: dql
-cost: null
-create_tstamp: 1602152486.8893101
 created_by: dnif.user@example.com
-cron: null
-cron_obj: {}
-description: ''
-fields: []
-id: 6b11cb5e334c4a6c8e7546996c00bb9c
+timestamp: null
+create_tstamp: 1602152486.8893101
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738799.1764908
-name: Possible Exfiltration
-path: /test
+scope_id: default
+user_id: dnif.user@example.com
+cost: null
+runtime: null
+cron: null
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: null
-scope_id: default
 source: custom
 tags: []
-timestamp: null
-type: standard
-user_id: dnif.user@example.com

@@ -1,3 +1,8 @@
+id: 791751565ca1423997b7e3fb5ecbc9b1
+name: Authentication Against A New Domain Controller
+path: /test
+description: ''
+type: standard
 author: Dnif User
 blocks:
 - query: _fetch * from event where $Duration=15m AND $Stream=AUTHENTICATION AND $Action=LOGIN
@@ -14,24 +19,19 @@ blocks:
   DetectionTechnique: Trusted Relationship
   SuspectObject: $SrcADDomain
   type: signal
-cost: null
-create_tstamp: 1600444298.9710748
 created_by: dnif.user@example.com
-cron: null
-cron_obj: {}
-description: ''
-fields: []
-id: 791751565ca1423997b7e3fb5ecbc9b1
+timestamp: null
+create_tstamp: 1600444298.9710748
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738204.513097
-name: Authentication Against A New Domain Controller
-path: /test
+scope_id: default
+user_id: dnif.user@example.com
+cost: null
+runtime: null
+cron: null
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: null
-scope_id: default
 source: custom
 tags: []
-timestamp: null
-type: standard
-user_id: dnif.user@example.com

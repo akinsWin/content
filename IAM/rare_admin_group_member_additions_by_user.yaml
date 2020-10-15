@@ -1,3 +1,8 @@
+id: 59a07983c12749c980b7c2960f95284d
+name: Rare admin group member additions by user
+path: /test
+description: ''
+type: standard
 author: Dnif User
 blocks:
 - query: _fetch * from event where $Status=PASSED AND $Stream=IAM AND $Action=SECURITY_UGRP_MEMBER_ADDED
@@ -6,24 +11,19 @@ blocks:
 - query: _checkif lookup <pkg_slug> trusted_members join $ScopeID = $ScopeID str_compare
     $User eq $User exclude
   type: dql
-cost: null
-create_tstamp: 1601380516.9349823
 created_by: dnif.user@example.com
-cron: null
-cron_obj: {}
-description: ''
-fields: []
-id: 59a07983c12749c980b7c2960f95284d
+timestamp: null
+create_tstamp: 1601380516.9349823
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738158.7468798
-name: Rare admin group member additions by user
-path: /test
+scope_id: default
+user_id: dnif.user@example.com
+cost: null
+runtime: null
+cron: null
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: null
-scope_id: default
 source: custom
 tags: []
-timestamp: null
-type: standard
-user_id: dnif.user@example.com

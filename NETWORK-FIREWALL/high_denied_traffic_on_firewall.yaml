@@ -1,3 +1,8 @@
+id: 5b55e60e57a3454fbb4c01e915052e0f
+name: High denied traffic on firewall
+path: /test
+description: ''
+type: scheduled
 author: Dnif User
 blocks:
 - query: _fetch * from event where $Duration=5m AND $Stream=NETWORK-FIREWALL AND $Action=PACKET_BLOCKED
@@ -5,24 +10,19 @@ blocks:
   type: dql
 - query: _checkif int_compare $count_unique > 2000 include
   type: dql
-cost: 11.175870895385742
-create_tstamp: 1600242904.3535829
 created_by: dnif.user@example.com
-cron: '*/5 * * * *'
-cron_obj: {}
-description: ''
-fields: []
-id: 5b55e60e57a3454fbb4c01e915052e0f
+timestamp: 1602771002.25927
+create_tstamp: 1600242904.3535829
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738100.9361095
-name: High denied traffic on firewall
-path: /test
+scope_id: default
+user_id: dnif.user@example.com
+cost: 11.175870895385742
+runtime: 2.0557007491588593
+cron: '*/5 * * * *'
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: 7.427353717386723
-scope_id: default
 source: custom
 tags: []
-timestamp: 1602760507.4732447
-type: scheduled
-user_id: dnif.user@example.com

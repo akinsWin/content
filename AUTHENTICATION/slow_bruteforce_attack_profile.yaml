@@ -1,3 +1,8 @@
+id: ad742fd32a2f414b8699255c193c5db2
+name: Slow Bruteforce Attack Profile
+path: /test
+description: ''
+type: standard
 author: Dnif User
 blocks:
 - query: _fetch * from event where $Duration=24h AND $Stream=AUTHENTICATION AND $Action=LOGIN
@@ -7,24 +12,19 @@ blocks:
   type: dql
 - query: _store in_disk default slow_brutforce_profile stack_replace
   type: dql
-cost: null
-create_tstamp: 1601296227.545484
 created_by: dnif.user@example.com
-cron: null
-cron_obj: {}
-description: ''
-fields: []
-id: ad742fd32a2f414b8699255c193c5db2
+timestamp: null
+create_tstamp: 1601296227.545484
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738215.8445454
-name: Slow Bruteforce Attack Profile
-path: /test
+scope_id: default
+user_id: dnif.user@example.com
+cost: null
+runtime: null
+cron: null
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: null
-scope_id: default
 source: custom
 tags: []
-timestamp: null
-type: standard
-user_id: dnif.user@example.com

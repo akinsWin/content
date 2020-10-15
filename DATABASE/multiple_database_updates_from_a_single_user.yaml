@@ -1,3 +1,8 @@
+id: 4d9df1e780584d6bb711fb3974bf6105
+name: Multiple database updates from a single user
+path: /test
+description: ''
+type: standard
 author: Dnif User
 blocks:
 - query: _fetch * from event where $Duration=1h AND $Stream=DATABASE AND $SQLQuery=regex(.*UPDATE.*SET.*WHERE.*)i  group
@@ -7,24 +12,19 @@ blocks:
   type: dql
 - query: _checkif int_compare count_unique > 2 include
   type: dql
-cost: null
-create_tstamp: 1602145857.8925638
 created_by: dnif.user@example.com
-cron: null
-cron_obj: {}
-description: ''
-fields: []
-id: 4d9df1e780584d6bb711fb3974bf6105
+timestamp: null
+create_tstamp: 1602145857.8925638
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738702.774699
-name: Multiple database updates from a single user
-path: /test
+scope_id: default
+user_id: dnif.user@example.com
+cost: null
+runtime: null
+cron: null
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: null
-scope_id: default
 source: custom
 tags: []
-timestamp: null
-type: standard
-user_id: dnif.user@example.com

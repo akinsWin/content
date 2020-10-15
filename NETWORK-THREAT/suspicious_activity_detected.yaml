@@ -1,26 +1,26 @@
+id: a568a727f0e64bc682e13bed678dfcc8
+name: Suspicious activity detected
+path: /test
+description: ''
+type: standard
 author: Dnif User
 blocks:
 - query: fetch * from event where $Duration=1h AND $Action=PACK_ALLWD AND $Severity=MEDIUM
     AND $Stream=NETWORK-THREAT group count_unique $SrcIP, $DstIP, $AtkMsg limit 100
   type: dql
-cost: null
-create_tstamp: 1602152385.807505
 created_by: dnif.user@example.com
-cron: null
-cron_obj: {}
-description: ''
-fields: []
-id: a568a727f0e64bc682e13bed678dfcc8
+timestamp: null
+create_tstamp: 1602152385.807505
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738752.052934
-name: Suspicious activity detected
-path: /test
+scope_id: default
+user_id: dnif.user@example.com
+cost: null
+runtime: null
+cron: null
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: null
-scope_id: default
 source: custom
 tags: []
-timestamp: null
-type: standard
-user_id: dnif.user@example.com

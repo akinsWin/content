@@ -1,3 +1,8 @@
+id: 1889e33743fd41afbcbb1520639dbed1
+name: Windows Multiple Accounts Enabled In Short Span
+path: /test
+description: ''
+type: standard
 author: Lucifer Morningstar
 blocks:
 - query: _fetch * from event where $Stream=IAM AND $Duration=1h AND $Action=ACCOUNT_ENABLED
@@ -7,24 +12,19 @@ blocks:
   type: dql
 - query: _checkif int_compare count_unique > 5 include
   type: dql
-cost: null
-create_tstamp: 1602063706.7165492
 created_by: lucifer.morningstar@example.com
-cron: null
-cron_obj: {}
-description: ''
-fields: []
-id: 1889e33743fd41afbcbb1520639dbed1
+timestamp: null
+create_tstamp: 1602063706.7165492
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738636.718436
-name: Windows Multiple Accounts Enabled In Short Span
-path: /test
+scope_id: default
+user_id: lucifer.morningstar@example.com
+cost: null
+runtime: null
+cron: null
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: null
-scope_id: default
 source: custom
 tags: []
-timestamp: null
-type: standard
-user_id: lucifer.morningstar@example.com

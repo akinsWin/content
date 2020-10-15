@@ -1,3 +1,8 @@
+id: 63fd3203925d48278cf3bcd38502b3b3
+name: Uncategorized URL detected
+path: /test
+description: ''
+type: standard
 author: Dnif User
 blocks:
 - query: _fetch * from event where $Action=URL_ALLWD AND $SiteClass=regex(.*UNCATEGORIZED.*)i  AND
@@ -6,24 +11,19 @@ blocks:
 - query: _checkif int_compare $count_unique > 20 include
   type: dql
 - type: signal
-cost: null
-create_tstamp: 1602069896.4908624
 created_by: dnif.user@example.com
-cron: null
-cron_obj: {}
-description: ''
-fields: []
-id: 63fd3203925d48278cf3bcd38502b3b3
+timestamp: null
+create_tstamp: 1602069896.4908624
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738677.6078749
-name: Uncategorized URL detected
-path: /test
+scope_id: default
+user_id: dnif.user@example.com
+cost: null
+runtime: null
+cron: null
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: null
-scope_id: default
 source: custom
 tags: []
-timestamp: null
-type: standard
-user_id: dnif.user@example.com

@@ -1,26 +1,26 @@
+id: e39ef003ec204fa0a71c2ebf40460830
+name: Malicious script injection detected
+path: /test
+description: ''
+type: standard
 author: Dnif User
 blocks:
 - query: _fetch * from event where $Duration=1h AND $AtkMsg=regex(.*xss.*|.*cross.*site.*)i
     AND $Stream=NETWORK-THREAT group count_unique $AtkMsg, $SrcIP limit 100
   type: dql
-cost: null
-create_tstamp: 1602152919.3075957
 created_by: dnif.user@example.com
-cron: null
-cron_obj: {}
-description: ''
-fields: []
-id: e39ef003ec204fa0a71c2ebf40460830
+timestamp: null
+create_tstamp: 1602152919.3075957
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738765.9779985
-name: Malicious script injection detected
-path: /test
+scope_id: default
+user_id: dnif.user@example.com
+cost: null
+runtime: null
+cron: null
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: null
-scope_id: default
 source: custom
 tags: []
-timestamp: null
-type: standard
-user_id: dnif.user@example.com

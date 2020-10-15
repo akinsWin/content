@@ -1,3 +1,8 @@
+id: 2db4b59577124c7c98ffb6080ee4ac05
+name: Application Protocol Scan detection
+path: /test
+description: ''
+type: scheduled
 author: Dnif User
 blocks:
 - query: _fetch * from event where $Duration=30m AND $Stream=NETWORK-FIREWALL group
@@ -9,24 +14,19 @@ blocks:
   type: dql
 - query: _agg count_unique $SrcIP
   type: dql
-cost: 67.05522537231445
-create_tstamp: 1600256985.5167336
 created_by: dnif.user@example.com
-cron: '*/30 * * * *'
-cron_obj: {}
-description: ''
-fields: []
-id: 2db4b59577124c7c98ffb6080ee4ac05
+timestamp: 1602770435.890537
+create_tstamp: 1600256985.5167336
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738104.729498
-name: Application Protocol Scan detection
-path: /test
+scope_id: default
+user_id: dnif.user@example.com
+cost: 67.05522537231445
+runtime: 35.802471914328635
+cron: '*/30 * * * *'
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: 70.56969683617353
-scope_id: default
 source: custom
 tags: []
-timestamp: 1602759693.3139079
-type: scheduled
-user_id: dnif.user@example.com

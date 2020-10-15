@@ -1,3 +1,8 @@
+id: b7a52268d15b47df93a658eabf9f8532
+name: Regular Account authenticating from a previously unseen geography geolocation
+path: /test
+description: ''
+type: standard
 author: Dnif User
 blocks:
 - query: _fetch * from event where $Duration=15m AND $Action=LOGIN group count_unique
@@ -6,24 +11,19 @@ blocks:
 - query: _checkif lookup default whitelisted_countries join $SrcCN  = $SrcCN  str_compare
     $SrcCN eq $SrcCN exclude
   type: dql
-cost: null
-create_tstamp: 1600183225.2333841
 created_by: dnif.user@example.com
-cron: null
-cron_obj: {}
-description: ''
-fields: []
-id: b7a52268d15b47df93a658eabf9f8532
+timestamp: null
+create_tstamp: 1600183225.2333841
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738012.1376064
-name: Regular Account authenticating from a previously unseen geography geolocation
-path: /test
+scope_id: default
+user_id: dnif.user@example.com
+cost: null
+runtime: null
+cron: null
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: null
-scope_id: default
 source: custom
 tags: []
-timestamp: null
-type: standard
-user_id: dnif.user@example.com

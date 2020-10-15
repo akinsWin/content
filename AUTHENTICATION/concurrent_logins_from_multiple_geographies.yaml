@@ -1,3 +1,8 @@
+id: 74a9249ea6bf494085d3f1ee47be56d0
+name: Concurrent logins from multiple geographies
+path: /test
+description: ''
+type: standard
 author: Dnif User
 blocks:
 - query: _fetch * from event where $Duration=5m AND $Stream=AUTHENTICATION AND $Action=LOGIN
@@ -7,24 +12,19 @@ blocks:
   type: dql
 - query: _checkif int_compare count_unique > 1 include
   type: dql
-cost: null
-create_tstamp: 1600249174.9765358
 created_by: dnif.user@example.com
-cron: null
-cron_obj: {}
-description: ''
-fields: []
-id: 74a9249ea6bf494085d3f1ee47be56d0
+timestamp: null
+create_tstamp: 1600249174.9765358
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738072.5168772
-name: Concurrent logins from multiple geographies
-path: /test
+scope_id: default
+user_id: dnif.user@example.com
+cost: null
+runtime: null
+cron: null
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: null
-scope_id: default
 source: custom
 tags: []
-timestamp: null
-type: standard
-user_id: dnif.user@example.com

@@ -1,3 +1,8 @@
+id: 1c85d4d963614a1ebfe91040fc9205a4
+name: Spike in administrative shares accessed
+path: /test
+description: ''
+type: scheduled
 author: Lucifer Morningstar
 blocks:
 - query: _fetch * from event where $Status=PASSED AND $Stream=IAM AND $Action=NETWORK_SHARE_ACCESSED
@@ -5,24 +10,19 @@ blocks:
   type: dql
 - query: _checkif int_compare $count_unique > 5 include
   type: dql
-cost: 134.1104507446289
-create_tstamp: 1602062357.4890182
 created_by: lucifer.morningstar@example.com
-cron: 0 * * * *
-cron_obj: {}
-description: ''
-fields: []
-id: 1c85d4d963614a1ebfe91040fc9205a4
+timestamp: 1602770431.497747
+create_tstamp: 1602062357.4890182
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738890.685214
-name: Spike in administrative shares accessed
-path: /test
+scope_id: default
+user_id: lucifer.morningstar@example.com
+cost: 134.1104507446289
+runtime: 31.46592145320028
+cron: 0 * * * *
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: 62.51258848793805
-scope_id: default
 source: custom
 tags: []
-timestamp: 1602759662.562287
-type: scheduled
-user_id: lucifer.morningstar@example.com

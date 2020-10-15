@@ -1,3 +1,8 @@
+id: 54c19b2a407e48eb98c21093e3412e44
+name: Privilege escalation detected-zol
+path: /test
+description: ''
+type: standard
 author: Lucifer Morningstar
 blocks:
 - query: _fetch * from event where $Action=PRIVILEGE_CHNAGED AND $Stream=IAM group
@@ -6,24 +11,19 @@ blocks:
 - query: _checkif str_compare $Message substr 'su oracle succeeded for root on /dev/'
     exclude
   type: dql
-cost: null
-create_tstamp: 1602063361.7499936
 created_by: lucifer.morningstar@example.com
-cron: null
-cron_obj: {}
-description: ''
-fields: []
-id: 54c19b2a407e48eb98c21093e3412e44
+timestamp: null
+create_tstamp: 1602063361.7499936
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738594.8137996
-name: Privilege escalation detected-zol
-path: /test
+scope_id: default
+user_id: lucifer.morningstar@example.com
+cost: null
+runtime: null
+cron: null
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: null
-scope_id: default
 source: custom
 tags: []
-timestamp: null
-type: standard
-user_id: lucifer.morningstar@example.com

@@ -1,3 +1,8 @@
+id: e0da900819f645658a71c09fe635e7e1
+name: Encoding and Decoding file via CertUtil
+path: /test
+description: ''
+type: standard
 author: Dnif User
 blocks:
 - query: _fetch * from event where $Stream=SYSMON-PROCESS AND $Action=PROCESS_ADDED
@@ -5,24 +10,19 @@ blocks:
     group count_unique $User, $DevSrcIP, $Process, $App limit 100
   type: dql
 - type: signal
-cost: null
-create_tstamp: 1602237741.281088
 created_by: dnif.user@example.com
-cron: null
-cron_obj: {}
-description: ''
-fields: []
-id: e0da900819f645658a71c09fe635e7e1
+timestamp: null
+create_tstamp: 1602237741.281088
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738814.8308825
-name: Encoding and Decoding file via CertUtil
-path: /test
+scope_id: default
+user_id: dnif.user@example.com
+cost: null
+runtime: null
+cron: null
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: null
-scope_id: default
 source: custom
 tags: []
-timestamp: null
-type: standard
-user_id: dnif.user@example.com

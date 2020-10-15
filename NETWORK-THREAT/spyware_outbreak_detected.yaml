@@ -1,3 +1,8 @@
+id: 9d5f9bd516a347c78e2b2ece2ed012b8
+name: Spyware outbreak detected
+path: /test
+description: ''
+type: standard
 author: Dnif User
 blocks:
 - query: _fetch * from event where $Duration=42m AND $AtkSign=regex(.*spyware.*)i
@@ -7,24 +12,19 @@ blocks:
   type: dql
 - query: _checkif int_compare count_unique > 3 include
   type: dql
-cost: null
-create_tstamp: 1602152786.4851377
 created_by: dnif.user@example.com
-cron: null
-cron_obj: {}
-description: ''
-fields: []
-id: 9d5f9bd516a347c78e2b2ece2ed012b8
+timestamp: null
+create_tstamp: 1602152786.4851377
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738759.217846
-name: Spyware outbreak detected
-path: /test
+scope_id: default
+user_id: dnif.user@example.com
+cost: null
+runtime: null
+cron: null
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: null
-scope_id: default
 source: custom
 tags: []
-timestamp: null
-type: standard
-user_id: dnif.user@example.com

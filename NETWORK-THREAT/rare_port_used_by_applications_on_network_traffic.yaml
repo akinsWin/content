@@ -1,3 +1,8 @@
+id: b03c55ab04f143809dc52246629eaa6e
+name: Rare port used by applications on network traffic
+path: /test
+description: ''
+type: standard
 author: Dnif User
 blocks:
 - code: _fetch * from event where $Stream=NETWORK-THREAT AND $Duration=10m AND $DstPort=53
@@ -10,24 +15,19 @@ blocks:
   query: _checkif lookup default <uncommon_ports> join $ScopeID = $ScopeID str_compare
     $DstPort eq $DstPort include
   type: dql
-cost: null
-create_tstamp: 1601033334.7305708
 created_by: dnif.user@example.com
-cron: null
-cron_obj: {}
-description: ''
-fields: []
-id: b03c55ab04f143809dc52246629eaa6e
+timestamp: null
+create_tstamp: 1601033334.7305708
 last_modified_by: dnif.user@example.com
 last_modified_tstamp: 1601033334.7305713
-name: Rare port used by applications on network traffic
-path: /test
+scope_id: default
+user_id: dnif.user@example.com
+cost: null
+runtime: null
+cron: null
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: null
-scope_id: default
 source: ''
 tags: []
-timestamp: null
-type: standard
-user_id: dnif.user@example.com

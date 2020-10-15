@@ -1,3 +1,8 @@
+id: 7fdd4a7e24384cd0a4c5aee6e85676eb
+name: Excessive number of DNS SERVFAIL requests-zol
+path: /test
+description: ''
+type: standard
 author: Dnif User
 blocks:
 - query: _fetch * from event where $Duration=1h AND $Stream=DNS AND $Category=regex(.*servfail.*)i
@@ -5,24 +10,19 @@ blocks:
   type: dql
 - query: _checkif int_compare $count_unique > 200 include
   type: dql
-cost: null
-create_tstamp: 1602150204.9053504
 created_by: dnif.user@example.com
-cron: null
-cron_obj: {}
-description: ''
-fields: []
-id: 7fdd4a7e24384cd0a4c5aee6e85676eb
+timestamp: null
+create_tstamp: 1602150204.9053504
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738737.5653434
-name: Excessive number of DNS SERVFAIL requests-zol
-path: /test
+scope_id: default
+user_id: dnif.user@example.com
+cost: null
+runtime: null
+cron: null
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: null
-scope_id: default
 source: custom
 tags: []
-timestamp: null
-type: standard
-user_id: dnif.user@example.com

@@ -1,3 +1,9 @@
+id: 712ffe4f15284a099138a4caacd0c4ab
+name: Multiple failed authentication attempts to multiple accounts from different
+  IPs
+path: /test
+description: ''
+type: standard
 author: Dnif User
 blocks:
 - query: _fetch * from event where $Duration=10m AND $SubSystem=AUTHENTICATION AND
@@ -5,25 +11,19 @@ blocks:
   type: dql
 - query: _checkif int_compare count_unique > 5 include
   type: dql
-cost: null
-create_tstamp: 1601288208.9863374
 created_by: dnif.user@example.com
-cron: null
-cron_obj: {}
-description: ''
-fields: []
-id: 712ffe4f15284a099138a4caacd0c4ab
+timestamp: null
+create_tstamp: 1601288208.9863374
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738084.13458
-name: Multiple failed authentication attempts to multiple accounts from different
-  IPs
-path: /test
+scope_id: default
+user_id: dnif.user@example.com
+cost: null
+runtime: null
+cron: null
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: null
-scope_id: default
 source: custom
 tags: []
-timestamp: null
-type: standard
-user_id: dnif.user@example.com

@@ -1,3 +1,8 @@
+id: b6fa9ba941e141219c1512ab6ff8b324
+name: Traffic to proxy anonymizing website
+path: /test
+description: ''
+type: standard
 author: Dnif User
 blocks:
 - query: _fetch * from event where $Stream=PROXY AND $Duration=1h group count_unique
@@ -6,24 +11,19 @@ blocks:
 - query: _checkif lookup default proxy_anonymizers join $ScopeID = $ScopeID str_compare
     $Domain eq $Domain include
   type: dql
-cost: null
-create_tstamp: 1602145164.8601482
 created_by: dnif.user@example.com
-cron: null
-cron_obj: {}
-description: ''
-fields: []
-id: b6fa9ba941e141219c1512ab6ff8b324
+timestamp: null
+create_tstamp: 1602145164.8601482
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738641.2294652
-name: Traffic to proxy anonymizing website
-path: /test
+scope_id: default
+user_id: dnif.user@example.com
+cost: null
+runtime: null
+cron: null
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: null
-scope_id: default
 source: custom
 tags: []
-timestamp: null
-type: standard
-user_id: dnif.user@example.com

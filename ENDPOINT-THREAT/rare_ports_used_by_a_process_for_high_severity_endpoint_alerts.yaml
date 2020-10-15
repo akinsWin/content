@@ -1,3 +1,8 @@
+id: 9cb31e0e4ecf4a94aab22e9a76658eeb
+name: Rare ports used by a process for high severity endpoint alerts
+path: /test
+description: ''
+type: standard
 author: Dnif User
 blocks:
 - query: _fetch * from event where $Duration=15m AND $Stream=ENDPOINT-THREAT group
@@ -13,24 +18,19 @@ blocks:
   DetectionTactic: Exfiltration
   DetectionTechnique: Exfiltration Over Alternative Protocol
   type: signal
-cost: null
-create_tstamp: 1602069657.634887
 created_by: dnif.user@example.com
-cron: null
-cron_obj: {}
-description: ''
-fields: []
-id: 9cb31e0e4ecf4a94aab22e9a76658eeb
+timestamp: null
+create_tstamp: 1602069657.634887
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738264.4697788
-name: Rare ports used by a process for high severity endpoint alerts
-path: /test
+scope_id: default
+user_id: dnif.user@example.com
+cost: null
+runtime: null
+cron: null
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: null
-scope_id: default
 source: custom
 tags: []
-timestamp: null
-type: standard
-user_id: dnif.user@example.com

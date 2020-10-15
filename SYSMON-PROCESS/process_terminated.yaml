@@ -1,26 +1,26 @@
+id: f26eb555d2d84bffb41dcb04bcb2a996
+name: Process terminated
+path: /test
+description: ''
+type: standard
 author: Dnif User
 blocks:
 - query: _fetch * from event where $Stream=SYSMON-PROCESS AND $Action=PROCESS_REMOVED
     AND $Duration=1h AND $EventID=5 group count_unique $App, $DevSrcIP limit 100
   type: dql
-cost: null
-create_tstamp: 1601373937.591477
 created_by: dnif.user@example.com
-cron: null
-cron_obj: {}
-description: ''
-fields: []
-id: f26eb555d2d84bffb41dcb04bcb2a996
+timestamp: null
+create_tstamp: 1601373937.591477
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738220.0758326
-name: Process terminated
-path: /test
+scope_id: default
+user_id: dnif.user@example.com
+cost: null
+runtime: null
+cron: null
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: null
-scope_id: default
 source: custom
 tags: []
-timestamp: null
-type: standard
-user_id: dnif.user@example.com

@@ -1,3 +1,8 @@
+id: d55f3ba29c914674b77e0bbd503b9c83
+name: VPN or Privileged Account authenticating from a previously unseen geography
+path: /test
+description: ''
+type: standard
 author: Dnif User
 blocks:
 - query: '_fetch * from event where $Duration=15m AND $Action=LOGIN_FAIL AND $Action=LOGIN
@@ -6,24 +11,19 @@ blocks:
 - query: '_checkif lookup default whitelisted_countries join $ScopeID = $ScopeID str_compare
     $SrcCN eq $SrcCN exclude '
   type: dql
-cost: null
-create_tstamp: 1601288415.6056888
 created_by: dnif.user@example.com
-cron: null
-cron_obj: {}
-description: ''
-fields: []
-id: d55f3ba29c914674b77e0bbd503b9c83
+timestamp: null
+create_tstamp: 1601288415.6056888
 last_modified_by: adarsh.shetty@dnif.it
 last_modified_tstamp: 1602738087.9888139
-name: VPN or Privileged Account authenticating from a previously unseen geography
-path: /test
+scope_id: default
+user_id: dnif.user@example.com
+cost: null
+runtime: null
+cron: null
+cron_obj: {}
+fields: []
 properties: []
 reference: ''
-runtime: null
-scope_id: default
 source: custom
 tags: []
-timestamp: null
-type: standard
-user_id: dnif.user@example.com
