@@ -9,19 +9,3 @@ blocks:
     AND $Duration=15m group count_unique $Domain limit 10
   type: dql
 - type: signal
-created_by: dnif.user@example.com
-timestamp: null
-create_tstamp: 1602070119.4345188
-last_modified_by: adarsh.shetty@dnif.it
-last_modified_tstamp: 1602738681.1916316
-scope_id: default
-user_id: dnif.user@example.com
-cost: null
-runtime: null
-cron: null
-cron_obj: {}
-fields: []
-properties: []
-reference: ''
-source: custom
-tags: []

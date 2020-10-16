@@ -1,0 +1,12 @@
+id: f194f870d3fa4dea97de886bddc904bd
+name: tst signal bug fix
+path: /test
+description: ''
+type: standard
+author: Firdos Khan
+blocks:
+- query: _fetch * from event where $Stream=NETWORK-FIREWALL AND $Duration=30m limit
+    10
+  type: dql
+- code: '# this is test signal on edit block'
+  type: text

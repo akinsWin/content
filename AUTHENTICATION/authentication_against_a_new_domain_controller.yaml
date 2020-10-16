@@ -19,19 +19,3 @@ blocks:
   DetectionTechnique: Trusted Relationship
   SuspectObject: $SrcADDomain
   type: signal
-created_by: dnif.user@example.com
-timestamp: null
-create_tstamp: 1600444298.9710748
-last_modified_by: adarsh.shetty@dnif.it
-last_modified_tstamp: 1602738204.513097
-scope_id: default
-user_id: dnif.user@example.com
-cost: null
-runtime: null
-cron: null
-cron_obj: {}
-fields: []
-properties: []
-reference: ''
-source: custom
-tags: []

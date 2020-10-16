@@ -9,19 +9,3 @@ blocks:
     $Duration=15m AND $Stream=NETWORK-THREAT group count_unique $SrcIP, $AtkSign limit
     1000
   type: dql
-created_by: dnif.user@example.com
-timestamp: null
-create_tstamp: 1602153648.8677561
-last_modified_by: adarsh.shetty@dnif.it
-last_modified_tstamp: 1602738792.986388
-scope_id: default
-user_id: dnif.user@example.com
-cost: null
-runtime: null
-cron: null
-cron_obj: {}
-fields: []
-properties: []
-reference: ''
-source: custom
-tags: []

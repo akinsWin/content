@@ -9,19 +9,3 @@ blocks:
     AND $Duration=50m AND $Process=regex(net.*group.*|nltest.*\/dclist|for.*\/.*do.*ping.*-n.*)i
     limit group count_unique $User, $DevSrcIP 100
   type: dql
-created_by: dnif.user@example.com
-timestamp: null
-create_tstamp: 1602237601.427571
-last_modified_by: adarsh.shetty@dnif.it
-last_modified_tstamp: 1602738836.950618
-scope_id: default
-user_id: dnif.user@example.com
-cost: null
-runtime: null
-cron: null
-cron_obj: {}
-fields: []
-properties: []
-reference: ''
-source: custom
-tags: []

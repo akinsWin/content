@@ -14,19 +14,3 @@ blocks:
   type: dql
 - query: _agg count_unique $SrcIP
   type: dql
-created_by: dnif.user@example.com
-timestamp: 1602770461.1667974
-create_tstamp: 1600262460.3955176
-last_modified_by: adarsh.shetty@dnif.it
-last_modified_tstamp: 1602738909.4362872
-scope_id: default
-user_id: dnif.user@example.com
-cost: 134.1104507446289
-runtime: 30.051183842122555
-cron: 0 * * * *
-cron_obj: {}
-fields: []
-properties: []
-reference: ''
-source: custom
-tags: []

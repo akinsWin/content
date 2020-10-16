@@ -18,19 +18,3 @@ blocks:
   DetectionTactic: Credential Access
   DetectionTechnique: Brute Force
   type: signal
-created_by: dnif.user@example.com
-timestamp: null
-create_tstamp: 1601294423.1760845
-last_modified_by: adarsh.shetty@dnif.it
-last_modified_tstamp: 1602738002.8893888
-scope_id: default
-user_id: dnif.user@example.com
-cost: null
-runtime: null
-cron: null
-cron_obj: {}
-fields: []
-properties: []
-reference: ''
-source: custom
-tags: []

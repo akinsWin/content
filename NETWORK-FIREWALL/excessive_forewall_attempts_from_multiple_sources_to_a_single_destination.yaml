@@ -12,19 +12,3 @@ blocks:
   type: dql
 - query: _checkif int_compare count_unique > 100 include
   type: dql
-created_by: dnif.user@example.com
-timestamp: 1602771006.7680266
-create_tstamp: 1601027908.2448494
-last_modified_by: adarsh.shetty@dnif.it
-last_modified_tstamp: 1602738906.0307014
-scope_id: default
-user_id: dnif.user@example.com
-cost: 11.175870895385742
-runtime: 6.577316569164395
-cron: '*/5 * * * *'
-cron_obj: {}
-fields: []
-properties: []
-reference: ''
-source: custom
-tags: []

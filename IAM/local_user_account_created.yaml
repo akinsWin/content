@@ -9,19 +9,3 @@ blocks:
     AND $Duration=15m group count_unique $AdminUser, $SystemName, $Message, $User
     limit 100
   type: dql
-created_by: lucifer.morningstar@example.com
-timestamp: null
-create_tstamp: 1602064638.699349
-last_modified_by: adarsh.shetty@dnif.it
-last_modified_tstamp: 1602738666.2440608
-scope_id: default
-user_id: lucifer.morningstar@example.com
-cost: null
-runtime: null
-cron: null
-cron_obj: {}
-fields: []
-properties: []
-reference: ''
-source: custom
-tags: []

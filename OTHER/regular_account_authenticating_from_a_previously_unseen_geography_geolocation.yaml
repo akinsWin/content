@@ -11,19 +11,3 @@ blocks:
 - query: _checkif lookup default whitelisted_countries join $SrcCN  = $SrcCN  str_compare
     $SrcCN eq $SrcCN exclude
   type: dql
-created_by: dnif.user@example.com
-timestamp: null
-create_tstamp: 1600183225.2333841
-last_modified_by: adarsh.shetty@dnif.it
-last_modified_tstamp: 1602738012.1376064
-scope_id: default
-user_id: dnif.user@example.com
-cost: null
-runtime: null
-cron: null
-cron_obj: {}
-fields: []
-properties: []
-reference: ''
-source: custom
-tags: []

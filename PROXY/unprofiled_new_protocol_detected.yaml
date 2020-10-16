@@ -11,19 +11,3 @@ blocks:
 - query: _checkif lookup default profiled_protocols join $URL = $URL str_compare $Proto
     eq $Proto exclude
   type: dql
-created_by: lucifer.morningstar@example.com
-timestamp: null
-create_tstamp: 1602071312.1033318
-last_modified_by: adarsh.shetty@dnif.it
-last_modified_tstamp: 1602738277.4570744
-scope_id: default
-user_id: lucifer.morningstar@example.com
-cost: null
-runtime: null
-cron: null
-cron_obj: {}
-fields: []
-properties: []
-reference: ''
-source: custom
-tags: []

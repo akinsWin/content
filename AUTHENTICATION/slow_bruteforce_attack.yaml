@@ -12,19 +12,3 @@ blocks:
     int_compare count_unique < $tot_count_check include
   type: dql
 - type: signal
-created_by: dnif.user@example.com
-timestamp: null
-create_tstamp: 1601296395.5894163
-last_modified_by: adarsh.shetty@dnif.it
-last_modified_tstamp: 1602738211.9696765
-scope_id: default
-user_id: dnif.user@example.com
-cost: null
-runtime: null
-cron: null
-cron_obj: {}
-fields: []
-properties: []
-reference: ''
-source: custom
-tags: []

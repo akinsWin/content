@@ -8,19 +8,3 @@ blocks:
 - query: _fetch * from event where $Duration=1h AND $AtkMsg=regex(.*xss.*|.*cross.*site.*)i
     AND $Stream=NETWORK-THREAT group count_unique $AtkMsg, $SrcIP limit 100
   type: dql
-created_by: dnif.user@example.com
-timestamp: null
-create_tstamp: 1602152919.3075957
-last_modified_by: adarsh.shetty@dnif.it
-last_modified_tstamp: 1602738765.9779985
-scope_id: default
-user_id: dnif.user@example.com
-cost: null
-runtime: null
-cron: null
-cron_obj: {}
-fields: []
-properties: []
-reference: ''
-source: custom
-tags: []

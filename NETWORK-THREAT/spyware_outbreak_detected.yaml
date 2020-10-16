@@ -12,19 +12,3 @@ blocks:
   type: dql
 - query: _checkif int_compare count_unique > 3 include
   type: dql
-created_by: dnif.user@example.com
-timestamp: null
-create_tstamp: 1602152786.4851377
-last_modified_by: adarsh.shetty@dnif.it
-last_modified_tstamp: 1602738759.217846
-scope_id: default
-user_id: dnif.user@example.com
-cost: null
-runtime: null
-cron: null
-cron_obj: {}
-fields: []
-properties: []
-reference: ''
-source: custom
-tags: []

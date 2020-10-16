@@ -18,19 +18,3 @@ blocks:
   DetectionTactic: Execution
   DetectionTechnique: Exploitation for Client Execution
   type: signal
-created_by: dnif.user@example.com
-timestamp: null
-create_tstamp: 1602068857.5973718
-last_modified_by: adarsh.shetty@dnif.it
-last_modified_tstamp: 1602738269.4526958
-scope_id: default
-user_id: dnif.user@example.com
-cost: null
-runtime: null
-cron: null
-cron_obj: {}
-fields: []
-properties: []
-reference: ''
-source: custom
-tags: []

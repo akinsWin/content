@@ -8,19 +8,3 @@ blocks:
 - query: _fetch * from event where $Duration=60m AND $Stream=NETWORK-FIREWALL group
     count_unique $SrcIP, $dstIP limit 10
   type: dql
-created_by: lucifer.morningstar@example.com
-timestamp: 1602499927.0391579
-create_tstamp: 1602145270.7254927
-last_modified_by: adarsh.shetty@dnif.it
-last_modified_tstamp: 1602738859.0953064
-scope_id: default
-user_id: lucifer.morningstar@example.com
-cost: 134.1104507446289
-runtime: 13.126014220528305
-cron: null
-cron_obj: {}
-fields: []
-properties: []
-reference: ''
-source: custom
-tags: []

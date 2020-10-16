@@ -15,19 +15,3 @@ blocks:
   query: _checkif lookup default <uncommon_ports> join $ScopeID = $ScopeID str_compare
     $DstPort eq $DstPort include
   type: dql
-created_by: dnif.user@example.com
-timestamp: null
-create_tstamp: 1601033334.7305708
-last_modified_by: dnif.user@example.com
-last_modified_tstamp: 1601033334.7305713
-scope_id: default
-user_id: dnif.user@example.com
-cost: null
-runtime: null
-cron: null
-cron_obj: {}
-fields: []
-properties: []
-reference: ''
-source: ''
-tags: []

@@ -8,19 +8,3 @@ blocks:
 - query: _fetch * from event where $Stream=PROXY AND $Duration=1h AND $Category=regex(.*NEWS-AND-MEDIA.*|.*NEWS-AND-MEDIA-ALTERNATIVE-JOURNALS.*)i
     group count_unique $User, $SrcIP , $URL limit 100
   type: dql
-created_by: dnif.user@example.com
-timestamp: null
-create_tstamp: 1602073009.4860027
-last_modified_by: adarsh.shetty@dnif.it
-last_modified_tstamp: 1602738696.1713881
-scope_id: default
-user_id: dnif.user@example.com
-cost: null
-runtime: null
-cron: null
-cron_obj: {}
-fields: []
-properties: []
-reference: ''
-source: custom
-tags: []

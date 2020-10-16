@@ -8,19 +8,3 @@ blocks:
 - query: _fetch * from event where $Stream=IAM AND $Action=USER_ACCOUNT_CHANGED AND
     $Duration=1h group count_unique $User , $AdminUser limit 100
   type: dql
-created_by: lucifer.morningstar@example.com
-timestamp: null
-create_tstamp: 1602064962.8226874
-last_modified_by: adarsh.shetty@dnif.it
-last_modified_tstamp: 1602738896.8405857
-scope_id: default
-user_id: lucifer.morningstar@example.com
-cost: null
-runtime: null
-cron: null
-cron_obj: {}
-fields: []
-properties: []
-reference: ''
-source: custom
-tags: []

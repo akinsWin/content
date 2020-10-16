@@ -8,19 +8,3 @@ blocks:
 - query: _fetch * from event where $Duration=10m AND $AtkMsg=regex(.*dos.*)i AND $Stream=NETWORK-THREAT
     group count_unique $AtkMsg, $SrcIP limit 100 include
   type: dql
-created_by: dnif.user@example.com
-timestamp: null
-create_tstamp: 1602152627.467066
-last_modified_by: adarsh.shetty@dnif.it
-last_modified_tstamp: 1602738647.037451
-scope_id: default
-user_id: dnif.user@example.com
-cost: null
-runtime: null
-cron: null
-cron_obj: {}
-fields: []
-properties: []
-reference: ''
-source: custom
-tags: []
