@@ -5,9 +5,8 @@ description: ''
 type: standard
 author: Lucifer Morningstar
 blocks:
-- query: _fetch * from event where $Duration=1h AND $Stream=EMAIL-GATEWAY group count_unique
+- type: dql
+  query: _fetch * from event where $Duration=1h AND $Stream=EMAIL-GATEWAY group count_unique
     $ObjectName, $Sender limit 100
-  type: dql
-- query: '>>_checkif str_compare $ObjectName regex  ''.*\.exe$|.*\.BAT$|.*\.COM$''
-    include '
-  type: dql
+- type: dql
+  query: '_checkif str_compare $ObjectName regex  ''.*\.exe$|.*\.BAT$|.*\.COM$'' include '

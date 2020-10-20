@@ -5,10 +5,10 @@ description: ''
 type: standard
 author: Lucifer Morningstar
 blocks:
-- query: _fetch * from event where $Stream=IAM AND $Duration=1h AND $Action=ACCOUNT_ENABLED
-    group count_unique $User, $DevSrcIP, $AdminUser limit 100
-  type: dql
-- query: _checkif str_compare $User substr '$' exclude
-  type: dql
-- query: _checkif int_compare count_unique > 5 include
-  type: dql
+- type: dql
+  query: _fetch * from event where $Stream=IAM AND $Duration=1h AND $Action=ACCOUNT_ENABLED
+    group count_unique $User, $AdminUser limit 100
+- type: dql
+  query: _checkif str_compare $User substr '$' exclude
+- type: dql
+  query: _checkif int_compare $count_unique > 5 include

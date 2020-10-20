@@ -5,6 +5,6 @@ description: ''
 type: standard
 author: Dnif User
 blocks:
-- query: _fetch * from event where $Stream=DATABASE AND $Status=FAILED AND $Action=RESOURCE_ALERT
+- type: dql
+  query: _fetch * from event where $Stream=DATABASE AND $Status=FAILED AND $Action=RESOURCE_ALERT
     AND $Duration=1h group count_unique $DB, $Message limit 100
-  type: dql

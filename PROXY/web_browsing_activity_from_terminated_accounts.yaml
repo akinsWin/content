@@ -5,9 +5,9 @@ description: ''
 type: standard
 author: Dnif User
 blocks:
-- query: _fetch * from event where $Stream=PROXY AND $Duration=1h group count_unique  $Domain,
+- type: dql
+  query: _fetch * from event where $Stream=PROXY AND $Duration=1h group count_unique  $Domain,
     $User limit 100
-  type: dql
-- query: _checkif lookup default terminated_accounts join $User = $User str_compare
+- type: dql
+  query: _checkif lookup default terminated_accounts join $User = $User str_compare
     $User eq $User include
-  type: dql

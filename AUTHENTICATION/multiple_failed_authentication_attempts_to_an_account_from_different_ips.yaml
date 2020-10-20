@@ -5,10 +5,10 @@ description: ''
 type: standard
 author: Dnif User
 blocks:
-- query: '_fetch * from event where $Duration=2h AND $Stream=AUTHENTICATION AND $Action=LOGIN_FAIL
-    group count_unique $User, $SrcIP limit 100 '
-  type: dql
-- query: _agg count_unique $User
-  type: dql
-- query: _checkif int_compare count_unique > 20 include
-  type: dql
+- type: dql
+  query: '_fetch * from event where $Duration=3h AND $Stream=AUTHENTICATION AND $Action=LOGIN
+    AND $Status=FAILED  group count_unique $User, $SrcIP limit 100 '
+- type: dql
+  query: _agg count_unique $User
+- type: dql
+  query: _checkif int_compare count_unique > 20 include

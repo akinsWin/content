@@ -5,7 +5,6 @@ description: ''
 type: standard
 author: Lucifer Morningstar
 blocks:
-- query: _fetch * from event where  $Stream=IAM AND $Action=SYSTEM_USER_ACCOUNT_CREATED
-    AND $Duration=15m group count_unique $AdminUser, $SystemName, $Message, $User
-    limit 100
-  type: dql
+- type: dql
+  query: _fetch * from event where  $Stream=IAM AND $Action=SYSTEM_USER_ACCOUNT_CREATED
+    AND $Duration=15m group count_unique $AdminUser, $SystemName, $User limit 100

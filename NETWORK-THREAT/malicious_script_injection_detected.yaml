@@ -5,6 +5,6 @@ description: ''
 type: standard
 author: Dnif User
 blocks:
-- query: _fetch * from event where $Duration=1h AND $AtkMsg=regex(.*xss.*|.*cross.*site.*)i
+- type: dql
+  query: _fetch * from event where $Duration=1h AND $AtkMsg=regex(.*xss.*|.*cross.*site.*)i
     AND $Stream=NETWORK-THREAT group count_unique $AtkMsg, $SrcIP limit 100
-  type: dql

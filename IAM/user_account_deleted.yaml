@@ -5,8 +5,8 @@ description: ''
 type: standard
 author: Dnif User
 blocks:
-- query: _fetch * from event where $Stream=IAM AND $Action=USER_ACCOUNT_DELETED AND
+- type: dql
+  query: _fetch * from event where $Stream=IAM AND $Action=USER_ACCOUNT_DELETED AND
     $Status=PASSED AND $Duration=30m  group count_unique $User, $TargetDomain limit
     100
-  type: dql
 - type: signal

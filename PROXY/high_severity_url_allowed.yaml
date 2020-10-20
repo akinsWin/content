@@ -5,7 +5,7 @@ description: ''
 type: standard
 author: Dnif User
 blocks:
-- query: _fetch * from event where $Action=URL_ALLWD AND $Severity=HIGH AND $Stream=PROXY
+- type: dql
+  query: _fetch * from event where $Action=URL_ALLWD AND $Severity=HIGH AND $Stream=PROXY
     AND $Duration=15m group count_unique $Domain limit 10
-  type: dql
 - type: signal

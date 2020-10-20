@@ -5,9 +5,9 @@ description: ''
 type: standard
 author: Dnif User
 blocks:
-- query: _fetch * from event where $Status=PASSED AND $Stream=IAM AND $Action=SECURITY_UGRP_MEMBER_ADDED
+- type: dql
+  query: _fetch * from event where $Status=PASSED AND $Stream=IAM AND $Action=SECURITY_UGRP_MEMBER_ADDED
     AND $Duration=1h group count_unique $User limit 100
-  type: dql
-- query: _checkif lookup <pkg_slug> trusted_members join $ScopeID = $ScopeID str_compare
+- type: dql
+  query: _checkif lookup <pkg_slug> trusted_members join $ScopeID = $ScopeID str_compare
     $User eq $User exclude
-  type: dql

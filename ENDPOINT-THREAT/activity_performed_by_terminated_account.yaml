@@ -5,18 +5,18 @@ description: ''
 type: standard
 author: Dnif User
 blocks:
-- query: _fetch * from event where $Duration=15m AND $Stream=ENDPOINT-THREAT group
+- type: dql
+  query: _fetch * from event where $Duration=15m AND $Stream=ENDPOINT-THREAT group
     count_unique $User, $SystemName limit 100
-  type: dql
-- query: _checkif lookup default terminated_users join $User = $User str_compare $User
+- type: dql
+  query: _checkif lookup default terminated_users join $User = $User str_compare $User
     eq $User include
-  type: dql
-- DetectionConfidence: High
-  DetectionName: Activity Performed by Terminated Account
-  DetectionScore: 8
+- DetectionScore: 8
   DetectionSeverity: High
-  DetectionTactic: Initial Access
+  type: signal
   DetectionTechnique: Valid Accounts
   SuspectUser: $User
   TargetHost: $SystemName
-  type: signal
+  DetectionConfidence: High
+  DetectionName: Activity Performed by Terminated Account
+  DetectionTactic: Initial Access

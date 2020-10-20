@@ -6,13 +6,13 @@ description: ''
 type: standard
 author: Lucifer Morningstar
 blocks:
-- query: '_fetch * from event where $Duration=1h AND $Action=SECURITY_LGRP_MEMBER_ADDED
+- type: dql
+  query: '_fetch * from event where $Duration=1h AND $Action=SECURITY_LGRP_MEMBER_ADDED
     AND $Stream=IAM group count_unique $User as #A limit 10 '
-  type: dql
-- query: '_fetch * from event where $Duration=1h AND $Action=SECURITY_LGRP_MEMBER_REMOVED
+- type: dql
+  query: '_fetch * from event where $Duration=1h AND $Action=SECURITY_LGRP_MEMBER_REMOVED
     AND $Stream=IAM group count_unique $User as #B limit 10 '
-  type: dql
-- query: _agg count_unique $User
-  type: dql
-- query: _checkif int_compare count_unique = 2 include
-  type: dql
+- type: dql
+  query: _agg count_unique $User
+- type: dql
+  query: _checkif int_compare count_unique > 1 include

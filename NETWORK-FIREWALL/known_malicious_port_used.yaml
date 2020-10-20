@@ -5,9 +5,9 @@ description: ''
 type: standard
 author: Dnif User
 blocks:
-- query: '_fetch * from event where $Stream=NETWORK-FIREWALL AND $Duration=1h group
+- type: dql
+  query: '_fetch * from event where $Stream=NETWORK-FIREWALL AND $Duration=1h group
     count_unique $SrcIP, $DstPort limit 100 '
-  type: dql
-- query: _checkif lookup default malicious_ports join $DstPort = $DstPort str_compare
+- type: dql
+  query: _checkif lookup default malicious_ports join $DstPort = $DstPort str_compare
     $DstPort eq $DstPort include
-  type: dql

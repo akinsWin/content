@@ -5,6 +5,6 @@ description: ''
 type: standard
 author: Dnif User
 blocks:
-- query: _fetch * from event where $Action=CONFIGURATION DOWNLOAD AND $Stream=ADMINISTRATION
+- type: dql
+  query: _fetch * from event where $Action=CONFIGURATION DOWNLOAD AND $Stream=ADMINISTRATION
     AND $Duration=2h group count_unique $DevSrcIP, $User limit 100
-  type: dql

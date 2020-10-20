@@ -5,8 +5,8 @@ description: ''
 type: standard
 author: Dnif User
 blocks:
-- query: _fetch * from event where NOT $SrcCN=- AND $DstCN=- AND $Action=deny AND
+- type: dql
+  query: _fetch * from event where NOT $SrcCN=- AND $DstCN=- AND $Action=deny AND
     $Duration=1h AND $Stream=NETWORK-FIREWALL group count_unique $SrcIP limit 100
-  type: dql
-- query: _checkif int_compare count_unique > 50 include
-  type: dql
+- type: dql
+  query: _checkif int_compare count_unique > 50 include

@@ -5,8 +5,8 @@ description: ''
 type: standard
 author: Dnif User
 blocks:
-- query: _fetch * from event where $AtkMsg=regex(.*UDP.*)i AND $Stream=NETWORK-THREAT
+- type: dql
+  query: _fetch * from event where $AtkMsg=regex(.*UDP.*)i AND $Stream=NETWORK-THREAT
     AND $Duration=15m group count_unique $SrcIP limit 1000
-  type: dql
-- query: _checkif int_compare $count_unique > 5 include
-  type: dql
+- type: dql
+  query: _checkif int_compare $count_unique > 5 include

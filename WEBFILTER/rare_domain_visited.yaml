@@ -5,8 +5,8 @@ description: ''
 type: scheduled
 author: Dnif User
 blocks:
-- query: _fetch * from event where $Action=URL_ALLOWED AND $Stream=WEBFILTER AND $Duration=1h
+- type: dql
+  query: _fetch * from event where $Action=URL_ALLOWED AND $Stream=WEBFILTER AND $Duration=1h
     group count_unique $Domain limit 100
-  type: dql
-- query: _checkif int_compare $count_unique < 2 include
-  type: dql
+- type: dql
+  query: _checkif int_compare $count_unique < 2 include

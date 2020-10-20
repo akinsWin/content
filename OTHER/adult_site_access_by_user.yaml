@@ -5,8 +5,8 @@ description: ''
 type: standard
 author: Dnif User
 blocks:
-- query: _fetch * from event where $Action=URL_ALLWD AND  $Category=regex(.*adult.*)i
+- type: dql
+  query: _fetch * from event where $Action=URL_ALLWD AND  $Category=regex(.*adult.*)i
     AND $SubSystem= AND $Duration=15m group count_unique $SrcIP, $DstIP, $UserPath,
     $Domain limit 100
-  type: dql
 - type: signal

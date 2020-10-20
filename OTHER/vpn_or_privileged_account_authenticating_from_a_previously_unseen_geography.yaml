@@ -5,9 +5,9 @@ description: ''
 type: standard
 author: Dnif User
 blocks:
-- query: '_fetch * from event where $Duration=15m AND $Action=LOGIN_FAIL AND $Action=LOGIN
-    AND $AuthProtocol=vpn  group count_unique $SrcCN limit 100 '
-  type: dql
-- query: '_checkif lookup default whitelisted_countries join $ScopeID = $ScopeID str_compare
+- type: dql
+  query: '_fetch * from event where $Duration=15m AND $Status=FAILED AND $Action=LOGIN
+    AND $AuthMethod=vpn  group count_unique $SrcCN limit 100 '
+- type: dql
+  query: '_checkif lookup default whitelisted_countries join $ScopeID = $ScopeID str_compare
     $SrcCN eq $SrcCN exclude '
-  type: dql

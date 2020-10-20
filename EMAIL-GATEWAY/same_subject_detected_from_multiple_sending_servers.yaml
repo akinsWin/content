@@ -5,10 +5,10 @@ description: ''
 type: standard
 author: Lucifer Morningstar
 blocks:
-- query: _fetch * from event where $Stream=EMAIL-GATEWAY AND $Duration=1h group count_unique
+- type: dql
+  query: _fetch * from event where $Stream=EMAIL-GATEWAY AND $Duration=1h group count_unique
     $Subject, $SenderDomain limit 100
-  type: dql
-- query: _agg $count_unique $Subject
-  type: dql
-- query: _checkif int_compare $count_unique > 5 include
-  type: dql
+- type: dql
+  query: _agg $count_unique $Subject
+- type: dql
+  query: _checkif int_compare $count_unique > 5 include

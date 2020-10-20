@@ -5,7 +5,7 @@ description: ''
 type: standard
 author: Dnif User
 blocks:
-- query: fetch * from event where $Stream=SYSMON-PROCESS  AND $Status=PASSED AND $Action=PROCESS_ADDED
+- type: dql
+  query: fetch * from event where $Stream=SYSMON-PROCESS  AND $Status=PASSED AND $Action=PROCESS_ADDED
     AND $Duration=50m AND $Process=regex(net.*group.*|nltest.*\/dclist|for.*\/.*do.*ping.*-n.*)i
     limit group count_unique $User, $DevSrcIP 100
-  type: dql

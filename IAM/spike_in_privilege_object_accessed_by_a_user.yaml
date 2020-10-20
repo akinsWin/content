@@ -5,8 +5,8 @@ description: ''
 type: standard
 author: Lucifer Morningstar
 blocks:
-- query: _fetch * from event where $Status=PASSED AND $Stream=IAM AND $Action=PRIVILEGE_OBJECT_ACCESS
-    AND $Duration=30  group count_unique $AdminUser, $SrcIP limit 100
-  type: dql
-- query: _checkif int_compare $count_unique > 5 include
-  type: dql
+- type: dql
+  query: _fetch * from event where $Status=PASSED AND $Stream=IAM AND $Action=PRIVILEGE_OBJECT_ACCESS
+    AND $Duration=30m  group count_unique $AdminUser, $SrcIP limit 100
+- type: dql
+  query: _checkif int_compare $count_unique > 5 include

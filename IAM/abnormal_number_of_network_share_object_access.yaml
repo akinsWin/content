@@ -5,8 +5,8 @@ description: ''
 type: standard
 author: Dnif User
 blocks:
-- query: _fetch * from event where $Duration=2h AND $Stream=IAM  AND $Status=PASSED
+- type: dql
+  query: _fetch * from event where $Duration=2h AND $Stream=IAM  AND $Status=PASSED
     AND $Action=NETWORK_SHARE_ACCESSED group count_unique $AdminUser limit 100
-  type: dql
-- query: _checkif int_compare $count_unique > 10 include
-  type: dql
+- type: dql
+  query: _checkif int_compare $count_unique > 10 include

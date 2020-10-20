@@ -5,18 +5,18 @@ description: ''
 type: standard
 author: Dnif User
 blocks:
-- query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=1h AND $Action=LOGIN
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=1h AND $Action=LOGIN
     AND $Status=FAILED group count_unique $ScopeID, $User limit 100
-  type: dql
-- query: _checkif lookup default regular_accounts join $User = $User str_compare $User
+- type: dql
+  query: _checkif lookup default regular_accounts join $User = $User str_compare $User
     eq $User exclude
-  type: dql
-- query: _checkif int_comapre $count_unique  > 5 include
-  type: dql
-- DetectionConfidence: High
+- type: dql
+  query: _checkif int_comapre $count_unique  > 5 include
+- DetectionTactic: Initial Access
+  DetectionTechnique: Valid Accounts
+  type: signal
+  DetectionConfidence: High
   DetectionName: Unusual Authentication Activity involving a Rare Account
   DetectionScore: '8'
   DetectionSeverity: High
-  DetectionTactic: Initial Access
-  DetectionTechnique: Valid Accounts
-  type: signal

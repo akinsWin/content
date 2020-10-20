@@ -5,9 +5,9 @@ description: ''
 type: standard
 author: Dnif User
 blocks:
-- query: _fetch * from event where $Stream=ADMINISTRATION AND $Action=CONFIG CHANGED
+- type: dql
+  query: _fetch * from event where $Stream=ADMINISTRATION AND $Action=CONFIG CHANGED
     AND $Status=PASSED AND $Duration=1h group count_unique $User, $DevSrcIP limit
     100
-  type: dql
-- query: _checkif int_compare $count_unique >= 3 include
-  type: dql
+- type: dql
+  query: _checkif int_compare $count_unique >= 3 include

@@ -5,9 +5,9 @@ description: ''
 type: standard
 author: Lucifer Morningstar
 blocks:
-- query: _fetch * from event where $Action=PRIVILEGE_CHNAGED AND $Stream=IAM group
+- type: dql
+  query: _fetch * from event where $Action=PRIVILEGE_CHNAGED AND $Stream=IAM group
     count_unique $Message, $User, $AdminUser limit 100
-  type: dql
-- query: _checkif str_compare $Message substr 'su oracle succeeded for root on /dev/'
+- type: dql
+  query: _checkif str_compare $Message substr 'su oracle succeeded for root on /dev/'
     exclude
-  type: dql

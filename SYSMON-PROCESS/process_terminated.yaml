@@ -5,6 +5,6 @@ description: ''
 type: standard
 author: Dnif User
 blocks:
-- query: _fetch * from event where $Stream=SYSMON-PROCESS AND $Action=PROCESS_REMOVED
+- type: dql
+  query: _fetch * from event where $Stream=SYSMON-PROCESS AND $Action=PROCESS_REMOVED
     AND $Duration=1h AND $EventID=5 group count_unique $App, $DevSrcIP limit 100
-  type: dql

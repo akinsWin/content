@@ -5,8 +5,8 @@ description: ''
 type: scheduled
 author: Dnif User
 blocks:
-- query: _fetch * from event where $Duration=10m AND $Stream=NETWORK-FIREWALL AND
+- type: dql
+  query: _fetch * from event where $Duration=10m AND $Stream=NETWORK-FIREWALL AND
     $DstPort=53 group count_unique $SrcIP limit 5
-  type: dql
-- query: _checkif int_compare $count_unique > 1000 include
-  type: dql
+- type: dql
+  query: _checkif int_compare $count_unique > 1000 include

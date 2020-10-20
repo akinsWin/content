@@ -5,10 +5,10 @@ description: ''
 type: standard
 author: Dnif User
 blocks:
-- query: _fetch * from event where $Duration=1h AND $Stream=NETWORK-THREAT group count_unique
+- type: dql
+  query: _fetch * from event where $Duration=1h AND $Stream=NETWORK-THREAT group count_unique
     $AtkMsg, $SrcIP limit 100
-  type: dql
-- query: _agg count_unique $SrcIP
-  type: dql
-- query: _checkif int_compare count_unique > 10 include
-  type: dql
+- type: dql
+  query: _agg count_unique $SrcIP
+- type: dql
+  query: _checkif int_compare count_unique > 10 include

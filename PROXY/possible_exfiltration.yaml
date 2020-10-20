@@ -5,11 +5,11 @@ description: ''
 type: standard
 author: Dnif User
 blocks:
-- query: _fetch * from event where $Duration=24h AND $Stream=PROXY group count_unique
+- type: dql
+  query: _fetch * from event where $Duration=24h AND $Stream=PROXY group count_unique
     $URL, $TXLen limit 100
-  type: dql
-- query: '>>_agg stat_unique $URL max $TXLen'
-  type: dql
-- query: _checkif lookup default txlen_ulimit join $URL = $URL int_compare $stat_unique_max
+- type: dql
+  query: _agg stat_unique $URL max $TXLen
+- type: dql
+  query: _checkif lookup default txlen_ulimit join $URL = $URL int_compare $stat_unique_max
     > $MaxTXLen include
-  type: dql

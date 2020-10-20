@@ -5,8 +5,8 @@ description: ''
 type: standard
 author: Dnif User
 blocks:
-- query: _fetch * from event where $Duration=1h AND $Stream=DNS AND $Category=regex(.*servfail.*)i
+- type: dql
+  query: _fetch * from event where $Duration=1h AND $Stream=DNS AND $Category=regex(.*servfail.*)i
     group count_unique $SrcIP limit 100
-  type: dql
-- query: _checkif int_compare $count_unique > 200 include
-  type: dql
+- type: dql
+  query: _checkif int_compare $count_unique > 200 include

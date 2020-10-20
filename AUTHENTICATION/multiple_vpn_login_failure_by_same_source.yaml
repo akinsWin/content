@@ -5,12 +5,15 @@ description: ''
 type: standard
 author: Dnif User
 blocks:
-- query: '_fetch * from event where $Duration=1h AND $Stream=AUTHENTICATION AND $Action=LOGIN
-    AND $Status=FAILED group count_unique $User, $SrcIP limit 100 '
-  type: dql
-- query: _agg count_unique $User
-  type: dql
-- query: _checkif int_compare count_unique > 5 include
-  type: dql
+- type: dql
+  query: '_fetch * from event where $Duration=1h AND $Stream=AUTHENTICATION AND $Action=LOGIN
+    AND $Status=FAILED AND $AuthMethod=vpn group count_unique $User, $SrcIP limit
+    100 '
+- type: dql
+  query: _agg count_unique $User
+- type: dql
+  query: _checkif int_compare count_unique > 5 include
 - TargetUser: $User
   type: signal
+  DetectionTechnique: ''
+  DetectionSeverity: ''

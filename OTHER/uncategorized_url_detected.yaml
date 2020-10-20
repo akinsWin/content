@@ -5,9 +5,9 @@ description: ''
 type: standard
 author: Dnif User
 blocks:
-- query: _fetch * from event where $Action=URL_ALLWD AND $SiteClass=regex(.*UNCATEGORIZED.*)i  AND
+- type: dql
+  query: _fetch * from event where $Action=URL_ALLWD AND $SiteClass=regex(.*UNCATEGORIZED.*)i  AND
     $Duration=1h group count_unique $Domain, $SrcIP limit 100
-  type: dql
-- query: _checkif int_compare $count_unique > 20 include
-  type: dql
+- type: dql
+  query: _checkif int_compare $count_unique > 20 include
 - type: signal

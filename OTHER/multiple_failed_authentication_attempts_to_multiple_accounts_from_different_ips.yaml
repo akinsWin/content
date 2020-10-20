@@ -6,8 +6,8 @@ description: ''
 type: standard
 author: Dnif User
 blocks:
-- query: _fetch * from event where $Duration=10m AND $SubSystem=AUTHENTICATION AND
+- type: dql
+  query: _fetch * from event where $Duration=10m AND $SubSystem=AUTHENTICATION AND
     $Action=LOGIN_FAIL group count_unique $User, $SrcIP limit 100
-  type: dql
-- query: _checkif int_compare count_unique > 5 include
-  type: dql
+- type: dql
+  query: _checkif int_compare count_unique > 5 include

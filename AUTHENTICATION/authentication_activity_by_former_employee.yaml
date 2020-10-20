@@ -5,16 +5,16 @@ description: ''
 type: standard
 author: Dnif User
 blocks:
-- query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=1h AND $Action=LOGIN
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=1h AND $Action=LOGIN
     group count_unique $User limit 100
-  type: dql
-- query: _checkif lookup default terminated_accounts join $User = $User str_compare
+- type: dql
+  query: _checkif lookup default terminated_accounts join $User = $User str_compare
     $User eq $User include
-  type: dql
-- DetectionConfidence: High
+- DetectionTactic: Credential Access
+  DetectionTechnique: Brute Force
+  type: signal
+  DetectionConfidence: High
   DetectionName: Authentication activity by former employee
   DetectionScore: '9'
   DetectionSeverity: High
-  DetectionTactic: Credential Access
-  DetectionTechnique: Brute Force
-  type: signal
