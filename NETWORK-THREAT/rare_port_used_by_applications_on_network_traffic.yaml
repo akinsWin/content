@@ -6,8 +6,8 @@ type: standard
 author: Dnif User
 blocks:
 - type: dql
-  query: _fetch * from event where $Stream=NETWORK-THREAT AND $Duration=10m group
-    count_unique $SrcIP, $DstPort limit 100
+  query: _fetch * from event where $Stream=NETWORK-THREAT AND $Duration=1h group count_unique
+    $SrcIP, $DstPort limit 100
 - type: dql
   query: _checkif lookup default <uncommon_ports> join $ScopeID = $ScopeID str_compare
     $DstPort eq $DstPort include

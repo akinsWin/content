@@ -6,9 +6,18 @@ type: standard
 author: Dnif User
 blocks:
 - type: dql
-  query: '_fetch * from event where $Duration=3h AND $Stream=AUTHENTICATION AND $Action=LOGIN
+  query: '_fetch * from event where $Duration=30m AND $Stream=AUTHENTICATION AND $Action=LOGIN
     AND $Status=FAILED  group count_unique $User, $SrcIP limit 100 '
 - type: dql
   query: _agg count_unique $User
 - type: dql
-  query: _checkif int_compare count_unique > 20 include
+  query: _checkif int_compare $count_unique > 5 include
+- DetectionSeverity: Medium
+  DetectionTactic: Initial Access
+  DetectionTechnique: Trusted Relationship
+  type: signal
+  DetectionName: Multiple failed authentication attempts to an account from different
+    IPs
+  DetectionScore: '4'
+  TargetUser: $User
+  DetectionConfidence: Low
