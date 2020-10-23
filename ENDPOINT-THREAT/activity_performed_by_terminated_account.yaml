@@ -11,12 +11,12 @@ blocks:
 - type: dql
   query: _checkif lookup default terminated_users join $User = $User str_compare $User
     eq $User include
-- DetectionScore: 8
-  DetectionSeverity: High
-  type: signal
-  DetectionTechnique: Valid Accounts
-  SuspectUser: $User
-  TargetHost: $SystemName
-  DetectionConfidence: High
+- type: signal
   DetectionName: Activity Performed by Terminated Account
   DetectionTactic: Initial Access
+  DetectionTechnique: Valid Accounts
+  DetectionScore: 8
+  DetectionSeverity: High
+  DetectionConfidence: High
+  SuspectUser: $User
+  TargetHost: $SystemName

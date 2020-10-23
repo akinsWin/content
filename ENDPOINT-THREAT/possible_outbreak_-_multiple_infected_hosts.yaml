@@ -13,8 +13,8 @@ blocks:
 - type: dql
   query: _checkif int_compare count_unique > 5 include
 - type: signal
-  DetectionConfidence: High
   DetectionName: Possible Outbreak - Multiple Infected Hosts
-  DetectionSeverity: ''
   DetectionTactic: Execution
   DetectionTechnique: Exploitation for Client Execution
+  DetectionSeverity: ''
+  DetectionConfidence: High

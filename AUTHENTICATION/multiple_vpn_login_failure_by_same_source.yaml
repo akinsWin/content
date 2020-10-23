@@ -13,7 +13,7 @@ blocks:
   query: _agg count_unique $User
 - type: dql
   query: _checkif int_compare count_unique > 5 include
-- TargetUser: $User
-  type: signal
+- type: signal
   DetectionTechnique: ''
   DetectionSeverity: ''
+  TargetUser: $User

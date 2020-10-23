@@ -12,12 +12,12 @@ blocks:
   query: _agg count_unique $SrcIP
 - type: dql
   query: _checkif int_compare $count_unique > 3 include
-- DetectionSeverity: Medium
-  DetectionTactic: Initial Access
-  DetectionTechnique: Trusted Relationship
-  type: signal
+- type: signal
   DetectionName: Multiple failed authentication attempts to multiple accounts from
     the same IP
+  DetectionTactic: Initial Access
+  DetectionTechnique: Trusted Relationship
   DetectionScore: '4'
-  SuspectHost: $SrcIP
+  DetectionSeverity: Medium
   DetectionConfidence: Low
+  SuspectHost: $SrcIP

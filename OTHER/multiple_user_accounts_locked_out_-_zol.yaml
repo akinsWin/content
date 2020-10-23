@@ -10,11 +10,11 @@ blocks:
     AND $Duration=30m group count_unique $User limit 100
 - type: dql
   query: _checkif int_compare $count_unique > 2 include
-- DetectionSeverity: High
+- type: signal
+  DetectionName: Multiple User Accounts Locked Out
   DetectionTactic: Credential Access
   DetectionTechnique: Brute Force
-  type: signal
-  DetectionName: Multiple User Accounts Locked Out
   DetectionScore: 8
-  TargetUser: $User
+  DetectionSeverity: High
   DetectionConfidence: High
+  TargetUser: $User

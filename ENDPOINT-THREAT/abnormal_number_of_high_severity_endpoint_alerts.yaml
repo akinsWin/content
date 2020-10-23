@@ -12,10 +12,10 @@ blocks:
   query: _checkif int_compare $Severity > 4 include
 - type: dql
   query: _checkif int_compare count_unique > 5 include
-- DetectionTactic: Execution
-  DetectionTechnique: Exploitation for Client Execution
-  type: signal
-  DetectionConfidence: High
+- type: signal
   DetectionName: Abnormal number of high severity endpoint alerts
+  DetectionTactic: Execution
+  DetectionTechnique: Exploitation for Client Execution
   DetectionScore: '10'
   DetectionSeverity: Critical
+  DetectionConfidence: High

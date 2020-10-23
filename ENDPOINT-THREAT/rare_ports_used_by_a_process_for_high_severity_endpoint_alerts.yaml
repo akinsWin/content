@@ -11,10 +11,10 @@ blocks:
 - type: dql
   query: _checkif lookup default commonly_used_ports join $DstPort = $DstPort str_compare
     $DstPort eq $DstPort exclude
-- DetectionTactic: Exfiltration
-  DetectionTechnique: Exfiltration Over Alternative Protocol
-  type: signal
-  DetectionConfidence: High
+- type: signal
   DetectionName: Rare ports used by a process for high severity endpoint alerts
+  DetectionTactic: Exfiltration
+  DetectionTechnique: Exfiltration Over Alternative Protocol
   DetectionScore: '8'
   DetectionSeverity: High
+  DetectionConfidence: High

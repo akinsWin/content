@@ -11,10 +11,10 @@ blocks:
 - type: dql
   query: _checkif lookup default terminated_accounts join $User = $User str_compare
     $User eq $User include
-- DetectionTactic: Credential Access
-  DetectionTechnique: Brute Force
-  type: signal
-  DetectionConfidence: High
+- type: signal
   DetectionName: Authentication activity by former employee
+  DetectionTactic: Credential Access
+  DetectionTechnique: Brute Force
   DetectionScore: '9'
   DetectionSeverity: High
+  DetectionConfidence: High

@@ -12,12 +12,12 @@ blocks:
   query: _agg count_unique $User
 - type: dql
   query: _checkif int_compare $count_unique > 5 include
-- DetectionSeverity: Medium
-  DetectionTactic: Initial Access
-  DetectionTechnique: Trusted Relationship
-  type: signal
+- type: signal
   DetectionName: Multiple failed authentication attempts to an account from different
     IPs
+  DetectionTactic: Initial Access
+  DetectionTechnique: Trusted Relationship
   DetectionScore: '4'
-  TargetUser: $User
+  DetectionSeverity: Medium
   DetectionConfidence: Low
+  TargetUser: $User

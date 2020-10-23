@@ -2,7 +2,7 @@ id: da930c87676141c4bd4d2831742a826a
 name: ICMP Flood
 path: /test
 description: ''
-type: scheduled
+type: standard
 author: Dnif User
 blocks:
 - type: dql

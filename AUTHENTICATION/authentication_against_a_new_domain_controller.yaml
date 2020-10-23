@@ -11,11 +11,10 @@ blocks:
 - type: dql
   query: _checkif lookup default dc_list join $SrcADDomain = $SrcADDomain str_compare
     $SrcADDomain eq $SrcADDomain exclude
-- DetectionSeverity: High
+- type: signal
+  DetectionName: Authentication Against A New Domain Controller
   DetectionTactic: Initial Access
   DetectionTechnique: Trusted Relationship
-  type: signal
-  DetectionName: Authentication Against A New Domain Controller
   DetectionScore: 9
-  SuspectObject: $SrcADDomain
+  DetectionSeverity: High
   DetectionConfidence: High

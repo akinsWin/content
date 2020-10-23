@@ -13,10 +13,10 @@ blocks:
     eq $User exclude
 - type: dql
   query: _checkif int_comapre $count_unique  > 5 include
-- DetectionTactic: Initial Access
-  DetectionTechnique: Valid Accounts
-  type: signal
-  DetectionConfidence: High
+- type: signal
   DetectionName: Unusual Authentication Activity involving a Rare Account
+  DetectionTactic: Initial Access
+  DetectionTechnique: Valid Accounts
   DetectionScore: '8'
   DetectionSeverity: High
+  DetectionConfidence: High
