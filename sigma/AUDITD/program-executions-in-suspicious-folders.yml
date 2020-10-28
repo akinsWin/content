@@ -1,0 +1,10 @@
+title: Program Executions in Suspicious Folders
+author: Florian Roth
+detection:
+- SELECT * FROM AUDITD WHERE ($Type = "SYSCALL" AND ($Exe LIKE "/tmp/%" OR $Exe LIKE
+  "/var/www/%" OR $Exe LIKE "/home/%/public\_html/%" OR $Exe LIKE "/usr/local/apache2/%"
+  OR $Exe LIKE "/usr/local/httpd/%" OR $Exe LIKE "/var/apache/%" OR $Exe LIKE "/srv/www/%"
+  OR $Exe LIKE "/home/httpd/html/%" OR $Exe LIKE "/srv/http/%" OR $Exe LIKE "/usr/share/nginx/html/%"
+  OR $Exe LIKE "/var/lib/pgsql/data/%" OR $Exe LIKE "/usr/local/mysql/data/%" OR $Exe
+  LIKE "/var/lib/mysql/%" OR $Exe LIKE "/var/vsftpd/%" OR $Exe LIKE "/etc/bind/%"
+  OR $Exe LIKE "/var/named/%"))

@@ -1,0 +1,8 @@
+title: Windows Mangement Instrumentation DLL Loaded Via Microsoft Word
+author: Michael R. (@nahamike01)
+detection:
+- SELECT * FROM WINDOWSIMAGE_LOAD WHERE (($Image LIKE "%\\winword.exe" OR $Image LIKE
+  "%\\powerpnt.exe" OR $Image LIKE "%\\excel.exe" OR $Image LIKE "%\\outlook.exe")
+  AND ($ImageLoaded LIKE "%\\wmiutils.dll" OR $ImageLoaded LIKE "%\\wbemcomn.dll"
+  OR $ImageLoaded LIKE "%\\wbemprox.dll" OR $ImageLoaded LIKE "%\\wbemdisp.dll" OR
+  $ImageLoaded LIKE "%\\wbemsvc.dll"))

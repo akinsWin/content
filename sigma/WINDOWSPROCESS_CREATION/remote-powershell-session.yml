@@ -1,0 +1,5 @@
+title: Remote PowerShell Session
+author: Roberto Rodriguez @Cyb3rWard0g
+detection:
+- SELECT * FROM WINDOWSPROCESS_CREATION WHERE ($Image LIKE "%\\wsmprovhost.exe" OR
+  $ParentImage LIKE "%\\wsmprovhost.exe")

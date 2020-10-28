@@ -1,0 +1,12 @@
+title: Suspicious Rundll32 Activity
+author: juju4
+detection:
+- SELECT * FROM WINDOWSPROCESS_CREATION WHERE ($CommandLine LIKE "%\\rundll32.exe%
+  url.dll,%OpenURL %" OR $CommandLine LIKE "%\\rundll32.exe% url.dll,%OpenURLA %"
+  OR $CommandLine LIKE "%\\rundll32.exe% url.dll,%FileProtocolHandler %" OR $CommandLine
+  LIKE "%\\rundll32.exe% zipfldr.dll,%RouteTheCall %" OR $CommandLine LIKE "%\\rundll32.exe%
+  Shell32.dll,%Control\_RunDLL %" OR $CommandLine LIKE "%\\rundll32.exe javascript:%"
+  OR $CommandLine LIKE "% url.dll,%OpenURL %" OR $CommandLine LIKE "% url.dll,%OpenURLA
+  %" OR $CommandLine LIKE "% url.dll,%FileProtocolHandler %" OR $CommandLine LIKE
+  "% zipfldr.dll,%RouteTheCall %" OR $CommandLine LIKE "% Shell32.dll,%Control\_RunDLL
+  %" OR $CommandLine LIKE "% javascript:%" OR $CommandLine LIKE "%.RegisterXLL%")

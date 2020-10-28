@@ -1,0 +1,5 @@
+title: Devtoolslauncher.exe Executes Specified Binary
+author: Beyu Denis, oscd.community (rule), @_felamos (idea)
+detection:
+- SELECT * FROM WINDOWSPROCESS_CREATION WHERE ($Image LIKE "%\\devtoolslauncher.exe"
+  AND $CommandLine LIKE "%LaunchForDeploy%")

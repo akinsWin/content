@@ -1,0 +1,4 @@
+title: Suspicious DNS Query with B64 Encoded String
+author: Florian Roth
+detection:
+- SELECT * FROM DNS WHERE ($Query LIKE "%==.%")

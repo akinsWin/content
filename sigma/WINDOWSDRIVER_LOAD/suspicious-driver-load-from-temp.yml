@@ -1,0 +1,4 @@
+title: Suspicious Driver Load from Temp
+author: Florian Roth
+detection:
+- SELECT * FROM WINDOWSDRIVER_LOAD WHERE $ImageLoaded LIKE "%\\Temp\\%"

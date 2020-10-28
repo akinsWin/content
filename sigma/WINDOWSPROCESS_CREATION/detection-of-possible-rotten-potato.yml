@@ -1,0 +1,6 @@
+title: Detection of Possible Rotten Potato
+author: Teymur Kheirkhabarov
+detection:
+- SELECT * FROM WINDOWSPROCESS_CREATION WHERE ((($ParentUser LIKE "NT AUTHORITY\\NETWORK
+  SERVICE" OR $ParentUser LIKE "NT AUTHORITY\\LOCAL SERVICE") AND $User LIKE "NT AUTHORITY\\SYSTEM")
+  AND NOT ($Image LIKE "%\\rundll32.exe" AND $CommandLine LIKE "%DavSetCookie%"))

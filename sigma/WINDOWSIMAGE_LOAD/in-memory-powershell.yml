@@ -1,0 +1,8 @@
+title: In-memory PowerShell
+author: Tom Kern, oscd.community
+detection:
+- SELECT * FROM WINDOWSIMAGE_LOAD WHERE (($ImageLoaded LIKE "%\\System.Management.Automation.Dll"
+  OR $ImageLoaded LIKE "%\\System.Management.Automation.ni.Dll") AND NOT (($Image
+  LIKE "%\\powershell.exe" OR $Image LIKE "%\\powershell\_ise.exe" OR $Image LIKE
+  "%\\WINDOWS\\System32\\sdiagnhost.exe" OR $Image LIKE "%\\mscorsvw.exe" OR $Image
+  LIKE "%\\WINDOWS\\System32\\RemoteFXvGPUDisablement.exe")))

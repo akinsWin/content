@@ -1,0 +1,18 @@
+title: Netsh Program Allowed with Suspcious Location
+author: Sander Wiebing
+detection:
+- SELECT * FROM WINDOWSPROCESS_CREATION WHERE ($CommandLine LIKE "%netsh%" AND ($CommandLine
+  LIKE "%firewall add allowedprogram%" OR ($CommandLine LIKE "%advfirewall firewall
+  add rule%" AND $CommandLine LIKE "%action=allow%" AND $CommandLine LIKE "%program=%"))
+  AND ($CommandLine LIKE "%\%TEMP\%%" OR $CommandLine LIKE "%:\\RECYCLER\\%" OR $CommandLine
+  LIKE "%C:\\$Recycle.bin\\%" OR $CommandLine LIKE "%:\\SystemVolumeInformation\\%"
+  OR $CommandLine LIKE "%C:\\Windows\\Tasks\\%" OR $CommandLine LIKE "%C:\\Windows\\debug\\%"
+  OR $CommandLine LIKE "%C:\\Windows\\fonts\\%" OR $CommandLine LIKE "%C:\\Windows\\help\\%"
+  OR $CommandLine LIKE "%C:\\Windows\\drivers\\%" OR $CommandLine LIKE "%C:\\Windows\\addins\\%"
+  OR $CommandLine LIKE "%C:\\Windows\\cursors\\%" OR $CommandLine LIKE "%C:\\Windows\\system32\\tasks\\%"
+  OR $CommandLine LIKE "%C:\\Windows\\Temp\\%" OR $CommandLine LIKE "%C:\\Temp\\%"
+  OR $CommandLine LIKE "%C:\\Users\\Public\\%" OR $CommandLine LIKE "%\%Public\%\\%"
+  OR $CommandLine LIKE "%C:\\Users\\Default\\%" OR $CommandLine LIKE "%C:\\Users\\Desktop\\%"
+  OR $CommandLine LIKE "%\\Downloads\\%" OR $CommandLine LIKE "%\\Temporary Internet
+  Files\\Content.Outlook\\%" OR $CommandLine LIKE "%\\Local Settings\\Temporary Internet
+  Files\\%"))

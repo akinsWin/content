@@ -1,0 +1,12 @@
+title: WMI Modules Loaded
+author: Roberto Rodriguez @Cyb3rWard0g
+detection:
+- SELECT * FROM WINDOWSIMAGE_LOAD WHERE (($ImageLoaded LIKE "%\\wmiclnt.dll" OR $ImageLoaded
+  LIKE "%\\WmiApRpl.dll" OR $ImageLoaded LIKE "%\\wmiprov.dll" OR $ImageLoaded LIKE
+  "%\\wmiutils.dll" OR $ImageLoaded LIKE "%\\wbemcomn.dll" OR $ImageLoaded LIKE "%\\wbemprox.dll"
+  OR $ImageLoaded LIKE "%\\WMINet\_Utils.dll" OR $ImageLoaded LIKE "%\\wbemsvc.dll"
+  OR $ImageLoaded LIKE "%\\fastprox.dll") AND NOT (($Image LIKE "%\\WmiPrvSe.exe"
+  OR $Image LIKE "%\\WmiAPsrv.exe" OR $Image LIKE "%\\svchost.exe" OR $Image LIKE
+  "%\\DeviceCensus.exe" OR $Image LIKE "%\\CompatTelRunner.exe" OR $Image LIKE "%\\sdiagnhost.exe"
+  OR $Image LIKE "%\\SIHClient.exe" OR $Image LIKE "%\\ngentask.exe" OR $Image LIKE
+  "%\\windows\\system32\\taskhostw.exe" OR $Image LIKE "%\\windows\\system32\\MoUsoCoreWorker.exe")))

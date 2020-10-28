@@ -1,0 +1,5 @@
+title: Multiple Suspicious Resp Codes Caused by Single Client
+author: Thomas Patzke
+detection:
+- SELECT * FROM (SELECT count(*) AS agg FROM WEBSERVER WHERE $ScStatus IN ("400",
+  "401", "403", "500") GROUP BY $SrcIP) WHERE agg > 10

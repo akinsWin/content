@@ -1,0 +1,5 @@
+title: Possible App Whitelisting Bypass via WinDbg/CDB as a Shellcode Runner
+author: Beyu Denis, oscd.community
+detection:
+- SELECT * FROM WINDOWSPROCESS_CREATION WHERE ($Image LIKE "%\\cdb.exe" AND $CommandLine
+  LIKE "%-cf%")

@@ -1,0 +1,13 @@
+title: Cred Dump Tools Dropped Files
+author: Teymur Kheirkhabarov, oscd.community
+detection:
+- SELECT * FROM WINDOWSFILE_EVENT WHERE (($FileName LIKE "%\\pwdump%" OR $FileName
+  LIKE "%\\kirbi%" OR $FileName LIKE "%\\pwhashes%" OR $FileName LIKE "%\\wce\_ccache%"
+  OR $FileName LIKE "%\\wce\_krbtkts%" OR $FileName LIKE "%\\fgdump-log%") AND ($FileName
+  LIKE "%\\test.pwd" OR $FileName LIKE "%\\lsremora64.dll" OR $FileName LIKE "%\\lsremora.dll"
+  OR $FileName LIKE "%\\fgexec.exe" OR $FileName LIKE "%\\wceaux.dll" OR $FileName
+  LIKE "%\\SAM.out" OR $FileName LIKE "%\\SECURITY.out" OR $FileName LIKE "%\\SYSTEM.out"
+  OR $FileName LIKE "%\\NTDS.out" OR $FileName LIKE "%\\DumpExt.dll" OR $FileName
+  LIKE "%\\DumpSvc.exe" OR $FileName LIKE "%\\cachedump64.exe" OR $FileName LIKE "%\\cachedump.exe"
+  OR $FileName LIKE "%\\pstgdump.exe" OR $FileName LIKE "%\\servpw.exe" OR $FileName
+  LIKE "%\\servpw64.exe" OR $FileName LIKE "%\\pwdump.exe" OR $FileName LIKE "%\\procdump64.exe"))

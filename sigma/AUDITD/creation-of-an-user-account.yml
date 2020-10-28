@@ -1,0 +1,4 @@
+title: Creation Of An User Account
+author: Marie Euler
+detection:
+- SELECT * FROM AUDITD WHERE ($Type = "SYSCALL" AND $Exe LIKE "%/useradd")

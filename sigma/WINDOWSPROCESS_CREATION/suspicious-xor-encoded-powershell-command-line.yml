@@ -1,0 +1,6 @@
+title: Suspicious XOR Encoded PowerShell Command Line
+author: Sami Ruohonen, Harish Segar (improvement)
+detection:
+- SELECT * FROM WINDOWSPROCESS_CREATION WHERE (($Description = "Windows PowerShell"
+  OR $Product = "PowerShell Core 6") AND ($CommandLine LIKE "%bxor%" OR $CommandLine
+  LIKE "%join%" OR $CommandLine LIKE "%char%"))

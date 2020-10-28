@@ -1,0 +1,6 @@
+title: Renamed PowerShell
+author: Florian Roth
+detection:
+- SELECT * FROM WINDOWSPROCESS_CREATION WHERE (($Description = "Windows PowerShell"
+  AND $Company = "Microsoft Corporation") AND NOT (($Image LIKE "%\\powershell.exe"
+  OR $Image LIKE "%\\powershell\_ise.exe")))

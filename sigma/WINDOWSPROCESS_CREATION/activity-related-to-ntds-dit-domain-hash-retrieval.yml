@@ -1,0 +1,10 @@
+title: Activity Related to NTDS.dit Domain Hash Retrieval
+author: Florian Roth, Michael Haag
+detection:
+- SELECT * FROM WINDOWSPROCESS_CREATION WHERE ($CommandLine LIKE "vssadmin.exe Delete
+  Shadows" OR $CommandLine LIKE "vssadmin create shadow /for=C:" OR $CommandLine LIKE
+  "copy \\_\\GLOBALROOT\\Device\\%\\windows\\ntds\\ntds.dit" OR $CommandLine LIKE
+  "copy \\_\\GLOBALROOT\\Device\\%\\config\\SAM" OR $CommandLine LIKE "vssadmin delete
+  shadows /for=C:" OR $CommandLine LIKE "reg SAVE HKLM\\SYSTEM " OR $CommandLine LIKE
+  "esentutl.exe /y /vss %\\ntds.dit%" OR $CommandLine LIKE "esentutl.exe /y /vss %\\SAM"
+  OR $CommandLine LIKE "esentutl.exe /y /vss %\\SYSTEM")

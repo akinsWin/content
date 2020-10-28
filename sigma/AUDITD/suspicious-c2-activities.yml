@@ -1,0 +1,4 @@
+title: Suspicious C2 Activities
+author: Marie Euler
+detection:
+- SELECT * FROM AUDITD WHERE ($Key LIKE "susp\_activity")

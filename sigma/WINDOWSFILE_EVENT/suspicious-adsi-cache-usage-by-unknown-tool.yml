@@ -1,0 +1,7 @@
+title: Suspicious ADSI-Cache Usage By Unknown Tool
+author: xknow @xknow_infosec
+detection:
+- SELECT * FROM WINDOWSFILE_EVENT WHERE ($FileName LIKE "%\\Local\\Microsoft\\Windows\\SchCache\\%.sch"
+  AND NOT (($Image LIKE "C:\\windows\\system32\\svchost.exe" OR $Image LIKE "C:\\windows\\system32\\dllhost.exe"
+  OR $Image LIKE "C:\\windows\\system32\\mmc.exe" OR $Image LIKE "C:\\windows\\system32\\WindowsPowerShell\\v1.0\\powershell.exe"
+  OR $Image LIKE "C:\\Windows\\CCM\\CcmExec.exe")))

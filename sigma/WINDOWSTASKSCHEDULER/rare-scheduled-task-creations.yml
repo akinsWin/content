@@ -1,0 +1,5 @@
+title: Rare Scheduled Task Creations
+author: Florian Roth
+detection:
+- SELECT * FROM (SELECT count(*) AS agg FROM WINDOWSTASKSCHEDULER WHERE $EventID =
+  "106" GROUP BY $TaskName) WHERE agg < 5

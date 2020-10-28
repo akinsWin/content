@@ -1,0 +1,7 @@
+title: Edit of .bash_profile and .bashrc
+author: Peter Matkovski
+detection:
+- SELECT * FROM AUDITD WHERE ($Type = "PATH" AND ($Name LIKE "/home/%/.bashrc" OR
+  $Name LIKE "/home/%/.bash\_profile" OR $Name LIKE "/home/%/.profile" OR $Name LIKE
+  "/etc/profile" OR $Name LIKE "/etc/shells" OR $Name LIKE "/etc/bashrc" OR $Name
+  LIKE "/etc/csh.cshrc" OR $Name LIKE "/etc/csh.login"))

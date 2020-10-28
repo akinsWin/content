@@ -1,0 +1,4 @@
+title: PowerShell Encoded Character Syntax
+author: Florian Roth
+detection:
+- SELECT * FROM WINDOWSPROCESS_CREATION WHERE $CommandLine LIKE "%(WCHAR)0x%"

@@ -1,0 +1,5 @@
+title: Suspicious Esentutl Use
+author: Florian Roth
+detection:
+- SELECT * FROM WINDOWSPROCESS_CREATION WHERE ($CommandLine LIKE "% /vss %" AND $CommandLine
+  LIKE "% /y %")

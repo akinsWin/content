@@ -1,0 +1,5 @@
+title: Interactive AT Job
+author: E.M. Anhaus (orignally from Atomic Blue Detections, Endgame), oscd.community
+detection:
+- SELECT * FROM WINDOWSPROCESS_CREATION WHERE ($Image LIKE "%\\at.exe" AND $CommandLine
+  LIKE "%interactive%")

@@ -1,0 +1,6 @@
+title: Process Dump via Comsvcs DLL
+author: Modexp (idea)
+detection:
+- SELECT * FROM WINDOWSPROCESS_CREATION WHERE (($Image LIKE "%\\rundll32.exe" OR $OriginalFileName
+  = "RUNDLL32.EXE") AND ($CommandLine LIKE "%comsvcs%MiniDump%full%" OR $CommandLine
+  LIKE "%comsvcs%MiniDumpW%full%"))

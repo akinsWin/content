@@ -1,0 +1,11 @@
+title: Windows Webshell Creation
+author: Beyu Denis, oscd.community
+detection:
+- SELECT * FROM WINDOWSFILE_EVENT WHERE (((($FileName LIKE "%\\inetpub\\wwwroot\\%"
+  AND ($FileName LIKE "%.asp%" OR $FileName LIKE "%.ashx%" OR $FileName LIKE "%.ph%"))
+  AND NOT (($FileName LIKE "%\\AppData\\Local\\Temp\\%" OR $FileName LIKE "%\\Windows\\Temp\\%")))
+  OR ((($FileName LIKE "%\\www\\%" OR $FileName LIKE "%\\htdocs\\%" OR $FileName LIKE
+  "%\\html\\%") AND $FileName LIKE "%.ph%") AND NOT (($FileName LIKE "%\\AppData\\Local\\Temp\\%"
+  OR $FileName LIKE "%\\Windows\\Temp\\%")))) OR (($FileName LIKE "%.jsp" OR ($FileName
+  LIKE "%\\cgi-bin\\%" AND $FileName LIKE "%.pl%")) AND NOT (($FileName LIKE "%\\AppData\\Local\\Temp\\%"
+  OR $FileName LIKE "%\\Windows\\Temp\\%"))))

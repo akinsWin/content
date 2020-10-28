@@ -1,0 +1,6 @@
+title: Squirrel Lolbin
+author: Karneades / Markus Neis
+detection:
+- SELECT * FROM WINDOWSPROCESS_CREATION WHERE (($Image LIKE "%\\update.exe") AND ($CommandLine
+  LIKE "%--processStart%.exe%" OR $CommandLine LIKE "%--processStartAndWait%.exe%"
+  OR $CommandLine LIKE "%--createShortcut%.exe%"))

@@ -1,0 +1,4 @@
+title: Telegram Bot API Request
+author: Florian Roth
+detection:
+- SELECT * FROM DNS WHERE ($Query LIKE "api.telegram.org")

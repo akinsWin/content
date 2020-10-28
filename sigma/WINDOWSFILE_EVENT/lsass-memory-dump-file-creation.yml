@@ -1,0 +1,5 @@
+title: LSASS Memory Dump File Creation
+author: Teymur Kheirkhabarov, oscd.community
+detection:
+- SELECT * FROM WINDOWSFILE_EVENT WHERE ($FileName LIKE "%lsass%" AND $FileName LIKE
+  "%dmp")

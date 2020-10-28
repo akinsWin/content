@@ -1,0 +1,5 @@
+title: Auditing Configuration Changes on Linux Host
+author: Mikhail Larin, oscd.community
+detection:
+- SELECT * FROM AUDITD WHERE ($Type = "PATH" AND ($Name LIKE "/etc/audit/%" OR $Name
+  LIKE "/etc/libaudit.conf" OR $Name LIKE "/etc/audisp/%"))

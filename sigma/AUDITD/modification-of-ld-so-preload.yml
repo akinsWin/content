@@ -1,0 +1,4 @@
+title: Modification of ld.so.preload
+author: E.M. Anhaus (orignally from Atomic Blue Detections, Tony Lambert), oscd.community
+detection:
+- SELECT * FROM AUDITD WHERE ($Type = "PATH" AND $Name = "/etc/ld.so.preload")

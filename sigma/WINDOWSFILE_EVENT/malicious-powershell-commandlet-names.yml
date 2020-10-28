@@ -1,0 +1,51 @@
+title: Malicious PowerShell Commandlet Names
+author: Markus Neis
+detection:
+- SELECT * FROM WINDOWSFILE_EVENT WHERE ($FileName LIKE "%\\Invoke-DllInjection.ps1"
+  OR $FileName LIKE "%\\Invoke-WmiCommand.ps1" OR $FileName LIKE "%\\Get-GPPPassword.ps1"
+  OR $FileName LIKE "%\\Get-Keystrokes.ps1" OR $FileName LIKE "%\\Get-VaultCredential.ps1"
+  OR $FileName LIKE "%\\Invoke-CredentialInjection.ps1" OR $FileName LIKE "%\\Invoke-Mimikatz.ps1"
+  OR $FileName LIKE "%\\Invoke-NinjaCopy.ps1" OR $FileName LIKE "%\\Invoke-TokenManipulation.ps1"
+  OR $FileName LIKE "%\\Out-Minidump.ps1" OR $FileName LIKE "%\\VolumeShadowCopyTools.ps1"
+  OR $FileName LIKE "%\\Invoke-ReflectivePEInjection.ps1" OR $FileName LIKE "%\\Get-TimedScreenshot.ps1"
+  OR $FileName LIKE "%\\Invoke-UserHunter.ps1" OR $FileName LIKE "%\\Find-GPOLocation.ps1"
+  OR $FileName LIKE "%\\Invoke-ACLScanner.ps1" OR $FileName LIKE "%\\Invoke-DowngradeAccount.ps1"
+  OR $FileName LIKE "%\\Get-ServiceUnquoted.ps1" OR $FileName LIKE "%\\Get-ServiceFilePermission.ps1"
+  OR $FileName LIKE "%\\Get-ServicePermission.ps1" OR $FileName LIKE "%\\Invoke-ServiceAbuse.ps1"
+  OR $FileName LIKE "%\\Install-ServiceBinary.ps1" OR $FileName LIKE "%\\Get-RegAutoLogon.ps1"
+  OR $FileName LIKE "%\\Get-VulnAutoRun.ps1" OR $FileName LIKE "%\\Get-VulnSchTask.ps1"
+  OR $FileName LIKE "%\\Get-UnattendedInstallFile.ps1" OR $FileName LIKE "%\\Get-WebConfig.ps1"
+  OR $FileName LIKE "%\\Get-ApplicationHost.ps1" OR $FileName LIKE "%\\Get-RegAlwaysInstallElevated.ps1"
+  OR $FileName LIKE "%\\Get-Unconstrained.ps1" OR $FileName LIKE "%\\Add-RegBackdoor.ps1"
+  OR $FileName LIKE "%\\Add-ScrnSaveBackdoor.ps1" OR $FileName LIKE "%\\Gupt-Backdoor.ps1"
+  OR $FileName LIKE "%\\Invoke-ADSBackdoor.ps1" OR $FileName LIKE "%\\Enabled-DuplicateToken.ps1"
+  OR $FileName LIKE "%\\Invoke-PsUaCme.ps1" OR $FileName LIKE "%\\Remove-Update.ps1"
+  OR $FileName LIKE "%\\Check-VM.ps1" OR $FileName LIKE "%\\Get-LSASecret.ps1" OR
+  $FileName LIKE "%\\Get-PassHashes.ps1" OR $FileName LIKE "%\\Show-TargetScreen.ps1"
+  OR $FileName LIKE "%\\Port-Scan.ps1" OR $FileName LIKE "%\\Invoke-PoshRatHttp.ps1"
+  OR $FileName LIKE "%\\Invoke-PowerShellTCP.ps1" OR $FileName LIKE "%\\Invoke-PowerShellWMI.ps1"
+  OR $FileName LIKE "%\\Add-Exfiltration.ps1" OR $FileName LIKE "%\\Add-Persistence.ps1"
+  OR $FileName LIKE "%\\Do-Exfiltration.ps1" OR $FileName LIKE "%\\Start-CaptureServer.ps1"
+  OR $FileName LIKE "%\\Invoke-ShellCode.ps1" OR $FileName LIKE "%\\Get-ChromeDump.ps1"
+  OR $FileName LIKE "%\\Get-ClipboardContents.ps1" OR $FileName LIKE "%\\Get-FoxDump.ps1"
+  OR $FileName LIKE "%\\Get-IndexedItem.ps1" OR $FileName LIKE "%\\Get-Screenshot.ps1"
+  OR $FileName LIKE "%\\Invoke-Inveigh.ps1" OR $FileName LIKE "%\\Invoke-NetRipper.ps1"
+  OR $FileName LIKE "%\\Invoke-EgressCheck.ps1" OR $FileName LIKE "%\\Invoke-PostExfil.ps1"
+  OR $FileName LIKE "%\\Invoke-PSInject.ps1" OR $FileName LIKE "%\\Invoke-RunAs.ps1"
+  OR $FileName LIKE "%\\MailRaider.ps1" OR $FileName LIKE "%\\New-HoneyHash.ps1" OR
+  $FileName LIKE "%\\Set-MacAttribute.ps1" OR $FileName LIKE "%\\Invoke-DCSync.ps1"
+  OR $FileName LIKE "%\\Invoke-PowerDump.ps1" OR $FileName LIKE "%\\Exploit-Jboss.ps1"
+  OR $FileName LIKE "%\\Invoke-ThunderStruck.ps1" OR $FileName LIKE "%\\Invoke-VoiceTroll.ps1"
+  OR $FileName LIKE "%\\Set-Wallpaper.ps1" OR $FileName LIKE "%\\Invoke-InveighRelay.ps1"
+  OR $FileName LIKE "%\\Invoke-PsExec.ps1" OR $FileName LIKE "%\\Invoke-SSHCommand.ps1"
+  OR $FileName LIKE "%\\Get-SecurityPackages.ps1" OR $FileName LIKE "%\\Install-SSP.ps1"
+  OR $FileName LIKE "%\\Invoke-BackdoorLNK.ps1" OR $FileName LIKE "%\\PowerBreach.ps1"
+  OR $FileName LIKE "%\\Get-SiteListPassword.ps1" OR $FileName LIKE "%\\Get-System.ps1"
+  OR $FileName LIKE "%\\Invoke-BypassUAC.ps1" OR $FileName LIKE "%\\Invoke-Tater.ps1"
+  OR $FileName LIKE "%\\Invoke-WScriptBypassUAC.ps1" OR $FileName LIKE "%\\PowerUp.ps1"
+  OR $FileName LIKE "%\\PowerView.ps1" OR $FileName LIKE "%\\Get-RickAstley.ps1" OR
+  $FileName LIKE "%\\Find-Fruit.ps1" OR $FileName LIKE "%\\HTTP-Login.ps1" OR $FileName
+  LIKE "%\\Find-TrustedDocuments.ps1" OR $FileName LIKE "%\\Invoke-Paranoia.ps1" OR
+  $FileName LIKE "%\\Invoke-WinEnum.ps1" OR $FileName LIKE "%\\Invoke-ARPScan.ps1"
+  OR $FileName LIKE "%\\Invoke-PortScan.ps1" OR $FileName LIKE "%\\Invoke-ReverseDNSLookup.ps1"
+  OR $FileName LIKE "%\\Invoke-SMBScanner.ps1" OR $FileName LIKE "%\\Invoke-Mimikittenz.ps1")
