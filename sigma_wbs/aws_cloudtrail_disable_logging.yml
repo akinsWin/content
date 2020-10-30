@@ -1,6 +1,6 @@
 id: 757b611fc66e4c748abdd6f17424aff9
 name: AWS CloudTrail Important Change
-path: /test
+path: /Cloud Security/Amazon Web Services
 description: Detects disabling, deleting and updating of a Trail
 type: standard
 author: community
