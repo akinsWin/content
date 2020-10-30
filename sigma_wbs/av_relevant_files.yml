@@ -1,6 +1,6 @@
 id: 2ba0e52bffc7487582e7bd6af91c7b06
 name: Antivirus Relevant File Paths Alerts
-path: /test
+path: /Basic Security Monitoring/Malware
 description: Detects an Antivirus alert in a highly relevant file path or with a relevant
   file name
 type: standard
