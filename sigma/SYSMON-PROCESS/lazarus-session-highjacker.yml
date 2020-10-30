@@ -1,0 +1,6 @@
+title: Lazarus Session Highjacker
+author: Trent Liffick (@tliffick)
+detection:
+- SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%\\mstdc.exe" OR $Image
+  LIKE "%\\gpvc.exe") AND NOT (($Image LIKE "C:\\Windows\\System32\\%" OR $Image LIKE
+  "C:\\Windows\\SysWOW64\\%")))

@@ -1,5 +1,0 @@
-title: Webshell Remote Command Execution
-author: Ilyas Ochkov, Beyu Denis, oscd.community
-detection:
-- SELECT * FROM AUDITD WHERE ($Type = "SYSCALL" AND $Syscall = "execve" AND $Key LIKE
-  "detect\_execve\_www")

@@ -1,0 +1,13 @@
+title: Reconnaissance Activity with Net Command
+author: Florian Roth, Markus Neis
+detection:
+- SELECT $CommandLine, count(*) AS agg FROM SYSMON-PROCESS WHERE ($CommandLine
+  LIKE "tasklist" OR $CommandLine LIKE "net time" OR $CommandLine LIKE "systeminfo"
+  OR $CommandLine LIKE "whoami" OR $CommandLine LIKE "nbtstat" OR $CommandLine LIKE
+  "net start" OR $CommandLine LIKE "%\\net1 start" OR $CommandLine LIKE "qprocess"
+  OR $CommandLine LIKE "nslookup" OR $CommandLine LIKE "hostname.exe" OR $CommandLine
+  LIKE "%\\net1 user /domain" OR $CommandLine LIKE "%\\net1 group /domain" OR $CommandLine
+  LIKE "%\\net1 group "domain admins" /domain" OR $CommandLine LIKE "%\\net1 group
+  "Exchange Trusted Subsystem" /domain" OR $CommandLine LIKE "%\\net1 accounts /domain"
+  OR $CommandLine LIKE "%\\net1 user net localgroup administrators" OR $CommandLine
+  LIKE "netstat -an") GROUP BY $CommandLine HAVING agg > 4

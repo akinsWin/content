@@ -1,4 +1,0 @@
-title: Local User Creation
-author: Patrick Bareiss
-detection:
-- SELECT * FROM WINDOWSSECURITY WHERE $EventID = "4720"

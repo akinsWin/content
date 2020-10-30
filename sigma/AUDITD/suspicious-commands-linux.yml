@@ -1,6 +1,0 @@
-title: Suspicious Commands Linux
-author: Florian Roth
-detection:
-- SELECT * FROM AUDITD WHERE ($Type = "EXECVE" AND (($A0 = "chmod" AND $A1 = "777")
-  OR ($A0 = "chmod" AND $A1 = "u+s") OR ($A0 = "cp" AND $A1 = "/bin/ksh") OR ($A0
-  = "cp" AND $A1 = "/bin/sh")))

@@ -1,7 +1,0 @@
-title: Suspicious In-Memory Module Execution
-author: Perez Diego (@darkquassar), oscd.community
-detection:
-- SELECT * FROM WINDOWSPROCESS_ACCESS WHERE (($CallTrace LIKE "C:\\Windows\\SYSTEM32\\ntdll.dll+%|C:\\Windows\\System32\\KERNELBASE.dll+%|UNKNOWN(%)"
-  OR $CallTrace LIKE "%UNKNOWN(%)|UNKNOWN(%)") OR ($CallTrace LIKE "%UNKNOWN%" AND
-  $GrantedAccess IN ("0x1F0FFF", "0x1F1FFF", "0x143A", "0x1410", "0x1010", "0x1F2FFF",
-  "0x1F3FFF", "0x1FFFFF")))

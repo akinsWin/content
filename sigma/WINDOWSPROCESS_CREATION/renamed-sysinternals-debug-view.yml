@@ -1,6 +1,0 @@
-title: Renamed SysInternals Debug View
-author: Florian Roth
-detection:
-- SELECT * FROM WINDOWSPROCESS_CREATION WHERE ($Product IN ("Sysinternals DebugView",
-  "Sysinternals Debugview") AND NOT ($OriginalFilename = "Dbgview.exe" AND $Image
-  LIKE "%\\Dbgview.exe"))

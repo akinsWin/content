@@ -1,0 +1,6 @@
+title: RDP Over Reverse SSH Tunnel
+author: Samir Bousseaden
+detection:
+- SELECT * FROM SYSMON-NETWORK WHERE ($Image LIKE "%\\svchost.exe" AND
+  $Initiated = "true" AND $SrcPort = "3389" AND ($DstIP LIKE "127.%" OR $DstIP LIKE
+  "::1"))

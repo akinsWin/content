@@ -1,7 +1,0 @@
-title: Suspicious Csc.exe Source File Folder
-author: Florian Roth
-detection:
-- SELECT * FROM WINDOWSPROCESS_CREATION WHERE (($Image LIKE "%\\csc.exe" AND ($CommandLine
-  LIKE "%\\AppData\\%" OR $CommandLine LIKE "%\\Windows\\Temp\\%")) AND NOT (($ParentImage
-  LIKE "C:\\Program Files%" OR $ParentImage LIKE "%\\sdiagnhost.exe" OR $ParentImage
-  LIKE "%\\w3wp.exe")))

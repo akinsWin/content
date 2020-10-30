@@ -1,0 +1,8 @@
+title: Suspicious Double Extension
+author: Florian Roth (rule), @blu3_team (idea)
+detection:
+- SELECT * FROM SYSMON-PROCESS WHERE ($Image LIKE "%.doc.exe" OR $Image LIKE
+  "%.docx.exe" OR $Image LIKE "%.xls.exe" OR $Image LIKE "%.xlsx.exe" OR $Image LIKE
+  "%.ppt.exe" OR $Image LIKE "%.pptx.exe" OR $Image LIKE "%.rtf.exe" OR $Image LIKE
+  "%.pdf.exe" OR $Image LIKE "%.txt.exe" OR $Image LIKE "%      .exe" OR $Image LIKE
+  "%\_\_\_\_\_\_.exe")

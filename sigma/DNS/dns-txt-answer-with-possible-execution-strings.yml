@@ -1,5 +1,0 @@
-title: DNS TXT Answer with Possible Execution Strings
-author: Markus Neis
-detection:
-- SELECT * FROM DNS WHERE ($RecordType = "TXT" AND ($Answer LIKE "%IEX%" OR $Answer
-  LIKE "%Invoke-Expression%" OR $Answer LIKE "%cmd.exe%"))

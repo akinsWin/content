@@ -1,0 +1,5 @@
+title: PowerShell Execution
+author: Roberto Rodriguez @Cyb3rWard0g
+detection:
+- SELECT * FROM SYSMON-IMAGE-LOAD WHERE ($Description = "system.management.automation"
+  AND $ImageLoaded LIKE "%system.management.automation%")

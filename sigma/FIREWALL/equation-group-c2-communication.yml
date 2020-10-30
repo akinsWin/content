@@ -1,5 +1,0 @@
-title: Equation Group C2 Communication
-author: Florian Roth
-detection:
-- SELECT * FROM FIREWALL WHERE ($DstIP IN ("69.42.98.86", "89.185.234.145") OR $SrcIP
-  IN ("69.42.98.86", "89.185.234.145"))

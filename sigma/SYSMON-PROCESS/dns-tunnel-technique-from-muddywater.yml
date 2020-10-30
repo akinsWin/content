@@ -1,0 +1,5 @@
+title: DNS Tunnel Technique from MuddyWater
+author: '@caliskanfurkan_'
+detection:
+- SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%\\powershell.exe") AND
+  ($ParentImage LIKE "%\\excel.exe") AND ($CommandLine LIKE "%DataExchange.dll%"))

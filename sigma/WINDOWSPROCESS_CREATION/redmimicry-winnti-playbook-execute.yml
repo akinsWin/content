@@ -1,6 +1,0 @@
-title: RedMimicry Winnti Playbook Execute
-author: Alexander Rausch
-detection:
-- SELECT * FROM WINDOWSPROCESS_CREATION WHERE (($Image LIKE "%rundll32.exe%" OR $Image
-  LIKE "%cmd.exe%") AND ($CommandLine LIKE "%gthread-3.6.dll%" OR $CommandLine LIKE
-  "%\\Windows\\Temp\\tmp.bat%" OR $CommandLine LIKE "%sigcmm-2.4.dll%"))

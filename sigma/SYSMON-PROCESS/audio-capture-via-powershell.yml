@@ -1,0 +1,4 @@
+title: Audio Capture via PowerShell
+author: E.M. Anhaus (orignally from Atomic Blue Detections, Endgame), oscd.community
+detection:
+- SELECT * FROM SYSMON-PROCESS WHERE $CommandLine LIKE "%WindowsAudioDevice-Powershell-Cmdlet%"

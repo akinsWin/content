@@ -1,5 +1,0 @@
-title: Masquerading as Linux Crond Process
-author: Timur Zinniatullin, oscd.community
-detection:
-- SELECT * FROM AUDITD WHERE ($Type = "execve" AND $A0 = "cp" AND $A1 = "-i" AND $A2
-  = "/bin/sh" AND $A3 LIKE "%/crond")

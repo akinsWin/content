@@ -1,7 +1,0 @@
-title: Possible Applocker Bypass
-author: juju4
-detection:
-- SELECT * FROM WINDOWSPROCESS_CREATION WHERE ($CommandLine LIKE "%\\msdt.exe%" OR
-  $CommandLine LIKE "%\\installutil.exe%" OR $CommandLine LIKE "%\\regsvcs.exe%" OR
-  $CommandLine LIKE "%\\regasm.exe%" OR $CommandLine LIKE "%\\msbuild.exe%" OR $CommandLine
-  LIKE "%\\ieexec.exe%")

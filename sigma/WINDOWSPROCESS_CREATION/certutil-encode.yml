@@ -1,6 +1,0 @@
-title: Certutil Encode
-author: Florian Roth
-detection:
-- SELECT * FROM WINDOWSPROCESS_CREATION WHERE ($CommandLine LIKE "certutil -f -encode
-  %" OR $CommandLine LIKE "certutil.exe -f -encode %" OR $CommandLine LIKE "certutil
-  -encode -f %" OR $CommandLine LIKE "certutil.exe -encode -f %")

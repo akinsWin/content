@@ -1,6 +1,0 @@
-title: Suspicious PROCEXP152.sys File Created In TMP
-author: xknow (@xknow_infosec), xorxes (@xor_xes)
-detection:
-- SELECT * FROM WINDOWSFILE_EVENT WHERE ($FileName LIKE "%\\AppData\\Local\\Temp\\%\\PROCEXP152.sys"
-  AND NOT (($Image LIKE "%\\procexp64.exe%" OR $Image LIKE "%\\procexp.exe%" OR $Image
-  LIKE "%\\procmon64.exe%" OR $Image LIKE "%\\procmon.exe%")))

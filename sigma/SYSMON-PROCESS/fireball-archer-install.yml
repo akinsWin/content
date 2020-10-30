@@ -1,0 +1,4 @@
+title: Fireball Archer Install
+author: Florian Roth
+detection:
+- SELECT * FROM SYSMON-PROCESS WHERE $CommandLine LIKE "%\\rundll32.exe %,InstallArcherSvc"

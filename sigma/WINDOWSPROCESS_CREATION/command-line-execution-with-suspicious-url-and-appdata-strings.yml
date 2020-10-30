@@ -1,5 +1,0 @@
-title: Command Line Execution with Suspicious URL and AppData Strings
-author: Florian Roth
-detection:
-- SELECT * FROM WINDOWSPROCESS_CREATION WHERE ($CommandLine LIKE "cmd.exe /c %http://%\%AppData\%"
-  OR $CommandLine LIKE "cmd.exe /c %https://%\%AppData\%")

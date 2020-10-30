@@ -1,5 +1,0 @@
-title: High TXT Records Requests Rate
-author: Daniil Yugoslavskiy, oscd.community
-detection:
-- SELECT * FROM (SELECT count(*) AS agg FROM DNS WHERE $RecordType = "TXT" GROUP BY
-  $SrcIP) WHERE agg > 50

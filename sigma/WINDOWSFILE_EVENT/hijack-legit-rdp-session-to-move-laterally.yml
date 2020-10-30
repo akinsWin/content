@@ -1,5 +1,0 @@
-title: Hijack Legit RDP Session to Move Laterally
-author: Samir Bousseaden
-detection:
-- SELECT * FROM WINDOWSFILE_EVENT WHERE ($Image LIKE "%\\mstsc.exe" AND $FileName
-  LIKE "%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\%")

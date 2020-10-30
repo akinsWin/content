@@ -1,0 +1,8 @@
+title: Impacket Lateralization Detection
+author: Ecco
+detection:
+- SELECT * FROM SYSMON-PROCESS WHERE ((($ParentImage LIKE "%\\wmiprvse.exe"
+  OR $ParentImage LIKE "%\\mmc.exe" OR $ParentImage LIKE "%\\explorer.exe" OR $ParentImage
+  LIKE "%\\services.exe") AND ($CommandLine LIKE "%cmd.exe% /Q /c % \\\\127.0.0.1\\%&1%"))
+  OR (($ParentCommandLine LIKE "%svchost.exe -k netsvcs" OR $ParentCommandLine LIKE
+  "taskeng.exe%") AND ($CommandLine LIKE "cmd.exe /C %Windows\\Temp\\%&1")))

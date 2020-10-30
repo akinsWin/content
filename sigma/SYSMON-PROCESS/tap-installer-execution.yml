@@ -1,0 +1,4 @@
+title: Tap Installer Execution
+author: Daniil Yugoslavskiy, Ian Davis, oscd.community
+detection:
+- SELECT * FROM SYSMON-PROCESS WHERE $Image LIKE "%\\tapinstall.exe"

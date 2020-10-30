@@ -1,6 +1,0 @@
-title: Domain Trust Discovery
-author: E.M. Anhaus (orignally from Atomic Blue Detections, Tony Lambert), oscd.community
-detection:
-- SELECT * FROM WINDOWSPROCESS_CREATION WHERE (($Image LIKE "%\\nltest.exe" AND $CommandLine
-  LIKE "%domain\_trusts%") OR ($Image LIKE "%\\dsquery.exe" AND $CommandLine LIKE
-  "%trustedDomain%"))

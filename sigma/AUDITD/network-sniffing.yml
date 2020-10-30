@@ -1,5 +1,0 @@
-title: Network Sniffing
-author: Timur Zinniatullin, oscd.community
-detection:
-- SELECT * FROM AUDITD WHERE ($Type = "execve" AND $A1 = "-c" AND (($A0 = "tcpdump"
-  AND $A3 LIKE "%-i%") OR ($A0 = "tshark" AND $A3 = "-i")))

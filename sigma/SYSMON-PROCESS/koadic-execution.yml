@@ -1,0 +1,5 @@
+title: Koadic Execution
+author: wagga
+detection:
+- SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "%cmd.exe% /q /c
+  chcp %")

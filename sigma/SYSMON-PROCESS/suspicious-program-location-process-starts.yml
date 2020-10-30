@@ -1,0 +1,7 @@
+title: Suspicious Program Location Process Starts
+author: Florian Roth
+detection:
+- SELECT * FROM SYSMON-PROCESS WHERE ($Image LIKE "%\\$Recycle.bin" OR $Image
+  LIKE "%\\Users\\Public\\%" OR $Image LIKE "C:\\Perflogs\\%" OR $Image LIKE "%\\Windows\\Fonts\\%"
+  OR $Image LIKE "%\\Windows\\IME\\%" OR $Image LIKE "%\\Windows\\addins\\%" OR $Image
+  LIKE "%\\Windows\\debug\\%")

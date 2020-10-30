@@ -1,5 +1,0 @@
-title: Koadic Execution
-author: wagga
-detection:
-- SELECT * FROM WINDOWSPROCESS_CREATION WHERE ($CommandLine LIKE "%cmd.exe% /q /c
-  chcp %")

@@ -1,4 +1,0 @@
-title: System Owner or User Discovery
-author: Timur Zinniatullin, oscd.community
-detection:
-- SELECT * FROM AUDITD WHERE ($Type = "EXECVE" AND $A0 IN ("users", "w", "who"))
