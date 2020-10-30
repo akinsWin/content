@@ -1,6 +1,6 @@
 id: bfc1f1f2d181406194460e6fb1f20ac3
 name: AWS EC2 Startup Shell Script Change
-path: /test
+path: /Cloud Security/Amazon Web Services
 description: Detects changes to the EC2 instance startup script. The shell script
   will be executed as root/SYSTEM everytime the specific instances are booted up.
 type: standard
