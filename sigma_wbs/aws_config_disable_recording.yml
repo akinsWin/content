@@ -1,6 +1,6 @@
 id: 901cf81606bf424ca5ff1a25cbf60e5c
 name: AWS Config Disabling Channel/Recorder
-path: /test
+path: /Cloud Security/Amazon Web Services
 description: Detects AWS Config Service disabling
 type: standard
 author: community
