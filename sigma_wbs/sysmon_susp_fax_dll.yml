@@ -1,0 +1,18 @@
+id: 03b3ea2368a64c5cbfdd8c5548f50418
+name: Fax Service DLL Search Order Hijack
+path: /test
+description: The Fax service attempts to load ualapi.dll, which is non-existent. An
+  attacker can then (side)load their own malicious DLL using this service.
+type: standard
+author: community
+blocks:
+- type: text
+  code: "Author: NVISO \n References: ['https://windows-internals.com/faxing-your-way-to-system/']"
+- type: sql
+  query:
+  - SELECT * FROM SYSMON-IMAGE-LOAD WHERE ((($Image LIKE "%fxssvc.exe") AND ($ImageLoaded
+    LIKE "%ualapi.dll")) AND NOT (($ImageLoaded LIKE "C:\\Windows\\WinSxS\\%")))
+- type: signal
+  DetectionName: Fax Service DLL Search Order Hijack
+  DetectionTactic: Persistence
+  DetectionTechnique: Hijack Execution Flow

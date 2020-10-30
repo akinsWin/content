@@ -1,0 +1,23 @@
+id: 5992ea2eed9f4977b3d9c573e7e12a16
+name: Download EXE from Suspicious TLD
+path: /test
+description: Detects executable downloads from suspicious remote systems
+type: standard
+author: community
+blocks:
+- type: text
+  code: "Author: Florian Roth \n References: None"
+- type: sql
+  query:
+  - SELECT * FROM WEBFILTER WHERE ($URL IN ("exe", "vbs", "bat", "rar", "ps1", "doc",
+    "docm", "xls", "xlsm", "pptm", "rtf", "hta", "dll", "ws", "wsf", "sct", "zip")
+    AND NOT (($Domain LIKE "%.com" OR $Domain LIKE "%.org" OR $Domain LIKE "%.net"
+    OR $Domain LIKE "%.edu" OR $Domain LIKE "%.gov" OR $Domain LIKE "%.uk" OR $Domain
+    LIKE "%.ca" OR $Domain LIKE "%.de" OR $Domain LIKE "%.jp" OR $Domain LIKE "%.fr"
+    OR $Domain LIKE "%.au" OR $Domain LIKE "%.us" OR $Domain LIKE "%.ch" OR $Domain
+    LIKE "%.it" OR $Domain LIKE "%.nl" OR $Domain LIKE "%.se" OR $Domain LIKE "%.no"
+    OR $Domain LIKE "%.es")))
+- type: signal
+  DetectionName: Download EXE from Suspicious TLD
+  DetectionTactic: Execution
+  DetectionTechnique: User Execution

@@ -1,0 +1,18 @@
+id: d8ee4c07ab434e70a6012b3c40b77c8a
+name: CVE-2020-0688 Exchange Exploitation via Web Log
+path: /test
+description: Detects the exploitation of Microsoft Exchange vulnerability as described
+  in CVE-2020-0688
+type: standard
+author: community
+blocks:
+- type: text
+  code: "Author: Florian Roth \n References: ['https://www.trustedsec.com/blog/detecting-cve-20200688-remote-code-execution-vulnerability-on-microsoft-exchange-server/']"
+- type: sql
+  query:
+  - SELECT * FROM WEBSERVER WHERE ($Method = "GET" AND ($URL LIKE "%/ecp/%" OR $URL
+    LIKE "%/owa/%") AND $URL LIKE "%\_\_VIEWSTATE=%")
+- type: signal
+  DetectionName: CVE-2020-0688 Exchange Exploitation via Web Log
+  DetectionTactic: Initial Access
+  DetectionTechnique: Exploit Public-Facing Application

@@ -1,0 +1,18 @@
+id: af3c9f0fc50744199cf5648d2ea5ceee
+name: Ping Hex IP
+path: /test
+description: Detects a ping command that uses a hex encoded IP address
+type: standard
+author: community
+blocks:
+- type: text
+  code: "Author: Florian Roth \n References: ['https://github.com/vysec/Aggressor-VYSEC/blob/master/ping.cna',\
+    \ 'https://twitter.com/vysecurity/status/977198418354491392']"
+- type: sql
+  query:
+  - SELECT * FROM SYSMON-PROCESS WHERE (($CommandLine LIKE "%\\ping.exe 0x%" OR $CommandLine
+    LIKE "%\\ping 0x%") AND ($Image LIKE "%ping.exe%"))
+- type: signal
+  DetectionName: Ping Hex IP
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Obfuscated Files or Information

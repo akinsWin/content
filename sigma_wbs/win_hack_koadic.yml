@@ -1,0 +1,18 @@
+id: 02c920c321bf4b1fa37bee62ef4d803b
+name: Koadic Execution
+path: /test
+description: Detects command line parameters used by Koadic hack tool
+type: standard
+author: community
+blocks:
+- type: text
+  code: "Author: wagga \n References: ['https://unit42.paloaltonetworks.com/unit42-sofacy-groups-parallel-attacks/',\
+    \ 'https://github.com/zerosum0x0/koadic/blob/master/data/stager/js/stdlib.js#L955',\
+    \ 'https://blog.f-secure.com/hunting-for-koadic-a-com-based-rootkit/']"
+- type: sql
+  query:
+  - SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "%cmd.exe% /q /c chcp %")
+- type: signal
+  DetectionName: Koadic Execution
+  DetectionTactic: Execution
+  DetectionTechnique: Command and Scripting Interpreter

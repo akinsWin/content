@@ -1,0 +1,27 @@
+id: 1413a12d48c34eeeaa353a48b43484ef
+name: Executables Started in Suspicious Folder
+path: /test
+description: Detects process starts of binaries from a suspicious folder
+type: standard
+author: community
+blocks:
+- type: text
+  code: "Author: Florian Roth \n References: ['https://github.com/mbevilacqua/appcompatprocessor/blob/master/AppCompatSearch.txt',\
+    \ 'https://www.secureworks.com/research/bronze-butler-targets-japanese-businesses',\
+    \ 'https://www.crowdstrike.com/resources/reports/2019-crowdstrike-global-threat-report/',\
+    \ 'https://github.com/ThreatHuntingProject/ThreatHunting/blob/master/hunts/suspicious_process_creation_via_windows_event_logs.md']"
+- type: sql
+  query:
+  - SELECT * FROM SYSMON-PROCESS WHERE ($Image LIKE "C:\\PerfLogs\\%" OR $Image LIKE
+    "C:\\$Recycle.bin\\%" OR $Image LIKE "C:\\Intel\\Logs\\%" OR $Image LIKE "C:\\Users\\Default\\%"
+    OR $Image LIKE "C:\\Users\\Public\\%" OR $Image LIKE "C:\\Users\\NetworkService\\%"
+    OR $Image LIKE "C:\\Windows\\Fonts\\%" OR $Image LIKE "C:\\Windows\\Debug\\%"
+    OR $Image LIKE "C:\\Windows\\Media\\%" OR $Image LIKE "C:\\Windows\\Help\\%" OR
+    $Image LIKE "C:\\Windows\\addins\\%" OR $Image LIKE "C:\\Windows\\repair\\%" OR
+    $Image LIKE "C:\\Windows\\security\\%" OR $Image LIKE "%\\RSA\\MachineKeys\\%"
+    OR $Image LIKE "C:\\Windows\\system32\\config\\systemprofile\\%" OR $Image LIKE
+    "C:\\Windows\\Tasks\\%" OR $Image LIKE "C:\\Windows\\System32\\Tasks\\%")
+- type: signal
+  DetectionName: Executables Started in Suspicious Folder
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Masquerading

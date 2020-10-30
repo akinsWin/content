@@ -1,0 +1,17 @@
+id: c1b8ac0913404b63a30a515b301c6139
+name: Flash Player Update from Suspicious Location
+path: /test
+description: Detects a flashplayer update from an unofficial location
+type: standard
+author: community
+blocks:
+- type: text
+  code: "Author: Florian Roth \n References: ['https://gist.github.com/roycewilliams/a723aaf8a6ac3ba4f817847610935cfb']"
+- type: sql
+  query:
+  - SELECT * FROM WEBFILTER WHERE (($URL LIKE "%/install\_flash\_player.exe" OR $URL
+    LIKE "%/flash\_install.php%") AND NOT (c-uri-stem LIKE "%.adobe.com/%"))
+- type: signal
+  DetectionName: Flash Player Update from Suspicious Location
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Masquerading

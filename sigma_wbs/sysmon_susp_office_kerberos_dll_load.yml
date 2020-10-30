@@ -1,0 +1,18 @@
+id: 1ad05a1172b54d108b489eec74103205
+name: Active Directory Kerberos DLL Loaded Via Office Applications
+path: /test
+description: Detects Kerberos DLL being loaded by an Office Product
+type: standard
+author: community
+blocks:
+- type: text
+  code: "Author: Antonlovesdnb \n References: ['https://medium.com/threatpunter/detecting-adversary-tradecraft-with-image-load-event-logging-and-eql-8de93338c16']"
+- type: sql
+  query:
+  - SELECT * FROM SYSMON-IMAGE-LOAD WHERE (($Image LIKE "%\\winword.exe" OR $Image
+    LIKE "%\\powerpnt.exe" OR $Image LIKE "%\\excel.exe" OR $Image LIKE "%\\outlook.exe")
+    AND ($ImageLoaded LIKE "%\\kerberos.dll"))
+- type: signal
+  DetectionName: Active Directory Kerberos DLL Loaded Via Office Applications
+  DetectionTactic: Execution
+  DetectionTechnique: User Execution
