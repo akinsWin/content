@@ -1,6 +1,6 @@
 id: 3ef4d39a2759476b97095affd7aecc69
 name: AWS EC2 Download Userdata
-path: /test
+path: /Cloud Security/Amazon Web Services
 description: Detects bulk downloading of User Data associated with AWS EC2 instances.
   Instance User Data may include installation scripts and hard-coded secrets for deployment.
 type: standard
