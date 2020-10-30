@@ -1,0 +1,5 @@
+title: Bitsadmin to Uncommon TLD
+author: Florian Roth
+detection:
+- SELECT * FROM WEBFILTER WHERE (($UserAgent LIKE "Microsoft BITS/%") AND NOT (($Domain
+  LIKE "%.com" OR $Domain LIKE "%.net" OR $Domain LIKE "%.org")))

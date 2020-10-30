@@ -1,0 +1,5 @@
+title: Restore Public AWS RDS Instance
+author: faloker
+detection:
+- SELECT * FROM CLOUDTRAIL WHERE ($EventSource = "rds.amazonaws.com" AND $ResponseElementsPubliclyAccessible
+  = "true" AND $EventName = "RestoreDBInstanceFromDBSnapshot")

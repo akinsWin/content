@@ -1,0 +1,5 @@
+title: AWS CloudTrail Important Change
+author: vitaliy0x1
+detection:
+- SELECT * FROM CLOUDTRAIL WHERE ($EventSource = "cloudtrail.amazonaws.com" AND $EventName
+  IN ("StopLogging", "UpdateTrail", "DeleteTrail"))

@@ -1,0 +1,8 @@
+title: CobaltStrike Malleable Amazon Browsing Traffic Profile
+author: Markus Neis
+detection:
+- SELECT * FROM WEBFILTER WHERE ($UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64;
+  Trident/7.0; rv:11.0) like Gecko" AND $DstHost = "www.amazon.com" AND (($Method
+  = "GET" AND $URL LIKE "/s/ref=nb\_sb\_noss\_1/167-3294888-0262949/field-keywords=books"
+  AND cs-cookie LIKE "%=csm-hit=s-24KU11BB82RZSYGJ3BDK|1419899012996") OR ($Method
+  = "POST" AND $URL = "/N4215/adj/amzn.us.sr.aps")))

@@ -1,0 +1,5 @@
+title: AWS Config Disabling Channel/Recorder
+author: vitaliy0x1
+detection:
+- SELECT * FROM CLOUDTRAIL WHERE ($EventSource = "config.amazonaws.com" AND $EventName
+  IN ("DeleteDeliveryChannel", "StopConfigurationRecorder"))
