@@ -1,6 +1,6 @@
 id: adaf0efe22704f71a7f3f440b8ecf445
 name: Bypass UAC via Fodhelper.exe
-path: /test
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: Identifies use of Fodhelper.exe to bypass User Account Control. Adversaries
   use this technique to execute privileged processes.
 type: standard
