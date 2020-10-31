@@ -1,6 +1,6 @@
 id: 30e6e9790f574a69be7d4f4f52d89158
 name: XSL Script Processing
-path: /Advanced Threat Detection/Process Monitoring
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: Extensible Stylesheet Language (XSL) files are commonly used to describe
   the processing and rendering of data within XML files, rule detects when adversaries
   abuse this functionality to execute arbitrary files while potentially bypassing
