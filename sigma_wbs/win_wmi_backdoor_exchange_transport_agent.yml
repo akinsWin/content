@@ -1,6 +1,6 @@
 id: 9b11b18f07dc494893a7693638ffbc60
 name: WMI Backdoor Exchange Transport Agent
-path: /test
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: Detects a WMi backdoor in Exchange Transport Agents via WMi event filters
 type: standard
 author: community
