@@ -18,3 +18,4 @@ blocks:
   DetectionName: XSL Script Processing
   DetectionTactic: Defense Evasion
   DetectionTechnique: XSL Script Processing
+  TargetHost: System
