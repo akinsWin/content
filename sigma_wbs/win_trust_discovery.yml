@@ -1,6 +1,6 @@
 id: 41ce966ea57a4065882752cccd7b307b
 name: Domain Trust Discovery
-path: /test
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: Identifies execution of nltest.exe and dsquery.exe for domain trust discovery.
   This technique is used by attackers to enumerate Active Directory trusts.
 type: standard
@@ -19,3 +19,4 @@ blocks:
   DetectionName: Domain Trust Discovery
   DetectionTactic: Discovery
   DetectionTechnique: Domain Trust Discovery
+  TargetHost: $System
