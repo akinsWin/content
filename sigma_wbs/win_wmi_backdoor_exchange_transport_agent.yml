@@ -15,4 +15,4 @@ blocks:
   DetectionName: WMI Backdoor Exchange Transport Agent
   DetectionTactic: Privilege Escalation
   DetectionTechnique: Event Triggered Execution
-  TargetHost: System
+  TargetHost: $System
