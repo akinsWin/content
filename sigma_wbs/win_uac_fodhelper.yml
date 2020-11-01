@@ -17,3 +17,4 @@ blocks:
   DetectionName: Bypass UAC via Fodhelper.exe
   DetectionTactic: Privilege Escalation
   DetectionTechnique: Abuse Elevation Control Mechanism
+  TargetHost: $System
