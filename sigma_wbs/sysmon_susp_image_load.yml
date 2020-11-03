@@ -1,6 +1,6 @@
 id: 56240199974d4cddbb642dd9cb036d7b
 name: Possible Process Hollowing Image Loading
-path: /test
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: Detects Loading of samlib.dll, WinSCard.dll from untypical process e.g.
   through process hollowing by Mimikatz
 type: standard
@@ -9,10 +9,12 @@ blocks:
 - type: text
   code: "Author: Markus Neis \n References: ['https://cyberwardog.blogspot.com/2017/03/chronicles-of-threat-hunter-hunting-for.html']"
 - type: sql
-  query:
-  - SELECT * FROM SYSMON-IMAGE-LOAD WHERE (($Image LIKE "%\\notepad.exe") AND ($ImageLoaded
-    LIKE "%\\samlib.dll" OR $ImageLoaded LIKE "%\\WinSCard.dll"))
+  query: SELECT * FROM SYSMON-IMAGE-LOAD WHERE (($Image LIKE "%\\notepad.exe") AND
+    ($ImageLoaded LIKE "%\\samlib.dll" OR $ImageLoaded LIKE "%\\WinSCard.dll"))
 - type: signal
   DetectionName: Possible Process Hollowing Image Loading
   DetectionTactic: Persistence
   DetectionTechnique: Hijack Execution Flow
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

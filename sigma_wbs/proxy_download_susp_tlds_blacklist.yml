@@ -1,6 +1,6 @@
 id: bcb35af6672940f1ba653e397c9b6d77
 name: Download from Suspicious TLD
-path: /test
+path: /Advanced Threat Detection/Proxy Monitoring
 description: Detects download of certain file types from hosts in suspicious TLDs
 type: standard
 author: community
@@ -10,19 +10,18 @@ blocks:
     \ 'https://promos.mcafee.com/en-US/PDF/MTMW_Report.pdf', 'https://www.spamhaus.org/statistics/tlds/',\
     \ 'https://krebsonsecurity.com/2018/06/bad-men-at-work-please-dont-click/']"
 - type: sql
-  query:
-  - SELECT * FROM WEBFILTER WHERE ($URL IN ("exe", "vbs", "bat", "rar", "ps1", "doc",
-    "docm", "xls", "xlsm", "pptm", "rtf", "hta", "dll", "ws", "wsf", "sct", "zip")
-    AND ($Domain LIKE "%.country" OR $Domain LIKE "%.stream" OR $Domain LIKE "%.gdn"
-    OR $Domain LIKE "%.mom" OR $Domain LIKE "%.xin" OR $Domain LIKE "%.kim" OR $Domain
-    LIKE "%.men" OR $Domain LIKE "%.loan" OR $Domain LIKE "%.download" OR $Domain
-    LIKE "%.racing" OR $Domain LIKE "%.online" OR $Domain LIKE "%.science" OR $Domain
-    LIKE "%.ren" OR $Domain LIKE "%.gb" OR $Domain LIKE "%.win" OR $Domain LIKE "%.top"
-    OR $Domain LIKE "%.review" OR $Domain LIKE "%.vip" OR $Domain LIKE "%.party" OR
-    $Domain LIKE "%.tech" OR $Domain LIKE "%.xyz" OR $Domain LIKE "%.date" OR $Domain
-    LIKE "%.faith" OR $Domain LIKE "%.zip" OR $Domain LIKE "%.cricket" OR $Domain
-    LIKE "%.space" OR $Domain LIKE "%.info" OR $Domain LIKE "%.vn" OR $Domain LIKE
-    "%.cm" OR $Domain LIKE "%.am" OR $Domain LIKE "%.cc" OR $Domain LIKE "%.asia"
+  query: SELECT * FROM WEBFILTER WHERE ($URL IN ("exe", "vbs", "bat", "rar", "ps1",
+    "doc", "docm", "xls", "xlsm", "pptm", "rtf", "hta", "dll", "ws", "wsf", "sct",
+    "zip") AND ($Domain LIKE "%.country" OR $Domain LIKE "%.stream" OR $Domain LIKE
+    "%.gdn" OR $Domain LIKE "%.mom" OR $Domain LIKE "%.xin" OR $Domain LIKE "%.kim"
+    OR $Domain LIKE "%.men" OR $Domain LIKE "%.loan" OR $Domain LIKE "%.download"
+    OR $Domain LIKE "%.racing" OR $Domain LIKE "%.online" OR $Domain LIKE "%.science"
+    OR $Domain LIKE "%.ren" OR $Domain LIKE "%.gb" OR $Domain LIKE "%.win" OR $Domain
+    LIKE "%.top" OR $Domain LIKE "%.review" OR $Domain LIKE "%.vip" OR $Domain LIKE
+    "%.party" OR $Domain LIKE "%.tech" OR $Domain LIKE "%.xyz" OR $Domain LIKE "%.date"
+    OR $Domain LIKE "%.faith" OR $Domain LIKE "%.zip" OR $Domain LIKE "%.cricket"
+    OR $Domain LIKE "%.space" OR $Domain LIKE "%.info" OR $Domain LIKE "%.vn" OR $Domain
+    LIKE "%.cm" OR $Domain LIKE "%.am" OR $Domain LIKE "%.cc" OR $Domain LIKE "%.asia"
     OR $Domain LIKE "%.ws" OR $Domain LIKE "%.tk" OR $Domain LIKE "%.biz" OR $Domain
     LIKE "%.su" OR $Domain LIKE "%.st" OR $Domain LIKE "%.ro" OR $Domain LIKE "%.ge"
     OR $Domain LIKE "%.ms" OR $Domain LIKE "%.pk" OR $Domain LIKE "%.nu" OR $Domain
@@ -36,3 +35,6 @@ blocks:
   DetectionName: Download from Suspicious TLD
   DetectionTactic: Execution
   DetectionTechnique: User Execution
+  SuspectHost: $SrcIP
+  DetectionScore: 5
+  DetectionConfidence: Low

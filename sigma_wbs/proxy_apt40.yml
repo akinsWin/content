@@ -1,6 +1,6 @@
 id: f1a0281f103042708f276314fffa7146
 name: APT40 Dropbox Tool User Agent
-path: /test
+path: /Advanced Threat Detection/Proxy Monitoring
 description: Detects suspicious user agent string of APT40 Dropbox tool
 type: standard
 author: community
@@ -8,11 +8,13 @@ blocks:
 - type: text
   code: "Author: Thomas Patzke \n References: ['Internal research from Florian Roth']"
 - type: sql
-  query:
-  - SELECT * FROM WEBFILTER WHERE ($UserAgent IN "Mozilla/5.0 (Windows NT 6.1; WOW64)
-    AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.143 Safari/537.36" AND
-    $Domain = "api.dropbox.com")
+  query: SELECT * FROM WEBFILTER WHERE ($UserAgent IN "Mozilla/5.0 (Windows NT 6.1;
+    WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.143 Safari/537.36"
+    AND $Domain = "api.dropbox.com")
 - type: signal
   DetectionName: APT40 Dropbox Tool User Agent
   DetectionTactic: Exfiltration
   DetectionTechnique: Exfiltration Over Alternative Protocol
+  SuspectHost: $SrcIP
+  DetectionScore: 5
+  DetectionConfidence: Low

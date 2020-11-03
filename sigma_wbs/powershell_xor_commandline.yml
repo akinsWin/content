@@ -1,6 +1,6 @@
 id: 457047f84d654f22a5fb0c7ad78eb796
 name: Suspicious XOR Encoded PowerShell Command Line
-path: /test
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: Detects suspicious powershell process which includes bxor command, alternative
   obfuscation method to b64 encoded commands.
 type: standard
@@ -9,11 +9,13 @@ blocks:
 - type: text
   code: "Author: Teymur Kheirkhabarov, Harish Segar (rule) \n References: None"
 - type: sql
-  query:
-  - SELECT * FROM SYSMON-PROCESS WHERE (($Description = "Windows PowerShell" OR $Product
-    = "PowerShell Core 6") AND ($CommandLine LIKE "%bxor%" OR $CommandLine LIKE "%join%"
-    OR $CommandLine LIKE "%char%"))
+  query: SELECT * FROM SYSMON-PROCESS WHERE (($Description = "Windows PowerShell"
+    OR $Product = "PowerShell Core 6") AND ($CommandLine LIKE "%bxor%" OR $CommandLine
+    LIKE "%join%" OR $CommandLine LIKE "%char%"))
 - type: signal
   DetectionName: Suspicious XOR Encoded PowerShell Command Line
   DetectionTactic: Execution
   DetectionTechnique: Command and Scripting Interpreter
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

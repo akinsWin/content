@@ -1,6 +1,6 @@
 id: a8e816c1c54b4bd7b00c2908e52a0d29
 name: Lazarus Session Highjacker
-path: /test
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: Detects executables launched outside their default directories as used
   by Lazarus Group (Bluenoroff)
 type: standard
@@ -9,11 +9,13 @@ blocks:
 - type: text
   code: "Author: Trent Liffick (@tliffick) \n References: ['https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2018/03/07180244/Lazarus_Under_The_Hood_PDF_final.pdf']"
 - type: sql
-  query:
-  - SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%\\mstdc.exe" OR $Image LIKE
-    "%\\gpvc.exe") AND NOT (($Image LIKE "C:\\Windows\\System32\\%" OR $Image LIKE
-    "C:\\Windows\\SysWOW64\\%")))
+  query: SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%\\mstdc.exe" OR $Image
+    LIKE "%\\gpvc.exe") AND NOT (($Image LIKE "C:\\Windows\\System32\\%" OR $Image
+    LIKE "C:\\Windows\\SysWOW64\\%")))
 - type: signal
   DetectionName: Lazarus Session Highjacker
   DetectionTactic: Defense Evasion
   DetectionTechnique: Masquerading
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

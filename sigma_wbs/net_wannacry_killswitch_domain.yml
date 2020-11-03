@@ -1,6 +1,6 @@
 id: 134c18f5d2ac4766af0afe714c10099e
 name: Wannacry Killswitch Domain
-path: /test
+path: /Advanced Threat Detection/DNS Monitoring
 description: Detects wannacry killswitch domain dns queries
 type: standard
 author: community
@@ -8,8 +8,7 @@ blocks:
 - type: text
   code: "Author: Mike Wade \n References: ['https://www.fireeye.com/blog/products-and-services/2017/05/wannacry-ransomware-campaign.html']"
 - type: sql
-  query:
-  - SELECT * FROM DNS WHERE $Query IN ("ifferfsodp9ifjaposdfjhgosurijfaewrwergwea.testing",
+  query: SELECT * FROM DNS WHERE $Query IN ("ifferfsodp9ifjaposdfjhgosurijfaewrwergwea.testing",
     "ifferfsodp9ifjaposdfjhgosurijfaewrwergwea.test", "ifferfsodp9ifjaposdfjhgosurijfaewrwergwea.com",
     "ayylmaotjhsstasdfasdfasdfasdfasdfasdfasdf.com", "iuqssfsodp9ifjaposdfjhgosurijfaewrwergwea.com",
     "")
@@ -17,3 +16,6 @@ blocks:
   DetectionName: Wannacry Killswitch Domain
   DetectionTactic: Command and Control
   DetectionTechnique: Application Layer Protocol
+  SuspectHost: $SrcIP
+  DetectionScore: 5
+  DetectionConfidence: Low

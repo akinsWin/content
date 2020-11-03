@@ -1,6 +1,6 @@
 id: ad6cc0660f64468cbddd9a8362aad4b9
 name: WMI Persistence - Command Line Event Consumer
-path: /test
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: Detects WMI command line event consumers
 type: standard
 author: community
@@ -8,10 +8,12 @@ blocks:
 - type: text
   code: "Author: Thomas Patzke \n References: ['https://www.eideon.com/2018-03-02-THL03-WMIBackdoors/']"
 - type: sql
-  query:
-  - SELECT * FROM SYSMON-IMAGE-LOAD WHERE ($Image LIKE "C:\\Windows\\System32\\wbem\\WmiPrvSE.exe"
+  query: SELECT * FROM SYSMON-IMAGE-LOAD WHERE ($Image LIKE "C:\\Windows\\System32\\wbem\\WmiPrvSE.exe"
     AND $ImageLoaded LIKE "%\\wbemcons.dll")
 - type: signal
   DetectionName: WMI Persistence - Command Line Event Consumer
   DetectionTactic: Privilege Escalation
   DetectionTechnique: Event Triggered Execution
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

@@ -1,6 +1,6 @@
 id: 0c7c211c3bb64297a172d21ac9e65357
 name: In-memory PowerShell
-path: /test
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: Detects loading of essential DLL used by PowerShell, but not by the process
   powershell.exe. Detects meterpreter's "load powershell" extension.
 type: standard
@@ -10,8 +10,7 @@ blocks:
   code: "Author: Tom Kern, oscd.community \n References: ['https://adsecurity.org/?p=2921',\
     \ 'https://github.com/p3nt4/PowerShdll']"
 - type: sql
-  query:
-  - SELECT * FROM SYSMON-IMAGE-LOAD WHERE (($ImageLoaded LIKE "%\\System.Management.Automation.Dll"
+  query: SELECT * FROM SYSMON-IMAGE-LOAD WHERE (($ImageLoaded LIKE "%\\System.Management.Automation.Dll"
     OR $ImageLoaded LIKE "%\\System.Management.Automation.ni.Dll") AND NOT (($Image
     LIKE "%\\powershell.exe" OR $Image LIKE "%\\powershell\_ise.exe" OR $Image LIKE
     "%\\WINDOWS\\System32\\sdiagnhost.exe" OR $Image LIKE "%\\mscorsvw.exe" OR $Image
@@ -20,3 +19,6 @@ blocks:
   DetectionName: In-memory PowerShell
   DetectionTactic: Execution
   DetectionTechnique: Command and Scripting Interpreter
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

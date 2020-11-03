@@ -1,6 +1,6 @@
 id: 5892f27c0fd74ffaa11e6ca26560829e
 name: Audio Capture via PowerShell
-path: /test
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: Detects audio capture via PowerShell Cmdlet
 type: standard
 author: community
@@ -10,9 +10,11 @@ blocks:
     \ \n References: ['https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1123/T1123.yaml',\
     \ 'https://eqllib.readthedocs.io/en/latest/analytics/ab7a6ef4-0983-4275-a4f1-5c6bd3c31c23.html']"
 - type: sql
-  query:
-  - SELECT * FROM SYSMON-PROCESS WHERE $CommandLine LIKE "%WindowsAudioDevice-Powershell-Cmdlet%"
+  query: SELECT * FROM SYSMON-PROCESS WHERE $CommandLine LIKE "%WindowsAudioDevice-Powershell-Cmdlet%"
 - type: signal
   DetectionName: Audio Capture via PowerShell
   DetectionTactic: Collection
   DetectionTechnique: Audio Capture
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

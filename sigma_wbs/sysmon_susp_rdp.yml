@@ -1,6 +1,6 @@
 id: 2a45610f58a04584a15babff4d0d399e
 name: Suspicious Outbound RDP Connections
-path: /test
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: Detects Non-Standard Tools Connecting to TCP port 3389 indicating possible
   lateral movement
 type: standard
@@ -9,8 +9,7 @@ blocks:
 - type: text
   code: "Author: Markus Neis - Swisscom \n References: ['https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0708']"
 - type: sql
-  query:
-  - SELECT * FROM SYSMON-NETWORK WHERE (($DstPort = "3389" AND $Initiated = "true")
+  query: SELECT * FROM SYSMON-NETWORK WHERE (($DstPort = "3389" AND $Initiated = "true")
     AND NOT (($Image LIKE "%\\mstsc.exe" OR $Image LIKE "%\\RTSApp.exe" OR $Image
     LIKE "%\\RTS2App.exe" OR $Image LIKE "%\\RDCMan.exe" OR $Image LIKE "%\\ws\_TunnelService.exe"
     OR $Image LIKE "%\\RSSensor.exe" OR $Image LIKE "%\\RemoteDesktopManagerFree.exe"
@@ -23,3 +22,6 @@ blocks:
   DetectionName: Suspicious Outbound RDP Connections
   DetectionTactic: Lateral Movement
   DetectionTechnique: Remote Services
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

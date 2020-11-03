@@ -1,6 +1,6 @@
 id: 0f5ed0706a90490390b01fef227a3ef0
 name: Reconnaissance Activity with Net Command
-path: /test
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: Detects a set of commands often used in recon stages by different attack
   groups
 type: standard
@@ -10,10 +10,9 @@ blocks:
   code: "Author: Florian Roth, Markus Neis \n References: ['https://twitter.com/haroonmeer/status/939099379834658817',\
     \ 'https://twitter.com/c_APT_ure/status/939475433711722497', 'https://www.fireeye.com/blog/threat-research/2016/05/targeted_attacksaga.html']"
 - type: sql
-  query:
-  - SELECT $CommandLine, count(*) AS agg FROM SYSMON-PROCESS WHERE ($CommandLine LIKE
-    "tasklist" OR $CommandLine LIKE "net time" OR $CommandLine LIKE "systeminfo" OR
-    $CommandLine LIKE "whoami" OR $CommandLine LIKE "nbtstat" OR $CommandLine LIKE
+  query: SELECT $CommandLine, count(*) AS agg FROM SYSMON-PROCESS WHERE ($CommandLine
+    LIKE "tasklist" OR $CommandLine LIKE "net time" OR $CommandLine LIKE "systeminfo"
+    OR $CommandLine LIKE "whoami" OR $CommandLine LIKE "nbtstat" OR $CommandLine LIKE
     "net start" OR $CommandLine LIKE "%\\net1 start" OR $CommandLine LIKE "qprocess"
     OR $CommandLine LIKE "nslookup" OR $CommandLine LIKE "hostname.exe" OR $CommandLine
     LIKE "%\\net1 user /domain" OR $CommandLine LIKE "%\\net1 group /domain" OR $CommandLine
@@ -25,3 +24,6 @@ blocks:
   DetectionName: Reconnaissance Activity with Net Command
   DetectionTactic: Discovery
   DetectionTechnique: System Information Discovery
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

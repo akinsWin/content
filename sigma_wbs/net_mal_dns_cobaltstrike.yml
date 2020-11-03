@@ -1,6 +1,6 @@
 id: e97e4a14175a46c89b83986bd101cd7b
 name: Cobalt Strike DNS Beaconing
-path: /test
+path: /Advanced Threat Detection/DNS Monitoring
 description: Detects suspicious DNS queries known from Cobalt Strike beacons
 type: standard
 author: community
@@ -8,9 +8,11 @@ blocks:
 - type: text
   code: "Author: Florian Roth \n References: ['https://www.icebrg.io/blog/footprints-of-fin7-tracking-actor-patterns']"
 - type: sql
-  query:
-  - SELECT * FROM DNS WHERE ($Query LIKE "aaa.stage.%" OR $Query LIKE "post.1%")
+  query: SELECT * FROM DNS WHERE ($Query LIKE "aaa.stage.%" OR $Query LIKE "post.1%")
 - type: signal
   DetectionName: Cobalt Strike DNS Beaconing
   DetectionTactic: Command and Control
   DetectionTechnique: Application Layer Protocol
+  SuspectHost: $SrcIP
+  DetectionScore: 5
+  DetectionConfidence: Low

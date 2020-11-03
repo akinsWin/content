@@ -1,6 +1,6 @@
 id: ee7a440879544f8aaa470e826f84e6a3
 name: Crypto Miner User Agent
-path: /test
+path: /Advanced Threat Detection/Proxy Monitoring
 description: Detects suspicious user agent strings used by crypto miners in proxy
   logs
 type: standard
@@ -10,9 +10,12 @@ blocks:
   code: "Author: Florian Roth \n References: ['https://github.com/xmrig/xmrig/blob/da22b3e6c45825f3ac1f208255126cb8585cd4fc/src/base/kernel/Platform_win.cpp#L65',\
     \ 'https://github.com/xmrig/xmrig/blob/427b6516e0550200c17ca28675118f0fffcc323f/src/version.h']"
 - type: sql
-  query:
-  - SELECT * FROM WEBFILTER WHERE ($UserAgent LIKE "XMRig %" OR $UserAgent LIKE "ccminer%")
+  query: SELECT * FROM WEBFILTER WHERE ($UserAgent LIKE "XMRig %" OR $UserAgent LIKE
+    "ccminer%")
 - type: signal
   DetectionName: Crypto Miner User Agent
   DetectionTactic: Command and Control
   DetectionTechnique: Application Layer Protocol
+  SuspectHost: $SrcIP
+  DetectionScore: 5
+  DetectionConfidence: Low

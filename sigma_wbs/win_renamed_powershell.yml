@@ -1,6 +1,6 @@
 id: 867878c1a6884e65befa8e7432e75eb2
 name: Renamed PowerShell
-path: /test
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: Detects the execution of a renamed PowerShell often used by attackers
   or malware
 type: standard
@@ -9,11 +9,13 @@ blocks:
 - type: text
   code: "Author: Florian Roth \n References: ['https://twitter.com/christophetd/status/1164506034720952320']"
 - type: sql
-  query:
-  - SELECT * FROM SYSMON-PROCESS WHERE (($Description = "Windows PowerShell" AND $Company
-    = "Microsoft Corporation") AND NOT (($Image LIKE "%\\powershell.exe" OR $Image
-    LIKE "%\\powershell\_ise.exe")))
+  query: SELECT * FROM SYSMON-PROCESS WHERE (($Description = "Windows PowerShell"
+    AND $Company = "Microsoft Corporation") AND NOT (($Image LIKE "%\\powershell.exe"
+    OR $Image LIKE "%\\powershell\_ise.exe")))
 - type: signal
   DetectionName: Renamed PowerShell
   DetectionTactic: Defense Evasion
   DetectionTechnique: Masquerading
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

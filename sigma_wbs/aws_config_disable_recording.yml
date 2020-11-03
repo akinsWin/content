@@ -8,10 +8,12 @@ blocks:
 - type: text
   code: "Author: vitaliy0x1 \n References: None"
 - type: sql
-  query:
-  - SELECT * FROM CLOUDTRAIL WHERE ($EventSource = "config.amazonaws.com" AND $EventName
-    IN ("DeleteDeliveryChannel", "StopConfigurationRecorder"))
+  query: SELECT * FROM CLOUDTRAIL WHERE ($EventSource = "config.amazonaws.com" AND
+    $EventName IN ("DeleteDeliveryChannel", "StopConfigurationRecorder"))
 - type: signal
   DetectionName: AWS Config Disabling Channel/Recorder
   DetectionTactic: Defense Evasion
   DetectionTechnique: Impair Defenses
+  TargetHost: $EventSource
+  DetectionScore: 5
+  DetectionConfidence: Low

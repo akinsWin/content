@@ -11,11 +11,12 @@ blocks:
 - type: text
   code: "Author: Timur Zinniatullin, oscd.community \n References: ['https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1220/T1220.yaml']"
 - type: sql
-  query:
-  - SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%\\wmic.exe" AND $CommandLine
+  query: SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%\\wmic.exe" AND $CommandLine
     LIKE "%/format%") OR $Image LIKE "%\\msxsl.exe")
 - type: signal
   DetectionName: XSL Script Processing
   DetectionTactic: Defense Evasion
   DetectionTechnique: XSL Script Processing
   TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

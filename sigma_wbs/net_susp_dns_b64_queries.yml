@@ -1,6 +1,6 @@
 id: 2f49bb7320ca47d8aefc779543a4bc3c
 name: Suspicious DNS Query with B64 Encoded String
-path: /test
+path: /Advanced Threat Detection/DNS Monitoring
 description: Detects suspicious DNS queries using base64 encoding
 type: standard
 author: community
@@ -8,9 +8,11 @@ blocks:
 - type: text
   code: "Author: Florian Roth \n References: ['https://github.com/krmaxwell/dns-exfiltration']"
 - type: sql
-  query:
-  - SELECT * FROM DNS WHERE ($Query LIKE "%==.%")
+  query: SELECT * FROM DNS WHERE ($Query LIKE "%==.%")
 - type: signal
   DetectionName: Suspicious DNS Query with B64 Encoded String
   DetectionTactic: Command and Control
   DetectionTechnique: Application Layer Protocol
+  SuspectHost: $SrcIP
+  DetectionScore: 5
+  DetectionConfidence: Low

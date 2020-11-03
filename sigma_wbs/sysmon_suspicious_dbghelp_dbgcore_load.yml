@@ -1,6 +1,6 @@
 id: ff0caf2c74484c328d027fb6c9439a52
 name: Load of dbghelp/dbgcore DLL from Suspicious Process
-path: /test
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: Detects the load of dbghelp/dbgcore DLL (used to make memory dumps) by
   suspicious processes. Tools like ProcessHacker and some attacker tradecract use
   MiniDumpWriteDump API found in dbghelp.dll or dbgcore.dll. As an example, SilentTrynity
@@ -13,9 +13,8 @@ blocks:
   code: "Author: Perez Diego (@darkquassar), oscd.community, Ecco \n References: ['https://docs.microsoft.com/en-us/windows/win32/api/minidumpapiset/nf-minidumpapiset-minidumpwritedump',\
     \ 'https://www.pinvoke.net/default.aspx/dbghelp/MiniDumpWriteDump.html', 'https://medium.com/@fsx30/bypass-edrs-memory-protection-introduction-to-hooking-2efb21acffd6']"
 - type: sql
-  query:
-  - SELECT * FROM SYSMON-IMAGE-LOAD WHERE (((($ImageLoaded LIKE "%\\dbghelp.dll" OR
-    $ImageLoaded LIKE "%\\dbgcore.dll") AND ($Image LIKE "%\\msbuild.exe" OR $Image
+  query: SELECT * FROM SYSMON-IMAGE-LOAD WHERE (((($ImageLoaded LIKE "%\\dbghelp.dll"
+    OR $ImageLoaded LIKE "%\\dbgcore.dll") AND ($Image LIKE "%\\msbuild.exe" OR $Image
     LIKE "%\\cmd.exe" OR $Image LIKE "%\\svchost.exe" OR $Image LIKE "%\\rundll32.exe"
     OR $Image LIKE "%\\powershell.exe" OR $Image LIKE "%\\word.exe" OR $Image LIKE
     "%\\excel.exe" OR $Image LIKE "%\\powerpnt.exe" OR $Image LIKE "%\\outlook.exe"
@@ -30,3 +29,6 @@ blocks:
   DetectionName: Load of dbghelp/dbgcore DLL from Suspicious Process
   DetectionTactic: Credential Access
   DetectionTechnique: OS Credential Dumping
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

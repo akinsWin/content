@@ -1,6 +1,6 @@
 id: 5cdccd15f1fa4cd7b375d83404bae4cf
 name: Suspicious Csc.exe Source File Folder
-path: /test
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: Detects a suspicious execution of csc.exe, which uses a source in a suspicious
   folder (e.g. AppData)
 type: standard
@@ -11,10 +11,12 @@ blocks:
     \ 'https://www.clearskysec.com/wp-content/uploads/2018/11/MuddyWater-Operations-in-Lebanon-and-Oman.pdf',\
     \ 'https://app.any.run/tasks/c6993447-d1d8-414e-b856-675325e5aa09/', 'https://twitter.com/gN3mes1s/status/1206874118282448897']"
 - type: sql
-  query:
-  - SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%\\csc.exe" AND ($CommandLine
+  query: SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%\\csc.exe" AND ($CommandLine
     LIKE "%\\AppData\\%" OR $CommandLine LIKE "%\\Windows\\Temp\\%")) AND NOT (($ParentImage
     LIKE "C:\\Program Files%" OR $ParentImage LIKE "%\\sdiagnhost.exe" OR $ParentImage
     LIKE "%\\w3wp.exe")))
 - type: signal
   DetectionName: Suspicious Csc.exe Source File Folder
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

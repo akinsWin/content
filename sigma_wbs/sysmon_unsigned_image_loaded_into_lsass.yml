@@ -1,6 +1,6 @@
 id: 236f55ac5d994dedad7748c178965622
 name: Unsigned Image Loaded Into LSASS Process
-path: /test
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: Loading unsigned image (DLL, EXE) into LSASS process
 type: standard
 author: community
@@ -8,10 +8,12 @@ blocks:
 - type: text
   code: "Author: Teymur Kheirkhabarov, oscd.community \n References: ['https://www.slideshare.net/heirhabarov/hunting-for-credentials-dumping-in-windows-environment']"
 - type: sql
-  query:
-  - SELECT * FROM SYSMON-IMAGE-LOAD WHERE ($Image LIKE "%\\lsass.exe" AND $Signed
+  query: SELECT * FROM SYSMON-IMAGE-LOAD WHERE ($Image LIKE "%\\lsass.exe" AND $Signed
     = "false")
 - type: signal
   DetectionName: Unsigned Image Loaded Into LSASS Process
   DetectionTactic: Credential Access
   DetectionTechnique: OS Credential Dumping
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

@@ -1,6 +1,6 @@
 id: 0b985dc593834a43b6b41c70141fbad0
 name: AWS GuardDuty Important Change
-path: /test
+path: /Cloud Security/Amazon Web Services
 description: Detects updates of the GuardDuty list of trusted IPs, perhaps to disable
   security alerts against malicious IPs.
 type: standard
@@ -9,10 +9,12 @@ blocks:
 - type: text
   code: "Author: faloker \n References: ['https://github.com/RhinoSecurityLabs/pacu/blob/master/modules/guardduty__whitelist_ip/main.py#L9']"
 - type: sql
-  query:
-  - SELECT * FROM CLOUDTRAIL WHERE ($EventSource = "guardduty.amazonaws.com" AND $EventName
-    = "CreateIPSet")
+  query: SELECT * FROM CLOUDTRAIL WHERE ($EventSource = "guardduty.amazonaws.com"
+    AND $EventName = "CreateIPSet")
 - type: signal
   DetectionName: AWS GuardDuty Important Change
   DetectionTactic: Defense Evasion
   DetectionTechnique: Impair Defenses
+  TargetHost: $EventSource
+  DetectionScore: 5
+  DetectionConfidence: Low

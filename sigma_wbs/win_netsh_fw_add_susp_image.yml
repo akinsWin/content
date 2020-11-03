@@ -1,6 +1,6 @@
 id: e23869f2b56f4507b8c61b9f8809e766
 name: Netsh Program Allowed with Suspcious Location
-path: /test
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: Detects Netsh commands that allows a suspcious application location on
   Windows Firewall
 type: standard
@@ -10,8 +10,7 @@ blocks:
   code: "Author: Sander Wiebing \n References: ['https://www.virusradar.com/en/Win32_Kasidet.AD/description',\
     \ 'https://www.hybrid-analysis.com/sample/07e789f4f2f3259e7559fdccb36e96814c2dbff872a21e1fa03de9ee377d581f?environmentId=100']"
 - type: sql
-  query:
-  - SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "%netsh%" AND ($CommandLine
+  query: SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "%netsh%" AND ($CommandLine
     LIKE "%firewall add allowedprogram%" OR ($CommandLine LIKE "%advfirewall firewall
     add rule%" AND $CommandLine LIKE "%action=allow%" AND $CommandLine LIKE "%program=%"))
     AND ($CommandLine LIKE "%\%TEMP\%%" OR $CommandLine LIKE "%:\\RECYCLER\\%" OR
@@ -30,3 +29,6 @@ blocks:
   DetectionName: Netsh Program Allowed with Suspcious Location
   DetectionTactic: Defense Evasion
   DetectionTechnique: Impair Defenses
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

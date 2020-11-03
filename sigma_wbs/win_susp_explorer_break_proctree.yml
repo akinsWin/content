@@ -1,6 +1,6 @@
 id: e14b2755f62b417ea3b68e6f51b6947c
 name: Explorer Root Flag Process Tree Break
-path: /test
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: Detects a command line process that uses explorer.exe /root, which is
   similar to cmd.exe /c, only it breaks the process tree and makes its parent a new
   instance of explorer
@@ -11,10 +11,12 @@ blocks:
   code: "Author: Florian Roth \n References: ['https://twitter.com/CyberRaiju/status/1273597319322058752',\
     \ 'https://twitter.com/bohops/status/1276357235954909188?s=12']"
 - type: sql
-  query:
-  - SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "%explorer.exe%" AND $CommandLine
-    LIKE "% /root,%")
+  query: SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "%explorer.exe%" AND
+    $CommandLine LIKE "% /root,%")
 - type: signal
   DetectionName: Explorer Root Flag Process Tree Break
   DetectionTactic: Defense Evasion
   DetectionTechnique: Masquerading
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

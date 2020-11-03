@@ -1,6 +1,6 @@
 id: 9fd0deac1a9d4ee096f35cca8feaabcd
 name: Possible App Whitelisting Bypass via WinDbg/CDB as a Shellcode Runner
-path: /test
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: Launch 64-bit shellcode from a debugger script file using cdb.exe.
 type: standard
 author: community
@@ -9,10 +9,12 @@ blocks:
   code: "Author: Beyu Denis, oscd.community \n References: ['https://github.com/LOLBAS-Project/LOLBAS/blob/master/yml/OtherMSBinaries/Cdb.yml',\
     \ 'http://www.exploit-monday.com/2016/08/windbg-cdb-shellcode-runner.html']"
 - type: sql
-  query:
-  - SELECT * FROM SYSMON-PROCESS WHERE ($Image LIKE "%\\cdb.exe" AND $CommandLine
+  query: SELECT * FROM SYSMON-PROCESS WHERE ($Image LIKE "%\\cdb.exe" AND $CommandLine
     LIKE "%-cf%")
 - type: signal
   DetectionName: Possible App Whitelisting Bypass via WinDbg/CDB as a Shellcode Runner
   DetectionTactic: Defense Evasion
   DetectionTechnique: Trusted Developer Utilities Proxy Execution
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

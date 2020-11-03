@@ -8,10 +8,12 @@ blocks:
 - type: text
   code: "Author: vitaliy0x1 \n References: ['https://docs.aws.amazon.com/awscloudtrail/latest/userguide/best-practices-security.html']"
 - type: sql
-  query:
-  - SELECT * FROM CLOUDTRAIL WHERE ($EventSource = "cloudtrail.amazonaws.com" AND
-    $EventName IN ("StopLogging", "UpdateTrail", "DeleteTrail"))
+  query: SELECT * FROM CLOUDTRAIL WHERE ($EventSource = "cloudtrail.amazonaws.com"
+    AND $EventName IN ("StopLogging", "UpdateTrail", "DeleteTrail"))
 - type: signal
   DetectionName: AWS CloudTrail Important Change
   DetectionTactic: Defense Evasion
   DetectionTechnique: Impair Defenses
+  TargetHost: $EventSource
+  DetectionScore: 5
+  DetectionConfidence: Low

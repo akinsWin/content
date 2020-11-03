@@ -1,6 +1,6 @@
 id: 5f0ced2082f34aa0938f0b016d0d9b67
 name: Net.exe Execution
-path: /test
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: Detects execution of Net.exe, whether suspicious or benign.
 type: standard
 author: community
@@ -12,13 +12,15 @@ blocks:
     \ 'https://eqllib.readthedocs.io/en/latest/analytics/e61f557c-a9d0-4c25-ab5b-bbc46bb24deb.html',\
     \ 'https://eqllib.readthedocs.io/en/latest/analytics/9b3dd402-891c-4c4d-a662-28947168ce61.html']"
 - type: sql
-  query:
-  - SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%\\net.exe" OR $Image LIKE "%\\net1.exe")
-    AND ($CommandLine LIKE "% group%" OR $CommandLine LIKE "% localgroup%" OR $CommandLine
-    LIKE "% user%" OR $CommandLine LIKE "% view%" OR $CommandLine LIKE "% share" OR
-    $CommandLine LIKE "% accounts%" OR $CommandLine LIKE "% use%" OR $CommandLine
-    LIKE "% stop %"))
+  query: SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%\\net.exe" OR $Image LIKE
+    "%\\net1.exe") AND ($CommandLine LIKE "% group%" OR $CommandLine LIKE "% localgroup%"
+    OR $CommandLine LIKE "% user%" OR $CommandLine LIKE "% view%" OR $CommandLine
+    LIKE "% share" OR $CommandLine LIKE "% accounts%" OR $CommandLine LIKE "% use%"
+    OR $CommandLine LIKE "% stop %"))
 - type: signal
   DetectionName: Net.exe Execution
   DetectionTactic: Lateral Movement
   DetectionTechnique: Remote Services
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

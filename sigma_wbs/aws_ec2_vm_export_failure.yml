@@ -1,6 +1,6 @@
 id: 02f01abcb28b460a8a772998254dc3dd
 name: AWS EC2 VM Export Failure
-path: /test
+path: /Cloud Security/Amazon Web Services
 description: An attempt to export an AWS EC2 instance has been detected. A VM Export
   might indicate an attempt to extract information from an instance.
 type: standard
@@ -9,11 +9,13 @@ blocks:
 - type: text
   code: "Author: Diogo Braz \n References: ['https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html#export-instance']"
 - type: sql
-  query:
-  - SELECT * FROM CLOUDTRAIL WHERE (($EventName = "CreateInstanceExportTask" AND $EventSource
-    = "ec2.amazonaws.com") AND (($ErrorMessage LIKE "%" OR errorCode LIKE "%") OR
-    ($EventName = "ConsoleLogin" AND $ResponseElements LIKE "%Failure%")))
+  query: SELECT * FROM CLOUDTRAIL WHERE (($EventName = "CreateInstanceExportTask"
+    AND $EventSource = "ec2.amazonaws.com") AND (($ErrorMessage LIKE "%" OR errorCode
+    LIKE "%") OR ($EventName = "ConsoleLogin" AND $ResponseElements LIKE "%Failure%")))
 - type: signal
   DetectionName: AWS EC2 VM Export Failure
   DetectionTactic: Exfiltration
   DetectionTechnique: Transfer Data to Cloud Account
+  TargetHost: $EventSource
+  DetectionScore: 5
+  DetectionConfidence: Low

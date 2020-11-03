@@ -1,6 +1,6 @@
 id: e1585c12628d4925b4a4bccba2543731
 name: AWS Root Credentials
-path: /test
+path: /Cloud Security/Amazon Web Services
 description: Detects AWS root account usage
 type: standard
 author: community
@@ -8,10 +8,12 @@ blocks:
 - type: text
   code: "Author: vitaliy0x1 \n References: ['https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html']"
 - type: sql
-  query:
-  - SELECT * FROM CLOUDTRAIL WHERE ($UserIdentityType = "Root" AND NOT (eventType
+  query: SELECT * FROM CLOUDTRAIL WHERE ($UserIdentityType = "Root" AND NOT (eventType
     = "AwsServiceEvent"))
 - type: signal
   DetectionName: AWS Root Credentials
   DetectionTactic: Defense Evasion
   DetectionTechnique: Valid Accounts
+  TargetHost: $EventSource
+  DetectionScore: 5
+  DetectionConfidence: Low

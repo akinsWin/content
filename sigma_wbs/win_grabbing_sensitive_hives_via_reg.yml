@@ -1,6 +1,6 @@
 id: 70a36b287c254a3291a17599a6ad822c
 name: Grabbing Sensitive Hives via Reg Utility
-path: /test
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: Dump sam, system or security hives using REG.exe utility
 type: standard
 author: community
@@ -11,8 +11,7 @@ blocks:
     \ 'https://eqllib.readthedocs.io/en/latest/analytics/aed95fc6-5e3f-49dc-8b35-06508613f979.html',\
     \ 'https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003/T1003.md']"
 - type: sql
-  query:
-  - SELECT * FROM SYSMON-PROCESS WHERE ($Image LIKE "%\\reg.exe" AND ($CommandLine
+  query: SELECT * FROM SYSMON-PROCESS WHERE ($Image LIKE "%\\reg.exe" AND ($CommandLine
     LIKE "%save%" OR $CommandLine LIKE "%export%") AND ($CommandLine LIKE "%hklm%"
     OR $CommandLine LIKE "%hkey\_local\_machine%") AND ($CommandLine LIKE "%\\system"
     OR $CommandLine LIKE "%\\sam" OR $CommandLine LIKE "%\\security"))
@@ -20,3 +19,6 @@ blocks:
   DetectionName: Grabbing Sensitive Hives via Reg Utility
   DetectionTactic: Credential Access
   DetectionTechnique: OS Credential Dumping
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

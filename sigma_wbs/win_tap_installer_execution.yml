@@ -9,10 +9,11 @@ blocks:
 - type: text
   code: "Author: Daniil Yugoslavskiy, Ian Davis, oscd.community \n References: None"
 - type: sql
-  query:
-  - SELECT * FROM SYSMON-PROCESS WHERE $Image LIKE "%\\tapinstall.exe"
+  query: SELECT * FROM SYSMON-PROCESS WHERE $Image LIKE "%\\tapinstall.exe"
 - type: signal
   DetectionName: Tap Installer Execution
   DetectionTactic: Exfiltration
   DetectionTechnique: Exfiltration Over Alternative Protocol
   TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

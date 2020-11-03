@@ -11,10 +11,11 @@ blocks:
     \ oscd.community \n References: ['https://eqllib.readthedocs.io/en/latest/analytics/e491ce22-792f-11e9-8f5c-d46d6d62a49e.html',\
     \ 'https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1088/T1088.md']"
 - type: sql
-  query:
-  - SELECT * FROM SYSMON-PROCESS WHERE $ParentImage LIKE "%\\fodhelper.exe"
+  query: SELECT * FROM SYSMON-PROCESS WHERE $ParentImage LIKE "%\\fodhelper.exe"
 - type: signal
   DetectionName: Bypass UAC via Fodhelper.exe
   DetectionTactic: Privilege Escalation
   DetectionTechnique: Abuse Elevation Control Mechanism
   TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

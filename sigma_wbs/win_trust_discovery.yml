@@ -11,8 +11,7 @@ blocks:
     \ oscd.community \n References: ['https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1482/T1482.md',\
     \ 'https://eqllib.readthedocs.io/en/latest/analytics/03e231a6-74bc-467a-acb1-e5676b0fb55e.html']"
 - type: sql
-  query:
-  - SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%\\nltest.exe" AND $CommandLine
+  query: SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%\\nltest.exe" AND $CommandLine
     LIKE "%domain\_trusts%") OR ($Image LIKE "%\\dsquery.exe" AND $CommandLine LIKE
     "%trustedDomain%"))
 - type: signal
@@ -20,3 +19,5 @@ blocks:
   DetectionTactic: Discovery
   DetectionTechnique: Domain Trust Discovery
   TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

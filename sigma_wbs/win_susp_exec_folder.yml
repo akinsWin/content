@@ -1,6 +1,6 @@
 id: 1413a12d48c34eeeaa353a48b43484ef
 name: Executables Started in Suspicious Folder
-path: /test
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: Detects process starts of binaries from a suspicious folder
 type: standard
 author: community
@@ -11,10 +11,9 @@ blocks:
     \ 'https://www.crowdstrike.com/resources/reports/2019-crowdstrike-global-threat-report/',\
     \ 'https://github.com/ThreatHuntingProject/ThreatHunting/blob/master/hunts/suspicious_process_creation_via_windows_event_logs.md']"
 - type: sql
-  query:
-  - SELECT * FROM SYSMON-PROCESS WHERE ($Image LIKE "C:\\PerfLogs\\%" OR $Image LIKE
-    "C:\\$Recycle.bin\\%" OR $Image LIKE "C:\\Intel\\Logs\\%" OR $Image LIKE "C:\\Users\\Default\\%"
-    OR $Image LIKE "C:\\Users\\Public\\%" OR $Image LIKE "C:\\Users\\NetworkService\\%"
+  query: SELECT * FROM SYSMON-PROCESS WHERE ($Image LIKE "C:\\PerfLogs\\%" OR $Image
+    LIKE "C:\\$Recycle.bin\\%" OR $Image LIKE "C:\\Intel\\Logs\\%" OR $Image LIKE
+    "C:\\Users\\Default\\%" OR $Image LIKE "C:\\Users\\Public\\%" OR $Image LIKE "C:\\Users\\NetworkService\\%"
     OR $Image LIKE "C:\\Windows\\Fonts\\%" OR $Image LIKE "C:\\Windows\\Debug\\%"
     OR $Image LIKE "C:\\Windows\\Media\\%" OR $Image LIKE "C:\\Windows\\Help\\%" OR
     $Image LIKE "C:\\Windows\\addins\\%" OR $Image LIKE "C:\\Windows\\repair\\%" OR
@@ -25,3 +24,6 @@ blocks:
   DetectionName: Executables Started in Suspicious Folder
   DetectionTactic: Defense Evasion
   DetectionTechnique: Masquerading
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

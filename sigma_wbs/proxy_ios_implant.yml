@@ -1,6 +1,6 @@
 id: 0325bf6db545455892ddf775d632fd13
 name: iOS Implant URL Pattern
-path: /test
+path: /Advanced Threat Detection/Proxy Monitoring
 description: Detects URL pattern used by iOS Implant
 type: standard
 author: community
@@ -9,9 +9,11 @@ blocks:
   code: "Author: Florian Roth \n References: ['https://googleprojectzero.blogspot.com/2019/08/implant-teardown.html',\
     \ 'https://twitter.com/craiu/status/1167358457344925696']"
 - type: sql
-  query:
-  - SELECT * FROM WEBFILTER WHERE $URL LIKE "%/list/suc_name=%"
+  query: SELECT * FROM WEBFILTER WHERE $URL LIKE "%/list/suc_name=%"
 - type: signal
   DetectionName: iOS Implant URL Pattern
   DetectionTactic: Credential Access
   DetectionTechnique: Unsecured Credentials
+  SuspectHost: $SrcIP
+  DetectionScore: 5
+  DetectionConfidence: Low

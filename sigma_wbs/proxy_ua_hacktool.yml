@@ -1,6 +1,6 @@
 id: 3790f76ef4cb444ebe829b4558563651
 name: Hack Tool User Agent
-path: /test
+path: /Advanced Threat Detection/Proxy Monitoring
 description: Detects suspicious user agent strings user by hack tools in proxy logs
 type: standard
 author: community
@@ -9,29 +9,31 @@ blocks:
   code: "Author: Florian Roth \n References: ['https://github.com/fastly/waf_testbed/blob/master/templates/default/scanners-user-agents.data.erb',\
     \ 'http://rules.emergingthreats.net/open/snort-2.9.0/rules/emerging-user_agents.rules']"
 - type: sql
-  query:
-  - SELECT * FROM WEBFILTER WHERE ($UserAgent LIKE "%(hydra)%" OR $UserAgent LIKE
-    "% arachni/%" OR $UserAgent LIKE "% BFAC %" OR $UserAgent LIKE "% brutus %" OR
-    $UserAgent LIKE "% cgichk %" OR $UserAgent LIKE "%core-project/1.0%" OR $UserAgent
-    LIKE "% crimscanner/%" OR $UserAgent LIKE "%datacha0s%" OR $UserAgent LIKE "%dirbuster%"
-    OR $UserAgent LIKE "%domino hunter%" OR $UserAgent LIKE "%dotdotpwn%" OR $UserAgent
-    LIKE "FHScan Core" OR $UserAgent LIKE "%floodgate%" OR $UserAgent LIKE "%get-minimal%"
-    OR $UserAgent LIKE "%gootkit auto-rooter scanner%" OR $UserAgent LIKE "%grendel-scan%"
-    OR $UserAgent LIKE "% inspath %" OR $UserAgent LIKE "%internet ninja%" OR $UserAgent
-    LIKE "%jaascois%" OR $UserAgent LIKE "% zmeu %" OR $UserAgent LIKE "%masscan%"
-    OR $UserAgent LIKE "% metis %" OR $UserAgent LIKE "%morfeus fucking scanner%"
-    OR $UserAgent LIKE "%n-stealth%" OR $UserAgent LIKE "%nsauditor%" OR $UserAgent
-    LIKE "%pmafind%" OR $UserAgent LIKE "%security scan%" OR $UserAgent LIKE "%springenwerk%"
-    OR $UserAgent LIKE "%teh forest lobster%" OR $UserAgent LIKE "%toata dragostea%"
-    OR $UserAgent LIKE "% vega/%" OR $UserAgent LIKE "%voideye%" OR $UserAgent LIKE
-    "%webshag%" OR $UserAgent LIKE "%webvulnscan%" OR $UserAgent LIKE "% whcc/%" OR
-    $UserAgent LIKE "% Havij" OR $UserAgent LIKE "%absinthe%" OR $UserAgent LIKE "%bsqlbf%"
-    OR $UserAgent LIKE "%mysqloit%" OR $UserAgent LIKE "%pangolin%" OR $UserAgent
-    LIKE "%sql power injector%" OR $UserAgent LIKE "%sqlmap%" OR $UserAgent LIKE "%sqlninja%"
-    OR $UserAgent LIKE "%uil2pn%" OR $UserAgent LIKE "ruler" OR $UserAgent LIKE "Mozilla/5.0
-    (Windows; U; Windows NT 5.1; pt-PT; rv:1.9.1.2) Gecko/20090729 Firefox/3.5.2 (.NET
-    CLR 3.5.30729)")
+  query: SELECT * FROM WEBFILTER WHERE ($UserAgent LIKE "%(hydra)%" OR $UserAgent
+    LIKE "% arachni/%" OR $UserAgent LIKE "% BFAC %" OR $UserAgent LIKE "% brutus
+    %" OR $UserAgent LIKE "% cgichk %" OR $UserAgent LIKE "%core-project/1.0%" OR
+    $UserAgent LIKE "% crimscanner/%" OR $UserAgent LIKE "%datacha0s%" OR $UserAgent
+    LIKE "%dirbuster%" OR $UserAgent LIKE "%domino hunter%" OR $UserAgent LIKE "%dotdotpwn%"
+    OR $UserAgent LIKE "FHScan Core" OR $UserAgent LIKE "%floodgate%" OR $UserAgent
+    LIKE "%get-minimal%" OR $UserAgent LIKE "%gootkit auto-rooter scanner%" OR $UserAgent
+    LIKE "%grendel-scan%" OR $UserAgent LIKE "% inspath %" OR $UserAgent LIKE "%internet
+    ninja%" OR $UserAgent LIKE "%jaascois%" OR $UserAgent LIKE "% zmeu %" OR $UserAgent
+    LIKE "%masscan%" OR $UserAgent LIKE "% metis %" OR $UserAgent LIKE "%morfeus fucking
+    scanner%" OR $UserAgent LIKE "%n-stealth%" OR $UserAgent LIKE "%nsauditor%" OR
+    $UserAgent LIKE "%pmafind%" OR $UserAgent LIKE "%security scan%" OR $UserAgent
+    LIKE "%springenwerk%" OR $UserAgent LIKE "%teh forest lobster%" OR $UserAgent
+    LIKE "%toata dragostea%" OR $UserAgent LIKE "% vega/%" OR $UserAgent LIKE "%voideye%"
+    OR $UserAgent LIKE "%webshag%" OR $UserAgent LIKE "%webvulnscan%" OR $UserAgent
+    LIKE "% whcc/%" OR $UserAgent LIKE "% Havij" OR $UserAgent LIKE "%absinthe%" OR
+    $UserAgent LIKE "%bsqlbf%" OR $UserAgent LIKE "%mysqloit%" OR $UserAgent LIKE
+    "%pangolin%" OR $UserAgent LIKE "%sql power injector%" OR $UserAgent LIKE "%sqlmap%"
+    OR $UserAgent LIKE "%sqlninja%" OR $UserAgent LIKE "%uil2pn%" OR $UserAgent LIKE
+    "ruler" OR $UserAgent LIKE "Mozilla/5.0 (Windows; U; Windows NT 5.1; pt-PT; rv:1.9.1.2)
+    Gecko/20090729 Firefox/3.5.2 (.NET CLR 3.5.30729)")
 - type: signal
   DetectionName: Hack Tool User Agent
   DetectionTactic: Credential Access
   DetectionTechnique: Brute Force
+  SuspectHost: $SrcIP
+  DetectionScore: 5
+  DetectionConfidence: Low

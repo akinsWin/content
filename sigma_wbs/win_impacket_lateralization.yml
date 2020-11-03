@@ -1,6 +1,6 @@
 id: e7270bec3eba44a7bf13c49f86d9b459
 name: Impacket Lateralization Detection
-path: /test
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: Detects wmiexec/dcomexec/atexec/smbexec from Impacket framework
 type: standard
 author: community
@@ -11,13 +11,15 @@ blocks:
     \ 'https://github.com/SecureAuthCorp/impacket/blob/master/examples/smbexec.py',\
     \ 'https://github.com/SecureAuthCorp/impacket/blob/master/examples/dcomexec.py']"
 - type: sql
-  query:
-  - SELECT * FROM SYSMON-PROCESS WHERE ((($ParentImage LIKE "%\\wmiprvse.exe" OR $ParentImage
-    LIKE "%\\mmc.exe" OR $ParentImage LIKE "%\\explorer.exe" OR $ParentImage LIKE
-    "%\\services.exe") AND ($CommandLine LIKE "%cmd.exe% /Q /c % \\\\127.0.0.1\\%&1%"))
+  query: SELECT * FROM SYSMON-PROCESS WHERE ((($ParentImage LIKE "%\\wmiprvse.exe"
+    OR $ParentImage LIKE "%\\mmc.exe" OR $ParentImage LIKE "%\\explorer.exe" OR $ParentImage
+    LIKE "%\\services.exe") AND ($CommandLine LIKE "%cmd.exe% /Q /c % \\\\127.0.0.1\\%&1%"))
     OR (($ParentCommandLine LIKE "%svchost.exe -k netsvcs" OR $ParentCommandLine LIKE
     "taskeng.exe%") AND ($CommandLine LIKE "cmd.exe /C %Windows\\Temp\\%&1")))
 - type: signal
   DetectionName: Impacket Lateralization Detection
   DetectionTactic: Lateral Movement
   DetectionTechnique: Remote Services
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

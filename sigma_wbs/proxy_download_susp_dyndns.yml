@@ -1,6 +1,6 @@
 id: a87d4970aaf44b5fb4ff0f66ea0432b8
 name: Download from Suspicious Dyndns Hosts
-path: /test
+path: /Advanced Threat Detection/Proxy Monitoring
 description: Detects download of certain file types from hosts with dynamic DNS names
   (selected list)
 type: standard
@@ -9,12 +9,11 @@ blocks:
 - type: text
   code: "Author: Florian Roth \n References: ['https://www.alienvault.com/blogs/security-essentials/dynamic-dns-security-and-potential-threats']"
 - type: sql
-  query:
-  - SELECT * FROM WEBFILTER WHERE ($URL IN ("exe", "vbs", "bat", "rar", "ps1", "doc",
-    "docm", "xls", "xlsm", "pptm", "rtf", "hta", "dll", "ws", "wsf", "sct", "zip")
-    AND ($Domain LIKE "%.hopto.org" OR $Domain LIKE "%.no-ip.org" OR $Domain LIKE
-    "%.no-ip.info" OR $Domain LIKE "%.no-ip.biz" OR $Domain LIKE "%.no-ip.com" OR
-    $Domain LIKE "%.noip.com" OR $Domain LIKE "%.ddns.name" OR $Domain LIKE "%.myftp.org"
+  query: SELECT * FROM WEBFILTER WHERE ($URL IN ("exe", "vbs", "bat", "rar", "ps1",
+    "doc", "docm", "xls", "xlsm", "pptm", "rtf", "hta", "dll", "ws", "wsf", "sct",
+    "zip") AND ($Domain LIKE "%.hopto.org" OR $Domain LIKE "%.no-ip.org" OR $Domain
+    LIKE "%.no-ip.info" OR $Domain LIKE "%.no-ip.biz" OR $Domain LIKE "%.no-ip.com"
+    OR $Domain LIKE "%.noip.com" OR $Domain LIKE "%.ddns.name" OR $Domain LIKE "%.myftp.org"
     OR $Domain LIKE "%.myftp.biz" OR $Domain LIKE "%.serveblog.net" OR $Domain LIKE
     "%.servebeer.com" OR $Domain LIKE "%.servemp3.com" OR $Domain LIKE "%.serveftp.com"
     OR $Domain LIKE "%.servequake.com" OR $Domain LIKE "%.servehalflife.com" OR $Domain
@@ -43,3 +42,6 @@ blocks:
   DetectionName: Download from Suspicious Dyndns Hosts
   DetectionTactic: Command and Control
   DetectionTechnique: Dynamic Resolution
+  SuspectHost: $SrcIP
+  DetectionScore: 5
+  DetectionConfidence: Low

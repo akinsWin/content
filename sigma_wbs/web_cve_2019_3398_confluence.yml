@@ -1,6 +1,6 @@
 id: 3d87f10e745a48c09ba4c405551a2939
 name: Confluence Exploitation CVE-2019-3398
-path: /test
+path: /Advanced Threat Detection/Webserver Exploits
 description: Detects the exploitation of the Confluence vulnerability described in
   CVE-2019-3398
 type: standard
@@ -9,10 +9,12 @@ blocks:
 - type: text
   code: "Author: Florian Roth \n References: ['https://devcentral.f5.com/s/articles/confluence-arbitrary-file-write-via-path-traversal-cve-2019-3398-34181']"
 - type: sql
-  query:
-  - SELECT * FROM WEBSERVER WHERE ($Method = "POST" AND $URL LIKE "%/upload.action%"
+  query: SELECT * FROM WEBSERVER WHERE ($Method = "POST" AND $URL LIKE "%/upload.action%"
     AND $URL LIKE "%filename=../../../../%")
 - type: signal
   DetectionName: Confluence Exploitation CVE-2019-3398
   DetectionTactic: Initial Access
   DetectionTechnique: Exploit Public-Facing Application
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

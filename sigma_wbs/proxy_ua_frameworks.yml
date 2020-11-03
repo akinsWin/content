@@ -1,6 +1,6 @@
 id: 7d3146b0d6c04a28aabad648df760a24
 name: Exploit Framework User Agent
-path: /test
+path: /Advanced Threat Detection/Proxy Monitoring
 description: Detects suspicious user agent strings used by exploit / pentest framworks
   like Metasploit in proxy logs
 type: standard
@@ -9,8 +9,7 @@ blocks:
 - type: text
   code: "Author: Florian Roth \n References: ['https://blog.didierstevens.com/2015/03/16/quickpost-metasploit-user-agent-strings/']"
 - type: sql
-  query:
-  - SELECT * FROM WEBFILTER WHERE ($UserAgent LIKE "Internet Explorer %" OR $UserAgent
+  query: SELECT * FROM WEBFILTER WHERE ($UserAgent LIKE "Internet Explorer %" OR $UserAgent
     LIKE "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; InfoPath.2)" OR
     $UserAgent LIKE "Mozilla/4.0 (compatible; Metasploit RSPEC)" OR $UserAgent LIKE
     "Mozilla/4.0 (compatible; MSIE 6.1; Windows NT)" OR $UserAgent LIKE "Mozilla/4.0
@@ -33,3 +32,6 @@ blocks:
   DetectionName: Exploit Framework User Agent
   DetectionTactic: Command and Control
   DetectionTechnique: Application Layer Protocol
+  SuspectHost: $SrcIP
+  DetectionScore: 5
+  DetectionConfidence: Low

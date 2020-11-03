@@ -1,6 +1,6 @@
 id: 2b312b4ebdab435995fb1d2a62b84d8d
 name: Rundll32 Internet Connection
-path: /test
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: Detects a rundll32 that communicates with public IP addresses
 type: standard
 author: community
@@ -8,8 +8,7 @@ blocks:
 - type: text
   code: "Author: Florian Roth \n References: ['https://www.hybrid-analysis.com/sample/759fb4c0091a78c5ee035715afe3084686a8493f39014aea72dae36869de9ff6?environmentId=100']"
 - type: sql
-  query:
-  - SELECT * FROM SYSMON-NETWORK WHERE (($Image LIKE "%\\rundll32.exe" AND $Initiated
+  query: SELECT * FROM SYSMON-NETWORK WHERE (($Image LIKE "%\\rundll32.exe" AND $Initiated
     = "true") AND NOT (($DstIP LIKE "10.%" OR $DstIP LIKE "192.168.%" OR $DstIP LIKE
     "172.16.%" OR $DstIP LIKE "172.17.%" OR $DstIP LIKE "172.18.%" OR $DstIP LIKE
     "172.19.%" OR $DstIP LIKE "172.20.%" OR $DstIP LIKE "172.21.%" OR $DstIP LIKE
@@ -21,3 +20,6 @@ blocks:
   DetectionName: Rundll32 Internet Connection
   DetectionTactic: Defense Evasion
   DetectionTechnique: Signed Binary Proxy Execution
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low
