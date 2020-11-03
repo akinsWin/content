@@ -1,6 +1,6 @@
 id: 5b3ba3a4fa0043ada89373281eec3489
 name: Windows PowerShell User Agent
-path: /Advanced Threat Detection//Proxy Monitoring
+path: /Advanced Threat Detection/Proxy Monitoring
 description: Detects Windows PowerShell Web Access
 type: standard
 author: community

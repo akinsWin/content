@@ -1,6 +1,6 @@
 id: b7c622522e814a48a13dab1cf72ec8c7
 name: Raw Paste Service Access
-path: /Advanced Threat Detection//Proxy Monitoring
+path: /Advanced Threat Detection/Proxy Monitoring
 description: Detects direct access to raw pastes in different paste services often
   used by malware in their second stages to download malicious code in encrypted or
   encoded form

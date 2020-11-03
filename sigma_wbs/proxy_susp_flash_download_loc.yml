@@ -1,6 +1,6 @@
 id: c1b8ac0913404b63a30a515b301c6139
 name: Flash Player Update from Suspicious Location
-path: /Advanced Threat Detection//Proxy Monitoring
+path: /Advanced Threat Detection/Proxy Monitoring
 description: Detects a flashplayer update from an unofficial location
 type: standard
 author: community
