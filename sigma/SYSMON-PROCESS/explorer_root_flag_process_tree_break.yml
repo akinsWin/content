@@ -1,0 +1,5 @@
+title: Explorer Root Flag Process Tree Break
+author: Florian Roth
+detection:
+- SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "%explorer.exe%"
+  AND $CommandLine LIKE "% /root,%")

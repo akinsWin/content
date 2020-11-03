@@ -1,0 +1,5 @@
+title: Fax Service DLL Search Order Hijack
+author: NVISO
+detection:
+- SELECT * FROM SYSMON-IMAGE-LOAD WHERE ((($Image LIKE "%fxssvc.exe") AND ($ImageLoaded
+  LIKE "%ualapi.dll")) AND NOT (($ImageLoaded LIKE "C:\\Windows\\WinSxS\\%")))

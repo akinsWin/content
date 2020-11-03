@@ -1,4 +1,0 @@
-title: DTRACK Process Creation
-author: Florian Roth
-detection:
-- SELECT * FROM WINDOWSPROCESS_CREATION WHERE $CommandLine LIKE "% echo EEEE > %"

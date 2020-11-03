@@ -1,0 +1,5 @@
+title: Suspicious AdFind Execution
+author: FPT.EagleEye Team
+detection:
+- SELECT * FROM SYSMON-PROCESS WHERE ($Commandline LIKE "%objectcategory%"
+  AND ($Image LIKE "%\\adfind.exe"))

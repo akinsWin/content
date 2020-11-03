@@ -1,4 +1,0 @@
-title: QuarksPwDump Dump File
-author: Florian Roth
-detection:
-- SELECT * FROM WINDOWSFILE_EVENT WHERE $FileName LIKE "%\\AppData\\Local\\Temp\\SAM-%.dmp%"

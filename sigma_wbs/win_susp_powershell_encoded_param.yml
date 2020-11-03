@@ -1,0 +1,16 @@
+id: 48ce469bb97548aa9006f806ec7c4be3
+name: PowerShell Encoded Character Syntax
+path: /test
+description: Detects suspicious encoded character syntax often used for defense evasion
+type: standard
+author: community
+blocks:
+- type: text
+  code: "Author: Florian Roth \n References: ['https://twitter.com/0gtweet/status/1281103918693482496']"
+- type: sql
+  query:
+  - SELECT * FROM SYSMON-PROCESS WHERE $CommandLine LIKE "%(WCHAR)0x%"
+- type: signal
+  DetectionName: PowerShell Encoded Character Syntax
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Obfuscated Files or Information

@@ -1,0 +1,6 @@
+title: AWS EC2 Download Userdata
+author: faloker
+detection:
+- SELECT * FROM (SELECT count(*) AS agg FROM CLOUDTRAIL WHERE ($EventSource = "ec2.amazonaws.com"
+  AND RequestParametersAttribute = "userData" AND $EventName = "DescribeInstanceAttribute"))
+  WHERE agg > 10

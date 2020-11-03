@@ -1,8 +1,0 @@
-title: Windows Defender Threat Detection Disabled
-author: "J\xE1n Tren\u010Dansk\xFD"
-detection:
-- SELECT * FROM WINDOWSWINDEFEND WHERE ($EventID IN ("5001", "5010", "5012", "5101")
-  OR (($TargetObject LIKE "HKEY\_LOCAL\_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WinDefend"
-  OR $TargetObject LIKE "HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\Windows Defender"
-  OR $TargetObject LIKE "HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows
-  Defender") AND $Details = "DWORD (0x00000001)"))

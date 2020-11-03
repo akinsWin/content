@@ -1,0 +1,4 @@
+title: DTRACK Process Creation
+author: Florian Roth
+detection:
+- SELECT * FROM SYSMON-PROCESS WHERE $CommandLine LIKE "% echo EEEE > %"

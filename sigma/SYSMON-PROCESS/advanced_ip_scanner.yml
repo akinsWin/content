@@ -1,0 +1,4 @@
+title: Advanced IP Scanner
+author: '@ROxPinTeddy'
+detection:
+- SELECT * FROM SYSMON-PROCESS WHERE $Image LIKE "%\\advanced\_ip\_scanner%"

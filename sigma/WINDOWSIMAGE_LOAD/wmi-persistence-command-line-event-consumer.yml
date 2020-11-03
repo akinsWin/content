@@ -1,5 +1,0 @@
-title: WMI Persistence - Command Line Event Consumer
-author: Thomas Patzke
-detection:
-- SELECT * FROM WINDOWSIMAGE_LOAD WHERE ($Image LIKE "C:\\Windows\\System32\\wbem\\WmiPrvSE.exe"
-  AND $ImageLoaded LIKE "%\\wbemcons.dll")

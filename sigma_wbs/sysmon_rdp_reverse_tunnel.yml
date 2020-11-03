@@ -1,0 +1,18 @@
+id: 251d51a43a134ca38757f84e1919b2aa
+name: RDP Over Reverse SSH Tunnel
+path: /test
+description: Detects svchost hosting RDP termsvcs communicating with the loopback
+  address and on TCP port 3389
+type: standard
+author: community
+blocks:
+- type: text
+  code: "Author: Samir Bousseaden \n References: ['https://twitter.com/SBousseaden/status/1096148422984384514']"
+- type: sql
+  query:
+  - SELECT * FROM SYSMON-NETWORK WHERE ($Image LIKE "%\\svchost.exe" AND $Initiated
+    = "true" AND $SrcPort = "3389" AND ($DstIP LIKE "127.%" OR $DstIP LIKE "::1"))
+- type: signal
+  DetectionName: RDP Over Reverse SSH Tunnel
+  DetectionTactic: Lateral Movement
+  DetectionTechnique: Remote Services

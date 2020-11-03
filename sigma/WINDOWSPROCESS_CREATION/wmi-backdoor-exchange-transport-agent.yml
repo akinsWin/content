@@ -1,4 +1,0 @@
-title: WMI Backdoor Exchange Transport Agent
-author: Florian Roth
-detection:
-- SELECT * FROM WINDOWSPROCESS_CREATION WHERE $ParentImage LIKE "%\\EdgeTransport.exe"

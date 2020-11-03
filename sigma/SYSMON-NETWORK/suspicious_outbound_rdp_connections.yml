@@ -1,0 +1,12 @@
+title: Suspicious Outbound RDP Connections
+author: Markus Neis - Swisscom
+detection:
+- SELECT * FROM SYSMON-NETWORK WHERE (($DstPort = "3389" AND $Initiated
+  = "true") AND NOT (($Image LIKE "%\\mstsc.exe" OR $Image LIKE "%\\RTSApp.exe" OR
+  $Image LIKE "%\\RTS2App.exe" OR $Image LIKE "%\\RDCMan.exe" OR $Image LIKE "%\\ws\_TunnelService.exe"
+  OR $Image LIKE "%\\RSSensor.exe" OR $Image LIKE "%\\RemoteDesktopManagerFree.exe"
+  OR $Image LIKE "%\\RemoteDesktopManager.exe" OR $Image LIKE "%\\RemoteDesktopManager64.exe"
+  OR $Image LIKE "%\\mRemoteNG.exe" OR $Image LIKE "%\\mRemote.exe" OR $Image LIKE
+  "%\\Terminals.exe" OR $Image LIKE "%\\spiceworks-finder.exe" OR $Image LIKE "%\\FSDiscovery.exe"
+  OR $Image LIKE "%\\FSAssessment.exe" OR $Image LIKE "%\\MobaRTE.exe" OR $Image LIKE
+  "%\\chrome.exe" OR $Image LIKE "%\\thor.exe" OR $Image LIKE "%\\thor64.exe")))

@@ -1,0 +1,5 @@
+title: AWS EC2 Startup Shell Script Change
+author: faloker
+detection:
+- SELECT * FROM CLOUDTRAIL WHERE ($EventSource = "ec2.amazonaws.com" AND RequestParametersUserData
+  LIKE "%" AND $EventName = "ModifyInstanceAttribute")

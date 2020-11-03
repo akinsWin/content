@@ -1,0 +1,21 @@
+id: be2c5a9c5cc2422d8274b86bfbbbf557
+name: Judgement Panda Exfil Activity
+path: /test
+description: Detects Judgement Panda activity as described in Global Threat Report
+  2019 by Crowdstrike
+type: standard
+author: community
+blocks:
+- type: text
+  code: "Author: Florian Roth \n References: ['https://www.crowdstrike.com/resources/reports/2019-crowdstrike-global-threat-report/']"
+- type: sql
+  query:
+  - SELECT * FROM SYSMON-PROCESS WHERE (($CommandLine LIKE "%\\ldifde.exe -f -n %"
+    OR $CommandLine LIKE "%\\7za.exe a 1.7z %" OR $CommandLine LIKE "% eprod.ldf"
+    OR $CommandLine LIKE "%\\aaaa\\procdump64.exe%" OR $CommandLine LIKE "%\\aaaa\\netsess.exe%"
+    OR $CommandLine LIKE "%\\aaaa\\7za.exe%" OR $CommandLine LIKE "%copy .\\1.7z \\%"
+    OR $CommandLine LIKE "%copy \\client\\c$\\aaaa\\%") OR $Image LIKE "C:\\Users\\Public\\7za.exe")
+- type: signal
+  DetectionName: Judgement Panda Exfil Activity
+  DetectionTactic: Collection
+  DetectionTechnique: Archive Collected Data

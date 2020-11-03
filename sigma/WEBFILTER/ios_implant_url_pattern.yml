@@ -1,0 +1,4 @@
+title: iOS Implant URL Pattern
+author: Florian Roth
+detection:
+- SELECT * FROM WEBFILTER WHERE $URL LIKE "%/list/suc_name=%"

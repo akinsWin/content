@@ -1,5 +1,0 @@
-title: Suspicious AdFind Execution
-author: FPT.EagleEye Team
-detection:
-- SELECT * FROM WINDOWSPROCESS_CREATION WHERE (ProcessCommandline LIKE "%objectcategory%"
-  AND ($Image LIKE "%\\adfind.exe"))

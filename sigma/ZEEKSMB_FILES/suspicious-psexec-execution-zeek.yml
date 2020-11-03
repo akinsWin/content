@@ -1,6 +1,0 @@
-title: Suspicious PsExec Execution - Zeek
-author: Samir Bousseaden, @neu5ron
-detection:
-- SELECT * FROM ZEEKSMB_FILES WHERE (($Path LIKE "\\%\\IPC$" AND ($Name LIKE "%-stdin"
-  OR $Name LIKE "%-stdout" OR $Name LIKE "%-stderr")) AND NOT ($Name LIKE "\\%\\IPC$"
-  AND $Path LIKE "PSEXESVC%"))

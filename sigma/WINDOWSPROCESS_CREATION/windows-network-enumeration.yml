@@ -1,5 +1,0 @@
-title: Windows Network Enumeration
-author: Endgame, JHasenbusch (ported for oscd.community)
-detection:
-- SELECT * FROM WINDOWSPROCESS_CREATION WHERE ((($Image LIKE "%\\net.exe" OR $Image
-  LIKE "%\\net1.exe") AND $CommandLine LIKE "%view%") AND NOT ($CommandLine LIKE "%\\%"))

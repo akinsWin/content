@@ -1,0 +1,5 @@
+title: XSL Script Processing
+author: Timur Zinniatullin, oscd.community
+detection:
+- SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%\\wmic.exe" AND $CommandLine
+  LIKE "%/format%") OR $Image LIKE "%\\msxsl.exe")

@@ -1,0 +1,20 @@
+id: 9d241a0b79744a648dbdc73ae320d999
+name: Suspicious Esentutl Use
+path: /test
+description: Detects flags often used with the LOLBAS Esentutl for malicious activity.
+  It could be used in rare cases by administrators to access locked files or during
+  maintenance.
+type: standard
+author: community
+blocks:
+- type: text
+  code: "Author: Florian Roth \n References: ['https://lolbas-project.github.io/',\
+    \ 'https://twitter.com/chadtilbury/status/1264226341408452610']"
+- type: sql
+  query:
+  - SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "% /vss %" AND $CommandLine
+    LIKE "% /y %")
+- type: signal
+  DetectionName: Suspicious Esentutl Use
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Signed Binary Proxy Execution

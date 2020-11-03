@@ -1,5 +1,0 @@
-title: Cred Dump-Tools Named Pipes
-author: Teymur Kheirkhabarov, oscd.community
-detection:
-- SELECT * FROM WINDOWSSYSMON WHERE ($EventID = "17" AND ($PipeName LIKE "%\\lsadump%"
-  OR $PipeName LIKE "%\\cachedump%" OR $PipeName LIKE "%\\wceservicepipe%"))

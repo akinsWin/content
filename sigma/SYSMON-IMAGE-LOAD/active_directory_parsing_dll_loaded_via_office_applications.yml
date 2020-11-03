@@ -1,0 +1,6 @@
+title: Active Directory Parsing DLL Loaded Via Office Applications
+author: Antonlovesdnb
+detection:
+- SELECT * FROM SYSMON-IMAGE-LOAD WHERE (($Image LIKE "%\\winword.exe" OR $Image LIKE
+  "%\\powerpnt.exe" OR $Image LIKE "%\\excel.exe" OR $Image LIKE "%\\outlook.exe")
+  AND ($ImageLoaded LIKE "%\\dsparse.dll%"))

@@ -1,0 +1,5 @@
+title: AWS IAM Backdoor Users Keys
+author: faloker
+detection:
+- SELECT * FROM CLOUDTRAIL WHERE (($EventSource = "iam.amazonaws.com" AND $EventName
+  = "CreateAccessKey") AND NOT ($UserIdentityArn LIKE "%responseElements.accessKey.userName%"))

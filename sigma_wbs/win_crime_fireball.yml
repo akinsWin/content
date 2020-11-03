@@ -1,0 +1,17 @@
+id: e126f2c69ba544a3b15e94d90a40e3f9
+name: Fireball Archer Install
+path: /test
+description: Detects Archer malware invocation via rundll32
+type: standard
+author: community
+blocks:
+- type: text
+  code: "Author: Florian Roth \n References: ['https://www.virustotal.com/en/file/9b4971349ae85aa09c0a69852ed3e626c954954a3927b3d1b6646f139b930022/analysis/',\
+    \ 'https://www.hybrid-analysis.com/sample/9b4971349ae85aa09c0a69852ed3e626c954954a3927b3d1b6646f139b930022?environmentId=100']"
+- type: sql
+  query:
+  - SELECT * FROM SYSMON-PROCESS WHERE $CommandLine LIKE "%\\rundll32.exe %,InstallArcherSvc"
+- type: signal
+  DetectionName: Fireball Archer Install
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Signed Binary Proxy Execution

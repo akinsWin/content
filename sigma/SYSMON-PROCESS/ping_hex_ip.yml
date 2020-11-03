@@ -1,0 +1,5 @@
+title: Ping Hex IP
+author: Florian Roth
+detection:
+- SELECT * FROM SYSMON-PROCESS WHERE (($CommandLine LIKE "%\\ping.exe 0x%"
+  OR $CommandLine LIKE "%\\ping 0x%") AND ($Image LIKE "%ping.exe%"))

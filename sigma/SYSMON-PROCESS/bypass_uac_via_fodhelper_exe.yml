@@ -1,0 +1,4 @@
+title: Bypass UAC via Fodhelper.exe
+author: E.M. Anhaus (orignally from Atomic Blue Detections, Tony Lambert), oscd.community
+detection:
+- SELECT * FROM SYSMON-PROCESS WHERE $ParentImage LIKE "%\\fodhelper.exe"

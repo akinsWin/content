@@ -1,5 +1,0 @@
-title: PowerShell DownloadFile
-author: Florian Roth
-detection:
-- SELECT * FROM WINDOWSPROCESS_CREATION WHERE ($CommandLine LIKE "%powershell%" AND
-  $CommandLine LIKE "%.DownloadFile%" AND $CommandLine LIKE "%System.Net.WebClient%")

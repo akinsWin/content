@@ -1,0 +1,22 @@
+id: 72a449d9b5944ac4a1ece5d799ffa3f8
+name: Windows Mangement Instrumentation DLL Loaded Via Microsoft Word
+path: /test
+description: Detects DLL's Loaded Via Word Containing VBA Macros Executing WMI Commands
+type: standard
+author: community
+blocks:
+- type: text
+  code: "Author: Michael R. (@nahamike01) \n References: ['https://medium.com/threatpunter/detecting-adversary-tradecraft-with-image-load-event-logging-and-eql-8de93338c16',\
+    \ 'https://www.carbonblack.com/2019/04/24/cb-tau-threat-intelligence-notification-emotet-utilizing-wmi-to-launch-powershell-encoded-code/',\
+    \ 'https://media.cert.europa.eu/static/SecurityAdvisories/2019/CERT-EU-SA2019-021.pdf']"
+- type: sql
+  query:
+  - SELECT * FROM SYSMON-IMAGE-LOAD WHERE (($Image LIKE "%\\winword.exe" OR $Image
+    LIKE "%\\powerpnt.exe" OR $Image LIKE "%\\excel.exe" OR $Image LIKE "%\\outlook.exe")
+    AND ($ImageLoaded LIKE "%\\wmiutils.dll" OR $ImageLoaded LIKE "%\\wbemcomn.dll"
+    OR $ImageLoaded LIKE "%\\wbemprox.dll" OR $ImageLoaded LIKE "%\\wbemdisp.dll"
+    OR $ImageLoaded LIKE "%\\wbemsvc.dll"))
+- type: signal
+  DetectionName: Windows Mangement Instrumentation DLL Loaded Via Microsoft Word
+  DetectionTactic: Execution
+  DetectionTechnique: Windows Management Instrumentation

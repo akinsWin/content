@@ -1,6 +1,0 @@
-title: Svchost DLL Search Order Hijack
-author: SBousseaden
-detection:
-- SELECT * FROM WINDOWSIMAGE_LOAD WHERE ((($Image LIKE "%\\svchost.exe") AND ($ImageLoaded
-  LIKE "%\\tsmsisrv.dll" OR $ImageLoaded LIKE "%\\tsvipsrv.dll" OR $ImageLoaded LIKE
-  "%\\wlbsctrl.dll")) AND NOT (($ImageLoaded LIKE "C:\\Windows\\WinSxS\\%")))

@@ -1,0 +1,12 @@
+title: Suspicious User Agent
+author: Florian Roth
+detection:
+- SELECT * FROM WEBFILTER WHERE ((($UserAgent LIKE "user-agent%" OR $UserAgent LIKE
+  "Mozilla/3.0 %" OR $UserAgent LIKE "Mozilla/2.0 %" OR $UserAgent LIKE "Mozilla/1.0
+  %" OR $UserAgent LIKE "Mozilla %" OR $UserAgent LIKE " Mozilla/%" OR $UserAgent
+  LIKE "Mozila/%" OR $UserAgent LIKE "Mozilla/4.0 (compatible; MSIE 6.0; MS Web Services
+  Client Protocol%") OR ($UserAgent LIKE "% (compatible;MSIE %" OR $UserAgent LIKE
+  "%.0;Windows NT %") OR ($UserAgent LIKE "\_" OR $UserAgent LIKE "CertUtil URL Agent"
+  OR $UserAgent LIKE "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:60.0)" OR $UserAgent
+  LIKE "Mozilla/5.0 (Windows NT 6.3; WOW64; rv:28.0) Gecko/20100101 Firefox/28.0"
+  OR $UserAgent LIKE "HTTPS")) AND NOT (($UserAgent LIKE "Mozilla/3.0 % Acrobat %")))
