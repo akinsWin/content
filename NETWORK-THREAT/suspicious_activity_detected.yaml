@@ -6,5 +6,5 @@ type: standard
 author: Dnif User
 blocks:
 - type: dql
-  query: fetch * from event where $Duration=1h AND $Action=PACK_ALLWD AND $Severity=MEDIUM
+  query: fetch * from event where $Duration=1h AND $Action=PACKET_ALLOWED AND $Severity=MEDIUM
     AND $Stream=NETWORK-THREAT group count_unique $SrcIP, $DstIP, $AtkMsg limit 100

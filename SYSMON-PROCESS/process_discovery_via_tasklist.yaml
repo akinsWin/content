@@ -6,7 +6,9 @@ type: standard
 author: Dnif User
 blocks:
 - type: dql
-  query: _fetch * from event where NOT $User=LOCAL SERVICE NOT $User=SYSTEM AND $Stream=SYSMON-PROCESS
-    AND $Duration=1h AND $Action=PROCESS_ADDED AND $Process=regex(.*start.*|.*query.*|.*stop.*|.*service.*|.*tasklist.*)i
+  query: _fetch * from event where NOT $User in [LOCAL SERVICE, $User=SYSTEM] AND
+    $Stream=SYSMON-PROCESS AND $Duration=1h AND $Action=PROCESS_ADDED AND $Process=regex((?i).*(start|query|stop|service|tasklist).*)
     group count_unique $User, $SystemName limit 100
 - type: signal
+  DetectionTechnique: ''
+  DetectionSeverity: ''

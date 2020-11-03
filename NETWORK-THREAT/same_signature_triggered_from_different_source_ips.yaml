@@ -11,4 +11,4 @@ blocks:
 - type: dql
   query: _agg count_unique $AtkMsg
 - type: dql
-  query: _checkif int_compare count_unique > 50 include
+  query: _checkif int_compare $count_unique > 10 include
