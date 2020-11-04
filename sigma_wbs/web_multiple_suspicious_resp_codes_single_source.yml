@@ -8,7 +8,7 @@ blocks:
 - type: text
   code: "Author: Thomas Patzke \n References: None"
 - type: sql
-  query: SELECT $SrcIP, count(*) AS agg FROM WEBSERVER WHERE $ReturnCode IN ("400",
+  query: SELECT $SrcIP, first(System) AS System, count(*) AS agg FROM WEBSERVER WHERE $ReturnCode IN ("400",
     "401", "403", "500") GROUP BY $SrcIP HAVING agg > 10
 - type: signal
   DetectionName: Multiple Suspicious Resp Codes Caused by Single Client
