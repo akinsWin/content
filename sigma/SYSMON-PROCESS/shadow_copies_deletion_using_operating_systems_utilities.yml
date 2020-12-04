@@ -1,6 +1,0 @@
-title: Shadow Copies Deletion Using Operating Systems Utilities
-author: Florian Roth, Michael Haag, Teymur Kheirkhabarov, Daniil Yugoslavskiy, oscd.community
-detection:
-- SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%\\powershell.exe" OR
-  $Image LIKE "%\\wmic.exe" OR $Image LIKE "%\\vssadmin.exe") AND $CommandLine LIKE
-  "%shadow%" AND $CommandLine LIKE "%delete%")

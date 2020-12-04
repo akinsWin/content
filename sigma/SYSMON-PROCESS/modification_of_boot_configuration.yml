@@ -1,7 +1,0 @@
-title: Modification of Boot Configuration
-author: E.M. Anhaus (orignally from Atomic Blue Detections, Endgame), oscd.community
-detection:
-- SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%\\bcdedit.exe" AND $CommandLine
-  LIKE "%set%") AND (($CommandLine LIKE "%bootstatuspolicy%" AND $CommandLine LIKE
-  "%ignoreallfailures%") OR ($CommandLine LIKE "%recoveryenabled%" AND $CommandLine
-  LIKE "%no%")))

@@ -1,9 +1,0 @@
-title: Suspicious Process Start Locations
-author: juju4
-detection:
-- SELECT * FROM SYSMON-PROCESS WHERE ($Image LIKE "%:\\RECYCLER\\%" OR $Image
-  LIKE "%:\\SystemVolumeInformation\\%" OR $Image LIKE "C:\\Windows\\Tasks\\%" OR
-  $Image LIKE "C:\\Windows\\debug\\%" OR $Image LIKE "C:\\Windows\\fonts\\%" OR $Image
-  LIKE "C:\\Windows\\help\\%" OR $Image LIKE "C:\\Windows\\drivers\\%" OR $Image LIKE
-  "C:\\Windows\\addins\\%" OR $Image LIKE "C:\\Windows\\cursors\\%" OR $Image LIKE
-  "C:\\Windows\\system32\\tasks\\%")

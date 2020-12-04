@@ -1,4 +1,0 @@
-title: CobaltStrike Malleable (OCSP) Profile
-author: Markus Neis
-detection:
-- SELECT * FROM WEBFILTER WHERE ($URL LIKE "%/oscp/%" AND $DstHost = "ocsp.verisign.com")

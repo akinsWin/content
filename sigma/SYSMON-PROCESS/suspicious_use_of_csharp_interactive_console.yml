@@ -1,5 +1,0 @@
-title: Suspicious Use of CSharp Interactive Console
-author: Michael R. (@nahamike01)
-detection:
-- SELECT * FROM SYSMON-PROCESS WHERE ($Image LIKE "%\\csi.exe" AND $ParentImage
-  LIKE "%\\powershell.exe" AND $OriginalFileName = "csi.exe")

@@ -1,5 +1,0 @@
-title: AWS GuardDuty Important Change
-author: faloker
-detection:
-- SELECT * FROM CLOUDTRAIL WHERE ($EventSource = "guardduty.amazonaws.com" AND $EventName
-  = "CreateIPSet")

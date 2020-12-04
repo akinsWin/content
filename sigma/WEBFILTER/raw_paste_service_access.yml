@@ -1,5 +1,0 @@
-title: Raw Paste Service Access
-author: Florian Roth
-detection:
-- SELECT * FROM WEBFILTER WHERE ($URL LIKE "%.paste.ee/r/%" OR $URL LIKE "%.pastebin.com/raw/%"
-  OR $URL LIKE "%.hastebin.com/raw/%" OR $URL LIKE "%.ghostbin.co/paste/%/raw/%")

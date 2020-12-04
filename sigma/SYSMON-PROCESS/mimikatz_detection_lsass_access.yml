@@ -1,5 +1,0 @@
-title: Mimikatz Detection LSASS Access
-author: Sherif Eldeeb
-detection:
-- SELECT * FROM SYSMON-PROCESS WHERE ($Action = "PROCESS_ACCESSED" AND $TargetImage LIKE "C:\\windows\\system32\\lsass.exe"
-  AND $GrantedAccess IN ("0x1410", "0x1010"))

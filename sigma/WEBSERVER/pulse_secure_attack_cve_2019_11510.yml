@@ -1,4 +1,0 @@
-title: Pulse Secure Attack CVE-2019-11510
-author: Florian Roth
-detection:
-- SELECT * FROM WEBSERVER WHERE $URL LIKE "%_/dana/html5acc/guacamole/%"

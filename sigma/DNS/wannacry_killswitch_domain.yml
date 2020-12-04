@@ -1,7 +1,0 @@
-title: Wannacry Killswitch Domain
-author: Mike Wade
-detection:
-- SELECT * FROM DNS WHERE $Query IN ("ifferfsodp9ifjaposdfjhgosurijfaewrwergwea.testing",
-  "ifferfsodp9ifjaposdfjhgosurijfaewrwergwea.test", "ifferfsodp9ifjaposdfjhgosurijfaewrwergwea.com",
-  "ayylmaotjhsstasdfasdfasdfasdfasdfasdfasdf.com", "iuqssfsodp9ifjaposdfjhgosurijfaewrwergwea.com",
-  "")

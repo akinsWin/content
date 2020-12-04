@@ -1,5 +1,0 @@
-title: Unsigned Image Loaded Into LSASS Process
-author: Teymur Kheirkhabarov, oscd.community
-detection:
-- SELECT * FROM SYSMON-IMAGE-LOAD WHERE ($Image LIKE "%\\lsass.exe" AND $Signed =
-  "false")

@@ -1,5 +1,0 @@
-title: Possible Process Hollowing Image Loading
-author: Markus Neis
-detection:
-- SELECT * FROM SYSMON-IMAGE-LOAD WHERE (($Image LIKE "%\\notepad.exe") AND ($ImageLoaded
-  LIKE "%\\samlib.dll" OR $ImageLoaded LIKE "%\\WinSCard.dll"))

@@ -1,5 +1,0 @@
-title: CobaltStrike Malleable OneDrive Browsing Traffic Profile
-author: Markus Neis
-detection:
-- SELECT * FROM WEBFILTER WHERE (($Method = "GET" AND $URL LIKE "%_manifest=wac" AND
-  $DstHost = "onedrive.live.com") AND NOT ($URL LIKE "http%://onedrive.live.com/%"))

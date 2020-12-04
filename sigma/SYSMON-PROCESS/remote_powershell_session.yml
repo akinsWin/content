@@ -1,5 +1,0 @@
-title: Remote PowerShell Session
-author: Roberto Rodriguez @Cyb3rWard0g
-detection:
-- SELECT * FROM SYSMON-PROCESS WHERE ($Image LIKE "%\\wsmprovhost.exe" OR
-  $ParentImage LIKE "%\\wsmprovhost.exe")

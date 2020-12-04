@@ -1,5 +1,0 @@
-title: Telegram API Access
-author: Florian Roth
-detection:
-- SELECT * FROM WEBFILTER WHERE (($Domain LIKE "api.telegram.org") AND NOT (($UserAgent
-  LIKE "%Telegram%" OR $UserAgent LIKE "%Bot%")))

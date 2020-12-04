@@ -1,5 +1,0 @@
-title: Citrix Netscaler Attack CVE-2019-19781
-author: Arnim Rupp, Florian Roth
-detection:
-- SELECT * FROM WEBSERVER WHERE ($URL LIKE "%/../vpns/%" OR $URL LIKE "%/vpns/cfg/smb.conf"
-  OR $URL LIKE "%/vpns/portal/scripts/%.pl%")

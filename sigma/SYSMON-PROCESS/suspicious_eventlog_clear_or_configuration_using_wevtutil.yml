@@ -1,9 +1,0 @@
-title: Suspicious Eventlog Clear or Configuration Using Wevtutil
-author: Ecco, Daniil Yugoslavskiy, oscd.community
-detection:
-- SELECT * FROM SYSMON-PROCESS WHERE ((($Image LIKE "%\\powershell.exe" AND
-  ($CommandLine LIKE "%Clear-EventLog%" OR $CommandLine LIKE "%Remove-EventLog%" OR
-  $CommandLine LIKE "%Limit-EventLog%")) OR ($Image LIKE "%\\wmic.exe" AND $CommandLine
-  LIKE "% ClearEventLog %")) OR ($Image LIKE "%\\wevtutil.exe" AND ($CommandLine LIKE
-  "%clear-log%" OR $CommandLine LIKE "% cl %" OR $CommandLine LIKE "%set-log%" OR
-  $CommandLine LIKE "% sl %")))

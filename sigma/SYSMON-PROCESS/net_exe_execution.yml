@@ -1,9 +1,0 @@
-title: Net.exe Execution
-author: Michael Haag, Mark Woan (improvements), James Pemberton / @4A616D6573 / oscd.community
-  (improvements)
-detection:
-- SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%\\net.exe" OR $Image
-  LIKE "%\\net1.exe") AND ($CommandLine LIKE "% group%" OR $CommandLine LIKE "% localgroup%"
-  OR $CommandLine LIKE "% user%" OR $CommandLine LIKE "% view%" OR $CommandLine LIKE
-  "% share" OR $CommandLine LIKE "% accounts%" OR $CommandLine LIKE "% use%" OR $CommandLine
-  LIKE "% stop %"))

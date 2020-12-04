@@ -1,4 +1,0 @@
-title: Cobalt Strike DNS Beaconing
-author: Florian Roth
-detection:
-- SELECT * FROM DNS WHERE ($Query LIKE "aaa.stage.%" OR $Query LIKE "post.1%")

@@ -1,4 +1,0 @@
-title: PwnDrp Access
-author: Florian Roth
-detection:
-- SELECT * FROM WEBFILTER WHERE $URL LIKE "%/pwndrop/%"

@@ -1,5 +1,0 @@
-title: Suspicious Commandline Escape
-author: juju4
-detection:
-- SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "%h^t^t^p%" OR $CommandLine
-  LIKE "%h"t"t"p%")

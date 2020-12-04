@@ -1,7 +1,0 @@
-title: Grabbing Sensitive Hives via Reg Utility
-author: Teymur Kheirkhabarov, Endgame, JHasenbusch, Daniil Yugoslavskiy, oscd.community
-detection:
-- SELECT * FROM SYSMON-PROCESS WHERE ($Image LIKE "%\\reg.exe" AND ($CommandLine
-  LIKE "%save%" OR $CommandLine LIKE "%export%") AND ($CommandLine LIKE "%hklm%" OR
-  $CommandLine LIKE "%hkey\_local\_machine%") AND ($CommandLine LIKE "%\\system" OR
-  $CommandLine LIKE "%\\sam" OR $CommandLine LIKE "%\\security"))

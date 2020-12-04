@@ -1,5 +1,0 @@
-title: ZOHO Dctask64 Process Injection
-author: Florian Roth
-detection:
-- SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%\\dctask64.exe") AND
-  NOT (($CommandLine LIKE "%DesktopCentral\_Agent\\agent%")))

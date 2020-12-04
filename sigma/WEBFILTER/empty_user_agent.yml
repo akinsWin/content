@@ -1,4 +1,0 @@
-title: Empty User Agent
-author: Florian Roth
-detection:
-- SELECT * FROM WEBFILTER WHERE $UserAgent = ""

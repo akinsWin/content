@@ -1,4 +1,0 @@
-title: Turla ComRAT
-author: Florian Roth
-detection:
-- SELECT * FROM WEBFILTER WHERE $URL LIKE "%/index/index.php_h=%"

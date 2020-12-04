@@ -1,8 +1,0 @@
-title: Execution in Non-Executable Folder
-author: Florian Roth
-detection:
-- SELECT * FROM SYSMON-PROCESS WHERE ($Image LIKE "%\\$Recycle.bin" OR $Image
-  LIKE "%\\Users\\All Users\\%" OR $Image LIKE "%\\Users\\Default\\%" OR $Image LIKE
-  "%\\Users\\Public\\%" OR $Image LIKE "C:\\Perflogs\\%" OR $Image LIKE "%\\config\\systemprofile\\%"
-  OR $Image LIKE "%\\Windows\\Fonts\\%" OR $Image LIKE "%\\Windows\\IME\\%" OR $Image
-  LIKE "%\\Windows\\addins\\%")

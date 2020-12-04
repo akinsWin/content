@@ -1,5 +1,0 @@
-title: Flash Player Update from Suspicious Location
-author: Florian Roth
-detection:
-- SELECT * FROM WEBFILTER WHERE (($URL LIKE "%/install\_flash\_player.exe" OR $URL
-  LIKE "%/flash\_install.php%") AND NOT (c-uri-stem LIKE "%.adobe.com/%"))
