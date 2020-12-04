@@ -1,5 +1,5 @@
 id: ad19fa63dacc46a984564de783074ce7
-name: Creation of Shadow Copy
+name: Creation of Shadow Copy using ntdsutil /vsadmib
 path: /dnif
 description: ''
 type: standard
@@ -16,5 +16,6 @@ blocks:
   DetectionName: Creation of Shadow Copy
   DetectionTactic: Impact
   DetectionTechnique: Inhibit System recovery
+  TargetHost: $SrcHost
   DetectionScore: 5
   DetectionConfidence: Low

@@ -12,5 +12,6 @@ blocks:
   DetectionName: Disabling Remote User Account Control
   DetectionTactic: Privilege Escalation
   DetectionTechnique: Abuse Elevation Control Mechanism
+  TargetHost: $System
   DetectionScore: 5
   DetectionConfidence: Low

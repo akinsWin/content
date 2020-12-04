@@ -14,5 +14,6 @@ blocks:
   DetectionName: Schtasks scheduling job on remote system
   DetectionTactic: Privilage Escalation
   DetectionTechnique: Scheduled task/Job
+  TargetHost: $System
   DetectionScore: 5
   DetectionConfidence: Low

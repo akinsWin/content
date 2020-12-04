@@ -12,5 +12,6 @@ blocks:
   DetectionName: Ryuk Ransomware Files Detected
   DetectionTactic: Impact
   DetectionTechnique: Data Encrypted for Impact
+  TargetHost: $System
   DetectionScore: 5
   DetectionConfidence: Low

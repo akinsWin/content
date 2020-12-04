@@ -12,6 +12,7 @@ blocks:
 - type: signal
   DetectionName: Reg exe Manipulating Windows Services Registry Keys
   DetectionTactic: Persistence
-  DetectionTechnique: 'Hijack Execution Flow: Services Registry Permissions Weakness'
+  DetectionTechnique: Hijack Execution Flow
+  TargetHost: $System
   DetectionScore: 5
   DetectionConfidence: Low

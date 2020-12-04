@@ -13,5 +13,6 @@ blocks:
   DetectionName: Suspicious wevtutil Usage
   DetectionTactic: Defense Evasion
   DetectionTechnique: Indicator Removal on Host
+  SuspectUser: $User
   DetectionScore: 5
   DetectionConfidence: Low

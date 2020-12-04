@@ -13,5 +13,6 @@ blocks:
   DetectionName: Deleting Shadow Copies
   DetectionTactic: Impact
   DetectionTechnique: Inhibit System Recovery
+  TargetHost: $System
   DetectionScore: 5
   DetectionConfidence: Low

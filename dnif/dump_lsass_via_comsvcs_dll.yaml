@@ -11,6 +11,7 @@ blocks:
 - type: signal
   DetectionName: Dump LSASS via comsvcs DLL
   DetectionTactic: Credential Access
-  DetectionTechnique: 'OS Credential Dumping: LSASS Memory'
+  DetectionTechnique: OS Credential Dumping
+  TargetHost: $System
   DetectionScore: 5
   DetectionConfidence: Low

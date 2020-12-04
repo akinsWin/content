@@ -13,5 +13,6 @@ blocks:
   DetectionName: Registry Keys Used For Persistence
   DetectionTactic: Persistence
   DetectionTechnique: Boot or Logon Autostart Execution
+  TargetHost: $System
   DetectionScore: 5
   DetectionConfidence: Low

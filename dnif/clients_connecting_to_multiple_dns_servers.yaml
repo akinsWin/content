@@ -12,5 +12,6 @@ blocks:
   DetectionName: Clients Connecting to Multiple DNS Servers
   DetectionTactic: Exfiltration
   DetectionTechnique: Exfiltration Over Alternative Protocol
+  SuspectHost: $SrcIP
   DetectionScore: 5
   DetectionConfidence: Low

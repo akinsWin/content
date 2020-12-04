@@ -13,5 +13,7 @@ blocks:
   DetectionName: Detect Large Outbound ICMP Packets
   DetectionTactic: Command And Control
   DetectionTechnique: Non-Application Layer Protocol
+  SuspectHost: $DstIP
+  TargetHost: $SrcIP
   DetectionScore: 5
   DetectionConfidence: Low

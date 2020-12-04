@@ -12,5 +12,6 @@ blocks:
   DetectionName: Process Execution via WMI
   DetectionTactic: Execution
   DetectionTechnique: Windows Management Instrumentation
+  TargetHost: $System
   DetectionScore: 5
   DetectionConfidence: Low

@@ -12,5 +12,6 @@ blocks:
   DetectionName: Executable Masquerading as a Document
   DetectionTactic: Defense Evasion
   DetectionTechnique: Masquerading
+  TargetHost: $System
   DetectionScore: 5
   DetectionConfidence: Low

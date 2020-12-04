@@ -13,5 +13,6 @@ blocks:
   DetectionName: Creation of Shadow Copy with wmic and powershell
   DetectionTactic: Impact
   DetectionTechnique: Inhibit System Recovery
+  TargetHost: $System
   DetectionScore: 5
   DetectionConfidence: Low

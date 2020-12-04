@@ -13,5 +13,6 @@ blocks:
   DetectionName: Detect PsExec With accepteula Flag
   DetectionTactic: Execution
   DetectionTechnique: System Services
+  TargetHost: $System
   DetectionScore: 5
   DetectionConfidence: Low

@@ -13,5 +13,6 @@ blocks:
   DetectionName: Detect mshta exe running scripts in command-line arguments
   DetectionTactic: Defense Evasion
   DetectionTechnique: Signed Binary Proxy Execution
+  TargetHost: $System
   DetectionScore: 5
   DetectionConfidence: Low

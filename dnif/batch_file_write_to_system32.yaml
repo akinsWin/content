@@ -13,5 +13,6 @@ blocks:
   DetectionName: Batch File Write to System32
   DetectionTactic: Execution
   DetectionTechnique: User Execution
+  TargetHost: $System
   DetectionScore: 5
   DetectionConfidence: Low

@@ -15,5 +15,6 @@ blocks:
   DetectionName: Create local admin accounts using net exe
   DetectionTactic: Persistence
   DetectionTechnique: 'Create Account: Local Account'
+  SuspectHost: $System
   DetectionScore: 5
   DetectionConfidence: Low

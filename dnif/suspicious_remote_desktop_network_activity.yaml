@@ -12,5 +12,6 @@ blocks:
   DetectionName: Suspicious Remote Desktop Network Activity
   DetectionTactic: Lateral movement
   DetectionTechnique: Remote Services
+  TargetHost: $DstIP
   DetectionScore: 5
   DetectionConfidence: Low

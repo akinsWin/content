@@ -12,5 +12,6 @@ blocks:
   DetectionName: Create Remote Thread into LSASS
   DetectionTactic: Credential Access
   DetectionTechnique: 'OS Credential Dumping: LSASS Memory'
+  TargetHost: $System
   DetectionScore: 5
   DetectionConfidence: Low

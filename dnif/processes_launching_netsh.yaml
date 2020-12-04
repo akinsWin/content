@@ -13,5 +13,6 @@ blocks:
   DetectionName: Processes launching netsh
   DetectionTactic: Defece Evasion
   DetectionTechnique: Impair Defences
+  TargetHost: $System
   DetectionScore: 5
   DetectionConfidence: Low

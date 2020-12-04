@@ -13,5 +13,6 @@ blocks:
   DetectionName: Detect Use of cmd exe to Launch Script Interpreters
   DetectionTactic: Execution
   DetectionTechnique: Command and Scripting Interpreter
+  TargetHost: $System
   DetectionScore: 5
   DetectionConfidence: Low

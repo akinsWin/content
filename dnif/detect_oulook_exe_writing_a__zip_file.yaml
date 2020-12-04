@@ -15,5 +15,6 @@ blocks:
   DetectionName: Detect Oulook exe writing a  zip file
   DetectionTactic: Initial access
   DetectionTechnique: Phishing
+  TargetHost: $System
   DetectionScore: 5
   DetectionConfidence: Low

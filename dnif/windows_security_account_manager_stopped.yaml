@@ -12,5 +12,6 @@ blocks:
   DetectionName: Windows Security Account Manager Stopped
   DetectionTactic: Impact
   DetectionTechnique: Service Stop
+  TargetHost: $System
   DetectionScore: 5
   DetectionConfidence: Low

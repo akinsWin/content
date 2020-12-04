@@ -13,5 +13,6 @@ blocks:
   DetectionName: Malicious PowerShell Process - Connect To Internet With Hidden Window
   DetectionTactic: Execution
   DetectionTechnique: Command and Scripting Interpreter
+  TargetHost: $System
   DetectionScore: 5
   DetectionConfidence: Low

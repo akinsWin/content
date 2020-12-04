@@ -14,5 +14,6 @@ blocks:
   DetectionName: Protocol or Port Mismatch
   DetectionTactic: Command And Control
   DetectionTechnique: Non-Standard port
+  SuspectHost: $SrcIp
   DetectionScore: 5
   DetectionConfidence: Low

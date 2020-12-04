@@ -12,5 +12,6 @@ blocks:
   DetectionName: Hiding Files And Directories With Attrib exe
   DetectionTactic: Defence Evasion
   DetectionTechnique: Hide Artifacts
+  TargetHost: $System
   DetectionScore: 5
   DetectionConfidence: Low

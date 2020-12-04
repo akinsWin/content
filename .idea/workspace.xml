@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="03affbee-e278-42b3-bd50-e27ed437062f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/dnif/batch_file_write_to_system32.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/batch_file_write_to_system32.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/clients_connecting_to_multiple_dns_servers.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/clients_connecting_to_multiple_dns_servers.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/create_local_admin_accounts_using_net_exe.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/create_local_admin_accounts_using_net_exe.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/create_remote_thread_into_lsass.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/create_remote_thread_into_lsass.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/creation_of_shadow_copy.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/creation_of_shadow_copy_using_ntdsutil_vsadmib.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/creation_of_shadow_copy_with_wmic_and_powershell.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/creation_of_shadow_copy_with_wmic_and_powershell.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/deleting_shadow_copies.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/deleting_shadow_copies.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/detect_credential_dumping_through_lsass_access.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/detect_credential_dumping_through_lsass_access.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/detect_large_outbound_icmp_packets.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/detect_large_outbound_icmp_packets.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/detect_mshta_exe_running_scripts_in_command-line_arguments.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/detect_mshta_exe_running_scripts_in_command-line_arguments.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/detect_oulook_exe_writing_a__zip_file.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/detect_oulook_exe_writing_a__zip_file.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/detect_outbound_smb_traffic.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/detect_outbound_smb_traffic.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/detect_psexec_with_accepteula_flag.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/detect_psexec_with_accepteula_flag.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/detect_use_of_cmd_exe_to_launch_script_interpreters.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/detect_use_of_cmd_exe_to_launch_script_interpreters.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/disabling_remote_user_account_control.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/disabling_remote_user_account_control.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/dump_lsass_via_comsvcs_dll.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/dump_lsass_via_comsvcs_dll.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/executable_masquerading_as_a_document.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/executable_masquerading_as_a_document.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/file_with_samsam_ransomware_extension_.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/file_with_samsam_ransomware_extension_.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/hiding_files_and_directories_with_attrib_exe.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/hiding_files_and_directories_with_attrib_exe.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/malicious_powershell_process_-_connect_to_internet_with_hidden_window.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/malicious_powershell_process_-_connect_to_internet_with_hidden_window.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/malicious_powershell_process_-_encoded_command.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/malicious_powershell_process_-_encoded_command.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/malicious_powershell_process_-_execution_policy_bypass.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/malicious_powershell_process_-_execution_policy_bypass.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/process_execution_via_wmi.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/process_execution_via_wmi.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/processes_launching_netsh.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/processes_launching_netsh.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/protocol_or_port_mismatch.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/protocol_or_port_mismatch.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/reg_exe_manipulating_windows_services_registry_keys.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/reg_exe_manipulating_windows_services_registry_keys.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/registry_keys_used_for_persistence.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/registry_keys_used_for_persistence.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/ryuk_ransomware_files_detected.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/ryuk_ransomware_files_detected.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/sc.exe_manipulating_windows_services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/sc.exe_manipulating_windows_services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/schtasks_scheduling_job_on_remote_system.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/schtasks_scheduling_job_on_remote_system.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/suspicious_remote_desktop_network_activity.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/suspicious_remote_desktop_network_activity.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/suspicious_wevtutil_usage.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/suspicious_wevtutil_usage.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dnif/windows_security_account_manager_stopped.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/dnif/windows_security_account_manager_stopped.yaml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1lCQiGguMcJGIHQc4LX7YyB3gR6" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="03affbee-e278-42b3-bd50-e27ed437062f" name="Default Changelist" comment="" />
+      <created>1607098718465</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1607098718465</updated>
+    </task>
+    <servers />
+  </component>
+</project>

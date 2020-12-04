@@ -13,5 +13,6 @@ blocks:
   DetectionName: Sc.exe Manipulating Windows Services
   DetectionTactic: Persistence
   DetectionTechnique: Create or Modify System Process
+  TargetHost: $System
   DetectionScore: 5
   DetectionConfidence: Low

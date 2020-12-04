@@ -12,5 +12,6 @@ blocks:
   DetectionName: Detect Outbound SMB Traffic
   DetectionTactic: Command And Control
   DetectionTechnique: Protocol Tunneling
+  SuspectHost: $SrcIP
   DetectionScore: 5
   DetectionConfidence: Low
