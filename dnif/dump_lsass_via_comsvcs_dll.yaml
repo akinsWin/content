@@ -1,0 +1,16 @@
+id: e11a414d34944c169b912f6c9c4615a0
+name: Dump LSASS via comsvcs DLL
+path: /dnif
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=SYSMON-PROCESS AND $CommandLine=regex(.*rundll32\.exe.*comsvcs\.dll.*MiniDump.*)
+    AND $Duration=1h group count_unique  $User limit 100
+- type: signal
+  DetectionName: Dump LSASS via comsvcs DLL
+  DetectionTactic: Credential Access
+  DetectionTechnique: 'OS Credential Dumping: LSASS Memory'
+  DetectionScore: 5
+  DetectionConfidence: Low

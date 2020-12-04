@@ -1,0 +1,18 @@
+id: 70a1b9f040b54fa49f1bdb8f2d7c26be
+name: Protocol or Port Mismatch
+path: /dnif
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $SrcIP,$App,$DstPort FROM NETWORK-FIREWALL WHERE ($App='http' AND
+    $DstPort NOT IN('80','8080','8000')) OR ($App='ssl' AND $DstPort NOT IN('443','8443'))
+    OR ($App='smtp' AND $DstPort NOT IN('25')) GROUP BY $SrcIP,$App,$DstPort LIMIT
+    10
+- type: signal
+  DetectionName: Protocol or Port Mismatch
+  DetectionTactic: Command And Control
+  DetectionTechnique: Non-Standard port
+  DetectionScore: 5
+  DetectionConfidence: Low

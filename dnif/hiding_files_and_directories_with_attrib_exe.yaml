@@ -1,0 +1,16 @@
+id: 47d682e763e74c4b8f0b132ad1a467c5
+name: Hiding Files And Directories With Attrib exe
+path: /dnif
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $System, $User, $Image, $ParentImage, $CommandLine FROM SYSMON-PROCESS
+    WHERE $Image LIKE "%attrib.exe" AND $CommandLine LIKE "%+h%" LIMIT 100
+- type: signal
+  DetectionName: Hiding Files And Directories With Attrib exe
+  DetectionTactic: Defence Evasion
+  DetectionTechnique: Hide Artifacts
+  DetectionScore: 5
+  DetectionConfidence: Low

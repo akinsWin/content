@@ -1,0 +1,16 @@
+id: e19291463d504c9c85a280bd5dde1d25
+name: Ryuk Ransomware Files Detected
+path: /dnif
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=SYSMON-FILE AND $TargetFilename=regex(C:\\*Ryuk.*)
+    AND $Action=FILE_CREATED group count_unique $System, $TargetFile limit 100
+- type: signal
+  DetectionName: Ryuk Ransomware Files Detected
+  DetectionTactic: Impact
+  DetectionTechnique: Data Encrypted for Impact
+  DetectionScore: 5
+  DetectionConfidence: Low

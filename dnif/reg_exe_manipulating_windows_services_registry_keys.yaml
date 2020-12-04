@@ -1,0 +1,17 @@
+id: 27b96b8b2fe74fef92b0199b2ae3c840
+name: Reg exe Manipulating Windows Services Registry Keys
+path: /dnif
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=SYSMON-PROCESS AND $Duration=1h AND $Action=PROCESS_ADDED
+    AND $CommandLine=regex((?i).*reg\.exe.*reg.*add.*Services.*) group count_unique
+    $User, $System, $CommandLine, $ParentCommandLine limit 10
+- type: signal
+  DetectionName: Reg exe Manipulating Windows Services Registry Keys
+  DetectionTactic: Persistence
+  DetectionTechnique: 'Hijack Execution Flow: Services Registry Permissions Weakness'
+  DetectionScore: 5
+  DetectionConfidence: Low

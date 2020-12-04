@@ -1,0 +1,16 @@
+id: 8325ce06a235410c9397284857a89a93
+name: Executable Masquerading as a Document
+path: /dnif
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=SYSMON-PROCESS AND $CommandLine=regex(.*\.xlsx.exe|.*\.xls\.exe|.*\.pdf\.exe|.*\.txt.exe.*|.*\.doc.exe.*|.*\.docx.exe.*|.*\.jpg.exe.*|.*\.vbs.exe.*|.*\.ppt.exe.|.*\.pptx.exe.|.*\.docm.exe.*)  AND
+    $Duration=30m group count_unique  $User  limit 100
+- type: signal
+  DetectionName: Executable Masquerading as a Document
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Masquerading
+  DetectionScore: 5
+  DetectionConfidence: Low

@@ -1,0 +1,16 @@
+id: 50ef5353bc17435bbb4a097c1bef6a4b
+name: Create Remote Thread into LSASS
+path: /dnif
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=SYSMON-PROCESS AND $Action=CreateRemoteThread
+    AND $TargetImage=regex(.*lsass.exe.*)
+- type: signal
+  DetectionName: Create Remote Thread into LSASS
+  DetectionTactic: Credential Access
+  DetectionTechnique: 'OS Credential Dumping: LSASS Memory'
+  DetectionScore: 5
+  DetectionConfidence: Low
