@@ -1,0 +1,19 @@
+id: 829f03c1bf8d4bf3a012d8ea9aee3ed9
+name: PwnDrp Access
+path: /Advanced Threat Detection/Proxy Monitoring
+description: Detects downloads from PwnDrp web servers developed for red team testing
+  and most likely also used for criminal activity
+type: standard
+author: community
+blocks:
+- type: text
+  code: "Author: Florian Roth \n References: ['https://breakdev.org/pwndrop/']"
+- type: sql
+  query: SELECT * FROM WEBFILTER WHERE $URL LIKE "%/pwndrop/%"
+- type: signal
+  DetectionName: PwnDrp Access
+  DetectionTactic: Command and Control
+  DetectionTechnique: Web Service
+  SuspectHost: $SrcIP
+  DetectionScore: 5
+  DetectionConfidence: Low

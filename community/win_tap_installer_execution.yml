@@ -1,0 +1,19 @@
+id: 8d5c36ae40384c829cbeafc263af5b03
+name: Tap Installer Execution
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: Well-known TAP software installation. Possible preparation for data exfiltration
+  using tunneling techniques
+type: standard
+author: community
+blocks:
+- type: text
+  code: "Author: Daniil Yugoslavskiy, Ian Davis, oscd.community \n References: None"
+- type: sql
+  query: SELECT * FROM SYSMON-PROCESS WHERE $Image LIKE "%\\tapinstall.exe"
+- type: signal
+  DetectionName: Tap Installer Execution
+  DetectionTactic: Exfiltration
+  DetectionTechnique: Exfiltration Over Alternative Protocol
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

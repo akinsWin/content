@@ -1,0 +1,22 @@
+id: bb2fd8cd0364422297a9beec6294260c
+name: Windows Network Enumeration
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: Identifies attempts to enumerate hosts in a network using the built-in
+  Windows net.exe tool.
+type: standard
+author: community
+blocks:
+- type: text
+  code: "Author: Endgame, JHasenbusch (ported for oscd.community) \n References: ['https://eqllib.readthedocs.io/en/latest/analytics/b8a94d2f-dc75-4630-9d73-1edc6bd26fff.html',\
+    \ 'https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1018/T1018.yaml']"
+- type: sql
+  query: SELECT * FROM SYSMON-PROCESS WHERE ((($Image LIKE "%\\net.exe" OR $Image
+    LIKE "%\\net1.exe") AND $CommandLine LIKE "%view%") AND NOT ($CommandLine LIKE
+    "%\\%"))
+- type: signal
+  DetectionName: Windows Network Enumeration
+  DetectionTactic: Discovery
+  DetectionTechnique: Remote System Discovery
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

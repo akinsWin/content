@@ -1,0 +1,20 @@
+id: 69a7a379b0824ef399666385afb81ada
+name: PowerShell DownloadFile
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: Detects the execution of powershell, a WebClient object creation and
+  the invocation of DownloadFile in a single command line
+type: standard
+author: community
+blocks:
+- type: text
+  code: "Author: Florian Roth \n References: ['https://www.fireeye.com/blog/threat-research/2020/03/apt41-initiates-global-intrusion-campaign-using-multiple-exploits.html']"
+- type: sql
+  query: SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "%powershell%" AND
+    $CommandLine LIKE "%.DownloadFile%" AND $CommandLine LIKE "%System.Net.WebClient%")
+- type: signal
+  DetectionName: PowerShell DownloadFile
+  DetectionTactic: Command and Control
+  DetectionTechnique: Ingress Tool Transfer
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

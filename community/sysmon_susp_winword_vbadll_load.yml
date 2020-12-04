@@ -1,0 +1,21 @@
+id: b2f580cd0f694eeb98af39823aa2d573
+name: VBA DLL Loaded Via Microsoft Word
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: Detects DLL's Loaded Via Word Containing VBA Macros
+type: standard
+author: community
+blocks:
+- type: text
+  code: "Author: Antonlovesdnb \n References: ['https://medium.com/threatpunter/detecting-adversary-tradecraft-with-image-load-event-logging-and-eql-8de93338c16']"
+- type: sql
+  query: SELECT * FROM SYSMON-IMAGE-LOAD WHERE (($Image LIKE "%\\winword.exe" OR $Image
+    LIKE "%\\powerpnt.exe" OR $Image LIKE "%\\excel.exe" OR $Image LIKE "%\\outlook.exe")
+    AND ($ImageLoaded LIKE "%\\VBE7.DLL" OR $ImageLoaded LIKE "%\\VBEUI.DLL" OR $ImageLoaded
+    LIKE "%\\VBE7INTL.DLL"))
+- type: signal
+  DetectionName: VBA DLL Loaded Via Microsoft Word
+  DetectionTactic: Execution
+  DetectionTechnique: User Execution
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

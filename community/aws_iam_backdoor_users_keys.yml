@@ -1,0 +1,21 @@
+id: 94e47a4995104971b0267b313f3fdea5
+name: AWS IAM Backdoor Users Keys
+path: /Cloud Security/Amazon Web Services
+description: Detects AWS API key creation for a user by another user. Backdoored users
+  can be used to obtain persistence in the AWS environment. Also with this alert,
+  you can detect a flow of AWS keys in your org.
+type: standard
+author: community
+blocks:
+- type: text
+  code: "Author: faloker \n References: ['https://github.com/RhinoSecurityLabs/pacu/blob/master/modules/iam__backdoor_users_keys/main.py#L6']"
+- type: sql
+  query: SELECT * FROM CLOUDTRAIL WHERE (($EventSource = "iam.amazonaws.com" AND $EventName
+    = "CreateAccessKey") AND NOT ($UserIdentityArn LIKE "%responseElements.accessKey.userName%"))
+- type: signal
+  DetectionName: AWS IAM Backdoor Users Keys
+  DetectionTactic: Persistence
+  DetectionTechnique: Account Manipulation
+  TargetHost: $EventSource
+  DetectionScore: 5
+  DetectionConfidence: Low

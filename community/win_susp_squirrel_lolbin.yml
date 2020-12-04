@@ -1,0 +1,21 @@
+id: 6662c3a01bfb466bad2bbab6f5584ff6
+name: Squirrel Lolbin
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: Detects Possible Squirrel Packages Manager as Lolbin
+type: standard
+author: community
+blocks:
+- type: text
+  code: "Author: Karneades / Markus Neis \n References: ['http://www.hexacorn.com/blog/2019/03/30/sqirrel-packages-manager-as-a-lolbin-a-k-a-many-electron-apps-are-lolbins-by-default/',\
+    \ 'http://www.hexacorn.com/blog/2018/08/16/squirrel-as-a-lolbin/']"
+- type: sql
+  query: SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%\\update.exe") AND ($CommandLine
+    LIKE "%--processStart%.exe%" OR $CommandLine LIKE "%--processStartAndWait%.exe%"
+    OR $CommandLine LIKE "%--createShortcut%.exe%"))
+- type: signal
+  DetectionName: Squirrel Lolbin
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Signed Binary Proxy Execution
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

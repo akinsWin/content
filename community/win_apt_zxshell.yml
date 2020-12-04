@@ -1,0 +1,19 @@
+id: dc0db9ea5e6741719674b7219827cea6
+name: ZxShell Malware
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: Detects a ZxShell start by the called and well-known function name
+type: standard
+author: community
+blocks:
+- type: text
+  code: "Author: Florian Roth \n References: ['https://www.hybrid-analysis.com/sample/5d2a4cde9fa7c2fdbf39b2e2ffd23378d0c50701a3095d1e91e3cf922d7b0b16?environmentId=100']"
+- type: sql
+  query: SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "%rundll32.exe %,zxFunction%"
+    OR $CommandLine LIKE "%rundll32.exe %,RemoteDiskXXXXX%")
+- type: signal
+  DetectionName: ZxShell Malware
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Signed Binary Proxy Execution
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low
