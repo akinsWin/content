@@ -1,4 +1,4 @@
-# /Advanced Threat Detection/Windows Process Monitoring
+### /Advanced Threat Detection/Windows Process Monitoring
 |                                                                                             workbooks                                                                                              |
 |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |[DNS RCE CVE-2020-1350](https://github.com/dnif-backyard/dnif-threat-detection/tree/initial-detection-wbs/sigma_wbs/win_exploit_cve_2020_1350.yml)                                                  |
@@ -80,7 +80,7 @@
 |[VBA DLL Loaded Via Microsoft Word](https://github.com/dnif-backyard/dnif-threat-detection/tree/initial-detection-wbs/sigma_wbs/sysmon_susp_winword_vbadll_load.yml)                                |
 |[Fax Service DLL Search Order Hijack](https://github.com/dnif-backyard/dnif-threat-detection/tree/initial-detection-wbs/sigma_wbs/sysmon_susp_fax_dll.yml)                                          |
 |[Windows Mangement Instrumentation DLL Loaded Via Microsoft Word](https://github.com/dnif-backyard/dnif-threat-detection/tree/initial-detection-wbs/sigma_wbs/sysmon_susp_winword_wmidll_load.yml)  |
-# /Advanced Threat Detection/Proxy Monitoring
+### /Advanced Threat Detection/Proxy Monitoring
 |                                                                                    workbooks                                                                                    |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |[iOS Implant URL Pattern](https://github.com/dnif-backyard/dnif-threat-detection/tree/initial-detection-wbs/sigma_wbs/proxy_ios_implant.yml)                                     |
@@ -108,7 +108,7 @@
 |[Hack Tool User Agent](https://github.com/dnif-backyard/dnif-threat-detection/tree/initial-detection-wbs/sigma_wbs/proxy_ua_hacktool.yml)                                        |
 |[Download EXE from Suspicious TLD](https://github.com/dnif-backyard/dnif-threat-detection/tree/initial-detection-wbs/sigma_wbs/proxy_download_susp_tlds_whitelist.yml)           |
 |[Windows WebDAV User Agent](https://github.com/dnif-backyard/dnif-threat-detection/tree/initial-detection-wbs/sigma_wbs/proxy_downloadcradle_webdav.yml)                         |
-# /Advanced Threat Detection/Webserver Exploits
+### /Advanced Threat Detection/Webserver Exploits
 |                                                                                                workbooks                                                                                                 |
 |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |[Citrix ADS Exploitation CVE-2020-8193 CVE-2020-8195](https://github.com/dnif-backyard/dnif-threat-detection/tree/initial-detection-wbs/sigma_wbs/web_citrix_cve_2020_8193_8195_exploit.yml)              |
@@ -120,18 +120,18 @@
 |[Citrix Netscaler Attack CVE-2019-19781](https://github.com/dnif-backyard/dnif-threat-detection/tree/initial-detection-wbs/sigma_wbs/web_citrix_cve_2019_19781_exploit.yml)                               |
 |[CVE-2020-0688 Exploitation Attempt](https://github.com/dnif-backyard/dnif-threat-detection/tree/initial-detection-wbs/sigma_wbs/web_exchange_cve_2020_0688_exploit.yml)                                  |
 |[CVE-2020-5902 F5 BIG-IP Exploitation Attempt](https://github.com/dnif-backyard/dnif-threat-detection/tree/initial-detection-wbs/sigma_wbs/web_cve_2020_5902_f5_bigip.yml)                                |
-# /Advanced Threat Detection/DNS Monitoring
+### /Advanced Threat Detection/DNS Monitoring
 |                                                                               workbooks                                                                                |
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |[Telegram Bot API Request](https://github.com/dnif-backyard/dnif-threat-detection/tree/initial-detection-wbs/sigma_wbs/net_susp_telegram_api.yml)                       |
 |[Cobalt Strike DNS Beaconing](https://github.com/dnif-backyard/dnif-threat-detection/tree/initial-detection-wbs/sigma_wbs/net_mal_dns_cobaltstrike.yml)                 |
 |[Suspicious DNS Query with B64 Encoded String](https://github.com/dnif-backyard/dnif-threat-detection/tree/initial-detection-wbs/sigma_wbs/net_susp_dns_b64_queries.yml)|
 |[Wannacry Killswitch Domain](https://github.com/dnif-backyard/dnif-threat-detection/tree/initial-detection-wbs/sigma_wbs/net_wannacry_killswitch_domain.yml)            |
-# /Basic Security Monitoring/Malware
+### /Basic Security Monitoring/Malware
 |                                                                        workbooks                                                                        |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------|
 |[Antivirus Relevant File Paths Alerts](https://github.com/dnif-backyard/dnif-threat-detection/tree/initial-detection-wbs/sigma_wbs/av_relevant_files.yml)|
-# /Cloud Security/Amazon Web Services
+### /Cloud Security/Amazon Web Services
 |                                                                              workbooks                                                                              |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |[AWS EC2 VM Export Failure](https://github.com/dnif-backyard/dnif-threat-detection/tree/initial-detection-wbs/sigma_wbs/aws_ec2_vm_export_failure.yml)               |
