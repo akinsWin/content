@@ -1,6 +1,6 @@
 id: ac4e51d1174440248d9e0b31ada176a7
 name: Process Execution via WMI
-path: /dnif
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
 type: standard
 author: DNIF

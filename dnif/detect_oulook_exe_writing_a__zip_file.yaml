@@ -1,6 +1,6 @@
 id: e79df3707cec466d937689e9ca3b6b77
 name: Detect Oulook exe writing a  zip file
-path: /dnif
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
 type: standard
 author: DNIF

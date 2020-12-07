@@ -1,6 +1,6 @@
 id: f78b8821924b4b89b4fa7335f0e065d2
 name: Detect Large Outbound ICMP Packets
-path: /dnif
+path: /Basic Security Monitoring/Network Traffic Analysis
 description: ''
 type: standard
 author: DNIF

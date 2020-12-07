@@ -1,6 +1,6 @@
 id: bd13152845344a409d803b820862fde7
 name: Windows Security Account Manager Stopped
-path: /dnif
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
 type: standard
 author: DNIF

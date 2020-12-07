@@ -1,6 +1,6 @@
 id: a668473572684aebb372543d2b9e1ded
 name: Disabling Remote User Account Control
-path: /dnif
+path: /Advanced Threat Detection/Windows Registry Monitoring
 description: ''
 type: standard
 author: DNIF

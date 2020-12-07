@@ -1,6 +1,6 @@
 id: 410e68c267334e58b1e720b0f645f557
 name: Suspicious wevtutil Usage
-path: /dnif
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
 type: standard
 author: DNIF

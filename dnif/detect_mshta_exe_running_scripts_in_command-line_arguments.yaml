@@ -1,6 +1,6 @@
 id: 95a308e77aa24fb186f56f0caa20220f
 name: Detect mshta exe running scripts in command-line arguments
-path: /dnif
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
 type: standard
 author: DNIF

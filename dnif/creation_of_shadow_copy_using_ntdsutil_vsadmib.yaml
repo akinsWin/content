@@ -1,6 +1,6 @@
 id: ad19fa63dacc46a984564de783074ce7
 name: Creation of Shadow Copy using ntdsutil /vsadmib
-path: /dnif
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
 type: standard
 author: DNIF

@@ -1,0 +1,17 @@
+id: 215534a3563a46319229ff77d46bcb91
+name: Slow Bruteforce Attack
+path: /Basic Security Monitoring/Authentication Attacks
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: 'SELECT $SrcIP, $System, count_if($Status='FAILED') AS $FailCount, count_if($Status='PASSED') AS $PassCount, (MAX($CNAMTime) - MIN($CNAMTime))/1000/60/60/24 as $BruteForceWindow FROM AUTHENTICATION WHERE $Duration=1w AND $Action='LOGIN' GROUP BY $SrcIP, $System HAVING $FailCount >= 100 AND $FailCount >= $PassCount * 10 AND $BruteForceWindow > 3 LIMIT 100'
+- type: signal
+  DetectionName: Slow Bruteforce Attack
+  DetectionTactic: Credential Access
+  DetectionTechnique: Brute Force
+  SuspectHost: $SrcIP
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

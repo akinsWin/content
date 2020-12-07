@@ -1,6 +1,6 @@
 id: e19291463d504c9c85a280bd5dde1d25
 name: Ryuk Ransomware Files Detected
-path: /dnif
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
 type: standard
 author: DNIF

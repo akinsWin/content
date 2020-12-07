@@ -1,6 +1,6 @@
 id: da629c937d784963a410186dd4d59ddd
 name: Detect Use of cmd exe to Launch Script Interpreters
-path: /dnif
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
 type: standard
 author: DNIF

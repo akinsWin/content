@@ -1,6 +1,6 @@
 id: 50ef5353bc17435bbb4a097c1bef6a4b
 name: Create Remote Thread into LSASS
-path: /dnif
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
 type: standard
 author: DNIF

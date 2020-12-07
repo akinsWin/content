@@ -1,6 +1,6 @@
 id: 8e8c9c5a3e0546e9896bcb5a18fa678b
 name: Detect Outbound SMB Traffic
-path: /dnif
+path: /Basic Security Monitoring/Network Traffic Analysis
 description: ''
 type: standard
 author: DNIF

@@ -1,6 +1,6 @@
 id: 81c0f0d9b73c4577bb4d97e8541400bf
 name: Malicious PowerShell Process - Encoded Command
-path: /dnif
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
 type: standard
 author: DNIF

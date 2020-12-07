@@ -1,6 +1,6 @@
 id: e11a414d34944c169b912f6c9c4615a0
 name: Dump LSASS via comsvcs DLL
-path: /dnif
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
 type: standard
 author: DNIF

@@ -1,6 +1,6 @@
 id: 5b465687e7b143b6b92c689a78646397
 name: Malicious PowerShell Process - Execution Policy Bypass
-path: /dnif
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
 type: standard
 author: DNIF

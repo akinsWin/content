@@ -1,6 +1,6 @@
 id: 0cec7f1623d34691b616cc7884ad3c4f
 name: Malicious PowerShell Process - Connect To Internet With Hidden Window
-path: /dnif
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
 type: standard
 author: DNIF
