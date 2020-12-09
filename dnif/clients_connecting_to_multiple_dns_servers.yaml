@@ -7,7 +7,7 @@ author: DNIF
 blocks:
 - type: sql
   query: SELECT $SrcIP, COUNT(DISTINCT($DstIP)) AS $DistinctDNSServers FROM NETWORK-FIREWALL
-    WHERE $DstPort='53' GROUP BY $DstIP HAVING $DistinctDNSServers > 5
+    WHERE $DstPort='53' GROUP BY $SrcIP HAVING $DistinctDNSServers > 5
 - type: signal
   DetectionName: Clients Connecting to Multiple DNS Servers
   DetectionTactic: Exfiltration
