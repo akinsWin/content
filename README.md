@@ -1,3 +1,21 @@
+# No. of detections by Author
+| Author  |Count|
+|---------|----:|
+|DNIF     |   38|
+|community|  127|
+|Total    |  165|
+# No. of detections by Directory
+|                      Directory                       |Count|
+|------------------------------------------------------|----:|
+|/Advanced Threat Detection/Windows Process Monitoring |  105|
+|/Advanced Threat Detection/Proxy Monitoring           |   25|
+|/Advanced Threat Detection/Webserver Exploits         |    9|
+|/Advanced Threat Detection/DNS Monitoring             |    4|
+|/Cloud Security/Amazon Web Services                   |   13|
+|/Advanced Threat Detection/Windows Registry Monitoring|    2|
+|/Basic Security Monitoring/Network Traffic Analysis   |    5|
+|/Basic Security Monitoring/Authentication Attacks     |    2|
+|Total                                                 |  165|
 # /Advanced Threat Detection/Windows Process Monitoring
 |                                                                        Workbook                                                                        | Author  |       Tactic       |                 Technique                 |Severity|Confidence|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|---------|--------------------|-------------------------------------------|-------:|----------|
