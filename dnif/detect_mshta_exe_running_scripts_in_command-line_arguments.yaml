@@ -6,8 +6,8 @@ type: standard
 author: DNIF
 blocks:
 - type: dql
-  query: _fetch * from event where $Stream=SYSMON-PROCESS AND $Duration=15m  AND $CommandLine=regex((?i)(.*mshta.exe*.))i
-    AND $CommandLine=regex((?i)(.*vbscript*.|.*javascript*.))i AND group count_unique
+  query: _fetch * from event where $Stream=SYSMON-PROCESS AND $Duration=15m  AND $CommandLine=regex((?i)(.*mshta.exe*.))
+    AND $CommandLine=regex((?i)(.*vbscript*.|.*javascript*.)) group count_unique
     $SrcHost, $CommandLine, $User, $TargetImage limit 10
 - type: signal
   DetectionName: Detect mshta exe running scripts in command-line arguments
