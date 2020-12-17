@@ -1,9 +1,9 @@
 ## Detections by Author
 | Author  |Count|
 |---------|----:|
-|DNIF     |   38|
+|DNIF     |   54|
 |community|  127|
-|Total    |  165|
+|Total    |  181|
 ## Detections by Directory
 |                      Directory                       |Count|
 |------------------------------------------------------|----:|
@@ -12,10 +12,11 @@
 |/Advanced Threat Detection/Webserver Exploits         |    9|
 |/Advanced Threat Detection/DNS Monitoring             |    4|
 |/Cloud Security/Amazon Web Services                   |   13|
+|/dnif                                                 |   16|
 |/Advanced Threat Detection/Windows Registry Monitoring|    2|
 |/Basic Security Monitoring/Network Traffic Analysis   |    5|
 |/Basic Security Monitoring/Authentication Attacks     |    2|
-|Total                                                 |  165|
+|Total                                                 |  181|
 ## /Advanced Threat Detection/Windows Process Monitoring
 |                                                                        Workbook                                                                        | Author  |       Tactic       |                 Technique                 |Severity|Confidence|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|---------|--------------------|-------------------------------------------|-------:|----------|
@@ -187,6 +188,25 @@
 |[Changes to internet facing AWS RDS Database instances](dnif/changes_to_internet_facing_aws_rds_database_instances.yaml)|DNIF     |Persistence    |Account Manipulation             |       5|Low       |
 |[Monitor AWS Credential abuse or hijacking](dnif/monitor_aws_credential_abuse_or_hijacking.yaml)                        |DNIF     |Discovery      |Account Discovery                |       5|Low       |
 |[Changes made to AWS CloudTrail logs](dnif/changes_made_to_aws_cloudtrail_logs.yaml)                                    |DNIF     |Defense Evasion|Indicator Removal on Host        |       5|Low       |
+## /dnif
+|                                                 Workbook                                                 |Author|       Tactic       |                     Technique                     |Severity|Confidence|
+|----------------------------------------------------------------------------------------------------------|------|--------------------|---------------------------------------------------|-------:|----------|
+|[Suspicious writes to System Volume Information](dnif/suspicious_writes_to_system_volume_information.yaml)|DNIF  |Defense Evasion     |Masquerading                                       |       5|Low       |
+|[Windows Event Log Cleared](dnif/windows_event_log_cleared.yaml)                                          |DNIF  |Defense Evasion     |Indicator Removal on Host: Clear Windows Event Logs|       5|Low       |
+|[Schtasks used for forcing a reboot](dnif/schtasks_used_for_forcing_a_reboot.yaml)                        |DNIF  |Execution           |Scheduled task/Job                                 |       5|Low       |
+|[System Information Discovery Detection](dnif/system_information_discovery_detection.yaml)                |DNIF  |Discovery           |System Information Discovery                       |       5|Low       |
+|[Windows hosts file modification](dnif/windows_hosts_file_modification.yaml)                              |DNIF  |Discovery           |Remote System Discovery                            |       5|Low       |
+|[Suspicious writes to windows Recycle Bin](dnif/suspicious_writes_to_windows_recycle_bin.yaml)            |DNIF  |Defense Evasion     |Masquerading                                       |       5|Low       |
+|[Create or delete windows shares using net exe](dnif/create_or_delete_windows_shares_using_net_exe.yaml)  |DNIF  |Execution           |Command and Scripting Interpreter                  |       5|Low       |
+|[Registry Keys for Creating SHIM Databases](dnif/registry_keys_for_creating_shim_databases.yaml)          |DNIF  |Persistence         |Event Triggered Execution                          |       5|Low       |
+|[Unusually Long Content-Type Length](dnif/unusually_long_content-type_length.yaml)                        |DNIF  |Discovery           |System Information Discovery                       |       5|Low       |
+|[Script Execution via WMI](dnif/script_execution_via_wmi.yaml)                                            |DNIF  |Execution           |Windows Management Instrumentation                 |       5|Low       |
+|[Unload Sysmon Filter Driver](dnif/unload_sysmon_filter_driver.yaml)                                      |DNIF  |Defense Evasion     |Impair Defenses                                    |       5|Low       |
+|[Remote Process Instantiation via WMI](dnif/remote_process_instantiation_via_wmi.yaml)                    |DNIF  |Execution           |Windows Management Instrumentation                 |       5|Low       |
+|[Suspicious Changes to File Associations](dnif/suspicious_changes_to_file_associations.yaml)              |DNIF  |Persistence         |Event Triggered Execution                          |       5|Low       |
+|[USN Journal Deletion](dnif/usn_journal_deletion.yaml)                                                    |DNIF  |Defense Evasion     |Indicator Removal on Host                          |       5|Low       |
+|[Suspicious LNK file launching a process](dnif/suspicious_lnk_file_launching_a_process.yaml)              |DNIF  |Initial Access      |Phishing                                           |       5|Low       |
+|[Child Processes of Spoolsv exe](dnif/child_processes_of_spoolsv_exe.yaml)                                |DNIF  |Privilege Escalation|Exploitation for Privilege Escalation              |       5|Low       |
 ## /Advanced Threat Detection/Windows Registry Monitoring
 |                                        Workbook                                        |Author|       Tactic       |            Technique            |Severity|Confidence|
 |----------------------------------------------------------------------------------------|------|--------------------|---------------------------------|-------:|----------|
