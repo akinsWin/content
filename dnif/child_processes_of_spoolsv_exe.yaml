@@ -1,0 +1,18 @@
+id: 81a2578015af4ef497ffa36c9f3240e7
+name: Child Processes of Spoolsv exe
+path: /dnif
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $ParentImage,$Image,$ParentCommandLine, $CommandLine FROM SYSMON-PROCESS
+    WHERE $ParentImage LIKE "%spoolsv.exe" AND NOT($Image LIKE "%regsvr32.exe%") AN
+    LIMIT 100
+- type: signal
+  DetectionName: Child Processes of Spoolsv exe
+  DetectionTactic: Privilege Escalation
+  DetectionTechnique: Exploitation for Privilege Escalation
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

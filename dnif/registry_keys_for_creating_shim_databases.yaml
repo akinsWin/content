@@ -1,0 +1,19 @@
+id: ea78cce01a1346c2b4f3f9989b5dd916
+name: Registry Keys for Creating SHIM Databases
+path: /dnif
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $System, $User, COUNT($TargetObject) AS TGTOBJ FROM SYSMON-REGISTRY
+    WHERE $Action='OBJECT_MODIFIED' AND ($TargetObject LIKE "%CurrentVersion\\AppCompatFlags\\Custom%"
+    OR $TargetObject LIKE "%CurrentVersion\\AppCompatFlags\\InstalledSDB%") GROUP
+    BY $TargetObject, $System, $User
+- type: signal
+  DetectionName: Registry Keys for Creating SHIM Databases
+  DetectionTactic: Persistence
+  DetectionTechnique: Event Triggered Execution
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

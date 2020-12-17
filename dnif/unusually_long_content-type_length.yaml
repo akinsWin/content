@@ -1,0 +1,17 @@
+id: 33bcb32605c048cf807f7fb233637d82
+name: Unusually Long Content-Type Length
+path: /dnif
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT LENGTH($MIMEType) AS $ContextLen, $SrcIP, $DstIP, $Url FROM WEBFILTER
+    WHERE $Proto='http' AND LENGTH($MIMEType)>100  LIMIT 100
+- type: signal
+  DetectionName: Unusually Long Content-Type Length
+  DetectionTactic: Discovery
+  DetectionTechnique: System Information Discovery
+  SuspectSource: $SrcIP
+  DetectionScore: 5
+  DetectionConfidence: Low

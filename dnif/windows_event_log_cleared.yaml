@@ -1,0 +1,16 @@
+id: 11d1b4e3a21f449eae619371063c05b7
+name: Windows Event Log Cleared
+path: /dnif
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=IAM AND $Action=AUDIT_LOG_CLEARED group count_unique $User, $System limit 100
+- type: signal
+  DetectionName: Windows Event Log Cleared
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: 'Indicator Removal on Host: Clear Windows Event Logs'
+  SuspectUser: $User
+  DetectionScore: 5
+  DetectionConfidence: Low

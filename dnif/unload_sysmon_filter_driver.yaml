@@ -1,0 +1,19 @@
+id: 69c8bfd0208243799c8dee276a28ad62
+name: Unload Sysmon Filter Driver
+path: /dnif
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $Image,$User,$ParentCommandLine,$ParentImage, COUNT ($CommandLine)
+    AS PCOUNT FROM SYSMON-PROCESS WHERE $Image LIKE '%ltMC.exe' AND $Commandline LIKE
+    '%unload%SysmonDrv%'  GROUP BY $Image,$ParentImage,$ParentCommandLine,$User LIMIT
+    100
+- type: signal
+  DetectionName: Unload Sysmon Filter Driver
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Impair Defenses
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

@@ -1,0 +1,20 @@
+id: 4ec0471406a34318bd32ae2f8714b7ca
+name: System Information Discovery Detection
+path: /dnif
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=SYSMON-PROCESS AND $Duration=5m AND $CommandLine=regex((?i).*wmic.*qfe.*|.*systeminfo.*|.*hostname.*) NOT $ParentImage=regex((?i).*cmd.exe.*) group count_unique $User, $System limit 100
+- type: dql
+  query: _agg count_unique $User
+- type: dql
+  query: _checkif int_compare count_unique > 2 include
+- type: signal
+  DetectionName: System Information Discovery Detection
+  DetectionTactic: Discovery
+  DetectionTechnique: System Information Discovery
+  SuspectUser: $User
+  DetectionScore: 5
+  DetectionConfidence: Low

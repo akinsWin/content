@@ -1,0 +1,18 @@
+id: cc6a9129c32249b1865b288fc0a8b713
+name: Suspicious LNK file launching a process
+path: /dnif
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $System, $User,$Image, COUNT ($TaregetFileName) AS PROCESS FROM SYSMON-FILE WHERE $TargetFileName
+  LIKE '%.exe' AND $Image LIKE '%.lnk' AND  ($Image LIKE '%C:\\Users%'
+  OR $Image LIKE '%Local\\Temp%') GROUP BY $Image, $TargetFileName, $User limit 100
+- type: signal
+  DetectionName: Suspicious LNK file launching a process
+  DetectionTactic: Initial Access
+  DetectionTechnique: Phishing
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

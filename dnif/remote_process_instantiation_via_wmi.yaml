@@ -1,0 +1,19 @@
+id: 7978566e34434ed8b1f591f85e6c0152
+name: Remote Process Instantiation via WMI
+path: /dnif
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $Image,$User,$ParentCommandLine,$ParentImage, COUNT ($CommandLine)
+    AS PCOUNT FROM SYSMON-PROCESS WHERE $Image LIKE "%wmic.exe" AND $Commandline LIKE
+    "%'/'node%%process%%call%%create%" GROUP BY $Image,$ParentImage,$ParentCommandLine,$User
+    LIMIT 100
+- type: signal
+  DetectionName: Remote Process Instantiation via WMI
+  DetectionTactic: Execution
+  DetectionTechnique: Windows Management Instrumentation
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

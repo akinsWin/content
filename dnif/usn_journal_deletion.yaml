@@ -1,0 +1,19 @@
+id: 96b53b85c9c3427d8c149bf01f47827c
+name: USN Journal Deletion
+path: /dnif
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $Image,$User,$ParentCommandLine,$ParentImage, COUNT ($CommandLine)
+    AS PCOUNT FROM SYSMON-PROCESS WHERE $Image LIKE '%fsutil.exe' AND $Commandline
+    LIKE '%deletejournal%usn%' GROUP BY $Image,$ParentImage,$ParentCommandLine,$User
+    LIMIT 100
+- type: signal
+  DetectionName: USN Journal Deletion
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Indicator Removal on Host
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low
