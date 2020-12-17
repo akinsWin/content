@@ -1,0 +1,18 @@
+id: 5b465687e7b143b6b92c689a78646397
+name: Malicious PowerShell Process - Execution Policy Bypass
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $System, $User, $Image, $ParentImage, $CommandLine FROM SYSMON-PROCESS
+    WHERE $Image LIKE "%powershell.exe" AND ($CommandLine LIKE "% -ex%" OR $CommandLine
+    LIKE "% bypass %") LIMIT 100
+- type: signal
+  DetectionName: Malicious PowerShell Process - Execution Policy Bypass
+  DetectionTactic: Execution
+  DetectionTechnique: Command and Scripting Interpreter
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

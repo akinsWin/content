@@ -1,0 +1,20 @@
+id: e79df3707cec466d937689e9ca3b6b77
+name: Detect Oulook exe writing a  zip file
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: " SELECT $System, $User, $TaregetFileName, $Image FROM SYSMON-FILE WHERE\
+    \ $TargetFileName LIKE \"%.lnk\" OR $Image LIKE \"%.zip%\" AND ($TargetFileName\
+    \ LIKE \"C:\\\\Users%\" OR $TargetFileName LIKE \"%Local\\\\Temp%\") AND ($Image\
+    \ LIKE \"%outlook.exe\" OR $Image LIKE \"%explorer.exe\") limit 100 \n    Aggregation\
+    \ on PID"
+- type: signal
+  DetectionName: Detect Oulook exe writing a  zip file
+  DetectionTactic: Initial access
+  DetectionTechnique: Phishing
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

@@ -1,0 +1,19 @@
+id: 54e056fb1b0b4d7a904cace4d9fe36ca
+name: File with Samsam Ransomware Extension
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $CNAMTime,$System,$Action,$TargetFileName,$Image FROM SYSMON-FILE
+    WHERE $Action='FILE_CREATED' AND ($TargetFileName LIKE "%.stubbin" OR $TargetFileName
+    LIKE "%.berkshire" OR $TargetFileName LIKE "%.satoshi" OR $TargetFileName LIKE
+    "%.sophos" OR $TargetFileName LIKE "%.keyxml")  LIMIT 100
+- type: signal
+  DetectionName: File with Samsam Ransomware Extension
+  DetectionTactic: Impact
+  DetectionTechnique: Data Encrypted for Imapact
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

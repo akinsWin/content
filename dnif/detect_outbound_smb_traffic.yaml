@@ -1,0 +1,17 @@
+id: 8e8c9c5a3e0546e9896bcb5a18fa678b
+name: Detect Outbound SMB Traffic
+path: /Basic Security Monitoring/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $SrcIP  FROM NETWORK-FIREWALL WHERE $DstPort IN ('139','445') AND
+    $DstIPType= 'PUBLIC' GROUP BY $SrcIP LIMIT 10
+- type: signal
+  DetectionName: Detect Outbound SMB Traffic
+  DetectionTactic: Command And Control
+  DetectionTechnique: Protocol Tunneling
+  SuspectHost: $SrcIP
+  DetectionScore: 5
+  DetectionConfidence: Low

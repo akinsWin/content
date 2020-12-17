@@ -1,0 +1,21 @@
+id: ad19fa63dacc46a984564de783074ce7
+name: Creation of Shadow Copy using ntdsutil /vsadmib
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $TargetImage, $ParentProcess, $User, $CommandLine, $SrcHost FROM SYSMON-PROCESS
+    WHERE ($TargetImage='ntdsutil.exe' AND $CommandLine LIKE "%ntds%" AND $CommandLine
+    LIKE "%create%") OR ($TargetImage='vssadmin.exe' AND $CommandLine LIKE "%create%"
+    AND $CommandLine LIKE "%shadow%") OR ($TargetImage='wmic.exe' AND $CommandLine
+    LIKE "%create%" AND $CommandLine LIKE "%shadowcopy%") GROUP BY $TargetImage, $SrcHost,
+    $User
+- type: signal
+  DetectionName: Creation of Shadow Copy
+  DetectionTactic: Impact
+  DetectionTechnique: Inhibit System recovery
+  TargetHost: $SrcHost
+  DetectionScore: 5
+  DetectionConfidence: Low

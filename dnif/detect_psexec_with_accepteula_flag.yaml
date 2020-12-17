@@ -1,0 +1,18 @@
+id: b95e6697768044f5b643d1e1b0da6481
+name: Detect PsExec With accepteula Flag
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $System,$User,$Image, $ParentImage, $CommandLine FROM SYSMON=PROCESS
+    WHERE $CommandLine LIKE "%psexec%" AND $CommandLine LIKE "%accepteula%" LIMIT
+    10
+- type: signal
+  DetectionName: Detect PsExec With accepteula Flag
+  DetectionTactic: Execution
+  DetectionTechnique: System Services
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

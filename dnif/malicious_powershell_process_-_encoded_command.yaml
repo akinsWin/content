@@ -1,0 +1,18 @@
+id: 81c0f0d9b73c4577bb4d97e8541400bf
+name: Malicious PowerShell Process - Encoded Command
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $System, $User, $Image, $ParentImage, $CommandLine FROM SYSMON-PROCESS
+    WHERE $Image LIKE "%powershell.exe" AND $CommandLine LIKE "%-EncodedCommand%"
+    AND $CommandLine LIKE "%-enc%" LIMIT 100
+- type: signal
+  DetectionName: Malicious PowerShell Process - Encoded Command
+  DetectionTactic: Execution
+  DetectionTechnique: Command and Scripting Interpreter
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low
