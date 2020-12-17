@@ -1,10 +1,10 @@
-# No. of detections by Author
+## Detections by Author
 | Author  |Count|
 |---------|----:|
 |DNIF     |   38|
 |community|  127|
 |Total    |  165|
-# No. of detections by Directory
+## Detections by Directory
 |                      Directory                       |Count|
 |------------------------------------------------------|----:|
 |/Advanced Threat Detection/Windows Process Monitoring |  105|
@@ -16,7 +16,7 @@
 |/Basic Security Monitoring/Network Traffic Analysis   |    5|
 |/Basic Security Monitoring/Authentication Attacks     |    2|
 |Total                                                 |  165|
-# /Advanced Threat Detection/Windows Process Monitoring
+## /Advanced Threat Detection/Windows Process Monitoring
 |                                                                        Workbook                                                                        | Author  |       Tactic       |                 Technique                 |Severity|Confidence|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|---------|--------------------|-------------------------------------------|-------:|----------|
 |[DNS RCE CVE-2020-1350](community/win_exploit_cve_2020_1350.yml)                                                                                        |community|Execution           |System Services                            |       5|Low       |
@@ -124,7 +124,7 @@
 |[Suspicious wevtutil Usage](dnif/suspicious_wevtutil_usage.yaml)                                                                                        |DNIF     |Defense Evasion     |Indicator Removal on Host                  |       5|Low       |
 |[Deleting Shadow Copies](dnif/deleting_shadow_copies.yaml)                                                                                              |DNIF     |Impact              |Inhibit System Recovery                    |       5|Low       |
 |[Ryuk Ransomware Files Detected](dnif/ryuk_ransomware_files_detected.yaml)                                                                              |DNIF     |Impact              |Data Encrypted for Impact                  |       5|Low       |
-# /Advanced Threat Detection/Proxy Monitoring
+## /Advanced Threat Detection/Proxy Monitoring
 |                                           Workbook                                            | Author  |      Tactic       |              Technique               |Severity|Confidence|
 |-----------------------------------------------------------------------------------------------|---------|-------------------|--------------------------------------|-------:|----------|
 |[iOS Implant URL Pattern](community/proxy_ios_implant.yml)                                     |community|Credential Access  |Unsecured Credentials                 |       5|Low       |
@@ -152,7 +152,7 @@
 |[Hack Tool User Agent](community/proxy_ua_hacktool.yml)                                        |community|Credential Access  |Brute Force                           |       5|Low       |
 |[Download EXE from Suspicious TLD](community/proxy_download_susp_tlds_whitelist.yml)           |community|Execution          |User Execution                        |       5|Low       |
 |[Windows WebDAV User Agent](community/proxy_downloadcradle_webdav.yml)                         |community|Command and Control|Application Layer Protocol            |       5|Low       |
-# /Advanced Threat Detection/Webserver Exploits
+## /Advanced Threat Detection/Webserver Exploits
 |                                                        Workbook                                                        | Author  |    Tactic    |            Technique            |Severity|Confidence|
 |------------------------------------------------------------------------------------------------------------------------|---------|--------------|---------------------------------|-------:|----------|
 |[Citrix ADS Exploitation CVE-2020-8193 CVE-2020-8195](community/web_citrix_cve_2020_8193_8195_exploit.yml)              |community|Initial Access|Exploit Public-Facing Application|       5|Low       |
@@ -164,14 +164,14 @@
 |[Citrix Netscaler Attack CVE-2019-19781](community/web_citrix_cve_2019_19781_exploit.yml)                               |community|Initial Access|Exploit Public-Facing Application|       5|Low       |
 |[CVE-2020-0688 Exploitation Attempt](community/web_exchange_cve_2020_0688_exploit.yml)                                  |community|Initial Access|Exploit Public-Facing Application|       5|Low       |
 |[CVE-2020-5902 F5 BIG-IP Exploitation Attempt](community/web_cve_2020_5902_f5_bigip.yml)                                |community|Initial Access|Exploit Public-Facing Application|       5|Low       |
-# /Advanced Threat Detection/DNS Monitoring
+## /Advanced Threat Detection/DNS Monitoring
 |                                       Workbook                                       | Author  |      Tactic       |        Technique         |Severity|Confidence|
 |--------------------------------------------------------------------------------------|---------|-------------------|--------------------------|-------:|----------|
 |[Telegram Bot API Request](community/net_susp_telegram_api.yml)                       |community|Command and Control|Web Service               |       5|Low       |
 |[Cobalt Strike DNS Beaconing](community/net_mal_dns_cobaltstrike.yml)                 |community|Command and Control|Application Layer Protocol|       5|Low       |
 |[Suspicious DNS Query with B64 Encoded String](community/net_susp_dns_b64_queries.yml)|community|Command and Control|Application Layer Protocol|       5|Low       |
 |[Wannacry Killswitch Domain](community/net_wannacry_killswitch_domain.yml)            |community|Command and Control|Application Layer Protocol|       5|Low       |
-# /Cloud Security/Amazon Web Services
+## /Cloud Security/Amazon Web Services
 |                                                        Workbook                                                        | Author  |    Tactic     |            Technique            |Severity|Confidence|
 |------------------------------------------------------------------------------------------------------------------------|---------|---------------|---------------------------------|-------:|----------|
 |[AWS EC2 VM Export Failure](community/aws_ec2_vm_export_failure.yml)                                                    |community|Exfiltration   |Transfer Data to Cloud Account   |       5|Low       |
@@ -187,12 +187,12 @@
 |[Changes to internet facing AWS RDS Database instances](dnif/changes_to_internet_facing_aws_rds_database_instances.yaml)|DNIF     |Persistence    |Account Manipulation             |       5|Low       |
 |[Monitor AWS Credential abuse or hijacking](dnif/monitor_aws_credential_abuse_or_hijacking.yaml)                        |DNIF     |Discovery      |Account Discovery                |       5|Low       |
 |[Changes made to AWS CloudTrail logs](dnif/changes_made_to_aws_cloudtrail_logs.yaml)                                    |DNIF     |Defense Evasion|Indicator Removal on Host        |       5|Low       |
-# /Advanced Threat Detection/Windows Registry Monitoring
+## /Advanced Threat Detection/Windows Registry Monitoring
 |                                        Workbook                                        |Author|       Tactic       |            Technique            |Severity|Confidence|
 |----------------------------------------------------------------------------------------|------|--------------------|---------------------------------|-------:|----------|
 |[Registry Keys Used For Persistence](dnif/registry_keys_used_for_persistence.yaml)      |DNIF  |Persistence         |Boot or Logon Autostart Execution|       5|Low       |
 |[Disabling Remote User Account Control](dnif/disabling_remote_user_account_control.yaml)|DNIF  |Privilege Escalation|Abuse Elevation Control Mechanism|       5|Low       |
-# /Basic Security Monitoring/Network Traffic Analysis
+## /Basic Security Monitoring/Network Traffic Analysis
 |                                             Workbook                                             |Author|      Tactic       |              Technique               |Severity|Confidence|
 |--------------------------------------------------------------------------------------------------|------|-------------------|--------------------------------------|-------:|----------|
 |[Protocol or Port Mismatch](dnif/protocol_or_port_mismatch.yaml)                                  |DNIF  |Command And Control|Non-Standard port                     |       5|Low       |
@@ -200,7 +200,7 @@
 |[Suspicious Remote Desktop Network Activity](dnif/suspicious_remote_desktop_network_activity.yaml)|DNIF  |Lateral movement   |Remote Services                       |       5|Low       |
 |[Clients Connecting to Multiple DNS Servers](dnif/clients_connecting_to_multiple_dns_servers.yaml)|DNIF  |Exfiltration       |Exfiltration Over Alternative Protocol|       5|Low       |
 |[Detect Outbound SMB Traffic](dnif/detect_outbound_smb_traffic.yaml)                              |DNIF  |Command And Control|Protocol Tunneling                    |       5|Low       |
-# /Basic Security Monitoring/Authentication Attacks
+## /Basic Security Monitoring/Authentication Attacks
 |                         Workbook                         |Author|     Tactic      | Technique |Severity|Confidence|
 |----------------------------------------------------------|------|-----------------|-----------|-------:|----------|
 |[Slow Bruteforce Attack](dnif/slow_bruteforce_attack.yaml)|DNIF  |Credential Access|Brute Force|       5|Low       |
