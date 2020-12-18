@@ -8,7 +8,7 @@ blocks:
 - type: sql
   query: SELECT $Image,$User,$ParentCommandLine,$Parentimage, COUNT ($CommandLine)
     AS PCOUNT FROM SYSMON-PROCESS WHERE $Image LIKE "%schtasks.exe" AND $CommandLine
-    LIKE "%/create%"  AND $CommandLine LIKE "% /s %"GROUP BY $ParentImage,$ParentCommandLine,$User,$Image
+    LIKE "%/create%"  AND $CommandLine LIKE "% /s %" GROUP BY $ParentImage,$ParentCommandLine,$User,$Image
     LIMIT 100
 - type: signal
   DetectionName: Schtasks scheduling job on remote system
