@@ -1,6 +1,6 @@
 id: 69c8bfd0208243799c8dee276a28ad62
 name: Unload Sysmon Filter Driver
-path: /dnif
+path: /draft
 description: ''
 type: standard
 author: DNIF

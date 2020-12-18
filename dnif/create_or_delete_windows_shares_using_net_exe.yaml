@@ -1,6 +1,6 @@
 id: b3ff4dbfcee147bfa49b55f860046a1e
 name: Create or delete windows shares using net exe
-path: /dnif
+path: /draft
 description: ''
 type: standard
 author: DNIF

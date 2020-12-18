@@ -1,6 +1,6 @@
 id: b54c0d5e720342af91187ecf8742c80d
 name: Schtasks used for forcing a reboot
-path: /dnif
+path: /draft
 description: ''
 type: standard
 author: DNIF

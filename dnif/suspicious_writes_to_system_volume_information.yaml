@@ -1,6 +1,6 @@
 id: 3a584f5857664bcd80080380671bc516
 name: Suspicious writes to System Volume Information
-path: /dnif
+path: /draft
 description: ''
 type: standard
 author: DNIF
