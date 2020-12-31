@@ -1,9 +1,7 @@
 id: 419aa6adcefb4f8884e7a1921a4c0013
 name: SMTP on Port 26 TCP
 path: /Basic Security Monitoring/Network Traffic Analysis
-description: This rule detects events that may indicate use of SMTP on TCP port 26. This port is commonly used by several popular
-mail transfer agents to deconflict with the default SMTP port 25. This port has also been used by a malware family
-called BadPatch for command and control of Windows systems.
+description: This rule detects events that may indicate use of SMTP on TCP port 26. This port is commonly used by several popular mail transfer agents to deconflict with the default SMTP port 25. This port has also been used by a malware family called BadPatch for command and control of Windows systems.
 type: standard
 author: DNIF
 blocks:

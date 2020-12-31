@@ -1,9 +1,7 @@
 id: e1d04039864940cba466fce6891d5fb7
 name: Proxy Port Activity to the Internet
 path: /Basic Security Monitoring/Network Traffic Analysis
-description: This rule detects events that may describe network events of proxy use to the Internet. It includes popular HTTP proxy
-ports and SOCKS proxy ports. Typically, environments will use an internal IP address for a proxy server. It can also be
-used to circumvent network controls and detection mechanisms.
+description: This rule detects events that may describe network events of proxy use to the Internet. It includes popular HTTP proxy ports and SOCKS proxy ports. Typically, environments will use an internal IP address for a proxy server. It can also be used to circumvent network controls and detection mechanisms.
 type: standard
 author: DNIF
 blocks:

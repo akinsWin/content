@@ -6,9 +6,7 @@ type: standard
 author: DNIF
 blocks:
 - type: sql
-  query: SELECT $System, $User,$Image, COUNT ($TaregetFileName) AS PROCESS FROM SYSMON-FILE WHERE $TargetFileName
-  LIKE '%.exe' AND $Image LIKE '%.lnk' AND  ($Image LIKE '%C:\\Users%'
-  OR $Image LIKE '%Local\\Temp%') GROUP BY $Image, $TargetFileName, $User limit 100
+  query: SELECT $System, $User,$Image, COUNT ($TaregetFileName) AS PROCESS FROM SYSMON-FILE WHERE $TargetFileName LIKE '%.exe' AND $Image LIKE '%.lnk' AND  ($Image LIKE '%C:\\Users%' OR $Image LIKE '%Local\\Temp%') GROUP BY $Image, $TargetFileName, $User limit 100
 - type: signal
   DetectionName: Suspicious LNK file launching a process
   DetectionTactic: Initial Access
