@@ -2,7 +2,7 @@ id: 21eed20b53f443f2be7b604ac2a6fbfd
 name: Changes made to AWS CloudTrail logs
 path: /Cloud Security/Amazon Web Services
 description: ''
-type: standard
+type: streamed
 author: DNIF
 blocks:
 - type: sql
@@ -13,5 +13,5 @@ blocks:
   DetectionTechnique: Indicator Removal on Host
   SuspectHost: $SrcIP
   SuspectUser: $User
-  DetectionScore: 5
-  DetectionConfidence: Low
+  DetectionScore: 8
+  DetectionConfidence: High

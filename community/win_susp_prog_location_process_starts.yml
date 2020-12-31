@@ -6,7 +6,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Florian Roth \n References: ['https://docs.google.com/spreadsheets/d/17pSTDNpa0sf6pHeRhusvWG6rThciE8CsXTSlDUAZDyo']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://docs.google.com/spreadsheets/d/17pSTDNpa0sf6pHeRhusvWG6rThciE8CsXTSlDUAZDyo|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE ($Image LIKE "%\\$Recycle.bin" OR $Image
     LIKE "%\\Users\\Public\\%" OR $Image LIKE "C:\\Perflogs\\%" OR $Image LIKE "%\\Windows\\Fonts\\%"

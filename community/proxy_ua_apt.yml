@@ -6,7 +6,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Florian Roth, Markus Neis \n References: ['Internal Research']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth, Markus Neis|Internal Research|"
 - type: sql
   query: 'SELECT * FROM WEBFILTER WHERE ($UserAgent LIKE "SJZJ (compatible; MSIE 6.0;
     Win32)" OR $UserAgent LIKE "Mozilla/5.0 (Windows NT 6.; WOW64; rv:20.0) Gecko/20100101

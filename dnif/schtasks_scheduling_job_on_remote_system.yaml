@@ -2,18 +2,15 @@ id: 81cb7859b53741e0ac4bfdebeb0af8cf
 name: Schtasks scheduling job on remote system
 path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
-type: standard
+type: streamed
 author: DNIF
 blocks:
 - type: sql
-  query: SELECT $Image,$User,$ParentCommandLine,$Parentimage, COUNT ($CommandLine)
-    AS PCOUNT FROM SYSMON-PROCESS WHERE $Image LIKE "%schtasks.exe" AND $CommandLine
-    LIKE "%/create%"  AND $CommandLine LIKE "% /s %"GROUP BY $ParentImage,$ParentCommandLine,$User,$Image
-    LIMIT 100
+  query: SELECT $System FROM SYSMON-PROCESS WHERE $Image LIKE "%schtasks.exe" AND $CommandLine LIKE "%/create%/s%" GROUP BY $System
 - type: signal
   DetectionName: Schtasks scheduling job on remote system
-  DetectionTactic: Privilage Escalation
-  DetectionTechnique: Scheduled task/Job
+  DetectionTactic: Privilege Escalation
+  DetectionTechnique: Scheduled Task/Job
   TargetHost: $System
   DetectionScore: 5
   DetectionConfidence: Low

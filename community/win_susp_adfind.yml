@@ -6,8 +6,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: FPT.EagleEye Team \n References: ['https://social.technet.microsoft.com/wiki/contents/articles/7535.adfind-command-examples.aspx',\
-    \ 'https://github.com/center-for-threat-informed-defense/adversary_emulation_library/blob/master/fin6/Emulation_Plan/Phase1.md']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |FPT.EagleEye Team|https://social.technet.microsoft.com/wiki/contents/articles/7535.adfind-command-examples.aspx<br>https://github.com/center-for-threat-informed-defense/adversary_emulation_library/blob/master/fin6/Emulation_Plan/Phase1.md|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE ($Commandline LIKE "%objectcategory%"
     AND ($Image LIKE "%\\adfind.exe"))

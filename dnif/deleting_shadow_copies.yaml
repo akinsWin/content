@@ -2,17 +2,17 @@ id: c1ed6417215242abac21c01d5d94497e
 name: Deleting Shadow Copies
 path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
-type: standard
+type: streamed
 author: DNIF
 blocks:
 - type: dql
   query: _fetch * from event where $Stream=SYSMON-PROCESS AND $CommandLine=regex(.*vssadmin.exe.*|.*wmic.exe.*)
-    AND $CommandLine=regex(.*delete.*shadow.*) AND $Duration=30m group count_unique
+    AND $CommandLine=regex(.*delete.*shadow.*) group count_unique
     $User limit 100
 - type: signal
   DetectionName: Deleting Shadow Copies
   DetectionTactic: Impact
   DetectionTechnique: Inhibit System Recovery
   TargetHost: $System
-  DetectionScore: 5
-  DetectionConfidence: Low
+  DetectionScore: 8
+  DetectionConfidence: High

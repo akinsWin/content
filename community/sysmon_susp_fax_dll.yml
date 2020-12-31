@@ -7,7 +7,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: NVISO \n References: ['https://windows-internals.com/faxing-your-way-to-system/']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |NVISO|https://windows-internals.com/faxing-your-way-to-system/|"
 - type: sql
   query: SELECT * FROM SYSMON-IMAGE-LOAD WHERE ((($Image LIKE "%fxssvc.exe") AND ($ImageLoaded
     LIKE "%ualapi.dll")) AND NOT (($ImageLoaded LIKE "C:\\Windows\\WinSxS\\%")))

@@ -6,7 +6,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Florian Roth \n References: None"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|None|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "%\\rundll32.exe% url.dll,%OpenURL
     %" OR $CommandLine LIKE "%\\rundll32.exe% url.dll,%OpenURLA %" OR $CommandLine

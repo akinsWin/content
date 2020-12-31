@@ -10,7 +10,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: SBousseaden \n References: ['https://posts.specterops.io/lateral-movement-scm-and-dll-hijacking-primer-d2f61e8ab992']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |SBousseaden|https://posts.specterops.io/lateral-movement-scm-and-dll-hijacking-primer-d2f61e8ab992|"
 - type: sql
   query: SELECT * FROM SYSMON-IMAGE-LOAD WHERE ((($Image LIKE "%\\svchost.exe") AND
     ($ImageLoaded LIKE "%\\tsmsisrv.dll" OR $ImageLoaded LIKE "%\\tsvipsrv.dll" OR

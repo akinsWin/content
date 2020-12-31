@@ -7,9 +7,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: E.M. Anhaus (orignally from Atomic Blue Detections, Endgame), oscd.community\
-    \ \n References: ['https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1490/T1490.yaml',\
-    \ 'https://eqllib.readthedocs.io/en/latest/analytics/c4732632-9c1d-4980-9fa8-1d98c93f918e.html']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |E.M. Anhaus (orignally from Atomic Blue Detections, Endgame), oscd.community|https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1490/T1490.yaml<br>https://eqllib.readthedocs.io/en/latest/analytics/c4732632-9c1d-4980-9fa8-1d98c93f918e.html|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%\\bcdedit.exe" AND $CommandLine
     LIKE "%set%") AND (($CommandLine LIKE "%bootstatuspolicy%" AND $CommandLine LIKE

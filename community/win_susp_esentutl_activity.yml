@@ -8,8 +8,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Florian Roth \n References: ['https://lolbas-project.github.io/',\
-    \ 'https://twitter.com/chadtilbury/status/1264226341408452610']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://lolbas-project.github.io/<br>https://twitter.com/chadtilbury/status/1264226341408452610|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "% /vss %" AND $CommandLine
     LIKE "% /y %")

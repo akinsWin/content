@@ -1,0 +1,17 @@
+id: 10225464b3cd4c569248d623daf77ae9
+name: PPTP Activity
+path: /Basic Security Monitoring/Network Traffic Analysis
+description: This rule detects events that may indicate use of a PPTP (Point to Point Tunneling Protocol) VPN connection. Some threat actors use these types of connections to tunnel their traffic while avoiding detection.
+type: standard
+author: DNIF
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=NETWORK-FIREWALL AND $Proto=TCP AND $DstPort=1723 group count_unique $SrcIP, $DstIP limit 10
+- type: signal
+  DetectionName: PPTP Activity
+  DetectionTactic: Command and Control
+  DetectionTechnique: Commonly Used Port
+  SuspectHost: $SrcIP
+  TargetHost: $DstIP
+  DetectionScore: 5
+  DetectionConfidence: Low

@@ -7,8 +7,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Sander Wiebing \n References: ['https://www.virusradar.com/en/Win32_Kasidet.AD/description',\
-    \ 'https://www.hybrid-analysis.com/sample/07e789f4f2f3259e7559fdccb36e96814c2dbff872a21e1fa03de9ee377d581f?environmentId=100']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Sander Wiebing|https://www.virusradar.com/en/Win32_Kasidet.AD/description<br>https://www.hybrid-analysis.com/sample/07e789f4f2f3259e7559fdccb36e96814c2dbff872a21e1fa03de9ee377d581f?environmentId=100|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "%netsh%" AND ($CommandLine
     LIKE "%firewall add allowedprogram%" OR ($CommandLine LIKE "%advfirewall firewall

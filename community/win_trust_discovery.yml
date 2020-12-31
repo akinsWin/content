@@ -7,9 +7,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: E.M. Anhaus (orignally from Atomic Blue Detections, Tony Lambert),\
-    \ oscd.community \n References: ['https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1482/T1482.md',\
-    \ 'https://eqllib.readthedocs.io/en/latest/analytics/03e231a6-74bc-467a-acb1-e5676b0fb55e.html']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |E.M. Anhaus (orignally from Atomic Blue Detections, Tony Lambert), oscd.community|https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1482/T1482.md<br>https://eqllib.readthedocs.io/en/latest/analytics/03e231a6-74bc-467a-acb1-e5676b0fb55e.html|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%\\nltest.exe" AND $CommandLine
     LIKE "%domain\_trusts%") OR ($Image LIKE "%\\dsquery.exe" AND $CommandLine LIKE

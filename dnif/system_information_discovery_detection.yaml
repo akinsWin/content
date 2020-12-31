@@ -1,12 +1,12 @@
 id: 4ec0471406a34318bd32ae2f8714b7ca
 name: System Information Discovery Detection
-path: /draft
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
 type: standard
 author: DNIF
 blocks:
 - type: dql
-  query: _fetch * from event where $Stream=SYSMON-PROCESS AND $Duration=5m AND $CommandLine=regex((?i).*wmic.*qfe.*|.*systeminfo.*|.*hostname.*) NOT $ParentImage=regex((?i).*cmd.exe.*) group count_unique $User, $System limit 100
+  query: _fetch * from event where $Stream=SYSMON-PROCESS AND $CommandLine=regex((?i).*wmic.*qfe.*|.*systeminfo.*|.*hostname.*) NOT $ParentImage=regex((?i).*cmd.exe.*) group count_unique $User, $System limit 100
 - type: dql
   query: _agg count_unique $User
 - type: dql

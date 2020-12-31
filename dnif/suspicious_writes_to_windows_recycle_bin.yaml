@@ -1,16 +1,16 @@
 id: e8b688d3f5104e01b83fc9bce036f602
-name: Suspicious writes to windows Recycle Bin
-path: /draft
+name: Suspicious writes to Windows Recycle Bin
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
 type: standard
 author: DNIF
 blocks:
 - type: sql
-  query: SELECT $System, $User,$Image, COUNT ($TaregetFileName) AS PROCESS FROM SYSMON-FILE
+  query: SELECT $System FROM SYSMON-FILE
     WHERE $TargetFileName LIKE '%Recycle.Bin%' AND $Image NOT LIKE '%explorer.exe'
-    AND GROUP BY $Image, $TargetFileName, $User limit 100
+    AND GROUP BY $System
 - type: signal
-  DetectionName: Suspicious writes to windows Recycle Bin
+  DetectionName: Suspicious writes to Windows Recycle Bin
   DetectionTactic: Defense Evasion
   TargetHost: $System
   DetectionTechnique: Masquerading

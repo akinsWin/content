@@ -6,7 +6,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Michael R. (@nahamike01) \n References: ['https://redcanary.com/blog/detecting-attacks-leveraging-the-net-framework/']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Michael R. (@nahamike01)|https://redcanary.com/blog/detecting-attacks-leveraging-the-net-framework/|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE ($Image LIKE "%\\csi.exe" AND $ParentImage
     LIKE "%\\powershell.exe" AND $OriginalFileName = "csi.exe")

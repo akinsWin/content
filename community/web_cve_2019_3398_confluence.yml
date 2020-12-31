@@ -7,7 +7,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Florian Roth \n References: ['https://devcentral.f5.com/s/articles/confluence-arbitrary-file-write-via-path-traversal-cve-2019-3398-34181']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://devcentral.f5.com/s/articles/confluence-arbitrary-file-write-via-path-traversal-cve-2019-3398-34181|"
 - type: sql
   query: SELECT * FROM WEBSERVER WHERE ($Method = "POST" AND $URL LIKE "%/upload.action%"
     AND $URL LIKE "%filename=../../../../%")

@@ -1,0 +1,17 @@
+id: 058cd61aeb9d434693205295956403d9
+name: TCP Port 8000 Activity to the Internet
+path: /Basic Security Monitoring/Network Traffic Analysis
+description: TCP Port 8000 is commonly used for development environments of web server software. It generally should not be exposed directly to the Internet. If you are running software like this on the Internet, you should consider placing it behind a reverse proxy.
+type: standard
+author: DNIF
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=NETWORK-FIREWALL AND  $Proto=TCP AND $DstPort=8000 AND $SrcType=PRIVATE NOT $DstType=PRIVATE group count_unique $SrcIP, $DstIP limit 10
+- type: signal
+  DetectionName: TCP Port 8000 Activity to the Internet
+  DetectionTactic: Command and Control
+  DetectionTechnique: Commonly Used Port
+  SuspectHost: $SrcIP
+  TargetHost: $DstIP
+  DetectionScore: 5
+  DetectionConfidence: Low

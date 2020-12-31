@@ -1,0 +1,17 @@
+id: fb335c73ecc94ae68ee0c65ea34ce407
+name: FTP Activity to the Internet
+path: /Basic Security Monitoring/Network Traffic Analysis
+description: This rule detects events that may indicate the use of FTP network connections to the Internet. The File Transfer Protocol (FTP) has been around in its current form since the 1980s. It can be a common and efficient procedure on your network to send and receive files. Because of this, adversaries will also often use this protocol to exfiltrate data from your network or download new tools. Additionally, FTP is a plain-text protocol which, if intercepted, may expose usernames and passwords. FTP activity involving servers subject to regulations or compliance standards may be unauthorized.
+type: standard
+author: DNIF
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=NETWORK-FIREWALL AND $Proto=TCP AND $DstPort IN [20,21] AND $SrcType=PRIVATE AND $DstType=PUBLIC group count_unique $SrcIP, $DstIP limit 100
+- type: signal
+  DetectionName: FTP Activity to the Internet
+  DetectionTactic: Exfiltration
+  DetectionTechnique: Exfiltration Over Alternative Protocol
+  SuspectHost: $SrcIP
+  TargetHost: $DstIP
+  DetectionScore: 5
+  DetectionConfidence: Low

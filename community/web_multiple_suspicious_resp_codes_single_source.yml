@@ -6,7 +6,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Thomas Patzke \n References: None"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Thomas Patzke|None|"
 - type: sql
   query: SELECT $SrcIP, count(*) AS agg FROM WEBSERVER WHERE $ReturnCode IN ("400",
     "401", "403", "500") GROUP BY $SrcIP HAVING agg > 10

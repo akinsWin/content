@@ -6,7 +6,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Jakob Weinzettl, oscd.community \n References: None"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Jakob Weinzettl, oscd.community|None|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%\\sc.exe" OR $Image LIKE
     "%\\net.exe" OR $Image LIKE "%\\net1.exe") AND $CommandLine LIKE "%stop%")

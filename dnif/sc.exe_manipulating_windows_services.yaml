@@ -2,13 +2,13 @@ id: ab8a3a27c8414201a1844da4cf888097
 name: Sc.exe Manipulating Windows Services
 path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
-type: standard
+type: streamed
 author: DNIF
 blocks:
 - type: sql
-  query: SELECT $System, $User, $Image, $ParentImage, $CommandLine FROM SYSMON-PROCESS
-    WHERE $Image LIKE "%sc.exe" AND ($CommandLine LIKE "%  create %" OR $CommandLine
-    LIKE "% config %") LIMIT 100
+  query: SELECT $System FROM SYSMON-PROCESS
+    WHERE $Image LIKE "%sc.exe" AND ($CommandLine LIKE "%create%" OR $CommandLine
+    LIKE "%config%") GROUP BY $System LIMIT 100
 - type: signal
   DetectionName: Sc.exe Manipulating Windows Services
   DetectionTactic: Persistence

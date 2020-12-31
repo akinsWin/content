@@ -14,4 +14,4 @@ blocks:
   SuspectHost: $SrcIP
   TargetHost: $System
   DetectionScore: 5
-  DetectionConfidence: Low
+  DetectionConfidence: Medium

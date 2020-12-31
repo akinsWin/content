@@ -6,8 +6,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: @caliskanfurkan_ \n References: ['https://www.virustotal.com/gui/file/5ad401c3a568bd87dd13f8a9ddc4e450ece61cd9ce4d1b23f68ce0b1f3c190b7/',\
-    \ 'https://www.vmray.com/analyses/5ad401c3a568/report/overview.html']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |@caliskanfurkan_|https://www.virustotal.com/gui/file/5ad401c3a568bd87dd13f8a9ddc4e450ece61cd9ce4d1b23f68ce0b1f3c190b7/<br>https://www.vmray.com/analyses/5ad401c3a568/report/overview.html|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%\\powershell.exe") AND
     ($ParentImage LIKE "%\\excel.exe") AND ($CommandLine LIKE "%DataExchange.dll%"))

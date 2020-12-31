@@ -8,7 +8,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Florian Roth \n References: ['https://www.virustotal.com/gui/domain/paste.ee/relations']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://www.virustotal.com/gui/domain/paste.ee/relations|"
 - type: sql
   query: SELECT * FROM WEBFILTER WHERE ($URL LIKE "%.paste.ee/r/%" OR $URL LIKE "%.pastebin.com/raw/%"
     OR $URL LIKE "%.hastebin.com/raw/%" OR $URL LIKE "%.ghostbin.co/paste/%/raw/%")

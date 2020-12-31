@@ -7,7 +7,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Florian Roth \n References: ['https://blogs.technet.microsoft.com/jonathantrull/2016/10/03/detecting-sticky-key-backdoors/']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://blogs.technet.microsoft.com/jonathantrull/2016/10/03/detecting-sticky-key-backdoors/|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "%\\CurrentVersion\\Image
     File Execution Options\\sethc.exe%" OR $CommandLine LIKE "%\\CurrentVersion\\Image

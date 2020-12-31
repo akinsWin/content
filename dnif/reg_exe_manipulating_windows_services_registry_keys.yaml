@@ -2,13 +2,11 @@ id: 27b96b8b2fe74fef92b0199b2ae3c840
 name: Reg exe Manipulating Windows Services Registry Keys
 path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
-type: standard
+type: streamed
 author: DNIF
 blocks:
 - type: dql
-  query: _fetch * from event where $Stream=SYSMON-PROCESS AND $Duration=1h AND $Action=PROCESS_ADDED
-    AND $CommandLine=regex((?i).*reg\.exe.*reg.*add.*Services.*) group count_unique
-    $User, $System, $CommandLine, $ParentCommandLine limit 10
+  query: _fetch * from event where $Stream=SYSMON-PROCESS AND $Action=PROCESS_ADDED AND CommandLine=*reg.exe*reg*add*Services* group count_unique $System limit 0
 - type: signal
   DetectionName: Reg exe Manipulating Windows Services Registry Keys
   DetectionTactic: Persistence

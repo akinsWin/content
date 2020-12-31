@@ -2,7 +2,7 @@ id: 49884972f90d4237b36cc8a8a06e1855
 name: Changes to internet facing AWS RDS Database instances
 path: /Cloud Security/Amazon Web Services
 description: ''
-type: standard
+type: streamed
 author: DNIF
 blocks:
 - type: sql

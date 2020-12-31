@@ -6,7 +6,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Florian Roth \n References: ['https://github.com/krmaxwell/dns-exfiltration']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://github.com/krmaxwell/dns-exfiltration|"
 - type: sql
   query: SELECT * FROM DNS WHERE ($Query LIKE "%==.%")
 - type: signal

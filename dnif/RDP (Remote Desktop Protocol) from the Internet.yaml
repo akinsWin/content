@@ -1,0 +1,17 @@
+id: 836e5c254c0848499093b94e47b36b89
+name: RDP from the Internet
+path: /Basic Security Monitoring/Network Traffic Analysis
+description: This rule detects network events that may indicate the use of RDP traffic from the Internet. RDP is commonly used by system administrators to remotely control a system for maintenance or to use shared resources. It should almost never be directly exposed to the Internet, as it is frequently targeted and exploited by threat actors as an initial access or back-door vector.
+type: streamed
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $SrcIP, $DstIP, COUNT(*) FROM NETWORK-FIREWALL WHERE $DstPort='3389' AND $SrcType='PUBLIC' GROUP BY $DstIP, $SrcIP
+- type: signal
+  DetectionName: RDP (Remote Desktop Protocol) from the Internet
+  DetectionTactic: Lateral Movement
+  DetectionTechnique: Remote Services
+  TargetHost: $DstIP
+  SuspectHost: $SrcIP
+  DetectionScore: 5
+  DetectionConfidence: Low

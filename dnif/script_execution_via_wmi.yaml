@@ -1,14 +1,12 @@
 id: ae01a843f5644551bced9aceff7fd00e
 name: Script Execution via WMI
-path: /draft
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
-type: standard
+type: streamed
 author: DNIF
 blocks:
 - type: sql
-  query: SELECT $Image,$User,$ParentCommandLine,$ParentImage,$CommandLine, COUNT ($CommandLine)
-    AS PCOUNT FROM SYSMON-PROCESS WHERE $Image LIKE "%scrcons.exe"  GROUP BY $Image,$ParentImage,$ParentCommandLine,$CommandLine,$User
-    LIMIT 100
+  query: SELECT $System FROM SYSMON-PROCESS WHERE $Image LIKE "%scrcons.exe%" GROUP BY $System LIMIT 100
 - type: signal
   DetectionName: Script Execution via WMI
   DetectionTactic: Execution

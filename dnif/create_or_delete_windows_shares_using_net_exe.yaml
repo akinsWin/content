@@ -1,15 +1,13 @@
 id: b3ff4dbfcee147bfa49b55f860046a1e
 name: Create or delete windows shares using net exe
-path: /draft
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
-type: standard
+type: streamed
 author: DNIF
 blocks:
 - type: sql
-  query: SELECT $Image,$User,$ParentCommandLine,$ParentImage, COUNT ($CommandLine)
-    AS PCOUNT FROM SYSMON-PROCESS WHERE ($Image LIKE "%net.exe" OR $Image LIKE "%net1.exe")
-    AND $CommandLine LIKE "%share%" GROUP BY $Image,$ParentImage,$ParentCommandLine,$User
-    LIMIT 100
+  query: SELECT $System FROM SYSMON-PROCESS WHERE ($Image LIKE "%net.exe" OR $Image LIKE "%net1.exe")
+    AND $CommandLine LIKE "%share%" GROUP BY $System
 - type: signal
   DetectionName: Create or delete windows shares using net exe
   DetectionTactic: Execution

@@ -6,7 +6,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Roberto Rodriguez @Cyb3rWard0g \n References: ['https://github.com/Cyb3rWard0g/ThreatHunter-Playbook/tree/master/playbooks/windows/02_execution/T1047_windows_management_instrumentation/wmi_wmi_module_load.md']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Roberto Rodriguez @Cyb3rWard0g|https://github.com/Cyb3rWard0g/ThreatHunter-Playbook/tree/master/playbooks/windows/02_execution/T1047_windows_management_instrumentation/wmi_wmi_module_load.md|"
 - type: sql
   query: SELECT * FROM SYSMON-IMAGE-LOAD WHERE (($ImageLoaded LIKE "%\\wmiclnt.dll"
     OR $ImageLoaded LIKE "%\\WmiApRpl.dll" OR $ImageLoaded LIKE "%\\wmiprov.dll" OR

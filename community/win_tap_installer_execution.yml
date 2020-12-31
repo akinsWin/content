@@ -7,7 +7,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Daniil Yugoslavskiy, Ian Davis, oscd.community \n References: None"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Daniil Yugoslavskiy, Ian Davis, oscd.community|None|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE $Image LIKE "%\\tapinstall.exe"
 - type: signal

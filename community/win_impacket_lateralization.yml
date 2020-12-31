@@ -6,10 +6,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Ecco \n References: ['https://github.com/SecureAuthCorp/impacket/blob/master/examples/wmiexec.py',\
-    \ 'https://github.com/SecureAuthCorp/impacket/blob/master/examples/atexec.py',\
-    \ 'https://github.com/SecureAuthCorp/impacket/blob/master/examples/smbexec.py',\
-    \ 'https://github.com/SecureAuthCorp/impacket/blob/master/examples/dcomexec.py']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Ecco|https://github.com/SecureAuthCorp/impacket/blob/master/examples/wmiexec.py<br>https://github.com/SecureAuthCorp/impacket/blob/master/examples/atexec.py<br>https://github.com/SecureAuthCorp/impacket/blob/master/examples/smbexec.py<br>https://github.com/SecureAuthCorp/impacket/blob/master/examples/dcomexec.py|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE ((($ParentImage LIKE "%\\wmiprvse.exe"
     OR $ParentImage LIKE "%\\mmc.exe" OR $ParentImage LIKE "%\\explorer.exe" OR $ParentImage

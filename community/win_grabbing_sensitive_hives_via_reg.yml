@@ -6,10 +6,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Teymur Kheirkhabarov, Endgame, JHasenbusch, Daniil Yugoslavskiy,\
-    \ oscd.community \n References: ['https://www.slideshare.net/heirhabarov/hunting-for-credentials-dumping-in-windows-environment',\
-    \ 'https://eqllib.readthedocs.io/en/latest/analytics/aed95fc6-5e3f-49dc-8b35-06508613f979.html',\
-    \ 'https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003/T1003.md']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Teymur Kheirkhabarov, Endgame, JHasenbusch, Daniil Yugoslavskiy, oscd.community|https://www.slideshare.net/heirhabarov/hunting-for-credentials-dumping-in-windows-environment<br>https://eqllib.readthedocs.io/en/latest/analytics/aed95fc6-5e3f-49dc-8b35-06508613f979.html<br>https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003/T1003.md|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE ($Image LIKE "%\\reg.exe" AND ($CommandLine
     LIKE "%save%" OR $CommandLine LIKE "%export%") AND ($CommandLine LIKE "%hklm%"

@@ -1,19 +1,16 @@
 id: b54c0d5e720342af91187ecf8742c80d
 name: Schtasks used for forcing a reboot
-path: /draft
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
-type: standard
+type: streamed
 author: DNIF
 blocks:
 - type: sql
-  query: SELECT $Image,$User,$ParentCommandLine,$ParentImage,$CommandLine, COUNT ($CommandLine)
-    AS PCOUNT FROM SYSMON-PROCESS WHERE $Image LIKE "%schtasks.exe" AND $CommandLine
-    LIKE "%shutdown%"GROUP BY $Image,$ParentImage,$ParentCommandLine,$User,$CommandLine
-    LIMIT 100
+  query: SELECT $System FROM SYSMON-PROCESS WHERE $Image LIKE "%schtasks.exe" AND $CommandLine LIKE "%shutdown%" GROUP BY $System LIMIT 100
 - type: signal
   DetectionName: Schtasks used for forcing a reboot
   DetectionTactic: Execution
-  DetectionTechnique: Scheduled task/Job
+  DetectionTechnique: Scheduled Task/Job
   TargetHost: $System
   DetectionScore: 5
   DetectionConfidence: Low

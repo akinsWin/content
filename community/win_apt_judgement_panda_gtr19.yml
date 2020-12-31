@@ -7,7 +7,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Florian Roth \n References: ['https://www.crowdstrike.com/resources/reports/2019-crowdstrike-global-threat-report/']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://www.crowdstrike.com/resources/reports/2019-crowdstrike-global-threat-report/|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE (($CommandLine LIKE "%\\ldifde.exe -f
     -n %" OR $CommandLine LIKE "%\\7za.exe a 1.7z %" OR $CommandLine LIKE "% eprod.ldf"

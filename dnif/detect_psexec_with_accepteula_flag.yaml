@@ -6,9 +6,8 @@ type: standard
 author: DNIF
 blocks:
 - type: sql
-  query: SELECT $System,$User,$Image, $ParentImage, $CommandLine FROM SYSMON=PROCESS
-    WHERE $CommandLine LIKE "%psexec%" AND $CommandLine LIKE "%accepteula%" LIMIT
-    10
+  query: SELECT $System, $User, $Image, $ParentImage, $CommandLine FROM SYSMON=PROCESS
+    WHERE $CommandLine LIKE "%psexec%" AND $CommandLine LIKE "%accepteula%" LIMIT 10
 - type: signal
   DetectionName: Detect PsExec With accepteula Flag
   DetectionTactic: Execution

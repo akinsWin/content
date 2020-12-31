@@ -2,11 +2,11 @@ id: 393aa60deacc4e1a926344b621954285
 name: Brute Force Access
 path: /Basic Security Monitoring/Authentication Attacks
 description: ''
-type: standard
+type: streamed
 author: DNIF
 blocks:
 - type: sql
-  query: "SELECT $SrcIP, $System, count_if($Status='FAILED') AS $FailCount, count_if($Status='PASSED') AS $PassCount FROM AUTHENTICATION WHERE $Duration=1h AND $Action='LOGIN' GROUP BY $SrcIP, $System HAVING $FailCount >= 100 AND $FailCount >= $PassCount * 10 LIMIT 100"
+  query: "SELECT $SrcIP, $System, count_if($Status='FAILED') AS $FailCount, count_if($Status='PASSED') AS $PassCount FROM AUTHENTICATION WHERE $Duration=15m AND $Action='LOGIN' GROUP BY $SrcIP, $System HAVING $FailCount >= 50 AND $FailCount >= $PassCount * 5 LIMIT 100"
 - type: signal
   DetectionName: Brute Force Access
   DetectionTactic: Credential Access
@@ -14,4 +14,4 @@ blocks:
   SuspectHost: $SrcIP
   TargetHost: $System
   DetectionScore: 5
-  DetectionConfidence: Low
+  DetectionConfidence: High

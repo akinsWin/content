@@ -6,7 +6,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: vitaliy0x1 \n References: ['https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |vitaliy0x1|https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html|"
 - type: sql
   query: SELECT * FROM CLOUDTRAIL WHERE ($UserIdentityType = "Root" AND NOT (eventType
     = "AwsServiceEvent"))

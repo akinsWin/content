@@ -7,8 +7,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: @ROxPinTeddy \n References: ['https://news.sophos.com/en-us/2019/12/09/snatch-ransomware-reboots-pcs-into-safe-mode-to-bypass-protection/',\
-    \ 'https://www.fireeye.com/blog/threat-research/2020/05/tactics-techniques-procedures-associated-with-maze-ransomware-incidents.html']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |@ROxPinTeddy|https://news.sophos.com/en-us/2019/12/09/snatch-ransomware-reboots-pcs-into-safe-mode-to-bypass-protection/<br>https://www.fireeye.com/blog/threat-research/2020/05/tactics-techniques-procedures-associated-with-maze-ransomware-incidents.html|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE $Image LIKE "%\\advanced\_ip\_scanner%"
 - type: signal

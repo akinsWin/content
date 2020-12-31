@@ -1,0 +1,16 @@
+id: bd379be414e64e12a45e0927d7f960fc
+name: Public IP Reconnaissance Activity
+path: /Advanced Threat Detection/Proxy Monitoring
+description: Identifies domains commonly used by adversaries for post-exploitation IP reconnaissance. It is common for adversaries to test for Internet access and acquire their public IP address after they have gained access to a system. Among others, this has been observed in campaigns leveraging the information stealer, Trickbot.
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $SrcIP FROM WEBFILTER WHERE ($Domain LIKE "%ipecho.net%" OR $Domain LIKE "%ipinfo.io%" OR $Domain LIKE "%ifconfig.co%" OR $Domain LIKE "%ifconfig.me%" OR $Domain LIKE "%icanhazip.com%" OR $Domain LIKE "%myexternalip.com%" OR $Domain LIKE "%api.ipify.org%" OR $Domain LIKE "%bot.whatismyipaddress.com%" OR $Domain LIKE "%ip.anysrc.net%" OR $Domain LIKE "%wtfismyip.com%") AND NOT ($ReturnCode='302' AND $Status='PASSED' AND  $Proxy='httpreferer') GROUP BY $SrcIP
+- type: signal
+  DetectionName: Public IP Reconnaissance Activity
+  DetectionTactic: Discovery
+  DetectionTechnique: System Network Configuration Discovery
+  SuspectHost: $SrcIP
+  DetectionScore: 5
+  DetectionConfidence: Low

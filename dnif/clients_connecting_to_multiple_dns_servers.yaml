@@ -2,7 +2,7 @@ id: e897781a5dbe4315a60d4668357514a6
 name: Clients Connecting to Multiple DNS Servers
 path: /Basic Security Monitoring/Network Traffic Analysis
 description: ''
-type: standard
+type: streamed
 author: DNIF
 blocks:
 - type: sql
@@ -13,5 +13,5 @@ blocks:
   DetectionTactic: Exfiltration
   DetectionTechnique: Exfiltration Over Alternative Protocol
   SuspectHost: $SrcIP
-  DetectionScore: 5
+  DetectionScore: 3
   DetectionConfidence: Low

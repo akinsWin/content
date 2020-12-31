@@ -2,16 +2,15 @@ id: e11a414d34944c169b912f6c9c4615a0
 name: Dump LSASS via comsvcs DLL
 path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
-type: standard
+type: streamed
 author: DNIF
 blocks:
 - type: dql
-  query: _fetch * from event where $Stream=SYSMON-PROCESS AND $CommandLine=regex(.*rundll32\.exe.*comsvcs\.dll.*MiniDump.*)
-    AND $Duration=1h group count_unique  $User limit 100
+  query: _fetch * from event where $Stream=SYSMON-PROCESS AND $CommandLine=*rundll32.exe*comsvcs.dll*MiniDump* group count_unique $System limit 0
 - type: signal
   DetectionName: Dump LSASS via comsvcs DLL
   DetectionTactic: Credential Access
   DetectionTechnique: OS Credential Dumping
   TargetHost: $System
-  DetectionScore: 5
-  DetectionConfidence: Low
+  DetectionScore: 8
+  DetectionConfidence: High

@@ -7,7 +7,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Markus Neis - Swisscom \n References: ['https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0708']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Markus Neis - Swisscom|https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0708|"
 - type: sql
   query: SELECT * FROM SYSMON-NETWORK WHERE (($DstPort = "3389" AND $Initiated = "true")
     AND NOT (($Image LIKE "%\\mstsc.exe" OR $Image LIKE "%\\RTSApp.exe" OR $Image

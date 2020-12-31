@@ -1,15 +1,12 @@
 id: 96b53b85c9c3427d8c149bf01f47827c
 name: USN Journal Deletion
-path: /draft
+path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
-type: standard
+type: streamed
 author: DNIF
 blocks:
 - type: sql
-  query: SELECT $Image,$User,$ParentCommandLine,$ParentImage, COUNT ($CommandLine)
-    AS PCOUNT FROM SYSMON-PROCESS WHERE $Image LIKE '%fsutil.exe' AND $Commandline
-    LIKE '%deletejournal%usn%' GROUP BY $Image,$ParentImage,$ParentCommandLine,$User
-    LIMIT 100
+  query: SELECT $System FROM SYSMON-PROCESS WHERE $Image LIKE '%fsutil.exe' AND $Commandline LIKE '%deletejournal%usn%' GROUP BY $System
 - type: signal
   DetectionName: USN Journal Deletion
   DetectionTactic: Defense Evasion

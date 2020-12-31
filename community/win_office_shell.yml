@@ -7,8 +7,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Michael Haag, Florian Roth, Markus Neis \n References: ['https://www.hybrid-analysis.com/sample/465aabe132ccb949e75b8ab9c5bda36d80cf2fd503d52b8bad54e295f28bbc21?environmentId=100',\
-    \ 'https://mgreen27.github.io/posts/2018/04/02/DownloadCradle.html']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Michael Haag, Florian Roth, Markus Neis|https://www.hybrid-analysis.com/sample/465aabe132ccb949e75b8ab9c5bda36d80cf2fd503d52b8bad54e295f28bbc21?environmentId=100<br>https://mgreen27.github.io/posts/2018/04/02/DownloadCradle.html|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE (($ParentImage LIKE "%\\WINWORD.EXE" OR
     $ParentImage LIKE "%\\EXCEL.EXE" OR $ParentImage LIKE "%\\POWERPNT.exe" OR $ParentImage

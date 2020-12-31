@@ -6,7 +6,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Florian Roth \n References: ['https://twitter.com/0gtweet/status/1281103918693482496']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://twitter.com/0gtweet/status/1281103918693482496|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE $CommandLine LIKE "%(WCHAR)0x%"
 - type: signal

@@ -7,7 +7,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Florian Roth \n References: ['https://www.trustedsec.com/blog/detecting-cve-20200688-remote-code-execution-vulnerability-on-microsoft-exchange-server/']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://www.trustedsec.com/blog/detecting-cve-20200688-remote-code-execution-vulnerability-on-microsoft-exchange-server/|"
 - type: sql
   query: SELECT * FROM WEBSERVER WHERE ($Method = "GET" AND ($URL LIKE "%/ecp/%" OR
     $URL LIKE "%/owa/%") AND $URL LIKE "%\_\_VIEWSTATE=%")

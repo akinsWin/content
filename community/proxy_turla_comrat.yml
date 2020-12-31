@@ -6,7 +6,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Florian Roth \n References: ['https://www.welivesecurity.com/wp-content/uploads/2020/05/ESET_Turla_ComRAT.pdf']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://www.welivesecurity.com/wp-content/uploads/2020/05/ESET_Turla_ComRAT.pdf|"
 - type: sql
   query: SELECT * FROM WEBFILTER WHERE $URL LIKE "%/index/index.php_h=%"
 - type: signal

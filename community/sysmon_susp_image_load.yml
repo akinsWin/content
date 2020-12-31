@@ -7,7 +7,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Markus Neis \n References: ['https://cyberwardog.blogspot.com/2017/03/chronicles-of-threat-hunter-hunting-for.html']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Markus Neis|https://cyberwardog.blogspot.com/2017/03/chronicles-of-threat-hunter-hunting-for.html|"
 - type: sql
   query: SELECT * FROM SYSMON-IMAGE-LOAD WHERE (($Image LIKE "%\\notepad.exe") AND
     ($ImageLoaded LIKE "%\\samlib.dll" OR $ImageLoaded LIKE "%\\WinSCard.dll"))

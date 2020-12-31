@@ -9,7 +9,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Timur Zinniatullin, oscd.community \n References: ['https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1220/T1220.yaml']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Timur Zinniatullin, oscd.community|https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1220/T1220.yaml|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%\\wmic.exe" AND $CommandLine
     LIKE "%/format%") OR $Image LIKE "%\\msxsl.exe")
