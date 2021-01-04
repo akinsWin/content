@@ -6,7 +6,7 @@ type: streamed
 author: DNIF
 blocks:
 - type: dql
-  query: _fetch * from event where $Stream=SYSMON-PROCESS AND $CommandLine=regex((?i)(.*mshta.exe.*)) AND group count_unique $System limit 0
+  query: _fetch * from event where $Stream=SYSMON-PROCESS AND $CommandLine=regex((?i)(.*mshta.exe.*)) group count_unique $System limit 0
 - type: signal
   DetectionName: Detect mshta exe running scripts in command-line arguments
   DetectionTactic: Defense Evasion
