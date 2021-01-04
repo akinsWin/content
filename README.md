@@ -1,10 +1,10 @@
-# Detections by Author
+## Detections by Author
 | Author  |Count|
 |---------|----:|
 |DNIF     |  106|
 |community|  127|
 |Total    |  233|
-# Detections by Directory
+## Detections by Directory
 |                      Directory                       |Count|
 |------------------------------------------------------|----:|
 |/Advanced Threat Detection/Windows Process Monitoring |  118|
@@ -17,9 +17,7 @@
 |/Basic Security Monitoring/Network Traffic Analysis   |   20|
 |/Advanced Threat Detection/Windows Registry Monitoring|    3|
 |Total                                                 |  233|
-create.py:51: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
-  rdata = yaml.load(rf)
-# /Advanced Threat Detection/Windows Process Monitoring
+## /Advanced Threat Detection/Windows Process Monitoring
 |                                                                       Workbook                                                                       | Author  |       Tactic       |                 Technique                 |Severity|Confidence|
 |------------------------------------------------------------------------------------------------------------------------------------------------------|---------|--------------------|-------------------------------------------|-------:|----------|
 |[DNS RCE CVE-2020-1350](community/win_exploit_cve_2020_1350.yml)                                                                                      |community|Execution           |System Services                            |       5|Low       |
@@ -140,7 +138,7 @@ create.py:51: YAMLLoadWarning: calling yaml.load() without Loader=... is depreca
 |[Creation of Shadow Copy using ntdsutil /vsadmib](dnif/creation_of_shadow_copy_using_ntdsutil_vsadmib_yaml)                                           |DNIF     |Impact              |Inhibit System recovery                    |       8|High      |
 |[Create local admin accounts using net exe](dnif/create_local_admin_accounts_using_net_exe_yaml)                                                      |DNIF     |Persistence         |Create Account: Local Account              |      10|High      |
 |[Processes launching netsh](dnif/processes_launching_netsh_yaml)                                                                                      |DNIF     |Defence Evasion     |Impair Defences                            |       5|Low       |
-# /Advanced Threat Detection/Proxy Monitoring
+## /Advanced Threat Detection/Proxy Monitoring
 |                                                 Workbook                                                 | Author  |      Tactic       |              Technique               |Severity|Confidence|
 |----------------------------------------------------------------------------------------------------------|---------|-------------------|--------------------------------------|-------:|----------|
 |[iOS Implant URL Pattern](community/proxy_ios_implant.yml)                                                |community|Credential Access  |Unsecured Credentials                 |       5|Low       |
@@ -172,7 +170,7 @@ create.py:51: YAMLLoadWarning: calling yaml.load() without Loader=... is depreca
 |[Public IP Reconnaissance Activity](dnif/public_ip_reconnaissance_activity_yaml)                          |DNIF     |Discovery          |System Network Configuration Discovery|       5|Low       |
 |[Halfbaked Command and Control Beacon](dnif/halfbaked_command_and_control_beacon_yaml)                    |DNIF     |Command and Control|Application Layer Protocol            |       5|Low       |
 |[Ingress Tool Transfer](dnif/ingress_tool_transfer_yaml)                                                  |DNIF     |Command and Control|Ingress Tool Transfer                 |       5|Low       |
-# /Advanced Threat Detection/Webserver Exploits
+## /Advanced Threat Detection/Webserver Exploits
 |                                                        Workbook                                                        | Author  |    Tactic    |            Technique            |Severity|Confidence|
 |------------------------------------------------------------------------------------------------------------------------|---------|--------------|---------------------------------|-------:|----------|
 |[Citrix ADS Exploitation CVE-2020-8193 CVE-2020-8195](community/web_citrix_cve_2020_8193_8195_exploit.yml)              |community|Initial Access|Exploit Public-Facing Application|       5|Low       |
@@ -184,14 +182,14 @@ create.py:51: YAMLLoadWarning: calling yaml.load() without Loader=... is depreca
 |[Citrix Netscaler Attack CVE-2019-19781](community/web_citrix_cve_2019_19781_exploit.yml)                               |community|Initial Access|Exploit Public-Facing Application|       5|Low       |
 |[CVE-2020-0688 Exploitation Attempt](community/web_exchange_cve_2020_0688_exploit.yml)                                  |community|Initial Access|Exploit Public-Facing Application|       5|Low       |
 |[CVE-2020-5902 F5 BIG-IP Exploitation Attempt](community/web_cve_2020_5902_f5_bigip.yml)                                |community|Initial Access|Exploit Public-Facing Application|       5|Low       |
-# /Advanced Threat Detection/DNS Monitoring
+## /Advanced Threat Detection/DNS Monitoring
 |                                       Workbook                                       | Author  |      Tactic       |        Technique         |Severity|Confidence|
 |--------------------------------------------------------------------------------------|---------|-------------------|--------------------------|-------:|----------|
 |[Telegram Bot API Request](community/net_susp_telegram_api.yml)                       |community|Command and Control|Web Service               |       5|Low       |
 |[Cobalt Strike DNS Beaconing](community/net_mal_dns_cobaltstrike.yml)                 |community|Command and Control|Application Layer Protocol|       5|Low       |
 |[Suspicious DNS Query with B64 Encoded String](community/net_susp_dns_b64_queries.yml)|community|Command and Control|Application Layer Protocol|       5|Low       |
 |[Wannacry Killswitch Domain](community/net_wannacry_killswitch_domain.yml)            |community|Command and Control|Application Layer Protocol|       5|Low       |
-# /Cloud Security/Amazon Web Services
+## /Cloud Security/Amazon Web Services
 |                                                        Workbook                                                        | Author  |    Tactic     |            Technique            |Severity|Confidence|
 |------------------------------------------------------------------------------------------------------------------------|---------|---------------|---------------------------------|-------:|----------|
 |[AWS EC2 VM Export Failure](community/aws_ec2_vm_export_failure.yml)                                                    |community|Exfiltration   |Transfer Data to Cloud Account   |       5|Low       |
@@ -207,7 +205,7 @@ create.py:51: YAMLLoadWarning: calling yaml.load() without Loader=... is depreca
 |[Monitor AWS Credential abuse or hijacking](dnif/monitor_aws_credential_abuse_or_hijacking_yaml)                        |DNIF     |Discovery      |Account Discovery                |       5|Low       |
 |[Changes to internet facing AWS RDS Database instances](dnif/changes_to_internet_facing_aws_rds_database_instances_yaml)|DNIF     |Persistence    |Account Manipulation             |       5|Low       |
 |[Changes made to AWS CloudTrail logs](dnif/changes_made_to_aws_cloudtrail_logs_yaml)                                    |DNIF     |Defense Evasion|Indicator Removal on Host        |       8|High      |
-# /Advanced Threat Detection/Linux Process Monitoring
+## /Advanced Threat Detection/Linux Process Monitoring
 |                                                     Workbook                                                     |Author|       Tactic       |                 Technique                 |Severity|Confidence|
 |------------------------------------------------------------------------------------------------------------------|------|--------------------|-------------------------------------------|-------:|----------|
 |[Strace Process Activity](dnif/strace_process_activity_yaml)                                                      |DNIF  |Privilege Escalation|Exploitation for Privilege Escalation      |       5|Low       |
@@ -245,12 +243,12 @@ create.py:51: YAMLLoadWarning: calling yaml.load() without Loader=... is depreca
 |[Connection to Internal Network via Telnet](dnif/connection_to_internal_network_via_telnet_yaml)                  |DNIF  |Lateral Movement    |Remote Services                            |       5|Low       |
 |[Netcat Network Activity](dnif/netcat_network_activity_yaml)                                                      |DNIF  |Discovery           |System Network Connections Discovery       |       5|Low       |
 |[Connection to External Network via Telnet](dnif/connection_to_external_network_via_telnet_yaml)                  |DNIF  |Lateral Movement    |Remote Services                            |       5|Low       |
-# /Basic Security Monitoring/Authentication Attacks
+## /Basic Security Monitoring/Authentication Attacks
 |                         Workbook                         |Author|     Tactic      | Technique |Severity|Confidence|
 |----------------------------------------------------------|------|-----------------|-----------|-------:|----------|
 |[Brute Force Access](dnif/brute_force_access_yaml)        |DNIF  |Credential Access|Brute Force|       5|High      |
 |[Slow Bruteforce Attack](dnif/slow_bruteforce_attack_yaml)|DNIF  |Credential Access|Brute Force|       5|Medium    |
-# /Basic Security Monitoring/Network Traffic Analysis
+## /Basic Security Monitoring/Network Traffic Analysis
 |                                                  Workbook                                                  |Author|      Tactic       |              Technique               |Severity|Confidence|
 |------------------------------------------------------------------------------------------------------------|------|-------------------|--------------------------------------|-------:|----------|
 |[RDP from the Internet](dnif/rdp_remote_desktop_protocol_from_the_internet_yaml)                            |DNIF  |Lateral Movement   |Remote Services                       |       5|Low       |
@@ -273,7 +271,7 @@ create.py:51: YAMLLoadWarning: calling yaml.load() without Loader=... is depreca
 |[Clients Connecting to Multiple DNS Servers](dnif/clients_connecting_to_multiple_dns_servers_yaml)          |DNIF  |Exfiltration       |Exfiltration Over Alternative Protocol|       3|Low       |
 |[Protocol or Port Mismatch](dnif/protocol_or_port_mismatch_yaml)                                            |DNIF  |Command And Control|Non-Standard port                     |       5|Low       |
 |[TCP Port 8000 Activity to the Internet](dnif/tcp_port_8000_activity_to_the_internet_yaml)                  |DNIF  |Command and Control|Commonly Used Port                    |       5|Low       |
-# /Advanced Threat Detection/Windows Registry Monitoring
+## /Advanced Threat Detection/Windows Registry Monitoring
 |                                          Workbook                                          |Author|       Tactic       |            Technique            |Severity|Confidence|
 |--------------------------------------------------------------------------------------------|------|--------------------|---------------------------------|-------:|----------|
 |[Registry Keys Used For Persistence](dnif/registry_keys_used_for_persistence_yaml)          |DNIF  |Persistence         |Boot or Logon Autostart Execution|       5|Low       |
