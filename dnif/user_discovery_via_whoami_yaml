@@ -1,0 +1,16 @@
+id: 41789ef999c54b86ae492f6b57f9f9fc
+name: User Discovery via Whoami
+path: /Advanced Threat Detection/Linux Process Monitoring
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $ProcessName,$System  FROM AUDITD WHERE $Action='PROCESS_ADDED' AND $ProcessName='whoami' GROUP BY $ProcessName,$System 
+- type: signal
+  DetectionName: User Discovery via Whoami
+  DetectionTactic: Discovery
+  DetectionTechnique: System Owner/User Discovery
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

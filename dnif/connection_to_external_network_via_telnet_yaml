@@ -1,0 +1,16 @@
+id: 4f255376e220497aae709f3ccab8b9d3
+name: Connection to External Network via Telnet
+path: /Advanced Threat Detection/Linux Process Monitoring
+description: ''
+type: streamed
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $ProcessName,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND $ProcessName='telnet' AND $DstType='PUBLIC' GROUP BY $ProcessName,$System
+- type: signal
+  DetectionName: Connection to External Network via Telnet
+  DetectionTactic: Lateral Movement
+  DetectionTechnique: Remote Services
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

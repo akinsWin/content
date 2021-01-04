@@ -1,0 +1,16 @@
+id: 343ea3d9acc348e9b048a6536e914c90
+name: Setgid Bit Set via chmod
+path: /Advanced Threat Detection/Linux Process Monitoring
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $ProcessName,$System  FROM AUDITD WHERE $Action='PROCESS_ADDED' AND $ProcessName='chmod' AND ($ProcessArgs='g+s' OR $ProcessArgs LIKE "2%") AND $User!='root' GROUP BY $ProcessName,$System 
+- type: signal
+  DetectionName: Setgid Bit Set via chmod
+  DetectionTactic: Privilege Escalation
+  DetectionTechnique: Abuse Elevation Control Mechanism
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

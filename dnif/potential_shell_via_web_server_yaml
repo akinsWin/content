@@ -1,0 +1,16 @@
+id: d3be1031b752488f81b5916680762200
+name: Potential Shell via Web Server
+path: /Advanced Threat Detection/Linux Process Monitoring
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $ProcessName,$System  FROM AUDITD WHERE $Action='PROCESS_ADDED' AND ($ProcessName='bash' OR $ProcessName='dash') AND ($User='apache' OR $User='nginx' OR $User='www' OR $User='www\-data') GROUP BY $ProcessName,$System 
+- type: signal
+  DetectionName: Potential Shell via Web Server
+  DetectionTactic: Persistence
+  DetectionTechnique: Web Shell
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

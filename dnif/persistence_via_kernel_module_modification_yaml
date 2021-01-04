@@ -1,0 +1,16 @@
+id: cedaec778eed42478fbf31b82aba34ea
+name: Persistence via Kernel Module Modification
+path: /Advanced Threat Detection/Linux Process Monitoring
+description: ''
+type: streamed
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $ProcessName,$System  FROM AUDITD WHERE $Action='PROCESS_ADDED' AND ($ProcessName='insmod' OR $ProcessName='kmod' OR $ProcessName='modprobe' OR $ProcessName='rmod') GROUP BY $ProcessName,$System 
+- type: signal
+  DetectionName: Persistence via Kernel Module Modification
+  DetectionTactic: Persistence
+  DetectionTechnique: Kernel Modules and Extensions
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

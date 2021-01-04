@@ -1,0 +1,16 @@
+id: 7f990b3e6dce416abb1c8b4b1406d961
+name: File Deletion via Shred
+path: /Advanced Threat Detection/Linux Process Monitoring
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $ProcessName,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND $ProcessName='shred' AND ($ProcessArgs='-u' OR $ProcessArgs='--remove' OR $ProcessArgs='-z' OR $ProcessArgs='--zero') GROUP BY $ProcessName,$System
+- type: signal
+  DetectionName: File Deletion via Shred
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: File Deletion
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low
