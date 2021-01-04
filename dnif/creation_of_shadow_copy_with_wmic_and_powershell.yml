@@ -1,0 +1,18 @@
+id: eb06bc97269a4d2c867f0b63ad3ef065
+name: Creation of Shadow Copy with wmic and powershell
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: streamed
+author: DNIF
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=SYSMON-PROCESS AND $CommandLine=regex((?i)(.*wmic*.|.*powershell*.))i
+    AND $CommandLine=regex((?i)(.*shadowcopy*.))i AND $CommandLine=regex((?i)(.*create*.))i
+    group count_unique $System limit 0
+- type: signal
+  DetectionName: Creation of Shadow Copy with wmic and powershell
+  DetectionTactic: Impact
+  DetectionTechnique: Inhibit System Recovery
+  TargetHost: $System
+  DetectionScore: 8
+  DetectionConfidence: High

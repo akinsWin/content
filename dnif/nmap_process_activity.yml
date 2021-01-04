@@ -1,0 +1,16 @@
+id: 96963fac347a475db8bdc843f550a489
+name: Nmap Process Activity
+path: /Advanced Threat Detection/Linux Process Monitoring
+description: ''
+type: streamed
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $ProcessName,$System  FROM AUDITD WHERE $Action='PROCESS_ADDED' AND $ProcessName='nmap' GROUP BY $ProcessName,$System 
+- type: signal
+  DetectionName: Nmap Process Activity
+  DetectionTactic: Discovery
+  DetectionTechnique: System Network Connections Discovery
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

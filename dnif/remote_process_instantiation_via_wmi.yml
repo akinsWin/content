@@ -1,0 +1,17 @@
+id: 7978566e34434ed8b1f591f85e6c0152
+name: Remote Process Instantiation via WMI
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: streamed
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $System FROM SYSMON-PROCESS WHERE $Image LIKE "%wmic.exe" AND $Commandline LIKE
+    "%node%process%call%create%" GROUP BY $System
+- type: signal
+  DetectionName: Remote Process Instantiation via WMI
+  DetectionTactic: Execution
+  DetectionTechnique: Windows Management Instrumentation
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

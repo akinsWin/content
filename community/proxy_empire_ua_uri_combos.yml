@@ -6,7 +6,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Florian Roth \n References: ['https://github.com/BC-SECURITY/Empire']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://github.com/BC-SECURITY/Empire|"
 - type: sql
   query: SELECT * FROM WEBFILTER WHERE ($UserAgent = "Mozilla/5.0 (Windows NT 6.1;
     WOW64; Trident/7.0; rv:11.0) like Gecko" AND $URL IN ("/admin/get.php", "/news.php",

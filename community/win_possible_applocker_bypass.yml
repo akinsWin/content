@@ -7,8 +7,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: juju4 \n References: ['https://github.com/subTee/ApplicationWhitelistBypassTechniques/blob/master/TheList.txt',\
-    \ 'https://room362.com/post/2014/2014-01-16-application-whitelist-bypass-using-ieexec-dot-exe/']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |juju4|https://github.com/subTee/ApplicationWhitelistBypassTechniques/blob/master/TheList.txt<br>https://room362.com/post/2014/2014-01-16-application-whitelist-bypass-using-ieexec-dot-exe/|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "%\\msdt.exe%" OR $CommandLine
     LIKE "%\\installutil.exe%" OR $CommandLine LIKE "%\\regsvcs.exe%" OR $CommandLine

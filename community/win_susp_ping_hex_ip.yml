@@ -6,8 +6,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Florian Roth \n References: ['https://github.com/vysec/Aggressor-VYSEC/blob/master/ping.cna',\
-    \ 'https://twitter.com/vysecurity/status/977198418354491392']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://github.com/vysec/Aggressor-VYSEC/blob/master/ping.cna<br>https://twitter.com/vysecurity/status/977198418354491392|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE (($CommandLine LIKE "%\\ping.exe 0x%"
     OR $CommandLine LIKE "%\\ping 0x%") AND ($Image LIKE "%ping.exe%"))

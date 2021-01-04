@@ -6,7 +6,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Thomas Patzke \n References: ['Internal research from Florian Roth']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Thomas Patzke|Internal research from Florian Roth|"
 - type: sql
   query: SELECT * FROM WEBFILTER WHERE ($UserAgent IN "Mozilla/5.0 (Windows NT 6.1;
     WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.143 Safari/537.36"

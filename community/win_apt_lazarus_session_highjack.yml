@@ -7,7 +7,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Trent Liffick (@tliffick) \n References: ['https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2018/03/07180244/Lazarus_Under_The_Hood_PDF_final.pdf']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Trent Liffick (@tliffick)|https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2018/03/07180244/Lazarus_Under_The_Hood_PDF_final.pdf|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%\\mstdc.exe" OR $Image
     LIKE "%\\gpvc.exe") AND NOT (($Image LIKE "C:\\Windows\\System32\\%" OR $Image

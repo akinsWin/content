@@ -1,0 +1,16 @@
+id: bd13152845344a409d803b820862fde7
+name: Windows Security Account Manager Stopped
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: streamed
+author: DNIF
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=SYSMON-PROCESS AND $CommandLine=*net.exe*stop*samss* group count_unique $System limit 100
+- type: signal
+  DetectionName: Windows Security Account Manager Stopped
+  DetectionTactic: Impact
+  DetectionTechnique: Service Stop
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

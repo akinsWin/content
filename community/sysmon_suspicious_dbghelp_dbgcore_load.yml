@@ -10,8 +10,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Perez Diego (@darkquassar), oscd.community, Ecco \n References: ['https://docs.microsoft.com/en-us/windows/win32/api/minidumpapiset/nf-minidumpapiset-minidumpwritedump',\
-    \ 'https://www.pinvoke.net/default.aspx/dbghelp/MiniDumpWriteDump.html', 'https://medium.com/@fsx30/bypass-edrs-memory-protection-introduction-to-hooking-2efb21acffd6']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Perez Diego (@darkquassar), oscd.community, Ecco|https://docs.microsoft.com/en-us/windows/win32/api/minidumpapiset/nf-minidumpapiset-minidumpwritedump<br>https://www.pinvoke.net/default.aspx/dbghelp/MiniDumpWriteDump.html<br>https://medium.com/@fsx30/bypass-edrs-memory-protection-introduction-to-hooking-2efb21acffd6|"
 - type: sql
   query: SELECT * FROM SYSMON-IMAGE-LOAD WHERE (((($ImageLoaded LIKE "%\\dbghelp.dll"
     OR $ImageLoaded LIKE "%\\dbgcore.dll") AND ($Image LIKE "%\\msbuild.exe" OR $Image

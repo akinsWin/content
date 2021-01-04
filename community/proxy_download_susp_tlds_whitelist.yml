@@ -6,7 +6,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Florian Roth \n References: None"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|None|"
 - type: sql
   query: SELECT * FROM WEBFILTER WHERE ($URL IN ("exe", "vbs", "bat", "rar", "ps1",
     "doc", "docm", "xls", "xlsm", "pptm", "rtf", "hta", "dll", "ws", "wsf", "sct",

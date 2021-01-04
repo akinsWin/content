@@ -1,0 +1,16 @@
+id: a96ad917a6d3490880ec46011d3e3cee
+name: Interactive Terminal Spawned via Python
+path: /Advanced Threat Detection/Linux Process Monitoring
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $ProcessName,$System  FROM AUDITD WHERE $Action='PROCESS_ADDED' AND $ProcessName='python' AND ($ProcessArgs LIKE "%\"import pty\; pty.spawn\(\/bin\/sh\)\"%" OR $ProcessArgs LIKE "%\"import pty\; pty.spawn\(\/bin\/dash\)%" OR $ProcessArgs LIKE "%\"import pty\; pty.spawn\(\/bin\/bash\)%") GROUP BY $ProcessName,$System 
+- type: signal
+  DetectionName: Interactive Terminal Spawned via Python
+  DetectionTactic: Execution
+  DetectionTechnique: Command and Scripting Interpreter
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

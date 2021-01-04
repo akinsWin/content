@@ -7,8 +7,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Ecco, Daniil Yugoslavskiy, oscd.community \n References: ['https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1070/T1070.yaml',\
-    \ 'https://eqllib.readthedocs.io/en/latest/analytics/5b223758-07d6-4100-9e11-238cfdd0fe97.html']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Ecco, Daniil Yugoslavskiy, oscd.community|https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1070/T1070.yaml<br>https://eqllib.readthedocs.io/en/latest/analytics/5b223758-07d6-4100-9e11-238cfdd0fe97.html|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE ((($Image LIKE "%\\powershell.exe" AND
     ($CommandLine LIKE "%Clear-EventLog%" OR $CommandLine LIKE "%Remove-EventLog%"

@@ -1,0 +1,17 @@
+id: c27cf8b40f124cadb784f7f8c464cd1c
+name: RPC from the Internet
+path: /Basic Security Monitoring/Network Traffic Analysis
+description: This rule detects network events that may indicate the use of RPC traffic from the Internet. RPC is commonly used by system administrators to remotely control a system for maintenance or to use shared resources. It should almost never be directly exposed to the Internet, as it is frequently targeted and exploited by threat actors as an initial access or back-door vector.
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $SrcIP, COUNT($DstIP) AS $CountDstIP FROM NETWORK-TRAFFIC WHERE $DstPort='135' AND $Proto='TCP' AND $SrcType='PUBLIC' AND $DstType='PRIVATE' GROUP BY $DstIP, $SrcIP
+- type: signal
+  DetectionName: RPC from the Internet
+  DetectionTactic: Initial Access
+  DetectionTechnique: Exploit Public-Facing Application
+  SuspectHost: $SrcIP
+  TargetHost: $DstIP
+  DetectionScore: 5
+  DetectionConfidence: Low

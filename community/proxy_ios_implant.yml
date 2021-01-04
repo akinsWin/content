@@ -6,8 +6,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Florian Roth \n References: ['https://googleprojectzero.blogspot.com/2019/08/implant-teardown.html',\
-    \ 'https://twitter.com/craiu/status/1167358457344925696']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://googleprojectzero.blogspot.com/2019/08/implant-teardown.html<br>https://twitter.com/craiu/status/1167358457344925696|"
 - type: sql
   query: SELECT * FROM WEBFILTER WHERE $URL LIKE "%/list/suc_name=%"
 - type: signal

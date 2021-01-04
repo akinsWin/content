@@ -8,8 +8,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Florian Roth \n References: ['https://twitter.com/CyberRaiju/status/1273597319322058752',\
-    \ 'https://twitter.com/bohops/status/1276357235954909188?s=12']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://twitter.com/CyberRaiju/status/1273597319322058752<br>https://twitter.com/bohops/status/1276357235954909188?s=12|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "%explorer.exe%" AND
     $CommandLine LIKE "% /root,%")

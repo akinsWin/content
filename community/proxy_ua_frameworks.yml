@@ -7,7 +7,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Florian Roth \n References: ['https://blog.didierstevens.com/2015/03/16/quickpost-metasploit-user-agent-strings/']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://blog.didierstevens.com/2015/03/16/quickpost-metasploit-user-agent-strings/|"
 - type: sql
   query: SELECT * FROM WEBFILTER WHERE ($UserAgent LIKE "Internet Explorer %" OR $UserAgent
     LIKE "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; InfoPath.2)" OR

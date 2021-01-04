@@ -7,7 +7,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Florian Roth \n References: ['https://twitter.com/christophetd/status/1164506034720952320']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://twitter.com/christophetd/status/1164506034720952320|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE (($Description = "Windows PowerShell"
     AND $Company = "Microsoft Corporation") AND NOT (($Image LIKE "%\\powershell.exe"

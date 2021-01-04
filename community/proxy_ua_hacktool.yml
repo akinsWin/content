@@ -6,8 +6,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Florian Roth \n References: ['https://github.com/fastly/waf_testbed/blob/master/templates/default/scanners-user-agents.data.erb',\
-    \ 'http://rules.emergingthreats.net/open/snort-2.9.0/rules/emerging-user_agents.rules']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://github.com/fastly/waf_testbed/blob/master/templates/default/scanners-user-agents.data.erb<br>http://rules.emergingthreats.net/open/snort-2.9.0/rules/emerging-user_agents.rules|"
 - type: sql
   query: SELECT * FROM WEBFILTER WHERE ($UserAgent LIKE "%(hydra)%" OR $UserAgent
     LIKE "% arachni/%" OR $UserAgent LIKE "% BFAC %" OR $UserAgent LIKE "% brutus

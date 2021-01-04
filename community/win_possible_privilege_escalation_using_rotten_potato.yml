@@ -7,8 +7,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Teymur Kheirkhabarov \n References: ['https://speakerdeck.com/heirhabarov/hunting-for-privilege-escalation-in-windows-environment',\
-    \ 'https://foxglovesecurity.com/2016/09/26/rotten-potato-privilege-escalation-from-service-accounts-to-system/']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Teymur Kheirkhabarov|https://speakerdeck.com/heirhabarov/hunting-for-privilege-escalation-in-windows-environment<br>https://foxglovesecurity.com/2016/09/26/rotten-potato-privilege-escalation-from-service-accounts-to-system/|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE ((($ParentUser LIKE "NT AUTHORITY\\NETWORK
     SERVICE" OR $ParentUser LIKE "NT AUTHORITY\\LOCAL SERVICE") AND $User LIKE "NT

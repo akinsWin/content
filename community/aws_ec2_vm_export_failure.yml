@@ -7,7 +7,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Diogo Braz \n References: ['https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html#export-instance']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Diogo Braz|https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html#export-instance|"
 - type: sql
   query: SELECT * FROM CLOUDTRAIL WHERE (($EventName = "CreateInstanceExportTask"
     AND $EventSource = "ec2.amazonaws.com") AND (($ErrorMessage LIKE "%" OR errorCode

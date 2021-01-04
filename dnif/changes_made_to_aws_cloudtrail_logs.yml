@@ -1,0 +1,17 @@
+id: 21eed20b53f443f2be7b604ac2a6fbfd
+name: Changes made to AWS CloudTrail logs
+path: /Cloud Security/Amazon Web Services
+description: ''
+type: streamed
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $User, $SrcIP FROM CLOUDTRAIL WHERE $EventName IN ('UpdateTrail','DeleteTrail','StopLogging','DeleteFlowLogs','DeleteEventBus') GROUP BY $User, $SrcIP
+- type: signal
+  DetectionName: Changes made to AWS CloudTrail logs
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Indicator Removal on Host
+  SuspectHost: $SrcIP
+  SuspectUser: $User
+  DetectionScore: 8
+  DetectionConfidence: High

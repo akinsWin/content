@@ -7,9 +7,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Florian Roth \n References: ['https://support.f5.com/csp/article/K52145254',\
-    \ 'https://www.ptsecurity.com/ww-en/about/news/f5-fixes-critical-vulnerability-discovered-by-positive-technologies-in-big-ip-application-delivery-controller/',\
-    \ 'https://twitter.com/yorickkoster/status/1279709009151434754', 'https://www.criticalstart.com/f5-big-ip-remote-code-execution-exploit/']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://support.f5.com/csp/article/K52145254<br>https://www.ptsecurity.com/ww-en/about/news/f5-fixes-critical-vulnerability-discovered-by-positive-technologies-in-big-ip-application-delivery-controller/<br>https://twitter.com/yorickkoster/status/1279709009151434754<br>https://www.criticalstart.com/f5-big-ip-remote-code-execution-exploit/|"
 - type: sql
   query: SELECT * FROM WEBSERVER WHERE (($URL LIKE "%/tmui/%" OR $URL LIKE "%/hsqldb%")
     AND ($URL LIKE "%..;/%" OR $URL LIKE "%.jsp/..%"))

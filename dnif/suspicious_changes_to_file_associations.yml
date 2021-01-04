@@ -1,0 +1,19 @@
+id: 25bee255093a46309982c547d74d45b1
+name: Suspicious Changes to File Associations
+path: /Advanced Threat Detection/Windows Registry Monitoring
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $System,$Image,$TargetObject, COUNT($TargetObject) AS TGTOBJ FROM
+    SYSMON-REGISTRY WHERE $Action='OBJECT_MODIFIED' AND $TargetObject LIKE "%\\Explorer\\FileExts%"
+    AND NOT($Image LIKE "%Explorer.EXE%" OR $Image LIKE "%OpenWith.exe%") GROUP BY
+    $TargetObject, $Image, $System
+- type: signal
+  DetectionName: Suspicious Changes to File Associations
+  DetectionTactic: Persistence
+  DetectionTechnique: Event Triggered Execution
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

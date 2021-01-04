@@ -6,7 +6,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Florian Roth \n References: ['https://www.epicturla.com/blog/sysinturla']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://www.epicturla.com/blog/sysinturla|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE ($Product IN ("Sysinternals DebugView",
     "Sysinternals Debugview") AND NOT ($OriginalFilename = "Dbgview.exe" AND $Image

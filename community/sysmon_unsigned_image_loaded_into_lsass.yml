@@ -6,7 +6,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Teymur Kheirkhabarov, oscd.community \n References: ['https://www.slideshare.net/heirhabarov/hunting-for-credentials-dumping-in-windows-environment']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Teymur Kheirkhabarov, oscd.community|https://www.slideshare.net/heirhabarov/hunting-for-credentials-dumping-in-windows-environment|"
 - type: sql
   query: SELECT * FROM SYSMON-IMAGE-LOAD WHERE ($Image LIKE "%\\lsass.exe" AND $Signed
     = "false")

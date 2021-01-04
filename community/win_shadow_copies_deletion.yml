@@ -6,11 +6,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Florian Roth, Michael Haag, Teymur Kheirkhabarov, Daniil Yugoslavskiy,\
-    \ oscd.community \n References: ['https://www.slideshare.net/heirhabarov/hunting-for-credentials-dumping-in-windows-environment',\
-    \ 'https://blog.talosintelligence.com/2017/05/wannacry.html', 'https://securingtomorrow.mcafee.com/other-blogs/mcafee-labs/new-teslacrypt-ransomware-arrives-via-spam/',\
-    \ 'https://www.bleepingcomputer.com/news/security/why-everyone-should-disable-vssadmin-exe-now/',\
-    \ 'https://www.hybrid-analysis.com/sample/ed01ebfbc9eb5bbea545af4d01bf5f1071661840480439c6e5babe8e080e41aa?environmentId=100']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth, Michael Haag, Teymur Kheirkhabarov, Daniil Yugoslavskiy, oscd.community|https://www.slideshare.net/heirhabarov/hunting-for-credentials-dumping-in-windows-environment<br>https://blog.talosintelligence.com/2017/05/wannacry.html<br>https://securingtomorrow.mcafee.com/other-blogs/mcafee-labs/new-teslacrypt-ransomware-arrives-via-spam/<br>https://www.bleepingcomputer.com/news/security/why-everyone-should-disable-vssadmin-exe-now/<br>https://www.hybrid-analysis.com/sample/ed01ebfbc9eb5bbea545af4d01bf5f1071661840480439c6e5babe8e080e41aa?environmentId=100|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%\\powershell.exe" OR $Image
     LIKE "%\\wmic.exe" OR $Image LIKE "%\\vssadmin.exe") AND $CommandLine LIKE "%shadow%"

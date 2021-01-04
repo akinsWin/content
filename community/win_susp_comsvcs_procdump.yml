@@ -6,8 +6,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Modexp (idea) \n References: ['https://modexp.wordpress.com/2019/08/30/minidumpwritedump-via-com-services-dll/',\
-    \ 'https://twitter.com/SBousseaden/status/1167417096374050817']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Modexp (idea)|https://modexp.wordpress.com/2019/08/30/minidumpwritedump-via-com-services-dll/<br>https://twitter.com/SBousseaden/status/1167417096374050817|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%\\rundll32.exe" OR $OriginalFileName
     = "RUNDLL32.EXE") AND ($CommandLine LIKE "%comsvcs%MiniDump%full%" OR $CommandLine

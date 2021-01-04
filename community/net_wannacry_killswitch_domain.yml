@@ -6,7 +6,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Mike Wade \n References: ['https://www.fireeye.com/blog/products-and-services/2017/05/wannacry-ransomware-campaign.html']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Mike Wade|https://www.fireeye.com/blog/products-and-services/2017/05/wannacry-ransomware-campaign.html|"
 - type: sql
   query: SELECT * FROM DNS WHERE $Query IN ("ifferfsodp9ifjaposdfjhgosurijfaewrwergwea.testing",
     "ifferfsodp9ifjaposdfjhgosurijfaewrwergwea.test", "ifferfsodp9ifjaposdfjhgosurijfaewrwergwea.com",

@@ -1,0 +1,16 @@
+id: f6a190d39ab04ec4b0742abef2418fbf
+name: Network Sniffing via Tcpdump
+path: /Advanced Threat Detection/Linux Process Monitoring
+description: ''
+type: streamed
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $ProcessName,$System  FROM AUDITD WHERE $Action='PROCESS_ADDED' AND $ProcessName='tcpdump' GROUP BY $ProcessName,$System 
+- type: signal
+  DetectionName: Network Sniffing via Tcpdump
+  DetectionTactic: Credential Access
+  DetectionTechnique: Network Sniffing
+  TargetHost: $System
+  DetectionScore: 5
+  DetectionConfidence: Low

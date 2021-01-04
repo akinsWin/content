@@ -8,8 +8,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Florian Roth (rule), @blu3_team (idea) \n References: ['https://blu3-team.blogspot.com/2019/06/misleading-extensions-xlsexe-docexe.html',\
-    \ 'https://twitter.com/blackorbird/status/1140519090961825792']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth (rule), @blu3_team (idea)|https://blu3-team.blogspot.com/2019/06/misleading-extensions-xlsexe-docexe.html<br>https://twitter.com/blackorbird/status/1140519090961825792|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE ($Image LIKE "%.doc.exe" OR $Image LIKE
     "%.docx.exe" OR $Image LIKE "%.xls.exe" OR $Image LIKE "%.xlsx.exe" OR $Image

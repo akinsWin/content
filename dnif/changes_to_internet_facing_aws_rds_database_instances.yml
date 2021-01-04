@@ -1,0 +1,17 @@
+id: 49884972f90d4237b36cc8a8a06e1855
+name: Changes to internet facing AWS RDS Database instances
+path: /Cloud Security/Amazon Web Services
+description: ''
+type: streamed
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $User, $SrcIP FROM CLOUDTRAIL WHERE $EventName IN ('AuthorizeDBSecurityGroupIngress','CreateDBSecurityGroup','DeleteDBSecurityGroup','RevokeDBSecurityGroupIngress') GROUP BY $User, $SrcIP
+- type: signal
+  DetectionName: Changes to internet facing AWS RDS Database instances
+  DetectionTactic: Persistence
+  DetectionTechnique: Account Manipulation
+  SuspectHost: $SrcIP
+  SuspectUser: $User
+  DetectionScore: 5
+  DetectionConfidence: Low

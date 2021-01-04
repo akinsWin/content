@@ -7,8 +7,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Florian Roth, Markus Neis \n References: ['https://twitter.com/haroonmeer/status/939099379834658817',\
-    \ 'https://twitter.com/c_APT_ure/status/939475433711722497', 'https://www.fireeye.com/blog/threat-research/2016/05/targeted_attacksaga.html']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth, Markus Neis|https://twitter.com/haroonmeer/status/939099379834658817<br>https://twitter.com/c_APT_ure/status/939475433711722497<br>https://www.fireeye.com/blog/threat-research/2016/05/targeted_attacksaga.html|"
 - type: sql
   query: SELECT $CommandLine, count(*) AS agg FROM SYSMON-PROCESS WHERE ($CommandLine
     LIKE "tasklist" OR $CommandLine LIKE "net time" OR $CommandLine LIKE "systeminfo"

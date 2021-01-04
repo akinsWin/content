@@ -6,7 +6,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Florian Roth \n References: ['https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.utility/Invoke-WebRequest']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.utility/Invoke-WebRequest|"
 - type: sql
   query: SELECT * FROM WEBFILTER WHERE $UserAgent LIKE "% WindowsPowerShell/%"
 - type: signal

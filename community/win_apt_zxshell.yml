@@ -6,7 +6,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Florian Roth \n References: ['https://www.hybrid-analysis.com/sample/5d2a4cde9fa7c2fdbf39b2e2ffd23378d0c50701a3095d1e91e3cf922d7b0b16?environmentId=100']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://www.hybrid-analysis.com/sample/5d2a4cde9fa7c2fdbf39b2e2ffd23378d0c50701a3095d1e91e3cf922d7b0b16?environmentId=100|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "%rundll32.exe %,zxFunction%"
     OR $CommandLine LIKE "%rundll32.exe %,RemoteDiskXXXXX%")

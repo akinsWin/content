@@ -6,9 +6,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: E.M. Anhaus (orignally from Atomic Blue Detections, Endgame), oscd.community\
-    \ \n References: ['https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1123/T1123.yaml',\
-    \ 'https://eqllib.readthedocs.io/en/latest/analytics/ab7a6ef4-0983-4275-a4f1-5c6bd3c31c23.html']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |E.M. Anhaus (orignally from Atomic Blue Detections, Endgame), oscd.community|https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1123/T1123.yaml<br>https://eqllib.readthedocs.io/en/latest/analytics/ab7a6ef4-0983-4275-a4f1-5c6bd3c31c23.html|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE $CommandLine LIKE "%WindowsAudioDevice-Powershell-Cmdlet%"
 - type: signal

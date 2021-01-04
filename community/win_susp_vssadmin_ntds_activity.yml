@@ -7,11 +7,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Florian Roth, Michael Haag \n References: ['https://www.swordshield.com/2015/07/getting-hashes-from-ntds-dit-file/',\
-    \ 'https://room362.com/post/2013/2013-06-10-volume-shadow-copy-ntdsdit-domain-hashes-remotely-part-1/',\
-    \ 'https://www.trustwave.com/Resources/SpiderLabs-Blog/Tutorial-for-NTDS-goodness-(VSSADMIN,-WMIS,-NTDS-dit,-SYSTEM)/',\
-    \ 'https://securingtomorrow.mcafee.com/mcafee-labs/new-teslacrypt-ransomware-arrives-via-spam/',\
-    \ 'https://dfironthemountain.wordpress.com/2018/12/06/locked-file-access-using-esentutl-exe/']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth, Michael Haag|https://www.swordshield.com/2015/07/getting-hashes-from-ntds-dit-file/<br>https://room362.com/post/2013/2013-06-10-volume-shadow-copy-ntdsdit-domain-hashes-remotely-part-1/<br>https://www.trustwave.com/Resources/SpiderLabs-Blog/Tutorial-for-NTDS-goodness-(VSSADMIN,-WMIS,-NTDS-dit,-SYSTEM)/<br>https://securingtomorrow.mcafee.com/mcafee-labs/new-teslacrypt-ransomware-arrives-via-spam/<br>https://dfironthemountain.wordpress.com/2018/12/06/locked-file-access-using-esentutl-exe/|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "vssadmin.exe Delete
     Shadows" OR $CommandLine LIKE "vssadmin create shadow /for=C:" OR $CommandLine

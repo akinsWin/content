@@ -6,7 +6,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Florian Roth \n References: ['https://mgreen27.github.io/posts/2018/04/02/DownloadCradle.html']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://mgreen27.github.io/posts/2018/04/02/DownloadCradle.html|"
 - type: sql
   query: SELECT * FROM WEBFILTER WHERE ($UserAgent LIKE "Microsoft-WebDAV-MiniRedir/%"
     AND $Method = "GET")

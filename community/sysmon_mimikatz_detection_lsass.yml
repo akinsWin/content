@@ -8,10 +8,10 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Sherif Eldeeb \n References: ['https://onedrive.live.com/view.aspx?resid=D026B4699190F1E6!2843&ithint=file%2cpptx&app=PowerPoint&authkey=!AMvCRTKB_V1J5ow',\
-    \ 'https://cyberwardog.blogspot.com/2017/03/chronicles-of-threat-hunter-hunting-for_22.html']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Sherif Eldeeb|https://onedrive.live.com/view.aspx?resid=D026B4699190F1E6!2843&ithint=file%2cpptx&app=PowerPoint&authkey=!AMvCRTKB_V1J5ow<br>https://cyberwardog.blogspot.com/2017/03/chronicles-of-threat-hunter-hunting-for_22.html|"
 - type: sql
-  query: SELECT * FROM SYSMON-PROCESS WHERE ($Action = "PROCESS_ACCESSED" AND $TargetImage
+  query: SELECT * FROM SYSMON-PROCESS WHERE ($Action = "PROCESS_ADDED" AND $TargetImage
     LIKE "C:\\windows\\system32\\lsass.exe" AND $GrantedAccess IN ("0x1410", "0x1010"))
 - type: signal
   DetectionName: Mimikatz Detection LSASS Access

@@ -7,9 +7,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: E.M. Anhaus (orignally from Atomic Blue Detections, Endgame), oscd.community\
-    \ \n References: ['https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1053/T1053.yaml',\
-    \ 'https://eqllib.readthedocs.io/en/latest/analytics/d8db43cf-ed52-4f5c-9fb3-c9a4b95a0b56.html']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |E.M. Anhaus (orignally from Atomic Blue Detections, Endgame), oscd.community|https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1053/T1053.yaml<br>https://eqllib.readthedocs.io/en/latest/analytics/d8db43cf-ed52-4f5c-9fb3-c9a4b95a0b56.html|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE ($Image LIKE "%\\at.exe" AND $CommandLine
     LIKE "%interactive%")

@@ -7,8 +7,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Tom Kern, oscd.community \n References: ['https://adsecurity.org/?p=2921',\
-    \ 'https://github.com/p3nt4/PowerShdll']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Tom Kern, oscd.community|https://adsecurity.org/?p=2921<br>https://github.com/p3nt4/PowerShdll|"
 - type: sql
   query: SELECT * FROM SYSMON-IMAGE-LOAD WHERE (($ImageLoaded LIKE "%\\System.Management.Automation.Dll"
     OR $ImageLoaded LIKE "%\\System.Management.Automation.ni.Dll") AND NOT (($Image

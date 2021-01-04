@@ -6,11 +6,9 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Michael Haag, Mark Woan (improvements), James Pemberton / @4A616D6573\
-    \ / oscd.community (improvements) \n References: ['https://pentest.blog/windows-privilege-escalation-methods-for-pentesters/',\
-    \ 'https://eqllib.readthedocs.io/en/latest/analytics/4d2e7fc1-af0b-4915-89aa-03d25ba7805e.html',\
-    \ 'https://eqllib.readthedocs.io/en/latest/analytics/e61f557c-a9d0-4c25-ab5b-bbc46bb24deb.html',\
-    \ 'https://eqllib.readthedocs.io/en/latest/analytics/9b3dd402-891c-4c4d-a662-28947168ce61.html']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Michael Haag, Mark Woan (improvements), James Pemberton / @4A616D6573 / oscd.community\
+    \ (improvements)|https://pentest.blog/windows-privilege-escalation-methods-for-pentesters/<br>https://eqllib.readthedocs.io/en/latest/analytics/4d2e7fc1-af0b-4915-89aa-03d25ba7805e.html<br>https://eqllib.readthedocs.io/en/latest/analytics/e61f557c-a9d0-4c25-ab5b-bbc46bb24deb.html<br>https://eqllib.readthedocs.io/en/latest/analytics/9b3dd402-891c-4c4d-a662-28947168ce61.html|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%\\net.exe" OR $Image LIKE
     "%\\net1.exe") AND ($CommandLine LIKE "% group%" OR $CommandLine LIKE "% localgroup%"

@@ -7,7 +7,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Florian Roth \n References: ['https://breakdev.org/pwndrop/']"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://breakdev.org/pwndrop/|"
 - type: sql
   query: SELECT * FROM WEBFILTER WHERE $URL LIKE "%/pwndrop/%"
 - type: signal

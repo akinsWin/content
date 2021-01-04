@@ -7,7 +7,8 @@ type: standard
 author: community
 blocks:
 - type: text
-  code: "Author: Teymur Kheirkhabarov, Harish Segar (rule) \n References: None"
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Teymur Kheirkhabarov, Harish Segar (rule)|None|"
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE (($Description = "Windows PowerShell"
     OR $Product = "PowerShell Core 6") AND ($CommandLine LIKE "%bxor%" OR $CommandLine
