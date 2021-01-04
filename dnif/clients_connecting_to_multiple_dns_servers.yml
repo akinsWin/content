@@ -2,7 +2,7 @@ id: e897781a5dbe4315a60d4668357514a6
 name: Clients Connecting to Multiple DNS Servers
 path: /Basic Security Monitoring/Network Traffic Analysis
 description: ''
-type: streamed
+type: standard
 author: DNIF
 blocks:
 - type: sql
