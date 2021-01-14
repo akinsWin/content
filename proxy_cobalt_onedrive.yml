@@ -1,0 +1,20 @@
+id: c61f206ddf944bb0bea8cdc9d25617eb
+name: CobaltStrike Malleable OneDrive Browsing Traffic Profile
+path: /Advanced Threat Detection/Proxy Monitoring
+description: Detects Malleable OneDrive Profile
+type: standard
+author: community
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Markus Neis|https://github.com/rsmudge/Malleable-C2-Profiles/blob/master/normal/onedrive_getonly.profile|"
+- type: sql
+  query: SELECT * FROM WEBFILTER WHERE (($Method = "GET" AND $URL LIKE "%_manifest=wac"
+    AND $Domain = "onedrive.live.com") AND NOT ($URL LIKE "http%://onedrive.live.com/%"))
+- type: signal
+  DetectionName: CobaltStrike Malleable OneDrive Browsing Traffic Profile
+  DetectionTactic: Command and Control
+  DetectionTechnique: Application Layer Protocol
+  SuspectHost: $SrcIP
+  DetectionScore: 5
+  DetectionConfidence: Low
