@@ -1,0 +1,15 @@
+id: 723fb1c086ee46fdbfb1c5e8e9e34d52
+name: PCI 10-2 - User Accounts Additions Weekly
+path: /Compliance/PCI
+description: ''
+type: Standard
+author: DNIF
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=IAM AND $Action=USER_ACCOUNT_CREATED AND $Status=PASSED  AND $Duration=7d group count_unique $User, $System, $TargetUser limit 100
+- type: Report
+  DetectionName: PCI 10-2 - User Accounts Additions Weekly
+  DetectionTactic: Persistence
+  DetectionTechnique: Account Manipulation
+  DetectionScore: 5
+  DetectionConfidence: Low
