@@ -1,0 +1,15 @@
+ id: c1892980f7dc4dfd9817d2663c4056f4
+  name: Inbound Traffic Weekly
+  path: /Compliance/HIPPA
+  description: ''
+  type: Standard
+  author: DNIF
+  blocks:
+  - type: dql
+    query: _fetch * from event where $Stream=NETWORK-FIREWALL AND $Duration=7d AND $SrcType=PUBLIC AND $DstType=PRIVATE group sum $RXLen limit 100
+  - type: Report
+    DetectionName: PCI 1-2-1b - Inbound Traffic Weekly
+    DetectionTactic: Command and Control
+    DetectionTechnique: 
+    DetectionScore: 5
+    DetectionConfidence: Low
