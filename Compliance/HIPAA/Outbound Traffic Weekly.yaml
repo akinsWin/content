@@ -1,15 +1,15 @@
- id: 364eed00bc544feca0f3d8f3fbeccec4
-  name: Outbound Traffic Weekly
-  path: /Compliance/HIPPA
-  description: ''
-  type: Standard
-  author: DNIF
-  blocks:
-  - type: dql
-    query: _fetch * from event where $Stream=NETWORK-FIREWALL AND $Duration=7d AND $SrcType=PRIVATE AND $DstType=Public group sum $TXLen limit 101
-  - type: Report
-    DetectionName: Outbound Traffic Weekly
-    DetectionTactic: Command and Control
-    DetectionTechnique:
-    DetectionScore: 5
-    DetectionConfidence: Low
+id: 364eed00bc544feca0f3d8f3fbeccec4
+name: Outbound Traffic Weekly
+path: /Compliance/HIPPA
+description: ''
+type: Standard
+author: DNIF
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=NETWORK-FIREWALL AND $Duration=7d AND $SrcType=PRIVATE AND $DstType=Public group sum $TXLen limit 101
+- type: Report
+  DetectionName: Outbound Traffic Weekly
+  DetectionTactic: Command and Control
+  DetectionTechnique:
+  DetectionScore: 5
+  DetectionConfidence: Low
