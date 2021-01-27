@@ -1,15 +1,15 @@
 id: e37a028595c745ad974b0538a22585f4
-  name: PCI 8-1 - User Account Changes Weekly
-  path: /Compliance/PCI
-  description: ''
-  type: Standard
-  author: DNIF
-  blocks:
-  - type: dql
-    query: _fetch * from event where $Stream=IAM AND $Duration=7d NOT $Status=FAILED group count_unique  $Action,$User,$TargetUser,$System,$Status  limit 100
-  - type: Report
-    DetectionName: PCI 8-1 - User Account Changes Weekly
-    DetectionTactic: Persistence
-    DetectionTechnique: Account Manipulation
-    DetectionScore: 5
-    DetectionConfidence: Low
+name: PCI 8-1 - User Account Changes Weekly
+path: /Compliance/PCI
+description: ''
+type: Standard
+author: DNIF
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=IAM AND $Duration=7d NOT $Status=FAILED group count_unique  $Action,$User,$TargetUser,$System,$Status  limit 100
+- type: Report
+  DetectionName: PCI 8-1 - User Account Changes Weekly
+  DetectionTactic: Persistence
+  DetectionTechnique: Account Manipulation
+  DetectionScore: 5
+  DetectionConfidence: Low
