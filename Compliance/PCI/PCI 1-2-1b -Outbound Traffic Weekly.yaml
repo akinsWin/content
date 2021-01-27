@@ -1,15 +1,15 @@
 id: 52902972d02c477a8853f4ea1ec1139e
-  name: PCI 1-2-1b -Outbound Traffic Weekly
-  path: /Compliance/PCI
-  description: ''
-  type: Standard
-  author: DNIF
-  blocks:
-  - type: dql
-    query: _fetch * from event where $Stream=NETWORK-FIREWALL AND $Duration=7d AND $SrcType=PRIVATE AND $DstType=Public group sum $TXLen limit 100
-  - type: Report
-    DetectionName: PCI 1-2-1b -Outbound Traffic Weekly
-    DetectionTactic: Command and Control
-    DetectionTechnique: 
-    DetectionScore: 5
-    DetectionConfidence: Low
+name: PCI 1-2-1b -Outbound Traffic Weekly
+path: /Compliance/PCI
+description: ''
+type: Standard
+author: DNIF
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=NETWORK-FIREWALL AND $Duration=7d AND $SrcType=PRIVATE AND $DstType=Public group sum $TXLen limit 100
+- type: Report
+  DetectionName: PCI 1-2-1b -Outbound Traffic Weekly
+  DetectionTactic: Command and Control
+  DetectionTechnique: 
+  DetectionScore: 5
+  DetectionConfidence: Low
