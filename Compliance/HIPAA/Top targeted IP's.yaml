@@ -1,15 +1,15 @@
-  id: fcfef638e2854d7b9a5df4d229d795e8
-  name: Top targeted IP's
-  path: /Compliance/HIPPA
-  description: ''
-  type: Standard
-  author: DNIF
-  blocks:
-  - type: dql
-    query: _fetch * from event where $Duration=1d AND $SrcType=PUBLIC AND $DstType=PRIVATE AND $Stream=NETWORK-THREAT group count_unique $Threat, $DstIP limit 10
-  - type: Report
-    DetectionName: Top targeted IP's
-    DetectionTactic: 
-    DetectionTechnique:
-    DetectionScore: 5
-    DetectionConfidence: Low
+id: fcfef638e2854d7b9a5df4d229d795e8
+name: Top targeted IP's
+path: /Compliance/HIPPA
+description: ''
+type: Standard
+author: DNIF
+blocks:
+- type: dql
+  query: _fetch * from event where $Duration=1d AND $SrcType=PUBLIC AND $DstType=PRIVATE AND $Stream=NETWORK-THREAT group count_unique $Threat, $DstIP limit 10
+- type: Report
+  DetectionName: Top targeted IP's
+  DetectionTactic: 
+  DetectionTechnique:
+  DetectionScore: 5
+  DetectionConfidence: Low
