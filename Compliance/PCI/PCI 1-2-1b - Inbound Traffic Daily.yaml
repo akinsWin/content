@@ -1,15 +1,15 @@
-  id: 9f35d885af104f9795ecb51bb422dc51
-  name: PCI 1-2-1b - Inbound Traffic Daily
-  path: /Compliance/PCI
-  description: ''
-  type: Standard
-  author: DNIF
-  blocks:
-  - type: dql
-    query: _fetch * from event where $Stream=NETWORK-FIREWALL AND $Duration=1d AND $SrcType=PUBLIC AND $DstType=PRIVATE group sum $RXLen limit 100
-  - type: Report
-    DetectionName: PCI 1-2-1b - Inbound Traffic Daily
-    DetectionTactic: Command and Control
-    DetectionTechnique: 
-    DetectionScore: 5
-    DetectionConfidence: Low
+id: 9f35d885af104f9795ecb51bb422dc51
+name: PCI 1-2-1b - Inbound Traffic Daily
+path: /Compliance/PCI
+description: ''
+type: Standard
+author: DNIF
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=NETWORK-FIREWALL AND $Duration=1d AND $SrcType=PUBLIC AND $DstType=PRIVATE group sum $RXLen limit 100
+- type: Report
+  DetectionName: PCI 1-2-1b - Inbound Traffic Daily
+  DetectionTactic: Command and Control
+  DetectionTechnique: 
+  DetectionScore: 5
+  DetectionConfidence: Low
