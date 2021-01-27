@@ -1,15 +1,15 @@
- id: 20fcb7b8bf62421fbd3b0052c543b757
-  name: Outbound Traffic Monthly
-  path: /Compliance/HIPPA
-  description: ''
-  type: Standard
-  author: DNIF
-  blocks:
-  - type: dql
-    query: _fetch * from event where $Stream=NETWORK-FIREWALL AND $Duration=1M AND $SrcType=PRIVATE AND $DstType=Public group sum $TXLen limit 101
-  - type: Report
-    DetectionName: Outbound Traffic Monthly
-    DetectionTactic: Command and Control
-    DetectionTechnique:
-    DetectionScore: 5
-    DetectionConfidence: Low
+id: 20fcb7b8bf62421fbd3b0052c543b757
+name: Outbound Traffic Monthly
+path: /Compliance/HIPPA
+description: ''
+type: Standard
+author: DNIF
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=NETWORK-FIREWALL AND $Duration=1M AND $SrcType=PRIVATE AND $DstType=Public group sum $TXLen limit 101
+- type: Report
+  DetectionName: Outbound Traffic Monthly
+  DetectionTactic: Command and Control
+  DetectionTechnique:
+  DetectionScore: 5
+  DetectionConfidence: Low
