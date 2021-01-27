@@ -1,15 +1,15 @@
-  id: 05fc5af37bf84ba6a874bb646096da8a
-  name: Inbound Traffic Daily
-  path: /Compliance/HIPPA
-  description: ''
-  type: Standard
-  author: DNIF
-  blocks:
-  - type: dql
-    query: _fetch * from event where $Stream=NETWORK-FIREWALL AND $Duration=1d AND $SrcType=PUBLIC AND $DstType=PRIVATE group sum $RXLen limit 100
-  - type: Report
-    DetectionName: PCI 1-2-1b - Inbound Traffic Daily
-    DetectionTactic: Command and Control
-    DetectionTechnique: 
-    DetectionScore: 5
-    DetectionConfidence: Low
+id: 05fc5af37bf84ba6a874bb646096da8a
+name: Inbound Traffic Daily
+path: /Compliance/HIPPA
+description: ''
+type: Standard
+author: DNIF
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=NETWORK-FIREWALL AND $Duration=1d AND $SrcType=PUBLIC AND $DstType=PRIVATE group sum $RXLen limit 100
+- type: Report
+  DetectionName: PCI 1-2-1b - Inbound Traffic Daily
+  DetectionTactic: Command and Control
+  DetectionTechnique: 
+  DetectionScore: 5
+  DetectionConfidence: Low
