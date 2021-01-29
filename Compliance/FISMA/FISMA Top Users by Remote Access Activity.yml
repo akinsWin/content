@@ -1,0 +1,10 @@
+id: faab2a50ab964ffaa62d6c576aa686e4
+name: FISMA Top Users by Remote Access Activity
+path: 2ea0747005da43d294d73d24cb684899
+description: ''
+type: standard
+author: Sharron
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=1d AND $AuthMethod=VPN
+    group count_unique $Action, $SrcIP, $System, $User limit 20

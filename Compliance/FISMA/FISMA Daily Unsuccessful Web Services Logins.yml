@@ -1,0 +1,10 @@
+id: 0b4d29d53c3f4f4090df5ccdfe3d6c41
+name: FISMA Daily Unsuccessful Web Services Logins
+path: 2ea0747005da43d294d73d24cb684899
+description: ''
+type: standard
+author: Sharron
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Action=LOGIN AND $Status=FAILED
+    AND $Duration=1d AND $SourceType=WAF group count_unique $User, $SrcIP  limit 100

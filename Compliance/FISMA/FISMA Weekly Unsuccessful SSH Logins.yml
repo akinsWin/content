@@ -1,0 +1,11 @@
+id: a5a3949737b74d2d92c60213a4d414e3
+name: FISMA Weekly Unsuccessful SSH Logins
+path: 2ea0747005da43d294d73d24cb684899
+description: ''
+type: standard
+author: Sharron
+blocks:
+- type: dql
+  query: _fetch * from event where $AuthMethod=SSH AND $Duration=7d AND $Action=LOGIN
+    AND $Status=FAILED AND $Stream=AUTHENTICATION group count_unique $User, $SrcIP
+    limit 100
