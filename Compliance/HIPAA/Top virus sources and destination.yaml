@@ -9,7 +9,4 @@ blocks:
   query: _fetch * from event where $Action=THREAT_DETECT AND $Duration=1d  AND $Stream= THREAT group count_unique $SrcIP  limit 10
   query: _fetch * from event where $Action=THREAT_DETECT AND $Duration=1d AND $Stream= THREAT  group count_unique $DstIP  limit 10
   query: _fetch * from event where $Action=THREAT_DETECT AND $Duration=1d  AND $Stream= THREAT  group count_unique $SrcIP, $DstIP  limit 10
-- type: Report
-  DetectionName: Top virus sources and destination
-  DetectionScore: 5
-  DetectionConfidence: Low
+
