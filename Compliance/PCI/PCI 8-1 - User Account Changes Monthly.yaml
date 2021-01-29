@@ -7,9 +7,3 @@ author: DNIF
 blocks:
 - type: dql
   query: _fetch * from event where $Stream=IAM AND $Duration=1M NOT $Status=FAILED group count_unique  $Action,$User,$TargetUser,$System,$Status  limit 100
-- type: Report
-  DetectionName: PCI 8-1 - User Account Changes Monthly
-  DetectionTactic: Persistence
-  DetectionTechnique: Account Manipulation
-  DetectionScore: 5
-  DetectionConfidence: Low
