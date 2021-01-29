@@ -1,0 +1,15 @@
+id: d5814ce83a3840f396e970b31f87a858
+name: SOX Daily Top Virus Sources and Destinations
+path: 4bad758c6ce844f28acbbdbc028930f5
+description: ''
+type: standard
+author: Sharron
+blocks:
+- type: dql
+  query: _fetch * from event where $Action=THREAT_DETECTED AND $Duration=1d  AND $Stream=THREAT
+    group count_unique $SrcIP  limit 10
+- {}
+- type: dql
+  query: _fetch * from event where $Action=THREAT_DETECTED AND $Duration=1d AND $Stream=THREAT  group
+    count_unique $DstIP  limit 10
+- {}

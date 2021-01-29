@@ -1,0 +1,11 @@
+id: a8baf169f5df4398a4716a2a98467dc8
+name: SOX Weekly Unsuccessful Mail Logins
+path: 4bad758c6ce844f28acbbdbc028930f5
+description: ''
+type: standard
+author: Sharron
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Action=LOGIN AND $Status=FAILED
+    AND $Duration= 7d AND $SourceType=EMAIL-GATEWAY group count_unique $User limit
+    100

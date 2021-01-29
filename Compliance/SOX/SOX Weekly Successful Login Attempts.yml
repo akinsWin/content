@@ -1,0 +1,10 @@
+id: 24553472400e40858ef1a23521d8b9de
+name: SOX Weekly Successful Login Attempts
+path: 4bad758c6ce844f28acbbdbc028930f5
+description: ''
+type: standard
+author: Sharron
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Action=LOGIN AND $Status=PASSED
+    AND $Duration= 7d group count_unique $User, $SrcIP limit 100

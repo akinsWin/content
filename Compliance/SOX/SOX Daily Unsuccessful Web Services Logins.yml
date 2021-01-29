@@ -1,0 +1,10 @@
+id: b9a6d1a0af1948e480f53d34502f3022
+name: SOX Daily Unsuccessful Web Services Logins
+path: 4bad758c6ce844f28acbbdbc028930f5
+description: ''
+type: standard
+author: Sharron
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Action=LOGIN AND $Status=FAILED
+    AND $Duration=1d AND $SourceType=WAF group count_unique $User, $SrcIP  limit 100
