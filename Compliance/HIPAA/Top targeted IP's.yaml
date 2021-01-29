@@ -7,9 +7,4 @@ author: DNIF
 blocks:
 - type: dql
   query: _fetch * from event where $Duration=1d AND $SrcType=PUBLIC AND $DstType=PRIVATE AND $Stream=NETWORK-THREAT group count_unique $Threat, $DstIP limit 10
-- type: Report
-  DetectionName: Top targeted IP's
-  DetectionTactic: 
-  DetectionTechnique:
-  DetectionScore: 5
-  DetectionConfidence: Low
+
