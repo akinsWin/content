@@ -7,9 +7,3 @@ author: DNIF
 blocks:
 - type: dql
   query: _fetch * from event where $Stream=NETWORK-FIREWALL AND $Duration=1M AND $SrcType=PRIVATE AND $DstType=Public group sum $TXLen limit 100
-- type: Report
-  DetectionName: PCI 1-2-1b -Outbound Traffic Monthly
-  DetectionTactic: Command and Control
-  DetectionTechnique: 
-  DetectionScore: 5
-  DetectionConfidence: Low
