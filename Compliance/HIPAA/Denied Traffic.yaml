@@ -7,9 +7,4 @@ author: DNIF
 blocks:
 - type: dql
   query: _fetch * from event where $Action=PACKET_BLOCKED AND $Stream=NETWORK-FIREWALL AND $Duration=1d group count_unique $SrcIP, $SrcType  limit 20
-- type: Report
-  DetectionName: Denied Traffic
-  DetectionTactic: Impact
-  DetectionTechnique: Network Denial of Service
-  DetectionScore: 5
-  DetectionConfidence: Low
+
