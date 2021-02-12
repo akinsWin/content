@@ -6,7 +6,7 @@ type: streamed
 author: DNIF
 blocks:
 - type: sql
-  query: SELECT $SrcIP, COUNT($DstIP) AS $CountDstIP FROM NETWORK-FIREWALL WHERE $DstPort BETWEEN 5800 AND 5810 AND $Proto='TCP' AND $SrcType='PUBLIC' AND $DstType='PRIVATE' GROUP BY $DstIP,$SrcIP
+  query: SELECT $SrcIP, COUNT($DstIP) AS $CountDstIP FROM FIREWALL WHERE $DstPort BETWEEN 5800 AND 5810 AND $Proto='TCP' AND $SrcType='PUBLIC' AND $DstType='PRIVATE' GROUP BY $DstIP,$SrcIP
 - type: signal
   DetectionName: VNC from the Internet
   DetectionTactic: Initial Access
