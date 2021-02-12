@@ -1,0 +1,11 @@
+id: 911037ba905b457fbd843294659742ca
+name: 9-2-2 User identification and authentication -2 Monthly
+path: e44c9fae7d9a4e5bae504a2e50c12aaf
+description: This use case detects failed logins on monthly basis.
+type: standard
+author: Sharron
+blocks:
+- type: dql
+  query: _fetch * from event where $Duration=1M AND $Stream=AUTHENTICATION AND $Action=LOGIN
+    AND $Status=FAILED group count_unique $User , $System , $Reason limit 100
+- {}

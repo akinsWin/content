@@ -1,0 +1,10 @@
+id: 11aadf89fffa4d6f970b43c7cdb5f239
+name: 9-2-2 User identification and authentication -2 - Daily
+path: e44c9fae7d9a4e5bae504a2e50c12aaf
+description: This use case detects successful logins on daily basis.
+type: standard
+author: Sharron
+blocks:
+- type: dql
+  query: _fetch * from event where $Duration=1d AND $Stream=AUTHENTICATION AND $Action=LOGIN
+    AND $Status=PASSED group count_unique $User , $System limit 100

@@ -1,0 +1,11 @@
+id: cc252eb33606491ea639ec9afb7ce82f
+name: 18-1-3 Human Resource data access - Weekly
+path: e44c9fae7d9a4e5bae504a2e50c12aaf
+description: This report intentds to provide details on sensitive data accessed
+    using unencrypted protocols
+type: standard
+author: Sharron
+blocks:
+- type: dql
+  query: _fetch * from event where $Duration=7d AND $Stream=FIREWALL  AND $App in
+    [HTTP,SMTP,SNMP,FTP] group count_unique $SrcIP , $DstIP, $User limit 100

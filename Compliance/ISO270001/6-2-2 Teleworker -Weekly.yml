@@ -1,0 +1,17 @@
+id: 8f01f940be7e492cbb94a622de2559ea
+name: 6-2-2 Teleworker -Weekly
+path: e44c9fae7d9a4e5bae504a2e50c12aaf
+description: Lists files accessed by remote users
+type: standard
+author: Sharron
+blocks:
+- type: dql
+  query: '_fetch * from event where $Duration=7d AND $Stream=AUTHENTICATION AND $AuthProto
+    in [SSH,VPN] group count_unique $AuthProto , $User , $System as #A limit 100'
+- type: dql
+  query: '_fetch * from event where  $Duration=7d AND $Stream=Sysmon-File group count_unique
+    $TargetFile , $User as #B limit 100'
+- type: dql
+  query: _agg count_unique $User
+- type: dql
+  query: _checkif int_compare count_unique = 2 include

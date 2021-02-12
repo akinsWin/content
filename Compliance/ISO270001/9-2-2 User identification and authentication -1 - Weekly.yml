@@ -1,0 +1,11 @@
+id: 3ffccf2552a14af68725b371cd3ef8ce
+name: 9-2-2 User identification and authentication -1 - Weekly
+path: e44c9fae7d9a4e5bae504a2e50c12aaf
+description: This use case detects successful logins on weekly basis
+type: standard
+author: Sharron
+blocks:
+- type: dql
+  query: _fetch * from event where $Duration=7d AND $Stream=AUTHENTICATION AND $Action=LOGIN
+    AND $Status=PASSED group count_unique $User , $System limit 100
+- {}

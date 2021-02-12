@@ -1,0 +1,11 @@
+id: 24a306517fb34371915bf23144bdf4a9
+name: 13-1 Network management -Monthly
+path: e44c9fae7d9a4e5bae504a2e50c12aaf
+description: This use case detects threat in web and network traffic on monthly basis.
+type: standard
+author: Sharron
+blocks:
+- type: dql
+  query: _fetch * from event where $Duration=1M AND $Stream=Threat AND $Vector in
+    [WEB , NETWORK] group count_unique $Threat , $DstIP ,$System, $User limit 100
+

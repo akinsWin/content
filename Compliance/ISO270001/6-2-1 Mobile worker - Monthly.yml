@@ -1,0 +1,12 @@
+id: 2c66fb87d8da45d6ad5760dd4398d777
+name: 6-2-1 Mobile worker - Monthly
+path: e44c9fae7d9a4e5bae504a2e50c12aaf
+description: Lists users who were assigned admin privilage
+type: standard
+author: Sharron
+blocks:
+- type: dql
+  query: _fetch * from event where $Duration=1M AND $Stream=IAM AND $Action=PRIVILEGE_CHANGED
+    group count_unique $User , $TargetUser, $Role,  $System  limit 100
+- type: dql
+  query: _checkif str_compare $Role in [ADMIN,ADMINISTRATOR] include

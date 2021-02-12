@@ -1,0 +1,11 @@
+id: fee3310026b641a38221055d84428600
+name: 13-1 Network management -Weekly
+path: e44c9fae7d9a4e5bae504a2e50c12aaf
+description: This use case detects threat in web and network traffic on weekly basis
+type: standard
+author: Sharron
+blocks:
+- type: dql
+  query: _fetch * from event where $Duration=7d AND $Stream=Threat AND $Vector in
+    [WEB , NETWORK] group count_unique $Threat , $DstIP ,$System,  $User limit 100
+
