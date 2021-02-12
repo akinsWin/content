@@ -1,0 +1,15 @@
+id: e5f00674a7694f669b5da0252f0f62a0
+name: 6-2-1 Mobile worker -1 - Daily
+path: e44c9fae7d9a4e5bae504a2e50c12aaf
+description: This use case detects  concurrent remote sessions.
+type: standard
+author: Sharron
+blocks:
+- type: dql
+  query: _fetch * from event where $Duration=10m AND $Stream=AUTHENTICATION AND $AuthProto
+    in [SSH,VPN] group count_unique $User , $System limit 100
+- type: dql
+  query: _agg count_unique $User
+- type: dql
+  query: _checkif int_compare count_unique > 1 include
+
