@@ -6,5 +6,5 @@ type: Standard
 author: DNIF
 blocks:
 - type: dql
-  query: _fetch * from event where $Action=PACKET_BLOCKED AND $Stream=NETWORK-FIREWALL AND $Duration=1d group count_unique $SrcIP, $SrcType  limit 20
+  query: _fetch * from event where $Action=PACKET_BLOCKED AND $Stream=FIREWALL AND $Duration=1d group count_unique $SrcIP, $SrcType  limit 20
 
