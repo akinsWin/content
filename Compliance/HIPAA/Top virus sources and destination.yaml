@@ -6,7 +6,7 @@ type: Standard
 author: DNIF
 blocks:
 - type: dql
-  query: _fetch * from event where $Action=THREAT_DETECT AND $Duration=1d  AND $Stream= THREAT group count_unique $SrcIP  limit 10
-  query: _fetch * from event where $Action=THREAT_DETECT AND $Duration=1d AND $Stream= THREAT  group count_unique $DstIP  limit 10
-  query: _fetch * from event where $Action=THREAT_DETECT AND $Duration=1d  AND $Stream= THREAT  group count_unique $SrcIP, $DstIP  limit 10
+  query: _fetch * from event where $Action=THREAT_DETECTED AND $Duration=1d  AND $Stream= THREAT group count_unique $SrcIP  limit 10
+  query: _fetch * from event where $Action=THREAT_DETECTED AND $Duration=1d AND $Stream= THREAT  group count_unique $DstIP  limit 10
+  query: _fetch * from event where $Action=THREAT_DETECTED AND $Duration=1d  AND $Stream= THREAT  group count_unique $SrcIP, $DstIP  limit 10
 
