@@ -6,7 +6,7 @@ type: standard
 author: DNIF
 blocks:
 - type: sql
-  query: SELECT $SrcIP, $DstIP, COUNT(*) FROM NETWORK-FIREWALL WHERE $DstPort=3389
+  query: SELECT $SrcIP, $DstIP, COUNT(*) FROM FIREWALL WHERE $DstPort=3389
     GROUP BY $SrcIP,$DstIP HAVING COUNT(*)>2 LIMIT 100
 - type: signal
   DetectionName: Suspicious Remote Desktop Network Activity
