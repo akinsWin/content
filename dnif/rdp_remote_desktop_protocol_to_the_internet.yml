@@ -6,7 +6,7 @@ type: streamed
 author: DNIF
 blocks:
 - type: sql
-  query: SELECT $SrcIP, COUNT($DstIP) AS $CountDstIP FROM NETWORK-FIREWALL WHERE $DstPort='3389' AND $SrcType='PRIVATE' AND $DstType='PUBLIC' GROUP BY $DstIP, $SrcIP
+  query: SELECT $SrcIP, COUNT($DstIP) AS $CountDstIP FROM FIREWALL WHERE $DstPort='3389' AND $SrcType='PRIVATE' AND $DstType='PUBLIC' GROUP BY $DstIP, $SrcIP
 - type: signal
   DetectionName: RDP to the Internet
   DetectionTactic: Exfiltration
