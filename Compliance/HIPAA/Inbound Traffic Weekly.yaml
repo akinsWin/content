@@ -6,4 +6,4 @@ type: Standard
 author: DNIF
 blocks:
 - type: dql
-  query: _fetch * from event where $Stream=NETWORK-FIREWALL AND $Duration=7d AND $SrcType=PUBLIC AND $DstType=PRIVATE group sum $RXLen limit 100
+  query: _fetch * from event where $Stream=FIREWALL AND $Duration=7d AND $SrcType=PUBLIC AND $DstType=PRIVATE group sum $RXLen limit 100
