@@ -6,7 +6,7 @@ type: standard
 author: DNIF
 blocks:
 - type: dql
-  query: _fetch * from event where $Stream=NETWORK-FIREWALL AND $Proto=TCP AND $DstPort IN [1080,3128,8080] AND $SrcType=PRIVATE NOT $DstType=PRIVATE group count_unique $SrcIP, $DstIP limit 10
+  query: _fetch * from event where $Stream=FIREWALL AND $Proto=TCP AND $DstPort IN [1080,3128,8080] AND $SrcType=PRIVATE NOT $DstType=PRIVATE group count_unique $SrcIP, $DstIP limit 10
 - type: signal
   DetectionName: Proxy Port Activity to the Internet
   DetectionTactic: Command and Control

@@ -6,7 +6,7 @@ type: standard
 author: DNIF
 blocks:
 - type: sql
-  query: SELECT $SrcIP,$App,$DstPort FROM NETWORK-FIREWALL WHERE ($App='http' AND
+  query: SELECT $SrcIP,$App,$DstPort FROM FIREWALL WHERE ($App='http' AND
     $DstPort NOT IN('80','8080','8000')) OR ($App='ssl' AND $DstPort NOT IN('443','8443'))
     OR ($App='smtp' AND $DstPort NOT IN('25')) GROUP BY $SrcIP,$App,$DstPort LIMIT
     10

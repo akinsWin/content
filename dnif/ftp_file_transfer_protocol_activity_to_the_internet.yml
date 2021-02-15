@@ -6,7 +6,7 @@ type: standard
 author: DNIF
 blocks:
 - type: dql
-  query: _fetch * from event where $Stream=NETWORK-FIREWALL AND $Proto=TCP AND $DstPort IN [20,21] AND $SrcType=PRIVATE AND $DstType=PUBLIC group count_unique $SrcIP, $DstIP limit 100
+  query: _fetch * from event where $Stream=FIREWALL AND $Proto=TCP AND $DstPort IN [20,21] AND $SrcType=PRIVATE AND $DstType=PUBLIC group count_unique $SrcIP, $DstIP limit 100
 - type: signal
   DetectionName: FTP Activity to the Internet
   DetectionTactic: Exfiltration

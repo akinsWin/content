@@ -6,7 +6,7 @@ type: streamed
 author: DNIF
 blocks:
 - type: sql
-  query: SELECT $SrcIP, $DstIP, COUNT(*) FROM NETWORK-FIREWALL WHERE $DstPort='3389' AND $SrcType='PUBLIC' AND $Action='PACKET_ALLOWED' GROUP BY $DstIP, $SrcIP
+  query: SELECT $SrcIP, $DstIP, COUNT(*) FROM FIREWALL WHERE $DstPort='3389' AND $SrcType='PUBLIC' AND $Action='PACKET_ALLOWED' GROUP BY $DstIP, $SrcIP
 - type: signal
   DetectionName: RDP (Remote Desktop Protocol) from the Internet
   DetectionTactic: Lateral Movement

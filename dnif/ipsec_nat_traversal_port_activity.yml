@@ -6,7 +6,7 @@ type: standard
 author: DNIF
 blocks:
 - type: dql
-  query: _fetch * from event where $Stream=NETWORK-FIREWALL AND $Proto=UDP AND $DstPort=4500 group count_unique $SrcIP, $DstIP limit 10
+  query: _fetch * from event where $Stream=FIREWALL AND $Proto=UDP AND $DstPort=4500 group count_unique $SrcIP, $DstIP limit 10
 - type: signal
   DetectionName: IPSEC NAT Traversal Port Activity
   DetectionTactic: Command and Control
