@@ -6,7 +6,7 @@ type: standard
 author: DNIF
 blocks:
 - type: sql
-  query: SELECT $SrcIP, COUNT($DstIP) AS $CountDstIP FROM FIREWALL WHERE $DstPort='135' AND $Proto='TCP' AND $SrcType='PUBLIC' AND $DstType='PRIVATE' GROUP BY $DstIP, $SrcIP
+  query: SELECT $SrcIP, COUNT($DstIP) AS $CountDstIP FROM NETWORK-FIREWALL WHERE $DstPort='135' AND $Proto='TCP' AND $SrcType='PUBLIC' AND $DstType='PRIVATE' GROUP BY $DstIP, $SrcIP
 - type: signal
   DetectionName: RPC from the Internet
   DetectionTactic: Initial Access
