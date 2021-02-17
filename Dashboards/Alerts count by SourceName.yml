@@ -1,0 +1,19 @@
+id: 971df09d161f47bf8d6be9c0e77b5ab5
+name: Alerts count by SourceName
+path: /visualization/Threat Alerts Monitoring
+description: ''
+type: standard
+author: Sharron
+blocks:
+- type: sql
+  query: SELECT $SourceName, COUNT($Threat) AS $CountThreat FROM THREAT WHERE $Duration=1d GROUP BY $SourceName
+- type: visual
+  data:
+    widget_name: Alerts count by SourceName
+    chart_type: pie
+    config:
+      type: default
+      key:
+      - $SourceName
+      - null
+      value: $CountThreat
