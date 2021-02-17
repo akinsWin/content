@@ -1,0 +1,19 @@
+id: ae0bae462d1c4d2bb16ae55ab1482db2
+name: Account Modification Activity
+path: /visualization/IAM Monitoring
+description: ''
+type: standard
+author: Sharron
+blocks:
+- type: sql
+  query: SELECT $Action, $CNAMTime, COUNT($Action) AS $CountModAct FROM IAM WHERE $Duration=1d AND ($Action LIKE "%CHANGED%" OR $Action LIKE "%UPDATE%") GROUP BY $Action,$CNAMTime
+- type: visual
+  data:
+    widget_name: Account Modification Activity
+    chart_type: timeline
+    config:
+      type: default
+      key:
+      - $CNAMTime
+      - null
+      value: $CountModAct

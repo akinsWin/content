@@ -1,0 +1,19 @@
+id: 86661886305f47c9950ad2348c3ea10d
+name: Accounts created last 24 hours
+path: /visualization/IAM Monitoring
+description: ''
+type: standard
+author: Sharron
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=IAM AND $Duration=1d AND $Action=USER_CREATED limit 100
+- type: visual
+  data:
+    widget_name: Accounts created last 24 hours
+    chart_type: timeline
+    config:
+      type: default
+      key:
+      - $CNAMTime
+      - null
+      value: $EvtLen
