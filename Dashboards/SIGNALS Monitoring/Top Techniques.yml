@@ -1,0 +1,19 @@
+id: c350e8822f86416db796aea334c368e1
+name: Top Techniques
+path: /visualization/SIGNALS Monitoring
+description: ''
+type: standard
+author: Sharron
+blocks:
+- type: sql
+  query: SELECT $DetectionTechnique, COUNT($DetectionTechnique) AS $CountDetection FROM SIGNALS WHERE $Duration=1d GROUP BY $DetectionTechnique ORDER BY $CountDetection DESC LIMIT 10
+- type: visual
+  data:
+    widget_name: Top Techniques
+    chart_type: pie
+    config:
+      type: default
+      key:
+      - $DetectionTechnique
+      - null
+      value: $CountDetection

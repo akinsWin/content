@@ -1,0 +1,19 @@
+id: aa968a97055f432bb0491c3569f3a13d
+name: Top Detections
+path: /visualization/SIGNALS Monitoring
+description: ''
+type: standard
+author: Sharron
+blocks:
+- type: sql
+  query: SELECT $DetectionName, COUNT($DetectionName) AS $CountDetect FROM SIGNALS WHERE $Duration=1d GROUP BY $DetectionName ORDER BY $CountDetect DESC LIMIT 10
+- type: visual
+  data:
+    widget_name: Top Detections
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $DetectionName
+      - null
+      value: $CountDetect
