@@ -1,0 +1,19 @@
+id: 346879c48b85403493e4406baceeffec
+name: RDP-WMI Port activity
+path: /visualization/Firewall Monitoring
+description: ''
+type: standard
+author: Sharron
+blocks:
+- type: sql
+  query: SELECT $SrcIP,$DstIP, $DstPort, COUNT(*) FROM NETWORK-FIREWALL WHERE ($DstPort='3389' OR $DstPort='135') AND $Duration=1d GROUP BY $SrcIP,$DstIP, $DstPort
+- type: visual
+  data:
+    widget_name: RDP-WMI Port activity
+    chart_type: pie
+    config:
+      type: donut
+      key:
+      - $DstPort
+      - null
+      value: $Count(1)

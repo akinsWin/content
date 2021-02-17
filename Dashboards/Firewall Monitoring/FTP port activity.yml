@@ -1,0 +1,19 @@
+id: a6e48dfd6e2d418591877253770849d9
+name: FTP port activity
+path: /visualization/Firewall Monitoring
+description: ''
+type: standard
+author: Sharron
+blocks:
+- type: sql
+  query: SELECT $SrcIP,$DstIP, $DstPort, COUNT(*) FROM NETWORK-FIREWALL WHERE ($DstPort='20' OR $DstPort='21') AND $Duration=1d GROUP BY $SrcIP,$DstIP, $DstPort
+- type: visual
+  data:
+    widget_name: FTP port activity
+    chart_type: pie
+    config:
+      type: default
+      key:
+      - $DstPort
+      - null
+      value: $Count(1)

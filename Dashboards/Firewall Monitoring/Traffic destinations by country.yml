@@ -1,0 +1,19 @@
+id: f3c1011733ac475da7154a368bf7e13e
+name: Traffic destinations by country
+path: /visualization/Firewall Monitoring
+description: ''
+type: standard
+author: Sharron
+blocks:
+- type: sql
+  query: SELECT $DstIP, $DstCN, COUNT(*) FROM NETWORK-FIREWALL WHERE $Duration=1d GROUP BY $DstCN, DstIP
+- type: visual
+  data:
+    widget_name: Traffic destinations by country
+    chart_type: geoMap
+    config:
+      type: default
+      key:
+      - $DstCN
+      - null
+      value: $Count(1)
