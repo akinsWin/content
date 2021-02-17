@@ -1,0 +1,19 @@
+id: 41a2675d65f7464a99de081a86f78517
+name: Top Alerts by AttackName
+path: /visualization/Threat Alerts Monitoring
+description: ''
+type: standard
+author: Sharron
+blocks:
+- type: sql
+  query: SELECT $Threat, COUNT($Threat) AS $CntAtkName FROM THREAT WHERE $Duration=1d GROUP BY Threat ORDER BY $CntAtkName Desc LIMIT 10
+- type: visual
+  data:
+    widget_name: Top Alerts by AttackName
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $Threat
+      - null
+      value: $CntAtkName
