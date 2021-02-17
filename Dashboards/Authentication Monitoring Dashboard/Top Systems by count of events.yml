@@ -1,0 +1,19 @@
+id: f275b942211e4fe3aa555a9fb35638cd
+name: Top Systems by count of events
+path: /visualization/Authentication Monitoring
+description: ''
+type: standard
+author: Sharron
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=1d group count_unique $System limit 100
+- type: visual
+  data:
+    widget_name: Top Systems by count of events
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $System
+      - null
+      value: count_unique

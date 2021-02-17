@@ -1,0 +1,19 @@
+id: f6f6608d21d044cb89466637c1eefae8
+name: Top Systems by count of failures
+path: /visualization/Authentication Monitoring
+description: ''
+type: standard
+author: Sharron
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=1d AND $Action=LOGIN  AND $Status=FAILED group count_unique $System limit 10
+- type: visual
+  data:
+    widget_name: Top Systems by count of failures
+    chart_type: column
+    config:
+      type: default
+      key:
+      - $System
+      - null
+      value: count_unique
