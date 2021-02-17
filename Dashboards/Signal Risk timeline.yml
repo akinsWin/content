@@ -1,0 +1,19 @@
+id: 17c0fc2989724f3e88f8d4e302f51fd6
+name: Signal Risk timeline
+path: /visualization/SIGNALS Monitoring
+description: ''
+type: standard
+author: Sharron
+blocks:
+- type: sql
+  query: SELECT $CNAMTime,$DetectionScore FROM SIGNALS WHERE $Duration=1d GROUP BY $DetectionScore, CNAMTime
+- type: visual
+  data:
+    widget_name: Signal Risk timeline
+    chart_type: timeline
+    config:
+      type: default
+      key:
+      - $CNAMTime
+      - null
+      value: $DetectionScore
