@@ -6,7 +6,7 @@ type: standard
 author: dnif
 blocks:
 - type: sql
-  query: SELECT $SrcIP,$DstIP, $DstPort, COUNT(*) FROM NETWORK-FIREWALL WHERE ($DstPort='3389' OR $DstPort='135') AND $Duration=1d GROUP BY $SrcIP,$DstIP, $DstPort
+  query: SELECT $SrcIP,$DstIP, $DstPort, COUNT(*) FROM FIREWALL WHERE ($DstPort='3389' OR $DstPort='135') AND $Duration=1d GROUP BY $SrcIP,$DstIP, $DstPort
 - type: visual
   data:
     widget_name: RDP-WMI Port activity
