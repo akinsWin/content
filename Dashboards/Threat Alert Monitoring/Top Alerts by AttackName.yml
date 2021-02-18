@@ -3,7 +3,7 @@ name: Top Alerts by AttackName
 path: /visualization/Threat Alerts Monitoring
 description: ''
 type: standard
-author: Sharron
+author: dnif
 blocks:
 - type: sql
   query: SELECT $Threat, COUNT($Threat) AS $CntAtkName FROM THREAT WHERE $Duration=1d GROUP BY Threat ORDER BY $CntAtkName Desc LIMIT 10
