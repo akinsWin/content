@@ -10,10 +10,10 @@ blocks:
 - type: visual
   data:
     widget_name: Total Inbound Traffic
-    chart_type: area
+    chart_type: metric
     config:
       type: default
       key:
-      - $DstIP
+      - null
       - null
       value: $Count(1)
