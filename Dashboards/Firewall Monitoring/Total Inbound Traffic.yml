@@ -3,17 +3,17 @@ name: Total Inbound Traffic
 path: /visualization/Firewall Monitoring
 description: ''
 type: standard
-author: Sharron
+author: dnif
 blocks:
 - type: sql
-  query: SELECT $SrcIP, $DstIP FROM NETWORK-FIREWALL WHERE $DstType='PRIVATE' AND $Duration=1d
+  query: SELECT $SrcIP, $DstIP, COUNT(*) FROM NETWORK-FIREWALL WHERE $DstType='PRIVATE' AND $Duration=1d GROUP BY $SrcIP,$DstIP
 - type: visual
   data:
     widget_name: Total Inbound Traffic
-    chart_type: metric
+    chart_type: area
     config:
       type: default
       key:
+      - $DstIP
       - null
-      - null
-      value: $EvtLen
+      value: $Count(1)
