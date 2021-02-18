@@ -3,10 +3,10 @@ name: Top Network Threats
 path: /visualization/Threat Alerts Monitoring
 description: ''
 type: standard
-author: Sharron
+author: dnif
 blocks:
 - type: sql
-  query: SELECT $Threat, COUNT($Threat) AS $CountThreat FROM THREAT WHERE $Duration=7d AND $Vector='NETWORK' GROUP BY $Threat ORDER BY $CountThreat DESC LIMIT 10
+  query: SELECT $Threat, COUNT($Threat) AS $CountThreat FROM THREAT WHERE $Duration=1d AND $Vector='NETWORK' GROUP BY $Threat ORDER BY $CountThreat DESC LIMIT 10
 - type: visual
   data:
     widget_name: Top Network Threats
