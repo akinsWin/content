@@ -6,5 +6,5 @@ type: standard
 author: dnif
 blocks:
 - type: sql
-  query: SELECT $SrcIP,$DstIP, COUNT(*) AS $TotalCount FROM NETWORK-FIREWALL WHERE $Duration=5m GROUP BY $SrcIP, $DstIP ORDER BY $TotalCount DESC LIMIT 10
+  query: SELECT $SrcIP,$DstIP, COUNT(*) AS $TotalCount FROM FIREWALL WHERE $Duration=5m GROUP BY $SrcIP, $DstIP ORDER BY $TotalCount DESC LIMIT 10
 
