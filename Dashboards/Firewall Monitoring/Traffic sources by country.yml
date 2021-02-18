@@ -6,7 +6,7 @@ type: standard
 author: dnif
 blocks:
 - type: sql
-  query: SELECT $SrcIP, $SrcCN, COUNT(*) FROM NETWORK-FIREWALL WHERE $Duration=1d GROUP BY $SrcCN, $SrcIP
+  query: SELECT $SrcIP, $SrcCN, COUNT(*) FROM FIREWALL WHERE $Duration=1d GROUP BY $SrcCN, $SrcIP
 - type: visual
   data:
     widget_name: Traffic sources by country
