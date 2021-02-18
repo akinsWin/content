@@ -3,10 +3,10 @@ name: Signals by Confidence
 path: /visualization/SIGNALS Monitoring
 description: ''
 type: standard
-author: Sharron
+author: dnif
 blocks:
 - type: sql
-  query: SELECT $DetectionConfidence, COUNT($DetectionName) AS $CountDetect FROM SIGNALS WHERE $Duration=1d GROUP BY $DetectionName,$DetectionConfidence
+  query: SELECT $DetectionConfidence, COUNT($DetectionName) AS $CountDetect FROM Signals WHERE $Duration=1d GROUP BY $DetectionName,$DetectionConfidence
 - type: visual
   data:
     widget_name: Signals by Confidence
