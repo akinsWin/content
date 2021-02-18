@@ -3,7 +3,7 @@ name: Top Users
 path: /visualization/Authentication Monitoring
 description: ''
 type: standard
-author: Sharron
+author: dnif
 blocks:
 - type: dql
   query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=1d group count_unique $User limit 10
