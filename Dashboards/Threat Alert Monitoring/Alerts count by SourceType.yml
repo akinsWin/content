@@ -3,7 +3,7 @@ name: Alerts count by SourceType
 path: /visualization/Threat Alerts Monitoring
 description: ''
 type: standard
-author: Sharron
+author: dnif
 blocks:
 - type: sql
   query: SELECT $SourceType, COUNT($Threat) AS $CountThreat FROM THREAT WHERE $Duration=1d GROUP BY $SourceType
