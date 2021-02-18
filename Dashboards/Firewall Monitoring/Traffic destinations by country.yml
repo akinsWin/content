@@ -3,7 +3,7 @@ name: Traffic destinations by country
 path: /visualization/Firewall Monitoring
 description: ''
 type: standard
-author: Sharron
+author: dnif
 blocks:
 - type: sql
   query: SELECT $DstIP, $DstCN, COUNT(*) FROM NETWORK-FIREWALL WHERE $Duration=1d GROUP BY $DstCN, DstIP
