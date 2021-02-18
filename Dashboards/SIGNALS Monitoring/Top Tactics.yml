@@ -3,10 +3,10 @@ name: Top Tactics
 path: /visualization/SIGNALS Monitoring
 description: ''
 type: standard
-author: Sharron
+author: dnif
 blocks:
 - type: sql
-  query: SELECT $DetectionTactic, COUNT($DetectionTactic) AS $CountDetection FROM SIGNALS WHERE $Duration=1d GROUP BY $DetectionTactic ORDER BY $CountDetection DESC LIMIT 10
+  query: SELECT $DetectionTactic, COUNT($DetectionTactic) AS $CountDetection FROM Signals WHERE $Duration=1d GROUP BY $DetectionTactic ORDER BY $CountDetection DESC LIMIT 10
 - type: visual
   data:
     widget_name: Top Tactics
