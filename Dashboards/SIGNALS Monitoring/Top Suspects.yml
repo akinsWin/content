@@ -6,7 +6,7 @@ type: standard
 author: dnif
 blocks:
 - type: sql
-  query: SELECT $SuspectHost, COUNT($SuspectHost) AS $CountSuspect FROM SIGNALS WHERE $Duration=1d GROUP BY $SuspectHost ORDER BY $CountSuspect DESC LIMIT 10
+  query: SELECT $SuspectHost, COUNT($SuspectHost) AS $CountSuspect FROM Signals WHERE $Duration=1d GROUP BY $SuspectHost ORDER BY $CountSuspect DESC LIMIT 10
 - type: visual
   data:
     widget_name: Top Suspects
