@@ -3,7 +3,7 @@ name: Allowed traffic by app
 path: /visualization/Firewall Monitoring
 description: ''
 type: standard
-author: Sharron
+author: dnif
 blocks:
 - type: sql
   query: SELECT $SrcIP, $DstIP, $App, COUNT(*) AS $TotalCount FROM FIREWALL WHERE $Action='PACKET_ALLOWED' AND $Duration=1d GROUP BY $SrcIP,$DstIP,$App ORDER BY $TotalCount DESC LIMIT 10
