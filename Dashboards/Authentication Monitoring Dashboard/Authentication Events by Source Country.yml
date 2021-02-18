@@ -3,7 +3,7 @@ name: Authentication Events by Source Country
 path: /visualization/Authentication Monitoring
 description: ''
 type: standard
-author: Sharron
+author: dnif
 blocks:
 - type: dql
   query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=1d group count_unique $SrcCN 
