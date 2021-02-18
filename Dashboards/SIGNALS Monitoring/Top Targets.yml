@@ -3,10 +3,10 @@ name: Top Targets
 path: /visualization/SIGNALS Monitoring
 description: ''
 type: standard
-author: Sharron
+author: dnif
 blocks:
 - type: sql
-  query: SELECT $TargetHost, COUNT($TargetHost) AS $CountTarget FROM SIGNALS WHERE $Duration=1d GROUP BY $TargetHost ORDER BY $CountTarget DESC LIMIT 10
+  query: SELECT $TargetHost, COUNT($TargetHost) AS $CountTarget FROM Signals WHERE $Duration=1d GROUP BY $TargetHost ORDER BY $CountTarget DESC LIMIT 10
 - type: visual
   data:
     widget_name: Top Targets
