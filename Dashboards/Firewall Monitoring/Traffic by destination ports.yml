@@ -6,7 +6,7 @@ type: standard
 author: dnif
 blocks:
 - type: sql
-  query: SELECT $SrcIP, $DstIP, $DstPort, COUNT(*) AS $TotalCount FROM NETWORK-FIREWALL WHERE $Duration=1d GROUP BY $SrcIP,$DstIP,$DstPort ORDER BY $TotalCount DESC LIMIT 10
+  query: SELECT $SrcIP, $DstIP, $DstPort, COUNT(*) AS $TotalCount FROM FIREWALL WHERE $Duration=1d GROUP BY $SrcIP,$DstIP,$DstPort ORDER BY $TotalCount DESC LIMIT 10
 - type: visual
   data:
     widget_name: Traffic by destination ports
