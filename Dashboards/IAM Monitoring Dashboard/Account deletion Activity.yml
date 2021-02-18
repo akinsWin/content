@@ -3,7 +3,7 @@ name: Account deletion Activity
 path: /visualization/IAM Monitoring
 description: ''
 type: standard
-author: Sharron
+author: dnif
 blocks:
 - type: sql
   query: SELECT $CNAMTime, COUNT($Action) AS $CountAccDel FROM IAM WHERE $Action='USER_DELETED' AND $Duration=1d GROUP BY $Action,$CNAMTime
