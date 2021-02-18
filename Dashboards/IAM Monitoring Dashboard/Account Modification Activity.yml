@@ -3,7 +3,7 @@ name: Account Modification Activity
 path: /visualization/IAM Monitoring
 description: ''
 type: standard
-author: dnif
+author: DNIF
 blocks:
 - type: sql
   query: SELECT $Action, $CNAMTime, COUNT($Action) AS $CountModAct FROM IAM WHERE $Duration=1d AND ($Action LIKE "%CHANGED%" OR $Action LIKE "%UPDATE%") GROUP BY $Action,$CNAMTime

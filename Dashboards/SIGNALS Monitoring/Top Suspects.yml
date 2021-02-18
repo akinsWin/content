@@ -3,7 +3,7 @@ name: Top Suspects
 path: /visualization/SIGNALS Monitoring
 description: ''
 type: standard
-author: dnif
+author: DNIF
 blocks:
 - type: sql
   query: SELECT $SuspectHost, COUNT($SuspectHost) AS $CountSuspect FROM Signals WHERE $Duration=1d GROUP BY $SuspectHost ORDER BY $CountSuspect DESC LIMIT 10

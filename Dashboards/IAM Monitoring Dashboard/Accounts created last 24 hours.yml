@@ -3,7 +3,7 @@ name: Accounts created last 24 hours
 path: /visualization/IAM Monitoring
 description: ''
 type: standard
-author: dnif
+author: DNIF
 blocks:
 - type: dql
   query: _fetch * from event where $Stream=IAM AND $Duration=1d AND $Action=USER_CREATED limit 100

@@ -3,7 +3,7 @@ name: Signal Risk timeline
 path: /visualization/SIGNALS Monitoring
 description: ''
 type: standard
-author: dnif
+author: DNIF
 blocks:
 - type: sql
   query: SELECT $CNAMTime,$DetectionScore FROM Signals WHERE $Duration=1d GROUP BY $DetectionScore, CNAMTime

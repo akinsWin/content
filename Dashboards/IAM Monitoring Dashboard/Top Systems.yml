@@ -3,7 +3,7 @@ name: Top Systems
 path: /visualization/IAM Monitoring
 description: ''
 type: standard
-author: dnif
+author: DNIF
 blocks:
 - type: sql
   query: SELECT $System, COUNT($System) AS $IamActivity FROM IAM WHERE $Duration=1d GROUP BY $System

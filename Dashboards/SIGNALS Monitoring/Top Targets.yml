@@ -3,7 +3,7 @@ name: Top Targets
 path: /visualization/SIGNALS Monitoring
 description: ''
 type: standard
-author: dnif
+author: DNIF
 blocks:
 - type: sql
   query: SELECT $TargetHost, COUNT($TargetHost) AS $CountTarget FROM Signals WHERE $Duration=1d GROUP BY $TargetHost ORDER BY $CountTarget DESC LIMIT 10

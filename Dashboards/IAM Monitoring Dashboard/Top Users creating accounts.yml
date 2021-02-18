@@ -3,7 +3,7 @@ name: Top Users creating accounts
 path: /visualization/IAM Monitoring
 description: ''
 type: standard
-author: dnif
+author: DNIF
 blocks:
 - type: sql
   query: SELECT $User, COUNT($Action) AS $AccountCreated FROM IAM WHERE $Action='USER_CREATED' AND $Duration=1d GROUP BY $User,$Action ORDER BY $AccountCreated DESC LIMIT 10

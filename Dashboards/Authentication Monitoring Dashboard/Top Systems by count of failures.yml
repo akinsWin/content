@@ -3,7 +3,7 @@ name: Top Systems by count of failures
 path: /visualization/Authentication Monitoring
 description: ''
 type: standard
-author: dnif
+author: DNIF
 blocks:
 - type: dql
   query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=1d AND $Action=LOGIN  AND $Status=FAILED group count_unique $System limit 10

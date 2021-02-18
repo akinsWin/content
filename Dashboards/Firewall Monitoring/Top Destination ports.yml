@@ -3,7 +3,7 @@ name: Top Destination ports
 path: /visualization/Firewall Monitoring
 description: ''
 type: standard
-author: dnif
+author: DNIF
 blocks:
 - type: dql
   query: _fetch * from event where $Stream=FIREWALL AND $Duration=1d group count_unique $DstPort limit 10

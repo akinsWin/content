@@ -3,7 +3,7 @@ name: Systems Affected
 path: /visualization/Threat Alerts Monitoring
 description: ''
 type: standard
-author: dnif
+author: DNIF
 blocks:
 - type: sql
   query: SELECT $System, COUNT($Threat) AS $CountThreat FROM THREAT WHERE $Duration=1d GROUP BY $System

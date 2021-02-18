@@ -3,7 +3,7 @@ name: RDP-WMI Port activity
 path: /visualization/Firewall Monitoring
 description: ''
 type: standard
-author: dnif
+author: DNIF
 blocks:
 - type: sql
   query: SELECT $SrcIP,$DstIP, $DstPort, COUNT(*) FROM FIREWALL WHERE ($DstPort='3389' OR $DstPort='135') AND $Duration=1d GROUP BY $SrcIP,$DstIP, $DstPort

@@ -3,7 +3,7 @@ name: Traffic by destination ports
 path: /visualization/Firewall Monitoring
 description: ''
 type: standard
-author: dnif
+author: DNIF
 blocks:
 - type: sql
   query: SELECT $SrcIP, $DstIP, $DstPort, COUNT(*) AS $TotalCount FROM FIREWALL WHERE $Duration=1d GROUP BY $SrcIP,$DstIP,$DstPort ORDER BY $TotalCount DESC LIMIT 10

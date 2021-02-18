@@ -3,7 +3,7 @@ name: FTP port activity
 path: /visualization/Firewall Monitoring
 description: ''
 type: standard
-author: dnif
+author: DNIF
 blocks:
 - type: sql
   query: SELECT $SrcIP,$DstIP, $DstPort, COUNT(*) FROM FIREWALL WHERE ($DstPort='20' OR $DstPort='21') AND $Duration=1d GROUP BY $SrcIP,$DstIP, $DstPort
