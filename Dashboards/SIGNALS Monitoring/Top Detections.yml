@@ -3,10 +3,10 @@ name: Top Detections
 path: /visualization/SIGNALS Monitoring
 description: ''
 type: standard
-author: Sharron
+author: dnif
 blocks:
 - type: sql
-  query: SELECT $DetectionName, COUNT($DetectionName) AS $CountDetect FROM SIGNALS WHERE $Duration=1d GROUP BY $DetectionName ORDER BY $CountDetect DESC LIMIT 10
+  query: SELECT $DetectionName, COUNT($DetectionName) AS $CountDetect FROM Signals WHERE $Duration=1d GROUP BY $DetectionName ORDER BY $CountDetect DESC LIMIT 10
 - type: visual
   data:
     widget_name: Top Detections
