@@ -3,7 +3,7 @@ name: Authentication Failures by Source Country
 path: /visualization/Authentication Monitoring
 description: ''
 type: standard
-author: Sharron
+author: dnif
 blocks:
 - type: dql
   query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=1d AND $Action=LOGIN  AND $Status=FAILED group count_unique $SrcCN limit 100
