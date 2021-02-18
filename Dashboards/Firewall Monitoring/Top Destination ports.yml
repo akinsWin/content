@@ -6,7 +6,7 @@ type: standard
 author: dnif
 blocks:
 - type: dql
-  query: _fetch * from event where $Stream=NETWORK-FIREWALL AND $Duration=1d group count_unique $DstPort limit 10
+  query: _fetch * from event where $Stream=FIREWALL AND $Duration=1d group count_unique $DstPort limit 10
 - type: visual
   data:
     widget_name: Top Destination ports
