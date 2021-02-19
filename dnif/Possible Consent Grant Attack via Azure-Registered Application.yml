@@ -3,7 +3,7 @@ name: Possible Consent Grant Attack via Azure-Registered Application
 path: /Cloud Security/Azure
 description: ''
 type: standard
-author: dnif
+author: DNIF
 blocks:
 - type: sql
   query: Select $OperationName, $User, $Status FROM AZURE WHERE $OperationName='Consent to application' AND $Status='Succeeded' GROUP BY $OperationName, $User, $Status

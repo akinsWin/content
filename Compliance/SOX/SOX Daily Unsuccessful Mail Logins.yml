@@ -3,7 +3,7 @@ name: SOX Daily Unsuccessful Mail Logins
 path: /Compliance/SOX
 description: ''
 type: standard
-author: Sharron
+author: DNIF
 blocks:
 - type: dql
   query: _fetch * from event where $Stream=AUTHENTICATION AND $Action=LOGIN AND $Status=FAILED

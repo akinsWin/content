@@ -3,7 +3,7 @@ name: SOX Weekly Top Virus Destinations
 path: /Compliance/SOX
 description: ''
 type: standard
-author: Sharron
+author: DNIF
 blocks:
 - type: dql
   query: _fetch * from event where $Action=THREAT_DETECTED AND $Duration=7d AND $Stream=THREAT  group
