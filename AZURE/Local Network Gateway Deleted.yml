@@ -1,0 +1,18 @@
+id: c6c6302867d348beba6ac81914144da4
+name: Local Network Gateway Deleted
+path: /Cloud Security/Azure
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: Select $OperationName, $User, $Status FROM AZURE WHERE $OperationName='Microsoft.Network/localnetworkgateways/delete' AND $Status='Succeeded' GROUP BY $OperationName, $User, $Status
+- type: signal
+  DetectionName: Local Network Gateway Deleted
+  DetectionTactic: Impact
+  DetectionTechnique: Data Destruction
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Low
+  SuspectUser: $User
+

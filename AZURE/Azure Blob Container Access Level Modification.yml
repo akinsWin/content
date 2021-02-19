@@ -1,0 +1,19 @@
+id: 201232aa06c04366b6705d66d6ca374f
+name: Azure Blob Container Access Level Modification
+path: /Cloud Security/Azure
+description: ''
+type: standard
+author: Sharron
+blocks:
+- type: sql
+  query: Select $OperationName, $User, $Status FROM AZURE WHERE $OperationName='MICROSOFT.STORAGE/STORAGEACCOUNTS/BLOBSERVICES/CONTAINERS/WRITE' AND $Status='Succeeded' GROUP BY $OperationName, $User, $Status
+- type: signal
+  DetectionName: Azure Blob Container Access Level Modification
+  DetectionTactic: Discovery
+  DetectionTechnique: Exploit Public-Facing Application
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Low
+  SuspectUser: $User
+
+

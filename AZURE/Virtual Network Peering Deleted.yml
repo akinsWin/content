@@ -1,0 +1,18 @@
+id: a8256b863797464385907bc6c5963d51
+name: Virtual Network Peering Deleted
+path: /Cloud Security/Azure
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: Select $OperationName, $User, $Status FROM AZURE WHERE $OperationName='Microsoft.Network/virtualNetworks/virtualNetworkPeerings/delete' AND $Status='Succeeded' GROUP BY $OperationName, $User, $Status
+- type: signal
+  DetectionName: Virtual Network Peering Deleted
+  DetectionTactic: Impact
+  DetectionTechnique: Data Destruction
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Low
+  SuspectUser: $User
+
