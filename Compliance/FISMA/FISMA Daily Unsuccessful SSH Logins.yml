@@ -3,7 +3,7 @@ name: FISMA Daily Unsuccessful SSH Logins
 path: 2ea0747005da43d294d73d24cb684899
 description: ''
 type: standard
-author: Sharron
+author: DNIF
 blocks:
 - type: dql
   query: _fetch * from event where $AuthMethod=SSH AND $Duration=1d AND $Action=LOGIN
