@@ -1,0 +1,12 @@
+id: 47cb3d908658441e9441082a7dc141ba
+name: SOX Daily Unsuccessful Mail Logins
+path: /Compliance/SOX
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Action=LOGIN AND $Status=FAILED
+    AND $Duration= 1d AND $SourceType=OFFICE group count_unique $User,$SrcIP limit
+    100
+- {}

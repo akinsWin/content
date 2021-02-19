@@ -1,0 +1,10 @@
+id: 2df9547e79cf4795b7b668a77de54c3e
+name: SOX Weekly Unsuccessful Web Services Logins
+path: /Compliance/SOX
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Action=LOGIN AND $Status=FAILED
+    AND $Duration=7d AND $SourceType=WAF group count_unique $User, $SrcIP limit 100

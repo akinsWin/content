@@ -1,0 +1,10 @@
+id: e81cf55ae19c4fd39efcaa1c14454282
+name: FISMA Daily Unsuccessful Telnet Logins
+path: /Compliance/FISMA
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Action=LOGIN AND $Status=FAILED
+    AND $Duration=1d AND $DstPort=23 group count_unique $User, $SrcIP limit 100

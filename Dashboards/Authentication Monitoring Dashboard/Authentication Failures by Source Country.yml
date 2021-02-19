@@ -1,0 +1,19 @@
+id: 9efbc1eb95004aeba06672e4bcc424b5
+name: Authentication Failures by Source Country
+path: /visualization/Authentication Monitoring
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=1d AND $Action=LOGIN  AND $Status=FAILED group count_unique $SrcCN limit 100
+- type: visual
+  data:
+    widget_name: Authentication Failures by Source Country
+    chart_type: geoMap
+    config:
+      type: default
+      key:
+      - $SrcCN
+      - null
+      value: count_unique

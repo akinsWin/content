@@ -1,0 +1,19 @@
+id: 08bb1a30a88a45e7afdfa4e328eb1453
+name: Top Systems
+path: /visualization/IAM Monitoring
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $System, COUNT($System) AS $IamActivity FROM IAM WHERE $Duration=1d GROUP BY $System
+- type: visual
+  data:
+    widget_name: Top Systems
+    chart_type: column
+    config:
+      type: default
+      key:
+      - $System
+      - null
+      value: $IamActivity

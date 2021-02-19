@@ -1,0 +1,10 @@
+id: faab2a50ab964ffaa62d6c576aa686e4
+name: FISMA Top Users by Remote Access Activity
+path: /Compliance/FISMA
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=1d AND $AuthProto=VPN
+    group count_unique $Action, $SrcIP, $System, $User limit 20

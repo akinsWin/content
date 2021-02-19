@@ -1,0 +1,19 @@
+id: f3d875b4057f465a8db4b5961cd894a9
+name: Systems Affected
+path: /visualization/Threat Alerts Monitoring
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $System, COUNT($Threat) AS $CountThreat FROM THREAT WHERE $Duration=1d GROUP BY $System
+- type: visual
+  data:
+    widget_name: Systems Affected
+    chart_type: area
+    config:
+      type: default
+      key:
+      - $System
+      - null
+      value: $CountThreat

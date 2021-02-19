@@ -1,0 +1,10 @@
+id: 57fa9c7ec8b943368b6a4c2a3f44d5d0
+name: Top talkers - Last 5 min
+path: /visualization/Firewall Monitoring
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $SrcIP,$DstIP, COUNT(*) AS $TotalCount FROM FIREWALL WHERE $Duration=5m GROUP BY $SrcIP, $DstIP ORDER BY $TotalCount DESC LIMIT 10
+

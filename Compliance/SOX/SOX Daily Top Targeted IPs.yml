@@ -1,0 +1,10 @@
+id: b3ac9f85d1864c748738e7b35ecd87d3
+name: SOX Daily Top Targeted IPs
+path: /Compliance/SOX
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: dql
+  query: _fetch * from event where $Duration=1d AND $SrcType=PUBLIC AND $DstType=PRIVATE
+    AND $Stream=THREAT group count_unique $Threat, $DstIP limit 10

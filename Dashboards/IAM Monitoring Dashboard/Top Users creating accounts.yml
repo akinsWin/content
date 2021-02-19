@@ -1,0 +1,19 @@
+id: 4010856f0eeb48b09281670d60268fa9
+name: Top Users creating accounts
+path: /visualization/IAM Monitoring
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $User, COUNT($Action) AS $AccountCreated FROM IAM WHERE $Action='USER_CREATED' AND $Duration=1d GROUP BY $User,$Action ORDER BY $AccountCreated DESC LIMIT 10
+- type: visual
+  data:
+    widget_name: Top Users creating accounts
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $User
+      - null
+      value: $AccountCreated

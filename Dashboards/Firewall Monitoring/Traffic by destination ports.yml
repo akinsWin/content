@@ -1,0 +1,19 @@
+id: 428a5513a5474499b051d519b4729761
+name: Traffic by destination ports
+path: /visualization/Firewall Monitoring
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $SrcIP, $DstIP, $DstPort, COUNT(*) AS $TotalCount FROM FIREWALL WHERE $Duration=1d GROUP BY $SrcIP,$DstIP,$DstPort ORDER BY $TotalCount DESC LIMIT 10
+- type: visual
+  data:
+    widget_name: Traffic by destination ports
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $DstPort
+      - null
+      value: $Count(1)

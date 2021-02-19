@@ -1,0 +1,19 @@
+id: aa1ec97855e340ee870daf3b27e5ab59
+name: Total Outbound Traffic
+path: /visualization/Firewall Monitoring
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $SrcIP, $DstIP, COUNT(*) FROM FIREWALL WHERE $DstType='PUBLIC' AND $Duration=1d GROUP BY $SrcIP,$DstIP
+- type: visual
+  data:
+    widget_name: Total Outbound Traffic
+    chart_type: metric
+    config:
+      type: default
+      key:
+      - null
+      - null
+      value: $Count(1)

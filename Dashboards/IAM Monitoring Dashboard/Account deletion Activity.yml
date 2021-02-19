@@ -1,0 +1,19 @@
+id: 3278cf22390843968af1cd389e48fcdc
+name: Account deletion Activity
+path: /visualization/IAM Monitoring
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: SELECT $CNAMTime, COUNT($Action) AS $CountAccDel FROM IAM WHERE $Action='USER_DELETED' AND $Duration=1d GROUP BY $Action,$CNAMTime
+- type: visual
+  data:
+    widget_name: Account deletion Activity
+    chart_type: timeline
+    config:
+      type: default
+      key:
+      - $CNAMTime
+      - null
+      value: $CountAccDel

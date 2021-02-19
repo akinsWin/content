@@ -1,0 +1,13 @@
+id: ecd1c6fbc8134dbc92ec745d1e089fde
+name: Top Users by Remote Access Activity
+path: /Compliance/SOX
+description: ''
+type: standard
+author: Dnif
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $AuthProto=VPN AND
+    $Duration=1d  group count_unique $User limit 100
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $AuthProto=SSH AND
+    $Duration=1d  group count_unique $User limit 100
