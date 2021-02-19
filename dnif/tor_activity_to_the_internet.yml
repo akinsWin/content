@@ -6,7 +6,7 @@ type: streamed
 author: DNIF
 blocks:
 - type: sql
-  query: SELECT $SrcIP, COUNT($DstIP) AS $CountDstIP FROM NETWORK-FIREWALL WHERE ($DstPort='9001' OR $DstPort='9030') AND $SrcType='PRIVATE' AND $DstType='PUBLIC'  AND $Proto='TCP' GROUP BY $DstIP, $SrcIP
+  query: SELECT $SrcIP, COUNT($DstIP) AS $CountDstIP FROM FIREWALL WHERE ($DstPort='9001' OR $DstPort='9030') AND $SrcType='PRIVATE' AND $DstType='PUBLIC'  AND $Proto='TCP' GROUP BY $DstIP, $SrcIP
 - type: signal
   DetectionName: Tor Activity to the Internet
   DetectionTactic: Command and Control

@@ -6,7 +6,7 @@ type: standard
 author: DNIF
 blocks:
 - type: sql
-  query: SELECT $SrcIP, $DstIP, COUNT(*) FROM NETWORK-FIREWALL WHERE $DstPort='23' AND $SrcType='PUBLIC' AND $Proto='TCP' GROUP BY $DstIP, $SrcIP
+  query: SELECT $SrcIP, $DstIP, COUNT(*) FROM FIREWALL WHERE $DstPort='23' AND $SrcType='PUBLIC' AND $Proto='TCP' GROUP BY $DstIP, $SrcIP
 - type: signal
   DetectionName: Telnet Port Activity
   DetectionTactic: Lateral Movement

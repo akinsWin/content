@@ -6,7 +6,7 @@ type: standard
 author: DNIF
 blocks:
 - type: sql
-  query: SELECT $SrcIP, $DstIP, COUNT(*) FROM NETWORK-FIREWALL WHERE ($DstPort='25' OR $DstPort='587') AND $SrcType='PRIVATE' AND $DstType='PUBLIC' GROUP BY $DstIP, $SrcIP
+  query: SELECT $SrcIP, $DstIP, COUNT(*) FROM FIREWALL WHERE ($DstPort='25' OR $DstPort='587') AND $SrcType='PRIVATE' AND $DstType='PUBLIC' GROUP BY $DstIP, $SrcIP
 - type: signal
   DetectionName: SMTP to the Internet
   DetectionTactic: Exfiltration

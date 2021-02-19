@@ -6,7 +6,7 @@ type: streamed
 author: DNIF
 blocks:
 - type: sql
-  query: SELECT $SrcIP, $DstIP, SUM($TXLen) AS $TotalTXLen FROM NETWORK-FIREWALL WHERE
+  query: SELECT $SrcIP, $DstIP, SUM($TXLen) AS $TotalTXLen FROM FIREWALL WHERE
     $Action='PACKET_ALLOWED' AND $Proto='ICMP' AND $DstType='PUBLIC' HAVING $TotalTXLen > 5000
 - type: signal
   DetectionName: Detect Large Outbound ICMP Packets
