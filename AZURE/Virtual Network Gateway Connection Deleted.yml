@@ -1,0 +1,19 @@
+id: ed0f313ab1634111b1b1984676e8057d
+name: Virtual Network Gateway Connection Deleted
+path: /Cloud Security/Azure
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: Select $OperationName, $User, $Status FROM AZURE WHERE $OperationName='Microsoft.Network/connections/delete' AND $Status='Succeeded' GROUP BY $OperationName, $User, $Status
+- type: signal
+  DetectionName: Virtual Network Gateway Connection Deleted
+  DetectionTactic: Impact
+  DetectionTechnique: Data Destruction
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Low
+  TargetObject: $OperationName
+  SuspectUser: $User
+

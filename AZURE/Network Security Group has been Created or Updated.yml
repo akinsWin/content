@@ -1,0 +1,19 @@
+id: d83598358a4541239c08b64fc61a7af2
+name: Network Security Group has been Created or Updated
+path: /Cloud Security/Azure
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: Select $OperationName, $User, $Status FROM AZURE WHERE $OperationName='Microsoft.Network/networkSecurityGroups/write' AND $Status='Succeeded' GROUP BY $OperationName, $User, $Status
+- type: signal
+  DetectionName: Network Security Group has been Created or Updated
+  DetectionTactic: Persistence
+  DetectionTechnique: Valid Accounts
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Low
+   TargetObject: $OperationName
+  SuspectUser: $User
+

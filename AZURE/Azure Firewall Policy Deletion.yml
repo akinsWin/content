@@ -1,0 +1,19 @@
+id: 27a1bea5a3fa4c22835bfba712706e23
+name: Azure Firewall Policy Deletion
+path: /Cloud Security/Azure
+description: ''
+type: standard
+author: DNIF
+blocks:
+- type: sql
+  query: Select $OperationName, $User, $Status FROM AZURE WHERE $OperationName='MICROSOFT.NETWORK/FIREWALLPOLICIES/DELETE' AND $Status='Succeeded' GROUP BY $OperationName, $User, $Status
+- type: signal
+  DetectionName: Azure Firewall Policy Deletion
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Impair Defenses
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Low
+  TargetObject: $OperationName
+  SuspectUser: $User
+
