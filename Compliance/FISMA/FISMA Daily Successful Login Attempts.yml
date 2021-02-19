@@ -3,9 +3,8 @@ name: FISMA Daily Successful Login Attempts
 path: 2ea0747005da43d294d73d24cb684899
 description: ''
 type: standard
-author: Sharron
+author: DNIF
 blocks:
 - type: dql
   query: _fetch * from event where $Stream=AUTHENTICATION AND $Action=LOGIN AND $Status=PASSED
     AND $Duration=1d group count_unique $User, $SrcIP limit 100
-- {}
