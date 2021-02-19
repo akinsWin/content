@@ -1,11 +1,11 @@
 id: 3cf0d11a2f7e40ba87416f093e6bb5e1
 name: SOX Weekly Unsuccessful SSH Logins
-path: 4bad758c6ce844f28acbbdbc028930f5
+path: /Compliance/SOX
 description: ''
 type: standard
-author: Sharron
+author: DNIF
 blocks:
 - type: dql
-  query: _fetch * from event where $AuthMethod=SSH AND $Duration=7d AND $Action=LOGIN
+  query: _fetch * from event where $AuthProto=SSH AND $Duration=7d AND $Action=LOGIN
     AND $Status=FAILED AND $Stream=AUTHENTICATION group count_unique $User, $SrcIP
     , $Reason limit 100

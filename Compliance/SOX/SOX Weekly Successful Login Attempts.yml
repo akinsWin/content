@@ -1,9 +1,9 @@
 id: 24553472400e40858ef1a23521d8b9de
 name: SOX Weekly Successful Login Attempts
-path: 4bad758c6ce844f28acbbdbc028930f5
+path: /Compliance/SOX
 description: ''
 type: standard
-author: Sharron
+author: DNIF
 blocks:
 - type: dql
   query: _fetch * from event where $Stream=AUTHENTICATION AND $Action=LOGIN AND $Status=PASSED

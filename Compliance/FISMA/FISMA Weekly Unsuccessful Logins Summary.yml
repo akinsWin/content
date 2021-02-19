@@ -1,11 +1,10 @@
 id: 3cf94983157d46a9b1684d53206b165f
 name: FISMA Weekly Unsuccessful Logins Summary
-path: 2ea0747005da43d294d73d24cb684899
+path: /Compliance/FISMA
 description: ''
 type: standard
-author: Sharron
+author: DNIF
 blocks:
 - type: dql
   query: _fetch * from event where $Stream=AUTHENTICATION AND $Action=LOGIN AND $Status=FAILED
     AND $Duration= 7d group count_unique $User, $SrcIP limit 100
-- {}

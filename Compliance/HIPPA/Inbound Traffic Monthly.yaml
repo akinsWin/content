@@ -1,9 +1,10 @@
-  id: 09cba401ae9b46d8a2198469917e08a8
-  name: PCI 1-2-1b - Inbound Traffic Monthly
-  path: /Compliance/PCI
+id: 05fc5af37bf84ba6a874bb646096da8a
+  name: Inbound Traffic Monthly
+  path: /Compliance/HIPPA
   description: ''
   type: Standard
   author: DNIF
   blocks:
   - type: dql
     query: _fetch * from event where $Stream=FIREWALL AND $Duration=1M AND $SrcType=PUBLIC AND $DstType=PRIVATE group sum $RXLen limit 100
+ 

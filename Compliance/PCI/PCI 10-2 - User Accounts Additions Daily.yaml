@@ -7,4 +7,3 @@ author: DNIF
 blocks:
 - type: dql
   query: _fetch * from event where $Stream=IAM AND $Action=USER_ACCOUNT_CREATED AND $Status=PASSED  AND $Duration=1d group count_unique $User, $System, $TargetUser limit 100
-

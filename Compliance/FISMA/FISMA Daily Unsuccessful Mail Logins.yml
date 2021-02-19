@@ -1,9 +1,11 @@
 id: 91d6d272168f449fb7fc1acc3f6c3b14
 name: FISMA Daily Unsuccessful Mail Logins
-path: 2ea0747005da43d294d73d24cb684899
+path: /Compliance/FISMA
 description: ''
 type: standard
 author: DNIF
 blocks:
 - type: dql
-  query: _fetch * from event where $Stream=AUTHENTICATION AND $Action=LOGIN AND $Status=FAILED AND $Duration= 1d AND $SourceType=EMAIL-GATEWAY group count_unique $User limit 100
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Action=LOGIN AND $Status=FAILED
+    AND $Duration= 1d AND $SourceType=OFFICE group count_unique $User limit
+    100

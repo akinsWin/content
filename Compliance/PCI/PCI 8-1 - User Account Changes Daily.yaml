@@ -7,4 +7,3 @@ author: DNIF
 blocks:
 - type: dql
   query: _fetch * from event where $Stream=IAM AND $Duration=1d NOT $Status=FAILED  group count_unique  $Action,$User,$TargetUser,$System,$Status  limit 100
-

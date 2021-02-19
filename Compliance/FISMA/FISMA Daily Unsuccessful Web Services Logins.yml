@@ -1,9 +1,9 @@
 id: 0b4d29d53c3f4f4090df5ccdfe3d6c41
 name: FISMA Daily Unsuccessful Web Services Logins
-path: 2ea0747005da43d294d73d24cb684899
+path: /Compliance/FISMA
 description: ''
 type: standard
-author: Sharron
+author: DNIF
 blocks:
 - type: dql
   query: _fetch * from event where $Stream=AUTHENTICATION AND $Action=LOGIN AND $Status=FAILED

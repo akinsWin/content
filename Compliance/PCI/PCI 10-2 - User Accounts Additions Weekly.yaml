@@ -6,4 +6,4 @@ type: Standard
 author: DNIF
 blocks:
 - type: dql
-  query: _fetch * from event where $Stream=IAM AND $Action=USER_ACCOUNT_CREATED AND $Status=PASSED AND $Duration=7d group count_unique $User, $System, $TargetUser limit 100
+  query: _fetch * from event where $Stream=IAM AND $Action=USER_ACCOUNT_CREATED AND $Status=PASSED  AND $Duration=7d group count_unique $User, $System, $TargetUser limit 100

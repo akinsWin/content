@@ -1,9 +1,9 @@
 id: 2df9547e79cf4795b7b668a77de54c3e
 name: SOX Weekly Unsuccessful Web Services Logins
-path: 4bad758c6ce844f28acbbdbc028930f5
+path: /Compliance/SOX
 description: ''
 type: standard
-author: Sharron
+author: DNIF
 blocks:
 - type: dql
   query: _fetch * from event where $Stream=AUTHENTICATION AND $Action=LOGIN AND $Status=FAILED

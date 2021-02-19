@@ -1,11 +1,11 @@
 id: 5db1226b6fe645fa9c45f08d3dfa038a
 name: FISMA Daily Unsuccessful SSH Logins
-path: 2ea0747005da43d294d73d24cb684899
+path: /Compliance/FISMA
 description: ''
 type: standard
 author: DNIF
 blocks:
 - type: dql
-  query: _fetch * from event where $AuthMethod=SSH AND $Duration=1d AND $Action=LOGIN
+  query: _fetch * from event where $AuthProto=SSH AND $Duration=1d AND $Action=LOGIN
     AND $Status=FAILED AND $Stream=AUTHENTICATION group count_unique $User, $SrcIP
     limit 200
