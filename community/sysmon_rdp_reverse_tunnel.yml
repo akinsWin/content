@@ -10,8 +10,7 @@ blocks:
   code: "|Author|References|\n                 |------|--------|\n               \
     \  |Samir Bousseaden|https://twitter.com/SBousseaden/status/1096148422984384514|"
 - type: sql
-  query: SELECT * FROM SYSMON-NETWORK WHERE ($Image LIKE "%\\svchost.exe" AND $Initiated
-    = "true" AND $SrcPort = "3389" AND ($DstIP LIKE "127.%" OR $DstIP LIKE "::1"))
+  query: SELECT * FROM SYSMON-NETWORK WHERE ($Image LIKE "%\\svchost.exe" AND $Action='NETWORK_CONNECTION' AND $Status='PASSED' AND $SrcPort = "3389" AND ($DstIP='127.0.0.1%' OR $DstIP="::1"))
 - type: signal
   DetectionName: RDP Over Reverse SSH Tunnel
   DetectionTactic: Lateral Movement

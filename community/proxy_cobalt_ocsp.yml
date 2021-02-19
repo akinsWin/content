@@ -9,7 +9,7 @@ blocks:
   code: "|Author|References|\n                 |------|--------|\n               \
     \  |Markus Neis|https://github.com/rsmudge/Malleable-C2-Profiles/blob/master/normal/ocsp.profile|"
 - type: sql
-  query: SELECT * FROM WEBFILTER WHERE ($URL LIKE "%/oscp/%" AND $DstHost = "ocsp.verisign.com")
+  query: SELECT * FROM WEBFILTER WHERE ($URL LIKE "%/oscp/%" AND $Domain = "ocsp.verisign.com")
 - type: signal
   DetectionName: CobaltStrike Malleable (OCSP) Profile
   DetectionTactic: Command and Control
