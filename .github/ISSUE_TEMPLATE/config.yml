@@ -1,0 +1,14 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Feature request (dnif / roadmap)
+    url: https://github.com/dnif-backyard/roadmap/issues/new?template=feature_request.md
+    about: Request a feature / enhancement
+  - name: Bug report (dnif / roadmap)
+    url: https://github.com/dnif-backyard/roadmap/issues/new?template=bug_report.md
+    about: Report a bug
+  - name: New extractor (dnif / extractors)
+    url: https://github.com/dnif-backyard/dnif-extractors/issues/new?template=new_extractor.md
+    about: Request a new extractor
+  - name: Update an extractor (dnif / extractors)
+    url: https://github.com/dnif-backyard/dnif-extractors/issues/new?template=update_extractor.md
+    about: Request an update to an existing extractor
