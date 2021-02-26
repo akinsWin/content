@@ -1,6 +1,6 @@
 id: 89c578255ec344d1a045578c44effdd8
 name: Allowed traffic by app
-path: /visualization/Firewall Monitoring
+path: /Visualization/Firewall Monitoring
 description: ''
 type: standard
 author: DNIF

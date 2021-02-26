@@ -1,6 +1,6 @@
 id: 0f5e1a3f33674ceab6a76ffcabb38c15
 name: Alerts count by SourceType
-path: /visualization/Threat Alerts Monitoring
+path: /Visualization/Threat Alerts Monitoring
 description: ''
 type: standard
 author: DNIF

@@ -1,6 +1,6 @@
 id: 346879c48b85403493e4406baceeffec
 name: RDP-WMI Port activity
-path: /visualization/Firewall Monitoring
+path: /Visualization/Firewall Monitoring
 description: ''
 type: standard
 author: DNIF
