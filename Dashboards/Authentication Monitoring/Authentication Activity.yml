@@ -6,7 +6,7 @@ type: standard
 author: DNIF
 blocks:
 - type: dql
-  query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=12h group timeslice 1m limit 1440
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=12h group timeslice 1m limit 720
 - type: visual
   data:
     widget_name: Authentication Events 
