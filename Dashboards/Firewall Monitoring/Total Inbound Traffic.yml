@@ -6,7 +6,7 @@ type: standard
 author: DNIF
 blocks:
 - type: sql
-  query: SELECT $SrcIP, $DstIP, COUNT(*) FROM FIREWALL WHERE $DstType='PRIVATE' AND $Duration=1d GROUP BY $SrcIP,$DstIP
+  query: SELECT SUM($TXLen) AS $TotalBytes FROM FIREWALL WHERE $Duration=1h AND $DstType='PRIVATE' ORDER BY $TotalBytes DESC LIMIT 10
 - type: visual
   data:
     widget_name: Total Inbound Traffic
@@ -16,4 +16,5 @@ blocks:
       key:
       - null
       - null
-      value: $Count(1)
+      value: $TotalBytes
+

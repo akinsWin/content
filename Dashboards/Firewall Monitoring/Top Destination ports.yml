@@ -5,8 +5,8 @@ description: ''
 type: standard
 author: DNIF
 blocks:
-- type: dql
-  query: _fetch * from event where $Stream=FIREWALL AND $Duration=1d group count_unique $DstPort limit 10
+- type: sql
+  query: SELECT $DstPort, SUM($TXLen) AS $TotalBytes FROM FIREWALL WHERE $Duration=1h GROUP BY $DstPort ORDER BY $TotalBytes DESC LIMIT 10
 - type: visual
   data:
     widget_name: Top Destination ports
@@ -16,4 +16,4 @@ blocks:
       key:
       - $DstPort
       - null
-      value: count_unique
+      value: $TotalBytes

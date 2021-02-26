@@ -6,7 +6,7 @@ type: standard
 author: DNIF
 blocks:
 - type: sql
-  query: SELECT $SrcIP, $DstIP, $DstPort, COUNT(*) AS $TotalCount FROM FIREWALL WHERE $Duration=1d GROUP BY $SrcIP,$DstIP,$DstPort ORDER BY $TotalCount DESC LIMIT 10
+  query: SELECT $DstPort, SUM($TXLen) AS $TotalBytes FROM FIREWALL WHERE $Duration=1h AND GROUP BY $DstPort HAVING $TotalBytes > 0 ORDER BY $TotalBytes DESC LIMIT 10
 - type: visual
   data:
     widget_name: Traffic by destination ports
@@ -16,4 +16,4 @@ blocks:
       key:
       - $DstPort
       - null
-      value: $Count(1)
+      value: $TotalBytes

@@ -1,19 +1,19 @@
 id: 096f6ff4c1ad403a98aae7a2efb7857f
-name: Authentication Events by time
+name: Authentication Activity 
 path: /visualization/Authentication Monitoring
 description: ''
 type: standard
 author: DNIF
 blocks:
 - type: dql
-  query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=1d limit 100
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=12h group timeslice 1m limit 1440
 - type: visual
   data:
-    widget_name: Authentication Events by time
+    widget_name: Authentication Events 
     chart_type: timeline
     config:
       type: default
       key:
       - $CNAMTime
       - null
-      value: $EvtLen
+      value: $Count

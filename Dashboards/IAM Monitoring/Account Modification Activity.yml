@@ -5,8 +5,8 @@ description: ''
 type: standard
 author: DNIF
 blocks:
-- type: sql
-  query: SELECT $Action, $CNAMTime, COUNT($Action) AS $CountModAct FROM IAM WHERE $Duration=1d AND ($Action LIKE "%CHANGED%" OR $Action LIKE "%UPDATE%") GROUP BY $Action,$CNAMTime
+- type: dql
+  query: _fetch * from event where $Stream=IAM AND $Duration=6h AND $Action=*CHANGED* group timeslice 1m limit 360
 - type: visual
   data:
     widget_name: Account Modification Activity
@@ -16,4 +16,4 @@ blocks:
       key:
       - $CNAMTime
       - null
-      value: $CountModAct
+      value: $Count

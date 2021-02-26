@@ -6,7 +6,7 @@ type: standard
 author: DNIF
 blocks:
 - type: sql
-  query: SELECT $DstIP, $DstCN, COUNT(*) FROM FIREWALL WHERE $Duration=1d GROUP BY $DstCN, DstIP
+  query: SELECT $DstCN, SUM($TxLen) AS $TotalBytes FROM FIREWALL WHERE $Duration=1h GROUP BY $DstCN
 - type: visual
   data:
     widget_name: Traffic destinations by country
@@ -16,4 +16,4 @@ blocks:
       key:
       - $DstCN
       - null
-      value: $Count(1)
+      value: $TotalBytes

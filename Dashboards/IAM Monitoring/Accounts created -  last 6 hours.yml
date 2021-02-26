@@ -1,12 +1,12 @@
 id: 86661886305f47c9950ad2348c3ea10d
-name: Accounts created last 24 hours
+name: Accounts creation Activity - last 6 hours
 path: /visualization/IAM Monitoring
 description: ''
 type: standard
 author: DNIF
 blocks:
 - type: dql
-  query: _fetch * from event where $Stream=IAM AND $Duration=1d AND $Action=USER_CREATED limit 100
+  query: _fetch * from event where $Stream=IAM AND $Duration=6h AND $Action=USER_ACCOUNT_CREATED group timeslice 1m limit 360
 - type: visual
   data:
     widget_name: Accounts created last 24 hours
@@ -16,4 +16,4 @@ blocks:
       key:
       - $CNAMTime
       - null
-      value: $EvtLen
+      value: $Count

@@ -5,8 +5,8 @@ description: ''
 type: standard
 author: DNIF
 blocks:
-- type: sql
-  query: SELECT $CNAMTime, COUNT($Action) AS $CountAccDel FROM IAM WHERE $Action='USER_DELETED' AND $Duration=1d GROUP BY $Action,$CNAMTime
+- type: dql
+  query:  _fetch * from event where $Stream=IAM AND $Duration=6h AND $Action=USER_ACCOUNT_DELETED AND $Action=SYSTEM_USER_ACCOUNT_DELETED group timeslice 1m limit 360
 - type: visual
   data:
     widget_name: Account deletion Activity
@@ -16,4 +16,4 @@ blocks:
       key:
       - $CNAMTime
       - null
-      value: $CountAccDel
+      value: $Count
