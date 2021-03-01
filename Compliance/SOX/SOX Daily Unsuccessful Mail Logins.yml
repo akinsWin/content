@@ -9,4 +9,3 @@ blocks:
   query: _fetch * from event where $Stream=AUTHENTICATION AND $Action=LOGIN AND $Status=FAILED
     AND $Duration= 1d AND $SourceType=OFFICE group count_unique $User,$SrcIP limit
     100
-- {}

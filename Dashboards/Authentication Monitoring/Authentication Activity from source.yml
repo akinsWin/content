@@ -5,8 +5,8 @@ description: ''
 type: standard
 author: DNIF
 blocks:
-- type: dql
-  query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=6h group count_unique $SrcCN 
+- type: sql
+  query: SELECT $SrcCN, COUNT($User) AS $CountUser FROM AUTHENTICATION WHERE $Duration=6h GROUP BY $SrcCN
 - type: visual
   data:
     widget_name: Authentication Events by Source Country
@@ -16,4 +16,4 @@ blocks:
       key:
       - $SrcCN
       - null
-      value: count_unique
+      value: $CountUser

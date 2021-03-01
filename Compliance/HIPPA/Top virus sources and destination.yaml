@@ -1,12 +1,12 @@
 id: 8035ac7440e44570ac6cd39dd64e6849
-  name: Top Virus Sources And Destinations
-  path: /Compliance/HIPPA
-  description: ''
-  type: Standard
-  author: DNIF
-  blocks:
-  - type: dql
-    query: _fetch * from event where $Action=THREAT_DETECT AND $Duration=1d  AND $Stream= THREAT  group count_unique $SrcIP, $DstIP  limit 10
+name: Top Virus Sources And Destinations
+path: /Compliance/HIPPA
+description: ''
+type: Standard
+author: DNIF
+blocks:
+- type: dql
+  query: _fetch * from event where $Action=THREAT_DETECT AND $Duration=1d  AND $Stream= THREAT  group count_unique $SrcIP, $DstIP  limit 10
 
    
    

@@ -6,7 +6,7 @@ type: standard
 author: DNIF
 blocks:
 - type: sql
-  query:Select $OperationName, $User, $Status FROM AZURE WHERE $OperationName='MICROSOFT.STORAGE/STORAGEACCOUNTS/REGENERATEKEY/ACTION' AND $Status='Succeeded' GROUP BY $OperationName, $User, $Status
+  query: SELECT $OperationName, $User, $Status FROM AZURE WHERE $OperationName='MICROSOFT.STORAGE/STORAGEACCOUNTS/REGENERATEKEY/ACTION' AND $Status='Succeeded' GROUP BY $OperationName, $User, $Status
 - type: signal
   DetectionName: Azure Storage Account Key Regenerated
   DetectionTactic: Credential Access

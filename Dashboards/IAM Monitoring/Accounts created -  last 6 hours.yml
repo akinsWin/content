@@ -9,7 +9,7 @@ blocks:
   query: _fetch * from event where $Stream=IAM AND $Duration=6h AND $Action=USER_ACCOUNT_CREATED group timeslice 1m limit 360
 - type: visual
   data:
-    widget_name: Accounts created last 24 hours
+    widget_name: Accounts created last 6 hours
     chart_type: timeline
     config:
       type: default
