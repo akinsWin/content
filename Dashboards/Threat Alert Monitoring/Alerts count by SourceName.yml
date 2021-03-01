@@ -6,7 +6,7 @@ type: standard
 author: DNIF
 blocks:
 - type: sql
-  query: SELECT $SourceName, COUNT($Threat) AS $CountThreat FROM THREAT WHERE $Duration=1d GROUP BY $SourceName
+  query: SELECT $SourceName, COUNT($Threat) AS $CountThreat FROM THREAT WHERE $Duration=1h GROUP BY $SourceName
 - type: visual
   data:
     widget_name: Alerts count by SourceName

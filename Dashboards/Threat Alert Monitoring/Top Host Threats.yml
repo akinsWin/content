@@ -6,7 +6,7 @@ type: standard
 author: DNIF
 blocks:
 - type: sql
-  query: SELECT $Threat, COUNT($Threat) AS $CountThreat FROM THREAT WHERE $Duration=1d AND $Vector='HOST' GROUP BY $Threat ORDER BY $CountThreat DESC LIMIT 10
+  query: SELECT $Threat, COUNT($Threat) AS $CountThreat FROM THREAT WHERE $Duration=1h AND $Vector='HOST' GROUP BY $Threat ORDER BY $CountThreat DESC LIMIT 10
 - type: visual
   data:
     widget_name: Top Host Threats

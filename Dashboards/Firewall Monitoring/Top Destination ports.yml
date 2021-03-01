@@ -10,7 +10,7 @@ blocks:
 - type: visual
   data:
     widget_name: Top Destination ports
-    chart_type: column
+    chart_type: bar
     config:
       type: default
       key:

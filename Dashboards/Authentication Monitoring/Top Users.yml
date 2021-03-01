@@ -6,7 +6,7 @@ type: standard
 author: DNIF
 blocks:
 - type: dql
-  query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=1d group count_unique $User limit 10
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=1h group count_unique $User limit 10
 - type: visual
   data:
     widget_name: Top Users

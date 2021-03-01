@@ -16,4 +16,4 @@ blocks:
       key:
       - $CNAMTime
       - null
-      value: $Count
+      value: count

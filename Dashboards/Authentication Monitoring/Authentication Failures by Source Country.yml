@@ -6,7 +6,7 @@ type: standard
 author: DNIF
 blocks:
 - type: dql
-  query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=1d AND $Action=LOGIN  AND $Status=FAILED group count_unique $SrcCN limit 100
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=1h AND $Action=LOGIN  AND $Status=FAILED group count_unique $SrcCN limit 100
 - type: visual
   data:
     widget_name: Authentication Failures by Source Country

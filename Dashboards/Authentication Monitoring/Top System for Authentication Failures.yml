@@ -10,7 +10,7 @@ blocks:
 - type: visual
   data:
     widget_name: Top Systems by count of failures
-    chart_type: column
+    chart_type: pie
     config:
       type: default
       key:

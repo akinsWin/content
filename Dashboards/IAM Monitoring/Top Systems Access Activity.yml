@@ -6,7 +6,7 @@ type: standard
 author: DNIF
 blocks:
 - type: sql
-  query: SELECT $System, COUNT($System) AS $IamActivity FROM IAM WHERE $Duration=1d GROUP BY $System
+  query: SELECT $System, COUNT($System) AS $IamActivity FROM IAM WHERE $Duration=1h GROUP BY $System
 - type: visual
   data:
     widget_name: Top Systems

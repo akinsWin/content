@@ -6,7 +6,7 @@ type: standard
 author: DNIF
 blocks:
 - type: sql
-  query: SELECT $Threat, COUNT($Threat) AS $CntAtkName FROM THREAT WHERE $Duration=1d GROUP BY Threat ORDER BY $CntAtkName Desc LIMIT 10
+  query: SELECT $Threat, COUNT($Threat) AS $CntAtkName FROM THREAT WHERE $Duration=1h GROUP BY Threat ORDER BY $CntAtkName Desc LIMIT 10
 - type: visual
   data:
     widget_name: Top Alerts by AttackName
