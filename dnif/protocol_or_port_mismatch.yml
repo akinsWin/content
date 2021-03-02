@@ -12,7 +12,7 @@ blocks:
     10
 - type: signal
   DetectionName: Protocol or Port Mismatch
-  DetectionTactic: Command And Control
+  DetectionTactic: Command and Control
   DetectionTechnique: Non-Standard port
   SuspectHost: $SrcIp
   DetectionScore: 5
