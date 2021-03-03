@@ -1,0 +1,12 @@
+name: Content Validation
+on: [push, pull_request]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@master
+      - name: Content Validator
+        uses: ./
+        with:
+          myInput: "."
