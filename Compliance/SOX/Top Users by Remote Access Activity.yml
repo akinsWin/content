@@ -3,7 +3,7 @@ name: Top Users by Remote Access Activity
 path: /Compliance/SOX
 description: ''
 type: standard
-author: Dnif
+author: DNIF
 blocks:
 - type: dql
   query: _fetch * from event where $Stream=AUTHENTICATION AND $AuthProto=VPN AND
