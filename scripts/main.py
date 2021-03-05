@@ -3,6 +3,25 @@ import sys
 import yaml
 from colorama import Fore
 yaml_keys = {"id", "name", "path", "description", "type", "author", "blocks"}
+signal_keys = {"DetectionName", "DetectionTactic", "DetectionTechnique", "DetectionScore", "DetectionConfidence"}
+
+
+def check_signal_block(data, file):
+    for block in data["blocks"]:
+        if block["type"] == "signal":
+            misssing_keys = list(signal_keys - set(block.keys()))
+            if len(misssing_keys) > 0:
+                _tmp = ", ".join(misssing_keys)
+                print(Fore.RED + f"[-] The key/keys '{_tmp}'  are missing in signal block of workbook '{file}'")
+                return False
+            target_suspect_list = []
+            for i in block.keys():
+                if ("Target" or "Suspect") in i:
+                    target_suspect_list.append(i)
+            if not len(target_suspect_list) > 0:
+                print(Fore.RED + f"[-] The signal block of workbook '{file}' should have atleast one target or suspect")
+                return False
+    return True
 
 
 def check_yaml(path):
@@ -19,7 +38,7 @@ def check_keys(data, file):
     misssing_keys = list(yaml_keys - set(data.keys()))
     if len(misssing_keys) > 0:
         _tmp = ", ".join(misssing_keys)
-        print(Fore.RED + f"[-] The keys '{_tmp}'  are missing in workbook '{file}'")
+        print(Fore.RED + f"[-] The key/keys '{_tmp}'  are missing in workbook '{file}'")
         return False
     return True
 
@@ -46,6 +65,8 @@ def main():
                     valid_flag = False
                     continue
                 if not check_author(data, yaml_path):
+                    valid_flag = False
+                if not check_signal_block(data, yaml_path):
                     valid_flag = False
 
     if valid_flag:
