@@ -16,7 +16,7 @@ def check_signal_block(data, file):
                 return False
             target_suspect_list = []
             for i in block.keys():
-                if ("Target" or "Suspect") in i:
+                if "Target" in i or "Suspect" in i:
                     target_suspect_list.append(i)
             if not len(target_suspect_list) > 0:
                 print(Fore.RED + f"[-] The signal block of workbook '{file}' should have atleast one target or suspect")
