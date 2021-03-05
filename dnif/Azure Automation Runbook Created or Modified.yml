@@ -10,6 +10,7 @@ blocks:
 - type: signal
   DetectionName: Azure Automation Runbook Created or Modified
   DetectionTactic: Persistence
+  DetectionTechnique: Hijack Execution Flow
   DetectionScore: '5'
   DetectionSeverity: Medium
   DetectionConfidence: Low
