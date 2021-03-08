@@ -10,6 +10,7 @@ blocks:
 - type: signal
   DetectionName: Azure Automation Webhook Created
   DetectionTactic: Persistence
+  DetectionTechnique: Hijack Execution Flow
   DetectionScore: '5'
   DetectionSeverity: Medium
   DetectionConfidence: Low

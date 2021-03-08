@@ -14,3 +14,4 @@ blocks:
   DetectionScore: '5'
   DetectionSeverity: Medium
   SuspectUser: $User
+  DetectionConfidence: Low
