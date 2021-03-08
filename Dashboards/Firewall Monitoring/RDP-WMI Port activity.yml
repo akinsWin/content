@@ -1,12 +1,12 @@
 id: 346879c48b85403493e4406baceeffec
 name: RDP-WMI Port activity
-path: /visualization/Firewall Monitoring
+path: /Visualization/Firewall Monitoring
 description: ''
 type: standard
 author: DNIF
 blocks:
 - type: sql
-  query: SELECT $SrcIP,$DstIP, $DstPort, COUNT(*) FROM FIREWALL WHERE ($DstPort='3389' OR $DstPort='135') AND $Duration=1d GROUP BY $SrcIP,$DstIP, $DstPort
+  query: SELECT $DstPort, SUM($TXLen) AS $TotalBytes FROM FIREWALL WHERE $Duration=1h AND ($DstPort='3389' OR $DstPort='135') AND $DstType='PUBLIC' GROUP BY $DstPort HAVING $TotalBytes > 0 ORDER BY $TotalBytes DESC LIMIT 10
 - type: visual
   data:
     widget_name: RDP-WMI Port activity
@@ -16,4 +16,4 @@ blocks:
       key:
       - $DstPort
       - null
-      value: $Count(1)
+      value: $TotalBytes

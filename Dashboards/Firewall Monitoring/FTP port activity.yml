@@ -1,12 +1,12 @@
 id: a6e48dfd6e2d418591877253770849d9
 name: FTP port activity
-path: /visualization/Firewall Monitoring
+path: /Visualization/Firewall Monitoring
 description: ''
 type: standard
 author: DNIF
 blocks:
 - type: sql
-  query: SELECT $SrcIP,$DstIP, $DstPort, COUNT(*) FROM FIREWALL WHERE ($DstPort='20' OR $DstPort='21') AND $Duration=1d GROUP BY $SrcIP,$DstIP, $DstPort
+  query: SELECT $DstPort, SUM($TXLen) AS $TotalBytes FROM FIREWALL WHERE $Duration=1h AND ($DstPort='20' OR $DstPort='21') AND $DstType='PUBLIC' GROUP BY $DstPort HAVING $TotalBytes > 0 ORDER BY $TotalBytes DESC LIMIT 10
 - type: visual
   data:
     widget_name: FTP port activity
@@ -16,4 +16,4 @@ blocks:
       key:
       - $DstPort
       - null
-      value: $Count(1)
+      value: $TotalBytes

@@ -1,12 +1,12 @@
-id: aa1ec97855e340ee870daf3b27e5ab59
+id: 699ed6759feb4abdb2a783499a6bf822
 name: Total Outbound Traffic
-path: /visualization/Firewall Monitoring
+path: /Visualization/Firewall Monitoring
 description: ''
 type: standard
 author: DNIF
 blocks:
 - type: sql
-  query: SELECT $SrcIP, $DstIP, COUNT(*) FROM FIREWALL WHERE $DstType='PUBLIC' AND $Duration=1d GROUP BY $SrcIP,$DstIP
+  query: SELECT SUM($TXLen) AS $TotalBytes FROM FIREWALL WHERE $Duration=1h AND $DstType='PUBLIC' ORDER BY $TotalBytes DESC LIMIT 10
 - type: visual
   data:
     widget_name: Total Outbound Traffic
@@ -16,4 +16,4 @@ blocks:
       key:
       - null
       - null
-      value: $Count(1)
+      value: $TotalBytes

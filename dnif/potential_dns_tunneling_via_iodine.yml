@@ -9,7 +9,7 @@ blocks:
   query: SELECT $ProcessName,$System  FROM AUDITD WHERE $Action='PROCESS_ADDED' AND ($ProcessName='iodine' OR $ProcessName='iodined')  GROUP BY $ProcessName,$System 
 - type: signal
   DetectionName: Potential DNS Tunneling via Iodine
-  DetectionTactic: Command And Control
+  DetectionTactic: Command and Control
   DetectionTechnique: Application Layer Protocol
   TargetHost: $System
   DetectionScore: 5

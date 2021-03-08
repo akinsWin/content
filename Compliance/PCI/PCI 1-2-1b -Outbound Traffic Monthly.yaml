@@ -1,9 +1,9 @@
 id: 09cba401ae9b46d8a2198469917e08a8
-  name: PCI 1-2-1b -Outbound Traffic Monthly
-  path: /Compliance/PCI
-  description: ''
-  type: Standard
-  author: DNIF
-  blocks:
-  - type: dql
-    query: _fetch * from event where $Stream=FIREWALL AND $Duration=1M AND $SrcType=PRIVATE AND $DstType=Public group sum $TXLen limit 100
+name: PCI 1-2-1b -Outbound Traffic Monthly
+path: /Compliance/PCI
+description: ''
+type: Standard
+author: DNIF
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=FIREWALL AND $Duration=1M AND $SrcType=PRIVATE AND $DstType=Public group sum $TXLen limit 100

@@ -1,12 +1,12 @@
 id: f275b942211e4fe3aa555a9fb35638cd
-name: Top Systems by count of events
-path: /visualization/Authentication Monitoring
+name: Top Systems for Authentication Activity
+path: /Visualization/Authentication Monitoring
 description: ''
 type: standard
 author: DNIF
 blocks:
 - type: dql
-  query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=1d group count_unique $System limit 100
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=1h group count_unique $System limit 100
 - type: visual
   data:
     widget_name: Top Systems by count of events
