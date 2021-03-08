@@ -10,6 +10,7 @@ blocks:
 - type: signal
   DetectionName: Azure Automation Runbook Deleted
   DetectionTactic: Impact
+  DetectionTechnique: Data Manipulation
   DetectionScore: '5'
   DetectionSeverity: Medium
   DetectionConfidence: Low
