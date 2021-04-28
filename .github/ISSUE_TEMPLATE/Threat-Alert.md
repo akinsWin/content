@@ -7,7 +7,6 @@ assignees: ''
 
 ---
 
-
 **Name of the Alert**
 Tell us the name of the alert 
 
