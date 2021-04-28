@@ -18,8 +18,4 @@ Overview
 **Samples** (Optional)
 -
 
-**Additional details / screenshot**
-- ![Screenshot]()
-
-
 **DNIF Threat Research Team shall assess the feasibility of this request and update the requestor within 2 working day upon submission of the request**
