@@ -1,6 +1,6 @@
 ---
 name: New Threat Alert
-about: This issue template is to request DNIF Threat research team to investigate a certain Threat for research purposes. Requestor may give us the reference to Threat alerts of their interest i.e. Alerts published by well known sources such as US-Cert.in CISA etc.
+about: This issue template is to request DNIF Threat research team to investigate a certain Threat for research purposes. 
 title: 'Request for Threat Research'
 labels: ce_cisa_alert
 assignees: ''
