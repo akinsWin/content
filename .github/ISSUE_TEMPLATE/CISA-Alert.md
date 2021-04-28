@@ -1,11 +1,13 @@
 ---
 name: New Threat Alert
-about: Request a new detection analytic for Threat alerts published by well known sources such as US-Cert.in CISA Alert
-title: ''
+about: This issue template is to request DNIF Threat research team to investigate a certain Threat for research purposes. Requestor may give us the reference to Threat alerts of their interest i.e. Alerts published by well known sources such as US-Cert.in CISA etc.
+title: 'Request for Threat Research'
 labels: ce_cisa_alert
 assignees: ''
 
 ---
+
+
 **Name of the Alert**
 Tell us the name of the alert 
 
@@ -19,6 +21,6 @@ Overview
 
 **Additional details / screenshot**
 - ![Screenshot]()
--
 
-**DNIF Threat Research Team shall assess the feseability of this request and update the requestor within 2 working day upon sumbission of the request**
+
+**DNIF Threat Research Team shall assess the feasibility of this request and update the requestor within 2 working day upon submission of the request**
