@@ -1,10 +1,10 @@
-# Detections by Author
+## Detections by Author
 | Author  |Count|
 |---------|----:|
 |DNIF     |  138|
 |community|  127|
 |Total    |  265|
-# Detections by Directory
+## Detections by Directory
 |                      Directory                       |Count|
 |------------------------------------------------------|----:|
 |/Advanced Threat Detection/Windows Process Monitoring |  119|
@@ -18,7 +18,7 @@
 |/Advanced Threat Detection/Windows Registry Monitoring|    3|
 |/Basic Security Monitoring/Authentication Attacks     |    2|
 |Total                                                 |  265|
-# /Advanced Threat Detection/Windows Process Monitoring
+## /Advanced Threat Detection/Windows Process Monitoring
 |                                                                      Workbook                                                                       | Author  |       Tactic       |                 Technique                 |Severity|Confidence|
 |-----------------------------------------------------------------------------------------------------------------------------------------------------|---------|--------------------|-------------------------------------------|-------:|----------|
 |[Suspicious Csc.exe Source File Folder](community/win_susp_csc_folder.yml)                                                                           |community|Execution           |User Execution                             |       5|Low       |
@@ -140,7 +140,7 @@
 |[Child Processes of Spoolsv exe](dnif/child_processes_of_spoolsv_exe.yml)                                                                            |DNIF     |Privilege Escalation|Exploitation for Privilege Escalation      |       5|Medium    |
 |[Detect mshta exe running scripts in command-line arguments](dnif/detect_mshta_exe_running_scripts_in_command_line_arguments.yml)                    |DNIF     |Defense Evasion     |Signed Binary Proxy Execution              |       5|Medium    |
 |[Schtasks scheduling job on remote system](dnif/schtasks_scheduling_job_on_remote_system.yml)                                                        |DNIF     |Privilege Escalation|Scheduled Task/Job                         |       5|Low       |
-# /Advanced Threat Detection/Proxy Monitoring
+## /Advanced Threat Detection/Proxy Monitoring
 |                                                Workbook                                                 | Author  |      Tactic       |              Technique               |Severity|Confidence|
 |---------------------------------------------------------------------------------------------------------|---------|-------------------|--------------------------------------|-------:|----------|
 |[Empire UserAgent URI Combo](community/proxy_empire_ua_uri_combos.yml)                                   |community|Command and Control|Application Layer Protocol            |       5|Low       |
@@ -172,7 +172,7 @@
 |[Public IP Reconnaissance Activity](dnif/public_ip_reconnaissance_activity.yml)                          |DNIF     |Discovery          |System Network Configuration Discovery|       5|Low       |
 |[Halfbaked Command and Control Beacon](dnif/halfbaked_command_and_control_beacon.yml)                    |DNIF     |Command and Control|Application Layer Protocol            |       5|Low       |
 |[Ingress Tool Transfer](dnif/ingress_tool_transfer.yml)                                                  |DNIF     |Command and Control|Ingress Tool Transfer                 |       5|Low       |
-# /Advanced Threat Detection/Webserver Exploits
+## /Advanced Threat Detection/Webserver Exploits
 |                                                        Workbook                                                        | Author  |    Tactic    |            Technique            |Severity|Confidence|
 |------------------------------------------------------------------------------------------------------------------------|---------|--------------|---------------------------------|-------:|----------|
 |[Citrix Netscaler Attack CVE-2019-19781](community/web_citrix_cve_2019_19781_exploit.yml)                               |community|Initial Access|Exploit Public-Facing Application|       5|Low       |
@@ -184,7 +184,7 @@
 |[Pulse Secure Attack CVE-2019-11510](community/web_pulsesecure_cve-2019-11510.yml)                                      |community|Initial Access|Exploit Public-Facing Application|       5|Low       |
 |[CVE-2020-0688 Exchange Exploitation via Web Log](community/web_cve_2020_0688_msexchange.yml)                           |community|Initial Access|Exploit Public-Facing Application|       5|Low       |
 |[Multiple Suspicious Resp Codes Caused by Single Client](community/web_multiple_suspicious_resp_codes_single_source.yml)|community|Initial Access|Exploit Public-Facing Application|       5|Low       |
-# /Cloud Security/Amazon Web Services
+## /Cloud Security/Amazon Web Services
 |                                                       Workbook                                                        | Author  |    Tactic     |            Technique            |Severity|Confidence|
 |-----------------------------------------------------------------------------------------------------------------------|---------|---------------|---------------------------------|-------:|----------|
 |[AWS EC2 Download Userdata](community/aws_ec2_download_userdata.yml)                                                   |community|Exfiltration   |Automated Exfiltration           |       5|Low       |
@@ -200,14 +200,14 @@
 |[Changes made to AWS CloudTrail logs](dnif/changes_made_to_aws_cloudtrail_logs.yml)                                    |DNIF     |Defense Evasion|Indicator Removal on Host        |       8|High      |
 |[Monitor AWS Credential abuse or hijacking](dnif/monitor_aws_credential_abuse_or_hijacking.yml)                        |DNIF     |Discovery      |Account Discovery                |       5|Low       |
 |[Changes to internet facing AWS RDS Database instances](dnif/changes_to_internet_facing_aws_rds_database_instances.yml)|DNIF     |Persistence    |Account Manipulation             |       5|Low       |
-# /Advanced Threat Detection/DNS Monitoring
+## /Advanced Threat Detection/DNS Monitoring
 |                                       Workbook                                       | Author  |      Tactic       |        Technique         |Severity|Confidence|
 |--------------------------------------------------------------------------------------|---------|-------------------|--------------------------|-------:|----------|
 |[Suspicious DNS Query with B64 Encoded String](community/net_susp_dns_b64_queries.yml)|community|Command and Control|Application Layer Protocol|       5|Low       |
 |[Cobalt Strike DNS Beaconing](community/net_mal_dns_cobaltstrike.yml)                 |community|Command and Control|Application Layer Protocol|       5|Low       |
 |[Telegram Bot API Request](community/net_susp_telegram_api.yml)                       |community|Command and Control|Web Service               |       5|Low       |
 |[Wannacry Killswitch Domain](community/net_wannacry_killswitch_domain.yml)            |community|Command and Control|Application Layer Protocol|       5|Low       |
-# /Cloud Security/Azure
+## /Cloud Security/Azure
 |                                                                Workbook                                                                 |Author|     Tactic      |              Technique              |Severity|Confidence|
 |-----------------------------------------------------------------------------------------------------------------------------------------|------|-----------------|-------------------------------------|-------:|----------|
 |[Azure Resource Group Deletion](dnif/Azure Resource Group Deletion.yml)                                                                  |DNIF  |Impact           |Data Destruction                     |       5|Low       |
@@ -241,7 +241,7 @@
 |[Azure Service Principal Addition](dnif/Azure Service Principal Addition.yml)                                                            |DNIF  |Defense Evasion  |Use Alternate Authentication Material|       5|Low       |
 |[Azure Event Hub Authorization Rule Created or Updated](dnif/Azure Event Hub Authorization Rule Created or Updated.yml)                  |DNIF  |Collection       |Data from Cloud Storage Object       |       5|Low       |
 |[Azure Network Watcher Deletion](dnif/Azure Network Watcher Deletion.yml)                                                                |DNIF  |Defense Evasion  |Impair Defenses                      |       5|Low       |
-# /Basic Security Monitoring/Network Traffic Analysis
+## /Basic Security Monitoring/Network Traffic Analysis
 |                                                 Workbook                                                  |Author|      Tactic       |              Technique               |Severity|Confidence|
 |-----------------------------------------------------------------------------------------------------------|------|-------------------|--------------------------------------|-------:|----------|
 |[Telnet Port Activity](dnif/telnet_port_activity.yml)                                                      |DNIF  |Lateral Movement   |Remote Services                       |       5|Low       |
@@ -264,7 +264,7 @@
 |[PPTP Activity](dnif/pptp_point_to_point_tunneling_protocol_activity.yml)                                  |DNIF  |Command and Control|Commonly Used Port                    |       5|Low       |
 |[VNC from the Internet](dnif/vnc_virtual_network_computing_from_the_internet.yml)                          |DNIF  |Initial Access     |Exploit Public-Facing Application     |       5|Low       |
 |[IPSEC NAT Traversal Port Activity](dnif/ipsec_nat_traversal_port_activity.yml)                            |DNIF  |Command and Control|Commonly Used Port                    |       5|Low       |
-# /Advanced Threat Detection/Linux Process Monitoring
+## /Advanced Threat Detection/Linux Process Monitoring
 |                                                    Workbook                                                     |Author|       Tactic       |                 Technique                 |Severity|Confidence|
 |-----------------------------------------------------------------------------------------------------------------|------|--------------------|-------------------------------------------|-------:|----------|
 |[System Log File Deletion](dnif/system_log_file_deletion.yml)                                                    |DNIF  |Defense Evasion     |Indicator Removal on Host                  |       5|Low       |
@@ -302,13 +302,13 @@
 |[Nping Process Activity](dnif/nping_process_activity.yml)                                                        |DNIF  |Discovery           |System Network Connections Discovery       |       5|Low       |
 |[Setgid Bit Set via chmod](dnif/setgid_bit_set_via_chmod.yml)                                                    |DNIF  |Privilege Escalation|Abuse Elevation Control Mechanism          |       5|Low       |
 |[Base64 Encoding/Decoding Activity](dnif/base64_encoding_decoding_activity.yml)                                  |DNIF  |Defense Evasion     |Obfuscated Files or Information            |       5|Low       |
-# /Advanced Threat Detection/Windows Registry Monitoring
+## /Advanced Threat Detection/Windows Registry Monitoring
 |                                         Workbook                                          |Author|       Tactic       |            Technique            |Severity|Confidence|
 |-------------------------------------------------------------------------------------------|------|--------------------|---------------------------------|-------:|----------|
 |[Suspicious Changes to File Associations](dnif/suspicious_changes_to_file_associations.yml)|DNIF  |Persistence         |Event Triggered Execution        |       5|Low       |
 |[Registry Keys Used For Persistence](dnif/registry_keys_used_for_persistence.yml)          |DNIF  |Persistence         |Boot or Logon Autostart Execution|       5|Low       |
 |[Disabling Remote User Account Control](dnif/disabling_remote_user_account_control.yml)    |DNIF  |Privilege Escalation|Abuse Elevation Control Mechanism|       5|Low       |
-# /Basic Security Monitoring/Authentication Attacks
+## /Basic Security Monitoring/Authentication Attacks
 |                        Workbook                         |Author|     Tactic      | Technique |Severity|Confidence|
 |---------------------------------------------------------|------|-----------------|-----------|-------:|----------|
 |[Slow Bruteforce Attack](dnif/slow_bruteforce_attack.yml)|DNIF  |Credential Access|Brute Force|       5|Medium    |
