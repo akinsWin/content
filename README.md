@@ -1,10 +1,10 @@
-## Detections by Author
+## Workbooks by Author
 | Author  |Count|
 |---------|----:|
 |DNIF     |  253|
 |community|  127|
 |Total    |  380|
-## Detections by Directory
+## Workbooks by Directory
 |                      Directory                       |Count|
 |------------------------------------------------------|----:|
 |/Advanced Threat Detection/Windows Registry Monitoring|    3|
