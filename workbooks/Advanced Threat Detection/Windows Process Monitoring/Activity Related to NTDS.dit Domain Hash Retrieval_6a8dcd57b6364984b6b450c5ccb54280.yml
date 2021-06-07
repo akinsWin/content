@@ -1,0 +1,28 @@
+id: 6a8dcd57b6364984b6b450c5ccb54280
+name: Activity Related to NTDS.dit Domain Hash Retrieval
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: Detects suspicious commands that could be related to activity that uses
+  volume shadow copy to steal and retrieve hashes from the NTDS.dit file remotely
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth, Michael Haag|https://www.swordshield.com/2015/07/getting-hashes-from-ntds-dit-file/<br>https://room362.com/post/2013/2013-06-10-volume-shadow-copy-ntdsdit-domain-hashes-remotely-part-1/<br>https://www.trustwave.com/Resources/SpiderLabs-Blog/Tutorial-for-NTDS-goodness-(VSSADMIN,-WMIS,-NTDS-dit,-SYSTEM)/<br>https://securingtomorrow.mcafee.com/mcafee-labs/new-teslacrypt-ransomware-arrives-via-spam/<br>https://dfironthemountain.wordpress.com/2018/12/06/locked-file-access-using-esentutl-exe/|"
+- type: sql
+  query: SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "vssadmin.exe Delete
+    Shadows" OR $CommandLine LIKE "vssadmin create shadow /for=C:" OR $CommandLine
+    LIKE "copy \\_\\GLOBALROOT\\Device\\%\\windows\\ntds\\ntds.dit" OR $CommandLine
+    LIKE "copy \\_\\GLOBALROOT\\Device\\%\\config\\SAM" OR $CommandLine LIKE "vssadmin
+    delete shadows /for=C:" OR $CommandLine LIKE "reg SAVE HKLM\\SYSTEM " OR $CommandLine
+    LIKE "esentutl.exe /y /vss %\\ntds.dit%" OR $CommandLine LIKE "esentutl.exe /y
+    /vss %\\SAM" OR $CommandLine LIKE "esentutl.exe /y /vss %\\SYSTEM")
+- type: signal
+  DetectionName: Activity Related to NTDS.dit Domain Hash Retrieval
+  DetectionTactic: Credential Access
+  DetectionTechnique: OS Credential Dumping
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

@@ -1,0 +1,22 @@
+id: 92579b95c3604fcda33bb59398439050
+name: RDP WMI Port Activity by Time
+path: /Visualization/Firewall Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=FIREWALL AND $Duration=1h AND $DstPort
+    IN [3389,135] AND $Action=PACKET_ALLOWED group timeslice 1m limit 60
+- type: visual
+  data:
+    widget_name: RDP WMI Port Activity by Time
+    chart_type: timeline
+    config:
+      type: default
+      key:
+      - $CNAMTime
+      - null
+      value: count
+config: {}

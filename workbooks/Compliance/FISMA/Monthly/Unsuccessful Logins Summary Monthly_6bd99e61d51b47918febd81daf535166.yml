@@ -1,0 +1,12 @@
+id: 6bd99e61d51b47918febd81daf535166
+name: Unsuccessful Logins Summary Monthly
+path: /Compliance/FISMA/Monthly
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Action=LOGIN AND $Status=FAILED
+    AND $Duration=1M group count_unique $System, $SrcIP, $User limit 100
+config: {}

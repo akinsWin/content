@@ -1,0 +1,22 @@
+id: 57e89eda161d4cc2bb64a1f3da0fe48b
+name: Successful Logins Weekly
+path: /Compliance/FISMA/Weekly
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Action=LOGIN AND $Status=PASSED
+    AND $Duration=7d group timeslice 1h limit 168
+- type: visual
+  data:
+    widget_name: Successful Logins Weekly
+    chart_type: timeline
+    config:
+      type: default
+      key:
+      - $CNAMTime
+      - null
+      value: count
+config: {}

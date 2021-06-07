@@ -1,0 +1,24 @@
+id: dd17143a688a4ae89d88884330702664
+name: IRC Protocol Activity to the Internet
+path: /Basic Security Monitoring/Network Traffic Analysis
+description: This rule detects events that use common ports for Internet Relay Chat
+  (IRC) to the Internet. IRC is a common protocol that can be used for chat and file
+  transfers. This protocol is also a good candidate for remote control of malware
+  and data transfers to and from a network.
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=FIREWALL AND $Proto=TCP AND $DstPort IN
+    [6667,6697] AND $SrcType=PRIVATE NOT $DstType=PRIVATE group count_unique $SrcIP,
+    $DstIP limit 10
+- type: signal
+  DetectionName: IRC Protocol Activity to the Internet
+  DetectionTactic: Exfiltration
+  DetectionTechnique: Exfiltration Over Alternative Protocol
+  DetectionScore: 5
+  DetectionConfidence: Low
+  SuspectHost: $SrcIP
+  TargetHost: $DstIP
+config: {}

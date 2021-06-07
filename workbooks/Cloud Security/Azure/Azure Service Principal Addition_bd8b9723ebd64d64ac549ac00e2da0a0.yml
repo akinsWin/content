@@ -1,0 +1,20 @@
+id: bd8b9723ebd64d64ac549ac00e2da0a0
+name: Azure Service Principal Addition
+path: /Cloud Security/Azure
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: Select $OperationName, $User, $Status FROM AZURE WHERE $OperationName='Add
+    service principal' AND $Status='Succeeded' GROUP BY $OperationName, $User, $Status
+- type: signal
+  DetectionName: Azure Service Principal Addition
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Use Alternate Authentication Material
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Low
+  SuspectUser: $User
+config: {}

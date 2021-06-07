@@ -1,0 +1,22 @@
+id: 8a1f68b41a9548f6a8c7c5f81d34f3a2
+name: Virtual Machine Fingerprinting
+path: /Advanced Threat Detection/Linux Process Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $ProcessName,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
+    ($ProcessArgs LIKE "%\/sys\/class\/dmi\/id\/bios\_version%" OR $ProcessArgs LIKE
+    "%\/sys\/class\/dmi\/id\/product\_name%" OR $ProcessArgs LIKE "%\/sys\/class\/dmi\/id\/chassis\_vendor%"
+    OR $ProcessArgs LIKE "%\/proc\/scsi\/scsi%" OR $ProcessArgs LIKE "%\/proc\/ide\/hd0\/model%")
+    AND $User!='root' GROUP BY $ProcessName,$System
+- type: signal
+  DetectionName: Virtual Machine Fingerprinting
+  DetectionTactic: Discovery
+  DetectionTechnique: System Information Discovery
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

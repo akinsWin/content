@@ -1,0 +1,20 @@
+id: c34066a00dba4428bf71423401cd6c86
+name: Disabling Remote User Account Control
+path: /Advanced Threat Detection/Windows Registry Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=SYSMON-REGISTRY AND $TargetObject=regex(.*HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\policies\\\\system\\\\EnableLUA.*)
+    AND $Details=DWORD (0x00000000) group count_unique $System limit 100
+- type: signal
+  DetectionName: Disabling Remote User Account Control
+  DetectionTactic: Privilege Escalation
+  DetectionTechnique: Abuse Elevation Control Mechanism
+  DetectionScore: 5
+  DetectionSeverity: Medium
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

@@ -1,0 +1,23 @@
+id: 6ce9b4fc538646a4a9526af60bb1b2b2
+name: Bitsadmin to Uncommon TLD
+path: /Advanced Threat Detection/Proxy Monitoring
+description: Detects Bitsadmin connections to domains with uncommon TLDs - https://twitter.com/jhencinski/status/1102695118455349248
+  - https://isc.sans.edu/forums/diary/Investigating+Microsoft+BITS+Activity/23281/
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|None|"
+- type: sql
+  query: SELECT * FROM WEBFILTER WHERE (($UserAgent LIKE "Microsoft BITS/%") AND NOT
+    (($Domain LIKE "%.com" OR $Domain LIKE "%.net" OR $Domain LIKE "%.org")))
+- type: signal
+  DetectionName: Bitsadmin to Uncommon TLD
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: BITS Jobs
+  DetectionScore: 5
+  DetectionConfidence: Low
+  SuspectHost: $SrcIP
+config: {}

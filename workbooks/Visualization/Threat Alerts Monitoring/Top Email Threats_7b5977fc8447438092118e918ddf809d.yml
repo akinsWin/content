@@ -1,0 +1,24 @@
+id: 7b5977fc8447438092118e918ddf809d
+name: Top Email Threats
+path: /Visualization/Threat Alerts Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $Threat, COUNT(*) AS $CountThreat FROM THREAT WHERE $Duration=1h AND
+    $Vector='EMAIL' AND $Threat IS NOT NULL GROUP BY $Threat ORDER BY $CountThreat
+    DESC LIMIT 8
+- type: visual
+  data:
+    widget_name: Top Email Threats
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $Threat
+      - null
+      value: $CountThreat
+config:
+  parameters: []

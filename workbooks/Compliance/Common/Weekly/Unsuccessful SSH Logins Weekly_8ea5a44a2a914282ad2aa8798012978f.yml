@@ -1,0 +1,13 @@
+id: 8ea5a44a2a914282ad2aa8798012978f
+name: Unsuccessful SSH Logins Weekly
+path: /Compliance/Common/Weekly
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $AuthProto=SSH AND $Duration=7d
+    AND $Action=LOGIN AND $Status=FAILED  group count_unique $System, $SrcIP, $User
+    limit 100
+config: {}

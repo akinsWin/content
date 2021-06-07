@@ -1,0 +1,29 @@
+id: f933b91061c04dbb932886ac0d4301a9
+name: Suspicious Debugger Registration Cmdline
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: Detects the registration of a debugger for a program that is available
+  in the logon screen (sticky key backdoor).
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://blogs.technet.microsoft.com/jonathantrull/2016/10/03/detecting-sticky-key-backdoors/|"
+- type: sql
+  query: SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "%\\CurrentVersion\\Image
+    File Execution Options\\sethc.exe%" OR $CommandLine LIKE "%\\CurrentVersion\\Image
+    File Execution Options\\utilman.exe%" OR $CommandLine LIKE "%\\CurrentVersion\\Image
+    File Execution Options\\osk.exe%" OR $CommandLine LIKE "%\\CurrentVersion\\Image
+    File Execution Options\\magnify.exe%" OR $CommandLine LIKE "%\\CurrentVersion\\Image
+    File Execution Options\\narrator.exe%" OR $CommandLine LIKE "%\\CurrentVersion\\Image
+    File Execution Options\\displayswitch.exe%" OR $CommandLine LIKE "%\\CurrentVersion\\Image
+    File Execution Options\\atbroker.exe%")
+- type: signal
+  DetectionName: Suspicious Debugger Registration Cmdline
+  DetectionTactic: Privilege Escalation
+  DetectionTechnique: Event Triggered Execution
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

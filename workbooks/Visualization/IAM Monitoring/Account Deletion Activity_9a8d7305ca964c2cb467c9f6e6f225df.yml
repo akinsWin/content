@@ -1,0 +1,22 @@
+id: 9a8d7305ca964c2cb467c9f6e6f225df
+name: Account Deletion Activity
+path: /Visualization/IAM Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=IAM AND $Duration=1h AND $Action IN [USER_ACCOUNT_DELETED,SYSTEM_USER_ACCOUNT_DELETED]  group
+    timeslice 1m limit 60
+- type: visual
+  data:
+    widget_name: Account Deletion Activity
+    chart_type: timeline
+    config:
+      type: default
+      key:
+      - $CNAMTime
+      - null
+      value: count
+config: {}

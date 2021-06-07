@@ -1,0 +1,21 @@
+id: d1915d072d214e3a9865f3f36b5091b6
+name: Suspicious writes to System Volume Information
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $System, $User,$Image, COUNT ($TaregetFileName) AS PROCESS FROM SYSMON-FILE
+    WHERE $Action='FILE_CREATED' AND $TargetFileName LIKE '%System Volume Information%'
+    AND $Image LIKE '%ntoskrnl.exe' AND GROUP BY $Image, $TargetFileName, $User limit
+    100
+- type: signal
+  DetectionName: Suspicious writes to System Volume Information
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Masquerading
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

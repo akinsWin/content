@@ -1,0 +1,20 @@
+id: c5f7519767744a2494773a50cdc48eec
+name: Failed Config Changes by Same User
+path: /Basic Security Monitoring/Configuration Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $User, COUNT($Config) AS $CountConfig FROM CONFIGURATION WHERE $Action='CONFIGURATION_CHANGED'
+    AND $Status='FAILED' AND $Duration=15m GROUP BY $User HAVING $CountConfig>10
+- type: signal
+  DetectionName: Failed Config Changes by Same User
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Impair Defenses
+  DetectionScore: '6'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $User
+config: {}

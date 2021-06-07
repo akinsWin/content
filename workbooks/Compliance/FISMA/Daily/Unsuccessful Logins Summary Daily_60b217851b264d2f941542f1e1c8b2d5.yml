@@ -1,0 +1,12 @@
+id: 60b217851b264d2f941542f1e1c8b2d5
+name: Unsuccessful Logins Summary Daily
+path: /Compliance/FISMA/Daily
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Action=LOGIN AND $Status=FAILED
+    AND $Duration=1d group count_unique $System, $SrcIP, $User limit 100
+config: {}

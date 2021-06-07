@@ -1,0 +1,19 @@
+id: 0d353c48dd994e26b6045d5a5402d765
+name: Potential Disabling of SELinux
+path: /Advanced Threat Detection/Linux Process Monitoring
+description: ''
+type: auto-scheduled
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $ProcessName,$System  FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
+    $ProcessName='setenforce' AND $ProcessArgs='0' GROUP BY $ProcessName,$System
+- type: signal
+  DetectionName: Potential Disabling of SELinux
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Disabling Security Tools
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

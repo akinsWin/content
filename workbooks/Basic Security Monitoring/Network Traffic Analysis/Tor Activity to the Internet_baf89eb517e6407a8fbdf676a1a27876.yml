@@ -1,0 +1,24 @@
+id: baf89eb517e6407a8fbdf676a1a27876
+name: Tor Activity to the Internet
+path: /Basic Security Monitoring/Network Traffic Analysis
+description: This rule detects network events that may indicate the use of Tor traffic
+  to the Internet. Tor is a network protocol that sends traffic through a series of
+  encrypted tunnels used to conceal a user's location and usage. Tor may be used by
+  threat actors as an alternate communication pathway to conceal the actor's identity
+  and avoid detection.
+type: auto-scheduled
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcIP, COUNT($DstIP) AS $CountDstIP FROM FIREWALL WHERE ($DstPort='9001'
+    OR $DstPort='9030') AND $SrcType='PRIVATE' AND $DstType='PUBLIC'  AND $Proto='TCP'
+    GROUP BY $DstIP, $SrcIP
+- type: signal
+  DetectionName: Tor Activity to the Internet
+  DetectionTactic: Command and Control
+  DetectionTechnique: Proxy
+  DetectionScore: 5
+  DetectionConfidence: Low
+  SuspectHost: $SrcIP
+config: {}

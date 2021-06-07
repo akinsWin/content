@@ -1,0 +1,23 @@
+id: 5a2f352a775841838caf8fdfc6b5ab8b
+name: Top Systems Affected
+path: /Visualization/Threat Alerts Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $System,$Vector, COUNT($Threat) AS $CountThreat FROM THREAT WHERE
+    $Duration=1h GROUP BY $System,$Vector ORDER BY $CountThreat Desc LIMIT 8
+- type: visual
+  data:
+    widget_name: Top Systems Affected
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $System
+      - $Vector
+      value: $CountThreat
+config:
+  parameters: []

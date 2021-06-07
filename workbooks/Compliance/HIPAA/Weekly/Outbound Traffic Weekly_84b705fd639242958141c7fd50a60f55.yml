@@ -1,0 +1,23 @@
+id: 84b705fd639242958141c7fd50a60f55
+name: Outbound Traffic Weekly
+path: /Compliance/HIPAA/Weekly
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT concat_ws(" ",round(sum($TxLen)/1000/1000), "GB") AS $TotalBytes FROM
+    FIREWALL WHERE $Duration=7d AND $SrcType='PRIVATE' AND $DstType='PUBLIC' ORDER
+    BY $TotalBytes DESC
+- type: visual
+  data:
+    widget_name: Outbound Traffic Weekly
+    chart_type: metric
+    config:
+      type: default
+      key:
+      - null
+      - null
+      value: $TotalBytes
+config: {}

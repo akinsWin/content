@@ -1,0 +1,23 @@
+id: 53c0bc4a4a1b47dfba74feae7b34e22a
+name: PCI 1-2-1 Outbound Traffic Daily
+path: /Compliance/PCI/Daily
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT concat_ws(" ",round(sum($TxLen)/1000/1000), "GB") AS $TotalBytes FROM
+    FIREWALL WHERE $Duration=1d AND $SrcType='PRIVATE' AND $DstType='PUBLIC' ORDER
+    BY $TotalBytes DESC
+- type: visual
+  data:
+    widget_name: Outbound Traffic Daily
+    chart_type: metric
+    config:
+      type: default
+      key:
+      - null
+      - null
+      value: $TotalBytes
+config: {}

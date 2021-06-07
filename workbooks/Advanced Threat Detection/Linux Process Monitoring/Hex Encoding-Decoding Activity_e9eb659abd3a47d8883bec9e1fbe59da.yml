@@ -1,0 +1,19 @@
+id: e9eb659abd3a47d8883bec9e1fbe59da
+name: Hex Encoding-Decoding Activity
+path: /Advanced Threat Detection/Linux Process Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $ProcessName,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
+    ($ProcessName='hexdump' OR $ProcessName='od' OR $ProcessName='xxd') GROUP BY $ProcessName,$System
+- type: signal
+  DetectionName: Hex Encoding/Decoding Activity
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Obfuscated Files or Information
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

@@ -1,0 +1,13 @@
+id: 1d21768502964a1f8a754a228e536a75
+name: PCI 10-2 - User Accounts Additions Monthly
+path: /Compliance/PCI/Monthly
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=IAM AND $Action=USER_ACCOUNT_CREATED AND
+    $Status=PASSED  AND $Duration=1M group count_unique $System, $TargetUser limit
+    100
+config: {}

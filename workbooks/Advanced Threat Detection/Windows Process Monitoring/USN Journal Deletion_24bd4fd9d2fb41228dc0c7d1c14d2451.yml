@@ -1,0 +1,19 @@
+id: 24bd4fd9d2fb41228dc0c7d1c14d2451
+name: USN Journal Deletion
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: auto-scheduled
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $System FROM SYSMON-PROCESS WHERE $Image LIKE '%fsutil.exe' AND $Commandline
+    LIKE '%deletejournal%usn%' GROUP BY $System
+- type: signal
+  DetectionName: USN Journal Deletion
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Indicator Removal on Host
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

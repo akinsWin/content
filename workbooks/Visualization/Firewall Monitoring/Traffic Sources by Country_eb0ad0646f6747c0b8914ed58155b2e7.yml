@@ -1,0 +1,22 @@
+id: eb0ad0646f6747c0b8914ed58155b2e7
+name: Traffic Sources by Country
+path: /Visualization/Firewall Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcCN, COUNT(*) AS $SrcCount FROM FIREWALL GROUP BY $SrcCN
+- type: visual
+  data:
+    widget_name: Traffic Sources by Country
+    chart_type: geoMap
+    config:
+      type: default
+      key:
+      - $SrcCN
+      - null
+      value: $SrcCount
+config:
+  parameters: []

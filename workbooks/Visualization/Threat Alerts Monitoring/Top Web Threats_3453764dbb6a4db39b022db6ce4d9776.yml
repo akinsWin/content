@@ -1,0 +1,23 @@
+id: 3453764dbb6a4db39b022db6ce4d9776
+name: Top Web Threats
+path: /Visualization/Threat Alerts Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $Threat, COUNT($Threat) AS $CountThreat FROM THREAT WHERE $Duration=1h
+    AND $Vector='WEB' GROUP BY $Threat ORDER BY $CountThreat DESC LIMIT 8
+- type: visual
+  data:
+    widget_name: Top Web Threats
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $Threat
+      - null
+      value: $CountThreat
+config:
+  parameters: []

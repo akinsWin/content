@@ -1,0 +1,22 @@
+id: 4cdcb4861cc54586ac3686e4a247ead8
+name: Account Modification Activity
+path: /Visualization/IAM Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=IAM AND $Duration=1h AND $Action IN [ACCOUNT_PASSWORD_CHANGED,PRIVILEGE_CHANGED,USER_ACCOUNT_CHANGED,SYSTEM_USER_ACCOUNT_CHANGED,PRIVILEGE_SET]
+    group timeslice 1m limit 60
+- type: visual
+  data:
+    widget_name: Account Modification Activity
+    chart_type: timeline
+    config:
+      type: default
+      key:
+      - $CNAMTime
+      - null
+      value: count
+config: {}

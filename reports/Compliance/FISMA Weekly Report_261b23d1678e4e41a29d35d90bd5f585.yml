@@ -1,0 +1,72 @@
+id: 261b23d1678e4e41a29d35d90bd5f585
+name: FISMA Weekly Report
+author: DNIF
+path: /Compliance
+entity_type: reports
+report_config:
+- type: widget
+  data:
+    visualDetails:
+    - TextValue: ''
+      position:
+        h: 3
+        i: n0
+        maxH: 12
+        maxW: 12
+        minH: 3
+        minW: 3
+        w: 3
+        x: 0
+        y: 0
+      taskid: 0
+      visualBlockNum: 1
+      workbook_id: 57e89eda161d4cc2bb64a1f3da0fe48b
+- type: table
+  data:
+    name: Successful Login Attempts Weekly
+    path: /Compliance/Common/Weekly
+    workbook_id: 4001442d837c40df9c5c0b9d3e052496
+- type: widget
+  data:
+    visualDetails:
+    - TextValue: ''
+      position:
+        h: 3
+        i: '0'
+        maxH: 12
+        maxW: 12
+        minH: 3
+        minW: 3
+        moved: false
+        static: false
+        w: 12
+        x: 0
+        y: 0
+      taskid: 0
+      visualBlockNum: 1
+      workbook_id: ec6408b330ea4af0a322ddefa65b4573
+- type: table
+  data:
+    name: Unsuccessful Logins Summary Weekly
+    path: /Compliance/Common/Weekly
+    workbook_id: 4772371016264d468a913a1a80ab2c54
+- type: table
+  data:
+    name: Unsuccessful Mail Logins Weekly
+    path: /Compliance/Common/Weekly
+    workbook_id: 48f1a55d11e24669afeac2c7f651782c
+- type: table
+  data:
+    name: Unsuccessful SSH Logins Weekly
+    path: /Compliance/Common/Weekly
+    workbook_id: 8ea5a44a2a914282ad2aa8798012978f
+- type: table
+  data:
+    name: Unsuccessful TELNET Logins Weekly
+    path: /Compliance/FISMA/Weekly
+    workbook_id: f297ff50eb004211ac00f0fb8ae171af
+- type: table
+  data:
+    name: Unsuccessful Mail Logins Weekly
+    path: /Compliance/Common/Weekly
+    workbook_id: 48f1a55d11e24669afeac2c7f651782c

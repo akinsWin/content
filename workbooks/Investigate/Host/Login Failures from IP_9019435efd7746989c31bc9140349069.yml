@@ -1,0 +1,19 @@
+id: 9019435efd7746989c31bc9140349069
+name: Login Failures from IP
+path: /Investigate/Host
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $User FROM AUTHENTICATION WHERE $SrcIP={{Host}} AND $Action='LOGIN'
+    AND $Status='FAILED' AND $Duration=1h GROUP BY $User
+config:
+  parameters:
+  - fixed: false
+    name: Host
+    query: ''
+    queryFieldValue: []
+    type: Text
+    value: '-'

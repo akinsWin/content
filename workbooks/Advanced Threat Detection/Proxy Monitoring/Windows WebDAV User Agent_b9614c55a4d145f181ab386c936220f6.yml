@@ -1,0 +1,22 @@
+id: b9614c55a4d145f181ab386c936220f6
+name: Windows WebDAV User Agent
+path: /Advanced Threat Detection/Proxy Monitoring
+description: Detects WebDav DownloadCradle
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://mgreen27.github.io/posts/2018/04/02/DownloadCradle.html|"
+- type: sql
+  query: SELECT * FROM WEBFILTER WHERE ($UserAgent LIKE "Microsoft-WebDAV-MiniRedir/%"
+    AND $Method = "GET")
+- type: signal
+  DetectionName: Windows WebDAV User Agent
+  DetectionTactic: Command and Control
+  DetectionTechnique: Application Layer Protocol
+  DetectionScore: 5
+  DetectionConfidence: Low
+  SuspectHost: $SrcIP
+config: {}

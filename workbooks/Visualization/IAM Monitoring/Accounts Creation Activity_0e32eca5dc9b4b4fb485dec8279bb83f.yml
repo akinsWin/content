@@ -1,0 +1,22 @@
+id: 0e32eca5dc9b4b4fb485dec8279bb83f
+name: Accounts Creation Activity
+path: /Visualization/IAM Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=IAM AND $Duration=1h AND $Action IN [USER_ACCOUNT_CREATED,SYSTEM_USER_ACCOUNT_CREATED]  group
+    timeslice 1m limit 60
+- type: visual
+  data:
+    widget_name: Accounts Creation Activity
+    chart_type: timeline
+    config:
+      type: default
+      key:
+      - $CNAMTime
+      - null
+      value: count
+config: {}

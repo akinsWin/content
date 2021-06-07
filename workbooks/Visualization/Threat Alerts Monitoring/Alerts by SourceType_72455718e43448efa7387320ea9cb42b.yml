@@ -1,0 +1,22 @@
+id: 72455718e43448efa7387320ea9cb42b
+name: Alerts by SourceType
+path: /Visualization/Threat Alerts Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SourceType, COUNT($Threat) AS $CountThreat FROM THREAT WHERE $Duration=1h
+    GROUP BY $SourceType
+- type: visual
+  data:
+    widget_name: Alerts by SourceType
+    chart_type: column
+    config:
+      type: default
+      key:
+      - $SourceType
+      - null
+      value: $CountThreat
+config: {}

@@ -1,0 +1,12 @@
+id: 02e9fbd933114ef4be778ada4dc630e2
+name: Denied Traffic Monthly
+path: /Compliance/HIPAA/Monthly
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=FIREWALL AND $Action=PACKET_BLOCKED  AND
+    $Duration=1M group count_unique $SrcIP, $SrcType, $DstPort limit 20
+config: {}

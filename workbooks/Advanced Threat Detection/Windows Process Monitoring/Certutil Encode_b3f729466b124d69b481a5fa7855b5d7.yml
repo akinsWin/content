@@ -1,0 +1,24 @@
+id: b3f729466b124d69b481a5fa7855b5d7
+name: Certutil Encode
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: Detects suspicious a certutil command that used to encode files, which
+  is sometimes used for data exfiltration
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/certutil<br>https://unit42.paloaltonetworks.com/new-babyshark-malware-targets-u-s-national-security-think-tanks/|"
+- type: sql
+  query: SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "certutil -f -encode
+    %" OR $CommandLine LIKE "certutil.exe -f -encode %" OR $CommandLine LIKE "certutil
+    -encode -f %" OR $CommandLine LIKE "certutil.exe -encode -f %")
+- type: signal
+  DetectionName: Certutil Encode
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Obfuscated Files or Information
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

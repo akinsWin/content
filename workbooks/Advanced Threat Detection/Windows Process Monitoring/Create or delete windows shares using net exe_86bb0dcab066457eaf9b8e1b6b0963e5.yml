@@ -1,0 +1,19 @@
+id: 86bb0dcab066457eaf9b8e1b6b0963e5
+name: Create or delete windows shares using net exe
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: auto-scheduled
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $System FROM SYSMON-PROCESS WHERE ($Image LIKE "%net.exe" OR $Image
+    LIKE "%net1.exe") AND $CommandLine LIKE "%share%" GROUP BY $System
+- type: signal
+  DetectionName: Create or delete windows shares using net exe
+  DetectionTactic: Execution
+  DetectionTechnique: Command and Scripting Interpreter
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

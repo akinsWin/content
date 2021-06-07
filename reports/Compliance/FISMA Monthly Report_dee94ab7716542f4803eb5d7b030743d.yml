@@ -1,0 +1,41 @@
+id: dee94ab7716542f4803eb5d7b030743d
+name: FISMA Monthly Report
+author: DNIF
+path: /Compliance
+entity_type: reports
+report_config:
+- type: table
+  data:
+    name: Successful Login Attempts Monthly
+    path: /Compliance/FISMA/Monthly
+    workbook_id: fdf510d60d5c421db5854656df5abd17
+- type: table
+  data:
+    name: Unsuccessful Logins Summary Monthly
+    path: /Compliance/FISMA/Monthly
+    workbook_id: 6bd99e61d51b47918febd81daf535166
+- type: table
+  data:
+    name: Top Users for Remote Access Activity Monthly
+    path: /Compliance/SOX/Monthly
+    workbook_id: f0c5ca3de1cc42aeb989121ca3e30de2
+- type: table
+  data:
+    name: Unsuccessful Mail Logins Monthly
+    path: /Compliance/Common/Monthly
+    workbook_id: 44bd22fe14dc4e24b20b15762313f275
+- type: table
+  data:
+    name: Unsuccessful SSH Logins Monthly
+    path: /Compliance/FISMA/Monthly
+    workbook_id: 05f5292242ea4623ba3a6022cc1960f1
+- type: table
+  data:
+    name: Unsuccessful TELNET Logins Monthly
+    path: /Compliance/FISMA/Monthly
+    workbook_id: 26f784e735674688a9c33b32fb3ab797
+- type: table
+  data:
+    name: Unsuccessful Web Service Logins Monthly
+    path: /Compliance/Common/Monthly
+    workbook_id: 9f0673a4d63b4ffdbfb2cde79ca221ff

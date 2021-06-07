@@ -1,0 +1,12 @@
+id: 539c0af0790345c39cd583d86fc81edc
+name: Denied Traffic Weekly
+path: /Compliance/HIPAA/Weekly
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=FIREWALL  AND $Action=PACKET_BLOCKED AND
+    $Duration=7d group count_unique $SrcIP, $SrcType, $DstPort limit 100
+config: {}

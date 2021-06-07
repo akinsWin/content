@@ -1,0 +1,21 @@
+id: 7d22d437d98a4144ba88355a1d60eda2
+name: Detect Large Outbound ICMP Packets
+path: /Basic Security Monitoring/Network Traffic Analysis
+description: ''
+type: auto-scheduled
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcIP, $DstIP, SUM($TXLen) AS $TotalTXLen FROM FIREWALL WHERE $Action='PACKET_ALLOWED'
+    AND $Proto='ICMP' AND $DstType='PUBLIC' GROUP BY $SrcIP,$DstIP HAVING $TotalTXLen
+    > 5000
+- type: signal
+  DetectionName: Detect Large Outbound ICMP Packets
+  DetectionTactic: Command and Control
+  DetectionTechnique: Non-Application Layer Protocol
+  DetectionScore: 5
+  DetectionConfidence: Low
+  SuspectHost: $DstIP
+  TargetHost: $SrcIP
+config: {}

@@ -1,0 +1,26 @@
+id: 21e3f671e5cd4c6ab309b59bd2fd888a
+name: AWS CloudTrail Important Change
+path: /Cloud Security/Amazon Web Services
+description: ''
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |vitaliy0x1|https://docs.aws.amazon.com/awscloudtrail/latest/userguide/best-practices-security.html|"
+- type: sql
+  query: SELECT $EventSource,$EventName,$User FROM CLOUDTRAIL WHERE ($EventSource='cloudtrail.amazonaws.com'
+    AND ($EventName='StopLogging' OR $EventName='UpdateTrail' OR $EventName='DeleteTrail'))
+    AND $EventSource IS NOT NULL AND $EventName IS NOT NULL AND $User IS NOT NULL
+    GROUP BY $EventSource,$EventName,$User
+- type: signal
+  DetectionName: AWS CloudTrail Important Change
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Impair Defenses
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $User
+  TargetHost: $EventSource
+config: {}

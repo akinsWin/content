@@ -1,0 +1,19 @@
+id: 4db1db8b00c1401096ebbb45c30e2616
+name: Systems Accessed by User
+path: /Investigate/User
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $System FROM AUTHENTICATION WHERE $User={{User}} AND $System IS NOT
+    NULL AND $Duration=1h GROUP BY $System
+config:
+  parameters:
+  - fixed: false
+    name: User
+    query: ''
+    queryFieldValue: []
+    type: Text
+    value: '-'

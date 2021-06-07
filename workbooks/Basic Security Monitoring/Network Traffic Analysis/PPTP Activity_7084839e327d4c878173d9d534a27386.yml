@@ -1,0 +1,21 @@
+id: 7084839e327d4c878173d9d534a27386
+name: PPTP Activity
+path: /Basic Security Monitoring/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=FIREWALL AND $Proto=TCP AND $DstPort=1723
+    AND $Action=PACKET_ALLOWED group count_unique $SrcIP, $DstIP limit 10
+- type: signal
+  DetectionName: PPTP Activity
+  DetectionTactic: Command and Control
+  DetectionTechnique: Commonly Used Port
+  DetectionScore: 5
+  DetectionSeverity: Medium
+  DetectionConfidence: Low
+  SuspectHost: $SrcIP
+  TargetHost: $DstIP
+config: {}

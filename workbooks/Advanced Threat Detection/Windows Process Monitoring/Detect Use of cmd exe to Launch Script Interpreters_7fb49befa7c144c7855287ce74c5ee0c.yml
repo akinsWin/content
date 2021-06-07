@@ -1,0 +1,19 @@
+id: 7fb49befa7c144c7855287ce74c5ee0c
+name: Detect Use of cmd exe to Launch Script Interpreters
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: auto-scheduled
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $System FROM SYSMON-PROCESS WHERE $ParentImage LIKE "%cmd.exe" AND
+    ($Image LIKE "%cscript.exe%" OR $Image LIKE "%wscript.exe%") GROUP BY $System
+- type: signal
+  DetectionName: Detect Use of cmd exe to Launch Script Interpreters
+  DetectionTactic: Execution
+  DetectionTechnique: Command and Scripting Interpreter
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

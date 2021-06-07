@@ -1,0 +1,19 @@
+id: fe8e1bc9ad544369b7d3d6e640445ea4
+name: Source Countries for User
+path: /Investigate/User
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcCN FROM AUTHENTICATION WHERE $User={{User}} AND $SrcCN IS NOT
+    NULL AND $Duration=1h GROUP BY $SrcCn
+config:
+  parameters:
+  - fixed: false
+    name: User
+    query: ''
+    queryFieldValue: []
+    type: Text
+    value: '-'

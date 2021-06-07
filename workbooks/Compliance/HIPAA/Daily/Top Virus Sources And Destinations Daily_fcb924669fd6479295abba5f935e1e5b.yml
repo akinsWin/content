@@ -1,0 +1,12 @@
+id: fcb924669fd6479295abba5f935e1e5b
+name: Top Virus Sources And Destinations Daily
+path: /Compliance/HIPAA/Daily
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=THREAT AND $Action=THREAT_DETECTED AND
+    $Duration=1d group count_unique $SrcIP, $DstIP  limit 10
+config: {}

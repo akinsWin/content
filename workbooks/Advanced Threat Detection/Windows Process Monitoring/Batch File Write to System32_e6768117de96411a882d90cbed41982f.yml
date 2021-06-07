@@ -1,0 +1,19 @@
+id: e6768117de96411a882d90cbed41982f
+name: Batch File Write to System32
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: auto-scheduled
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $System FROM SYSMON-FILE WHERE $Action='FILE_CREATED' AND $TargetFileName
+    LIKE '%system32%.bat' GROUP BY $System
+- type: signal
+  DetectionName: Batch File Write to System32
+  DetectionTactic: Execution
+  DetectionTechnique: User Execution
+  DetectionScore: 5
+  DetectionConfidence: Medium
+  TargetHost: $System
+config: {}

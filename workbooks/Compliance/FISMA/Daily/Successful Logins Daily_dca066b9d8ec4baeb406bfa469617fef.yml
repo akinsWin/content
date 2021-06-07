@@ -1,0 +1,22 @@
+id: dca066b9d8ec4baeb406bfa469617fef
+name: Successful Logins Daily
+path: /Compliance/FISMA/Daily
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Action=LOGIN AND $Status=PASSED
+    AND $Duration=24h group timeslice 1h limit 24
+- type: visual
+  data:
+    widget_name: Successful Logins Daily
+    chart_type: timeline
+    config:
+      type: default
+      key:
+      - $CNAMTime
+      - null
+      value: count
+config: {}

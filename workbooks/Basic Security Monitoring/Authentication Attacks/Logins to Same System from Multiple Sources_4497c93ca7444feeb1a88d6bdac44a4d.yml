@@ -1,0 +1,22 @@
+id: 4497c93ca7444feeb1a88d6bdac44a4d
+name: Logins to Same System from Multiple Sources
+path: /Basic Security Monitoring/Authentication Attacks
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $System, COUNT(DISTINCT($SrcIP)) AS $CountSrcIP FROM AUTHENTICATION
+    WHERE $Action='LOGIN' AND $Status='PASSED' AND $Duration=1h GROUP BY $System HAVING
+    $CountSrcIP>3
+- type: signal
+  DetectionName: Logins to Same System from Multiple Sources
+  DetectionTactic: Initial Access
+  DetectionTechnique: Valid Accounts
+  DetectionScore: '7'
+  DetectionSeverity: Medium
+  DetectionConfidence: High
+  SuspectHost: $SrcIP
+  TargetHost: $System
+config: {}

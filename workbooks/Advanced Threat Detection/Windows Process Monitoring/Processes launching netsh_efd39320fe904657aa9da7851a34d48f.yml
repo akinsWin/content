@@ -1,0 +1,20 @@
+id: efd39320fe904657aa9da7851a34d48f
+name: Processes launching netsh
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $Image,$User,$ParentCommandLine,$Parentimage, COUNT ($CommandLine)
+    AS PCOUNT FROM SYSMON-PROCESS WHERE $CommandLine LIKE "%netsh%" GROUP BY $ParentImage,$ParentCommandLine,$User,$Image
+    LIMIT 100
+- type: signal
+  DetectionName: Processes launching netsh
+  DetectionTactic: Defence Evasion
+  DetectionTechnique: Impair Defences
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

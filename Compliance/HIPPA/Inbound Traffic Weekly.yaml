@@ -1,9 +1,0 @@
-id: c1892980f7dc4dfd9817d2663c4056f4
-name: Inbound Traffic Weekly
-path: /Compliance/HIPPA
-description: ''
-type: Standard
-author: DNIF
-blocks:
-- type: dql
-  query: _fetch * from event where $Stream=FIREWALL AND $Duration=7d AND $SrcType=PUBLIC AND $DstType=PRIVATE group sum $RXLen limit 100

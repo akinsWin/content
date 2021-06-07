@@ -1,0 +1,25 @@
+id: f709d84472714413b8570d26c5a4a5e6
+name: Telnet Port Activity
+path: /Basic Security Monitoring/Network Traffic Analysis
+description: This rule detects network events that may indicate the use of Telnet
+  traffic. Telnet is commonly used by system administrators to remotely control older
+  or embed ed systems using the command line shell. It should almost never be directly
+  exposed to the Internet, as it is frequently targeted and exploited by threat actors
+  as an initial access or back-door vector. As a plain-text protocol, it may also
+  expose usernames and passwords to anyone capable of observing the traffic.
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcIP, $DstIP, COUNT(*) FROM FIREWALL WHERE $DstPort='23' AND $SrcType='PUBLIC'
+    AND $Proto='TCP' GROUP BY $DstIP, $SrcIP
+- type: signal
+  DetectionName: Telnet Port Activity
+  DetectionTactic: Lateral Movement
+  DetectionTechnique: Remote Services
+  DetectionScore: 5
+  DetectionConfidence: Low
+  SuspectHost: $SrcIP
+  TargetHost: $DstIP
+config: {}

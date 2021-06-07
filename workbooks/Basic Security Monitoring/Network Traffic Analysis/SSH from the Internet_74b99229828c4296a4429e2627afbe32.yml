@@ -1,0 +1,24 @@
+id: 74b99229828c4296a4429e2627afbe32
+name: SSH from the Internet
+path: /Basic Security Monitoring/Network Traffic Analysis
+description: This rule detects network events that may indicate the use of SSH traffic
+  from the Internet. SSH is commonly used by system administrators to remotely control
+  a system using the command line shell. If it is exposed to the Internet, it should
+  be done with strong security controls as it is frequently targeted and exploited
+  by threat actors as an initial access or back-door vector.
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcIP, $DstIP, COUNT(*)FROM FIREWALL WHERE $DstPort='22' AND $SrcType='PUBLIC'
+    AND $Action='PACKET_ALLOWED' GROUP BY $DstIP,$SrcIP
+- type: signal
+  DetectionName: SSH from the Internet
+  DetectionTactic: Initial Access
+  DetectionTechnique: Exploit Public-Facing Application
+  DetectionScore: 5
+  DetectionConfidence: Low
+  SuspectHost: $SrcIP
+  TargetHost: $DstIP
+config: {}

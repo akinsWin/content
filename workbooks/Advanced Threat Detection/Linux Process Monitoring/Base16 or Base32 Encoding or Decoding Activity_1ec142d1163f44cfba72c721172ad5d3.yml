@@ -1,0 +1,20 @@
+id: 1ec142d1163f44cfba72c721172ad5d3
+name: Base16 or Base32 Encoding or Decoding Activity
+path: /Advanced Threat Detection/Linux Process Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $ProcessName,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
+    ($ProcessName='base16' OR $ProcessName='base32' OR $ProcessName='base32plain'
+    OR $ProcessName='base32hex') GROUP BY $ProcessName,$System
+- type: signal
+  DetectionName: Base16 or Base32 Encoding/Decoding Activity
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Obfuscated Files or Information
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

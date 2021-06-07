@@ -1,0 +1,12 @@
+id: 480a8306a8a945a6b49461be8af07c66
+name: Top Users by Remote Access Activity Daily
+path: /Compliance/Common/Daily
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=1d AND $AuthProto=VPN
+    group count_unique $Action, $SrcIP, $System, $User limit 20
+config: {}

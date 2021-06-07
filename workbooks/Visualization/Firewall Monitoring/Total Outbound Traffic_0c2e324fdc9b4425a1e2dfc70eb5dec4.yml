@@ -1,0 +1,23 @@
+id: 0c2e324fdc9b4425a1e2dfc70eb5dec4
+name: Total Outbound Traffic
+path: /Visualization/Firewall Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT concat_ws(" ",round(sum(TxLen)/1000/1000), "GB") AS $TotalBytes FROM
+    FIREWALL WHERE $Duration=1h AND $DstType='PUBLIC' AND $Action='PACKET_ALLOWED'
+    ORDER BY $TotalBytes DESC
+- type: visual
+  data:
+    widget_name: Total Outbound Traffic
+    chart_type: metric
+    config:
+      type: default
+      key:
+      - null
+      - null
+      value: $TotalBytes
+config: {}

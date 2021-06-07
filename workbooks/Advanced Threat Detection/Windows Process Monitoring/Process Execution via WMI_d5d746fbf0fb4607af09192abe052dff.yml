@@ -1,0 +1,19 @@
+id: d5d746fbf0fb4607af09192abe052dff
+name: Process Execution via WMI
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: auto-scheduled
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $System FROM SYSMON-PROCESS WHERE $ParentImage LIKE "%WmiPrvSE.exe"
+    GROUP BY $System
+- type: signal
+  DetectionName: Process Execution via WMI
+  DetectionTactic: Execution
+  DetectionTechnique: Windows Management Instrumentation
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

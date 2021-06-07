@@ -1,0 +1,22 @@
+id: 72cd375e903142c880a2eed69783400b
+name: PowerShell Execution
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: Detects execution of PowerShell
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Roberto Rodriguez @Cyb3rWard0g|https://github.com/hunters-forge/ThreatHunter-Playbook/blob/8869b7a58dba1cff63bae1d7ab923974b8c0539b/playbooks/WIN-190410151110.yaml|"
+- type: sql
+  query: SELECT * FROM SYSMON-IMAGE-LOAD WHERE ($Description = "system.management.automation"
+    AND $ImageLoaded LIKE "%system.management.automation%")
+- type: signal
+  DetectionName: PowerShell Execution
+  DetectionTactic: Execution
+  DetectionTechnique: Command and Scripting Interpreter
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

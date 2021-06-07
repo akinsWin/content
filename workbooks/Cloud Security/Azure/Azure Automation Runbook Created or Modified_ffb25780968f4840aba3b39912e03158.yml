@@ -1,0 +1,19 @@
+id: ffb25780968f4840aba3b39912e03158
+name: Azure Automation Runbook Created or Modified
+path: /Cloud Security/Azure
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: Select $OperationName, $User, $Status FROM AZURE WHERE $OperationName='MICROSOFT.AUTOMATION/AUTOMATIONACCOUNTS/WRITE'
+    AND $Status='Succeeded' GROUP BY $OperationName, $User, $Status
+- type: signal
+  DetectionName: Azure Automation Runbook Created or Modified
+  DetectionTactic: Persistence
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Low
+  SuspectUser: $User
+config: {}

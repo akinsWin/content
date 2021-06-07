@@ -1,0 +1,19 @@
+id: 11d305840cde4234b6826535c09c294d
+name: Azure Event Hub Authorization Rule Created or Updated
+path: /Cloud Security/Azure
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: Select $OperationName, $User, $Status FROM AZURE WHERE $OperationName='MICROSOFT.EVENTHUB/NAMESPACES/AUTHORIZATIONRULES/WRITE'
+    AND $Status='Succeeded' GROUP BY $OperationName, $User, $Status
+- type: signal
+  DetectionName: Azure Event Hub Authorization Rule Created or Updated
+  DetectionTactic: Collection
+  DetectionTechnique: Data from Cloud Storage Object
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  SuspectUser: $User
+config: {}

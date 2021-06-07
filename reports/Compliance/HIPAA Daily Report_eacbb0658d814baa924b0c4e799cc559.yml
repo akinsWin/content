@@ -1,0 +1,66 @@
+id: eacbb0658d814baa924b0c4e799cc559
+name: HIPAA Daily Report
+author: DNIF
+path: /Compliance
+entity_type: reports
+report_config:
+- type: widget
+  data:
+    visualDetails:
+    - TextValue: ''
+      position:
+        h: 3
+        i: '0'
+        maxH: 12
+        maxW: 12
+        minH: 3
+        minW: 3
+        moved: false
+        static: false
+        w: 6
+        x: 0
+        y: 0
+      taskid: 0
+      visualBlockNum: 1
+      workbook_id: 29e14a8684c747bbbd759286f315f01a
+    - TextValue: ''
+      position:
+        h: 3
+        i: '1'
+        maxH: 12
+        maxW: 12
+        minH: 3
+        minW: 3
+        moved: false
+        static: false
+        w: 6
+        x: 6
+        y: 0
+      taskid: 0
+      visualBlockNum: 1
+      workbook_id: e354d715cbdd4341bf386616b32dce8a
+- type: table
+  data:
+    name: Top Virus Sources Daily
+    path: /Compliance/Common/Daily
+    workbook_id: 1b712e82e29b4fe48dd7762153822d8c
+- type: table
+  data:
+    name: Top Virus Destinations Daily
+    path: /Compliance/Common/Daily
+    workbook_id: 00923ff167f644deb47a6863e858716c
+- type: table
+  data:
+    name: Top Virus Sources And Destinations Daily
+    path: /Compliance/HIPAA/Daily
+    workbook_id: fcb924669fd6479295abba5f935e1e5b
+- type: table
+  data:
+    name: Top Targeted IPs Daily
+    path: /Compliance/Common/Daily
+    workbook_id: ebfc1acac05940f58f6f37772be32229
+- type: table
+  data:
+    name: Denied Traffic Daily
+    path: /Compliance/HIPAA/Daily
+    workbook_id: bd9519b5761a4151b586eb203495eb14

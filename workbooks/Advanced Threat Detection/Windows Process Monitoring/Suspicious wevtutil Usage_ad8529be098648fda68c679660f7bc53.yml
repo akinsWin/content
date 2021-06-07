@@ -1,0 +1,20 @@
+id: ad8529be098648fda68c679660f7bc53
+name: Suspicious wevtutil Usage
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=SYSMON-PROCESS AND $CommandLine=regex(.*wevtutil\.exe.*cl.*)
+    AND $CommandLine=regex(.*Sysytem.*|.*Security.*|.*Setup.*|.*Application.*) group
+    count_unique $User limit 0
+- type: signal
+  DetectionName: Suspicious wevtutil Usage
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Indicator Removal on Host
+  DetectionScore: 5
+  DetectionConfidence: Low
+  SuspectUser: $User
+config: {}

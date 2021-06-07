@@ -1,0 +1,13 @@
+id: 7310bf741d204d86bc884524b0827ec2
+name: Unsuccessful SSH Logins Daily
+path: /Compliance/FISMA/Daily
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $AuthProto=SSH AND $Duration=1d
+    AND $Action=LOGIN AND $Status=FAILED group count_unique $System, $SrcIP, $User
+    limit 200
+config: {}

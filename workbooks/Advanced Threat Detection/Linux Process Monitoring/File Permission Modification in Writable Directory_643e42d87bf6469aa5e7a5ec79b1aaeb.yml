@@ -1,0 +1,21 @@
+id: 643e42d87bf6469aa5e7a5ec79b1aaeb
+name: File Permission Modification in Writable Directory
+path: /Advanced Threat Detection/Linux Process Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $ProcessName,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
+    ($ProcessName='chmod' OR $ProcessName='chown' OR $ProcessName='chattr' OR $ProcessName='chgrp')
+    AND ($Process LIKE "%\/tmp%" OR $Process LIKE "%\/var\/tmp%" OR $Process LIKE
+    "%\/dev\/shm%") AND $User!='root' GROUP BY $ProcessName,$System
+- type: signal
+  DetectionName: File Permission Modification in Writable Directory
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: File and Directory Permissions Modification
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

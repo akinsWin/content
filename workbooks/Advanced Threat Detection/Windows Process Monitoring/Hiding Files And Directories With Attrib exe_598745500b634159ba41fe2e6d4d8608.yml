@@ -1,0 +1,19 @@
+id: 598745500b634159ba41fe2e6d4d8608
+name: Hiding Files And Directories With Attrib exe
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: auto-scheduled
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $System FROM SYSMON-PROCESS WHERE $Image LIKE "%attrib.exe" AND $CommandLine
+    LIKE "%+h%" GROUP BY $System
+- type: signal
+  DetectionName: Hiding Files And Directories With Attrib exe
+  DetectionTactic: Defence Evasion
+  DetectionTechnique: Hide Artifacts
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

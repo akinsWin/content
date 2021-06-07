@@ -1,0 +1,23 @@
+id: a1d1a334658345d9b0c8138ef0f72bcc
+name: PCI 1-2-1b -Outbound Traffic Monthly
+path: /Compliance/PCI/Monthly
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT concat_ws(" ",round(sum($TxLen)/1000/1000), "GB") AS $TotalBytes FROM
+    FIREWALL WHERE $Duration=1M AND $SrcType='PRIVATE' AND $DstType='PUBLIC' ORDER
+    BY $TotalBytes DESC
+- type: visual
+  data:
+    widget_name: Outbound Traffic Monthly
+    chart_type: metric
+    config:
+      type: default
+      key:
+      - null
+      - null
+      value: $TotalBytes
+config: {}

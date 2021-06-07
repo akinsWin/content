@@ -1,0 +1,66 @@
+id: c3c6e9f916c340eeb4e6189a46df8d07
+name: HIPAA Monthly Report
+author: DNIF
+path: /Compliance
+entity_type: reports
+report_config:
+- type: widget
+  data:
+    visualDetails:
+    - TextValue: ''
+      position:
+        h: 3
+        i: '0'
+        maxH: 12
+        maxW: 12
+        minH: 3
+        minW: 3
+        moved: false
+        static: false
+        w: 6
+        x: 0
+        y: 0
+      taskid: 0
+      visualBlockNum: 1
+      workbook_id: 6192aae4f20841beb69bfef390f2f936
+    - TextValue: ''
+      position:
+        h: 3
+        i: '1'
+        maxH: 12
+        maxW: 12
+        minH: 3
+        minW: 3
+        moved: false
+        static: false
+        w: 6
+        x: 6
+        y: 0
+      taskid: 0
+      visualBlockNum: 1
+      workbook_id: 2df95001487c4db5aa3e7247a97b8f46
+- type: table
+  data:
+    name: Top Virus Sources Monthly
+    path: /Compliance/Common/Monthly
+    workbook_id: cc43b8fa14c14056b4f11878293c5d4c
+- type: table
+  data:
+    name: Top Virus Destinations Monthly
+    path: /Compliance/Common/Monthly
+    workbook_id: a68fc82803b448ee81167205fa785a69
+- type: table
+  data:
+    name: "Top Virus Sources And Destinations\_ Monthly"
+    path: /Compliance/HIPAA/Monthly
+    workbook_id: 4f93ba2e35464403902476b6e2d0b9a8
+- type: table
+  data:
+    name: Top Targeted IPs Monthly
+    path: /Compliance/Common/Monthly
+    workbook_id: 562f11b9da14455691033deb31f81c8c
+- type: table
+  data:
+    name: Denied Traffic Monthly
+    path: /Compliance/HIPAA/Monthly
+    workbook_id: 02e9fbd933114ef4be778ada4dc630e2

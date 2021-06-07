@@ -1,0 +1,20 @@
+id: 2fbc29212f9c4e6abd2c147b48030ce7
+name: Windows hosts file modification
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $System, $User,$Image, COUNT ($TaregetFileName) AS FILE FROM SYSMON-FILE
+    WHERE $TargetFileName LIKE '%hosts%' AND $Image LIKE '%Windows\\System32\\%'  GROUP
+    BY $Image, $TargetFileName, $User limit 100
+- type: signal
+  DetectionName: Windows hosts file modification
+  DetectionTactic: Discovery
+  DetectionTechnique: Remote System Discovery
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

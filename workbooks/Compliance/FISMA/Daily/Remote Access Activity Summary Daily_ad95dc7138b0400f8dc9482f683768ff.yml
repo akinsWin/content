@@ -1,0 +1,12 @@
+id: ad95dc7138b0400f8dc9482f683768ff
+name: Remote Access Activity Summary Daily
+path: /Compliance/FISMA/Daily
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $AuthProto IN [SSH,VPN]
+    AND $Duration=1d group count_unique  $SrcIP, $System, $User, $Action limit 100
+config: {}

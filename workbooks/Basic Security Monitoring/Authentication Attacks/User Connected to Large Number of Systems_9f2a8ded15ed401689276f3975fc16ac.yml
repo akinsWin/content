@@ -1,0 +1,21 @@
+id: 9f2a8ded15ed401689276f3975fc16ac
+name: User Connected to Large Number of Systems
+path: /Basic Security Monitoring/Authentication Attacks
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $User, COUNT(DISTINCT($System)) AS $CountSystem FROM AUTHENTICATION
+    WHERE $Action='LOGIN' AND $Status='PASSED' AND $Duration=1h GROUP BY $User HAVING
+    $CountSystem>10
+- type: signal
+  DetectionName: User Connected to Large Number of Systems
+  DetectionTactic: Persistence
+  DetectionTechnique: Valid Accounts
+  DetectionScore: '6'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $User
+config: {}

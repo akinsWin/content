@@ -1,0 +1,24 @@
+id: 7ec2e20863ec470fb3682477e4cb5528
+name: Raw Paste Service Access
+path: /Advanced Threat Detection/Proxy Monitoring
+description: Detects direct access to raw pastes in different paste services often
+  used by malware in their second stages to download malicious code in encrypted or
+  encoded form
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://www.virustotal.com/gui/domain/paste.ee/relations|"
+- type: sql
+  query: SELECT * FROM WEBFILTER WHERE ($URL LIKE "%.paste.ee/r/%" OR $URL LIKE "%.pastebin.com/raw/%"
+    OR $URL LIKE "%.hastebin.com/raw/%" OR $URL LIKE "%.ghostbin.co/paste/%/raw/%")
+- type: signal
+  DetectionName: Raw Paste Service Access
+  DetectionTactic: Command and Control
+  DetectionTechnique: Web Service
+  DetectionScore: 5
+  DetectionConfidence: Low
+  SuspectHost: $SrcIP
+config: {}

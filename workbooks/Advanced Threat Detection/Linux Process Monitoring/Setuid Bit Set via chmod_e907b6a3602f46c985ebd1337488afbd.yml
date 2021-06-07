@@ -1,0 +1,20 @@
+id: e907b6a3602f46c985ebd1337488afbd
+name: Setuid Bit Set via chmod
+path: /Advanced Threat Detection/Linux Process Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $ProcessName,$System  FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
+    $ProcessName='chmod' AND ($ProcessArgs='u+s' OR $ProcessArgs LIKE "4%") AND $User!='root'
+    GROUP BY $ProcessName,$System
+- type: signal
+  DetectionName: Setuid Bit Set via chmod
+  DetectionTactic: Privilege Escalation
+  DetectionTechnique: Abuse Elevation Control Mechanism
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

@@ -1,0 +1,19 @@
+id: 2921333e2fe34608988c8b7071d6d2ca
+name: Suspicious Remote Desktop Network Activity
+path: /Basic Security Monitoring/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcIP, $DstIP, COUNT(*) FROM FIREWALL WHERE $DstPort=3389 GROUP BY
+    $SrcIP,$DstIP HAVING COUNT(*)>2 LIMIT 100
+- type: signal
+  DetectionName: Suspicious Remote Desktop Network Activity
+  DetectionTactic: Lateral movement
+  DetectionTechnique: Remote Services
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $DstIP
+config: {}

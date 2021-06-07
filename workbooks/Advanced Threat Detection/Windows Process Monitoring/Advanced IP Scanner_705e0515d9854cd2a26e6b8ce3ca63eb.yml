@@ -1,0 +1,22 @@
+id: 705e0515d9854cd2a26e6b8ce3ca63eb
+name: Advanced IP Scanner
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: Detects the use of Advanced IP Scanner. Seems to be a popular tool for
+  ransomware groups.
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |@ROxPinTeddy|https://news.sophos.com/en-us/2019/12/09/snatch-ransomware-reboots-pcs-into-safe-mode-to-bypass-protection/<br>https://www.fireeye.com/blog/threat-research/2020/05/tactics-techniques-procedures-associated-with-maze-ransomware-incidents.html|"
+- type: sql
+  query: SELECT * FROM SYSMON-PROCESS WHERE $Image LIKE "%\\advanced\_ip\_scanner%"
+- type: signal
+  DetectionName: Advanced IP Scanner
+  DetectionTactic: Discovery
+  DetectionTechnique: Network Service Scanning
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

@@ -1,0 +1,12 @@
+id: fdf510d60d5c421db5854656df5abd17
+name: Successful Login Attempts Monthly
+path: /Compliance/FISMA/Monthly
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: '_fetch * from event where $Stream=AUTHENTICATION AND $Action=LOGIN AND $Status=PASSED
+    AND $Duration=1M group count_unique $System, $SrcIP, $User limit 100 '
+config: {}

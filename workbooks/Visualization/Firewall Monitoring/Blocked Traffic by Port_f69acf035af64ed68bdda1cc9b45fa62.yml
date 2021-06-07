@@ -1,0 +1,24 @@
+id: f69acf035af64ed68bdda1cc9b45fa62
+name: Blocked Traffic by Port
+path: /Visualization/Firewall Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $DstPort, SUM($TXLen) AS $TotalBytes FROM FIREWALL WHERE $Duration=1h
+    AND $Action='PACKET_BLOCKED' AND $App!='' GROUP BY $DstPort ORDER BY $TotalBytes
+    DESC LIMIT 5
+- type: visual
+  data:
+    widget_name: Blocked Traffic by Port
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $DstPort
+      - null
+      value: $TotalBytes
+config:
+  parameters: []

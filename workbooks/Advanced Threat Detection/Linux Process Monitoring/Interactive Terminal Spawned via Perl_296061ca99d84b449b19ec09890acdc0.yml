@@ -1,0 +1,20 @@
+id: 296061ca99d84b449b19ec09890acdc0
+name: Interactive Terminal Spawned via Perl
+path: /Advanced Threat Detection/Linux Process Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $ProcessName,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
+    $ProcessName='perl' AND ($ProcessArgs LIKE "%exec%bin%sh%" OR $ProcessArgs LIKE
+    "%exec%bin%dash%" OR $ProcessArgs LIKE "%exec%bin%bash%") GROUP BY $ProcessName,$System
+- type: signal
+  DetectionName: Interactive Terminal Spawned via Perl
+  DetectionTactic: Execution
+  DetectionTechnique: Command and Scripting Interpreter
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

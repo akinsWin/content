@@ -1,0 +1,23 @@
+id: e0cf19de797b4f54a31743776ab03797
+name: Authentication Activity
+path: /Visualization/Authentication Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch $Status from event where $Stream=AUTHENTICATION AND $Action=LOGIN
+    AND $Status IN [PASSED, FAILED] AND $Duration=1h group timeslice 1m limit 0
+- type: visual
+  data:
+    widget_name: Authentication Events
+    chart_type: timeline
+    config:
+      type: stacked
+      key:
+      - $CNAMTime
+      - $Status
+      value: count
+config:
+  parameters: []

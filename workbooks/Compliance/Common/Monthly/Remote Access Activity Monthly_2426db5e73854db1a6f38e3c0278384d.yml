@@ -1,0 +1,12 @@
+id: 2426db5e73854db1a6f38e3c0278384d
+name: Remote Access Activity Monthly
+path: /Compliance/Common/Monthly
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $AuthProto IN [SSH,VPN]
+    AND $Duration=1M group count_unique  $SrcIP, $System, $User, $Action limit 100
+config: {}

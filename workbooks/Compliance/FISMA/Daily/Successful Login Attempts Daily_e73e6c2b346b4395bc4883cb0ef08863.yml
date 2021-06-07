@@ -1,0 +1,12 @@
+id: e73e6c2b346b4395bc4883cb0ef08863
+name: Successful Login Attempts Daily
+path: /Compliance/FISMA/Daily
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Action=LOGIN AND $Status=PASSED
+    AND $Duration=1d group count_unique $User, $SrcIP limit 100
+config: {}

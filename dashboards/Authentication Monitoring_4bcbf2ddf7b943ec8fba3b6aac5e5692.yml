@@ -1,0 +1,164 @@
+id: 4bcbf2ddf7b943ec8fba3b6aac5e5692
+name: Authentication Monitoring
+description: ''
+author: DNIF
+entity_type: dashboards
+path: /drafts
+config:
+  blocks: []
+  pollingInterval: 60
+data:
+- taskid: 0
+  visualBlockNum: 1
+  workbook_id: a1f141f602db469bbe4d2cfbe70a0545
+  path: /Authentication Monitoring
+  name: Top Users
+  visual_no: 0
+  pollingInterval: 60
+  position:
+    w: 3
+    h: 2
+    x: 0
+    y: 2
+    i: '0'
+    minW: 2
+    maxW: 12
+    minH: 2
+    maxH: 12
+    moved: false
+    static: false
+- taskid: 0
+  visualBlockNum: 1
+  workbook_id: 6f96b83522204aa4a2c5d70cab548886
+  path: /Authentication Monitoring
+  name: Authentication Failures by Source Country
+  visual_no: 1
+  pollingInterval: 60
+  position:
+    w: 4
+    h: 2
+    x: 4
+    y: 4
+    i: '1'
+    minW: 2
+    maxW: 12
+    minH: 2
+    maxH: 12
+    moved: false
+    static: false
+- taskid: 0
+  visualBlockNum: 1
+  workbook_id: 422b14e9dcfd4d9b83fac783020d684c
+  path: /Authentication Monitoring
+  name: Authentication Activity from Source
+  visual_no: 2
+  pollingInterval: 60
+  position:
+    w: 4
+    h: 2
+    x: 0
+    y: 4
+    i: '2'
+    minW: 2
+    maxW: 12
+    minH: 2
+    maxH: 12
+    moved: false
+    static: false
+- taskid: 0
+  visualBlockNum: 1
+  workbook_id: 26f661fea8cd4a6c978bd994590bf8cf
+  path: /Authentication Monitoring
+  name: Top System for Authentication Failures
+  visual_no: 3
+  pollingInterval: 60
+  position:
+    w: 3
+    h: 2
+    x: 6
+    y: 2
+    i: '3'
+    minW: 2
+    maxW: 12
+    minH: 2
+    maxH: 12
+    moved: false
+    static: false
+- taskid: 0
+  visualBlockNum: 1
+  workbook_id: 4efe2ce378a84cfe87e51ef31f055863
+  path: /Authentication Monitoring
+  name: Top Systems for Authentication Activity
+  visual_no: 4
+  pollingInterval: 60
+  position:
+    w: 3
+    h: 2
+    x: 3
+    y: 2
+    i: '4'
+    minW: 2
+    maxW: 12
+    minH: 2
+    maxH: 12
+    moved: false
+    static: false
+- taskid: 0
+  visualBlockNum: 1
+  workbook_id: e0cf19de797b4f54a31743776ab03797
+  path: /Authentication Monitoring
+  name: Authentication Activity
+  visual_no: 5
+  pollingInterval: 60
+  position:
+    w: 12
+    h: 2
+    x: 0
+    y: 0
+    i: '5'
+    minW: 2
+    maxW: 12
+    minH: 2
+    maxH: 12
+    moved: false
+    static: false
+- taskid: 0
+  visualBlockNum: 1
+  wbBlocknum: 2
+  workbook_id: ab63c6cea5484f0391c9b22b4a263c14
+  path: /Visualization/Authentication Monitoring
+  name: 'Authentication: Passed v Failed'
+  visual_no: 6
+  pollingInterval: 60
+  position:
+    w: 3
+    h: 2
+    x: 9
+    y: 2
+    i: '6'
+    minW: 2
+    maxW: 12
+    minH: 2
+    maxH: 12
+    moved: false
+    static: false
+- taskid: 0
+  visualBlockNum: 1
+  wbBlocknum: 2
+  workbook_id: 76f52950a36e404b8eab303944ffc2cf
+  path: /Visualization/Authentication Monitoring
+  name: Net Failed Logins
+  visual_no: 7
+  pollingInterval: 60
+  position:
+    w: 4
+    h: 2
+    x: 8
+    y: 4
+    i: '7'
+    minW: 2
+    maxW: 12
+    minH: 2
+    maxH: 12
+    moved: false
+    static: false

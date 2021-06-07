@@ -1,0 +1,25 @@
+id: bf242342b49c42c193b284ed84e1ca35
+name: Detection of Possible Rotten Potato
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: Detection of child processes spawned with SYSTEM privileges by parents
+  with LOCAL SERVICE or NETWORK SERVICE privileges
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Teymur Kheirkhabarov|https://speakerdeck.com/heirhabarov/hunting-for-privilege-escalation-in-windows-environment<br>https://foxglovesecurity.com/2016/09/26/rotten-potato-privilege-escalation-from-service-accounts-to-system/|"
+- type: sql
+  query: SELECT * FROM SYSMON-PROCESS WHERE ((($ParentUser LIKE "NT AUTHORITY\\NETWORK
+    SERVICE" OR $ParentUser LIKE "NT AUTHORITY\\LOCAL SERVICE") AND $User LIKE "NT
+    AUTHORITY\\SYSTEM") AND NOT ($Image LIKE "%\\rundll32.exe" AND $CommandLine LIKE
+    "%DavSetCookie%"))
+- type: signal
+  DetectionName: Detection of Possible Rotten Potato
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Access Token Manipulation
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

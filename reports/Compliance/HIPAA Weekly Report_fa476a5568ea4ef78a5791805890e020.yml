@@ -1,0 +1,66 @@
+id: fa476a5568ea4ef78a5791805890e020
+name: HIPAA Weekly Report
+author: DNIF
+path: /Compliance
+entity_type: reports
+report_config:
+- type: widget
+  data:
+    visualDetails:
+    - TextValue: ''
+      position:
+        h: 3
+        i: '0'
+        maxH: 12
+        maxW: 12
+        minH: 3
+        minW: 3
+        moved: false
+        static: false
+        w: 6
+        x: 0
+        y: 0
+      taskid: 0
+      visualBlockNum: 1
+      workbook_id: 07572dfa1d5144edbc8a3ab12401de0e
+    - TextValue: ''
+      position:
+        h: 3
+        i: '1'
+        maxH: 12
+        maxW: 12
+        minH: 3
+        minW: 3
+        moved: false
+        static: false
+        w: 6
+        x: 6
+        y: 0
+      taskid: 0
+      visualBlockNum: 1
+      workbook_id: 84b705fd639242958141c7fd50a60f55
+- type: table
+  data:
+    name: Denied Traffic Weekly
+    path: /Compliance/HIPAA/Weekly
+    workbook_id: 539c0af0790345c39cd583d86fc81edc
+- type: table
+  data:
+    name: Top Virus Sources Weekly
+    path: /Compliance/Common/Weekly
+    workbook_id: 0e1ddb05fc2343c8b3e7bbec3aafa818
+- type: table
+  data:
+    name: Top Virus Destinations Weekly
+    path: /Compliance/Common/Weekly
+    workbook_id: 8be3d2d112a04549a575d56a75858786
+- type: table
+  data:
+    name: Top Virus Sources And Destinations Weekly
+    path: /Compliance/HIPAA/Weekly
+    workbook_id: bc8bba72c79b4632a0b2009cf049f3cd
+- type: table
+  data:
+    name: Top Targeted IPs Weekly
+    path: /Compliance/Common/Weekly
+    workbook_id: 468897ad0d894ad4a981584605d77b9c

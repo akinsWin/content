@@ -1,0 +1,21 @@
+id: 03870f5574784c008f62e643c0a63a04
+name: PCI Monthly Report
+author: DNIF
+path: /Compliance
+entity_type: reports
+report_config:
+- type: table
+  data:
+    name: PCI 8-1 - User Account Changes Monthly
+    path: /Compliance/PCI
+    workbook_id: 25328e53bb0f49c688558133bd643d1c
+- type: table
+  data:
+    name: PCI 10-2 - User Accounts Additions Monthly
+    path: /Compliance/PCI
+    workbook_id: 1d21768502964a1f8a754a228e536a75
+- type: table
+  data:
+    name: PCI 5-2 Top Malware Activity Monthly
+    path: /Compliance/PCI
+    workbook_id: 279a2c5a5f06458a894b0c5272cae58c

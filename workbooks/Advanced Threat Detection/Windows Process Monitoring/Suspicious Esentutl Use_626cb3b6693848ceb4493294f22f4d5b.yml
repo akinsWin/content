@@ -1,0 +1,24 @@
+id: 626cb3b6693848ceb4493294f22f4d5b
+name: Suspicious Esentutl Use
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: Detects flags often used with the LOLBAS Esentutl for malicious activity.
+  It could be used in rare cases by administrators to access locked files or during
+  maintenance.
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://lolbas-project.github.io/<br>https://twitter.com/chadtilbury/status/1264226341408452610|"
+- type: sql
+  query: SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "% /vss %" AND $CommandLine
+    LIKE "% /y %")
+- type: signal
+  DetectionName: Suspicious Esentutl Use
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Signed Binary Proxy Execution
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

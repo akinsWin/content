@@ -1,0 +1,12 @@
+id: 25328e53bb0f49c688558133bd643d1c
+name: PCI 8-1 - User Account Changes Monthly
+path: /Compliance/PCI/Monthly
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=IAM AND $Duration=1M NOT $Status=FAILED
+    group count_unique  $Action,$User,$TargetUser,$System,$Status  limit 100
+config: {}

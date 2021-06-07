@@ -1,0 +1,25 @@
+id: d9ea6d1b7b264282a2800f1864f7d127
+name: Possible Applocker Bypass
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: Detects execution of executables that can be used to bypass Applocker
+  whitelisting
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |juju4|https://github.com/subTee/ApplicationWhitelistBypassTechniques/blob/master/TheList.txt<br>https://room362.com/post/2014/2014-01-16-application-whitelist-bypass-using-ieexec-dot-exe/|"
+- type: sql
+  query: SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "%\\msdt.exe%" OR $CommandLine
+    LIKE "%\\installutil.exe%" OR $CommandLine LIKE "%\\regsvcs.exe%" OR $CommandLine
+    LIKE "%\\regasm.exe%" OR $CommandLine LIKE "%\\msbuild.exe%" OR $CommandLine LIKE
+    "%\\ieexec.exe%")
+- type: signal
+  DetectionName: Possible Applocker Bypass
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Signed Binary Proxy Execution
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

@@ -1,0 +1,19 @@
+id: 82004f4a9f7547c4a1518b2172bd2fd1
+name: Script Execution via WMI
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: auto-scheduled
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $System FROM SYSMON-PROCESS WHERE $Image LIKE "%scrcons.exe%" GROUP
+    BY $System LIMIT 100
+- type: signal
+  DetectionName: Script Execution via WMI
+  DetectionTactic: Execution
+  DetectionTechnique: Windows Management Instrumentation
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

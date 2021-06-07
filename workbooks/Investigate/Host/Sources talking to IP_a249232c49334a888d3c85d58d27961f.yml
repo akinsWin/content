@@ -1,0 +1,19 @@
+id: a249232c49334a888d3c85d58d27961f
+name: Sources talking to IP
+path: /Investigate/Host
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcIP, $DstPort FROM FIREWALL WHERE $DstIP={{Host}} AND $Duration=1h
+    GROUP BY $SrcIP, $DstPort
+config:
+  parameters:
+  - fixed: false
+    name: Host
+    query: ''
+    queryFieldValue: []
+    type: Text
+    value: '-'

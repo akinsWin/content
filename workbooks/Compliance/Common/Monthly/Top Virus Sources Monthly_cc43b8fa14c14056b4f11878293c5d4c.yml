@@ -1,0 +1,12 @@
+id: cc43b8fa14c14056b4f11878293c5d4c
+name: Top Virus Sources Monthly
+path: /Compliance/Common/Monthly
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=THREAT AND $Action=THREAT_DETECTED AND
+    $Duration=1M group count_unique $SrcIP, $Threat  limit 10
+config: {}

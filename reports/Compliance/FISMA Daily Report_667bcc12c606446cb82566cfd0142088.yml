@@ -1,0 +1,79 @@
+id: 667bcc12c606446cb82566cfd0142088
+name: FISMA Daily Report
+author: DNIF
+path: /Compliance
+entity_type: reports
+report_config:
+- type: widget
+  data:
+    visualDetails:
+    - TextValue: ''
+      position:
+        h: 3
+        i: '0'
+        maxH: 12
+        maxW: 12
+        minH: 3
+        minW: 3
+        moved: false
+        static: false
+        w: 12
+        x: 0
+        y: 0
+      taskid: 0
+      visualBlockNum: 1
+      workbook_id: dca066b9d8ec4baeb406bfa469617fef
+- type: table
+  data:
+    name: Successful Login Attempts Daily
+    path: /Compliance/FISMA/Daily
+    workbook_id: e73e6c2b346b4395bc4883cb0ef08863
+- type: widget
+  data:
+    visualDetails:
+    - TextValue: ''
+      position:
+        h: 3
+        i: '0'
+        maxH: 12
+        maxW: 12
+        minH: 3
+        minW: 3
+        moved: false
+        static: false
+        w: 12
+        x: 0
+        y: 0
+      taskid: 0
+      visualBlockNum: 1
+      workbook_id: 7e498b3afe42423393aec309ed2ca330
+- type: table
+  data:
+    name: Unsuccessful Logins Daily
+    path: /Compliance/FISMA/Daily
+    workbook_id: 7e498b3afe42423393aec309ed2ca330
+- type: table
+  data:
+    name: Top Users for Remote Access Activity Daily
+    path: /Compliance/SOX/Daily
+    workbook_id: dbf71a2fee344689aba2814ef7ba8d53
+- type: table
+  data:
+    name: Unsuccessful SSH Logins Daily
+    path: /Compliance/FISMA/Daily
+    workbook_id: 7310bf741d204d86bc884524b0827ec2
+- type: table
+  data:
+    name: Unsuccessful SSH Logins Daily
+    path: /Compliance/FISMA/Daily
+    workbook_id: 7310bf741d204d86bc884524b0827ec2
+- type: table
+  data:
+    name: Unsuccessful Telnet Logins Daily
+    path: /Compliance/FISMA/Daily
+    workbook_id: 53310ecd47364c2b9f357351a0c638af
+- type: table
+  data:
+    name: Unsuccessful Mail Logins Daily
+    path: /Compliance/Common/Daily
+    workbook_id: 56ad00ad4ab240b4bcd45cd6142dab8c

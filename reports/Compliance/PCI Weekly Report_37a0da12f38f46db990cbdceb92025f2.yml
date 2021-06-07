@@ -1,0 +1,40 @@
+id: 37a0da12f38f46db990cbdceb92025f2
+name: PCI Weekly Report
+author: DNIF
+path: /Compliance
+entity_type: reports
+report_config:
+- type: table
+  data:
+    name: PCI 10-2 - User Accounts Additions Weekly
+    path: /Compliance/PCI
+    workbook_id: ed65b55537bb493b9128576d4b1c8193
+- type: table
+  data:
+    name: PCI 8-1 - User Account Changes Weekly
+    path: /Compliance/PCI
+    workbook_id: 0a1e6dfe142945acb162ab3955117f87
+- type: table
+  data:
+    name: PCI 5-2 Top Malware Activity Weekly
+    path: /Compliance/PCI
+    workbook_id: c6b9f0bb5a3c43b4ae2d2a0af6bc22bc
+- type: widget
+  data:
+    visualDetails:
+    - TextValue: ''
+      position:
+        w: 6
+        h: 3
+        x: 0
+        y: 0
+        i: '0'
+        minW: 3
+        maxW: 12
+        minH: 3
+        maxH: 12
+        moved: false
+        static: false
+      taskid: 0
+      visualBlockNum: 1
+      workbook_id: eee5e4e2f6bf417e9cd27c7f6a01a367
