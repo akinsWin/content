@@ -3,7 +3,7 @@ name: Top Users for Remote Access Activity Daily
 path: /Compliance/SOX/Daily
 description: ''
 type: standard
-author: Dnif
+author: DNIF
 entity_type: workbooks
 blocks:
 - type: dql

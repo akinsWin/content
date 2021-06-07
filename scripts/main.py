@@ -2,7 +2,9 @@ import os
 import sys
 import yaml
 from colorama import Fore
-yaml_keys = {"id", "name", "path", "description", "type", "author", "blocks"}
+workbook_keys = {"id", "name", "path", "description", "type", "author", "blocks"}
+report_keys = {"id", "name", "author", "path", "report_config"}
+dashboard_keys = {"id", "name", "description", "author", "path", "config", "data"}
 signal_keys = {"DetectionName", "DetectionTactic", "DetectionTechnique", "DetectionScore", "DetectionConfidence"}
 
 
@@ -35,7 +37,12 @@ def check_yaml(path):
 
 
 def check_keys(data, file):
-    misssing_keys = list(yaml_keys - set(data.keys()))
+    if data["entity_type"] == "dashboards":
+        misssing_keys = list(dashboard_keys - set(data.keys()))
+    elif data["entity_type"] == "reports":
+        misssing_keys = list(report_keys - set(data.keys()))
+    elif data["entity_type"] == "workbooks":
+        misssing_keys = list(workbook_keys - set(data.keys()))
     if len(misssing_keys) > 0:
         _tmp = ", ".join(misssing_keys)
         print(Fore.RED + f"[-] The key/keys '{_tmp}'  are missing in workbook '{file}'")
