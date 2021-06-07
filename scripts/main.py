@@ -73,8 +73,9 @@ def main():
                     continue
                 if not check_author(data, yaml_path):
                     valid_flag = False
-                if not check_signal_block(data, yaml_path):
-                    valid_flag = False
+                if data["entity_type"] == "workbooks":
+                    if not check_signal_block(data, yaml_path):
+                        valid_flag = False
 
     if valid_flag:
         print(Fore.GREEN + "[+] All files are validated successfully")
