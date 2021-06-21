@@ -4,17 +4,16 @@ path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
 type: auto-scheduled
 author: DNIF
-entity_type: workbooks
 blocks:
-- type: dql
-  query: _fetch * from event where $Stream=SYSMON-PROCESS AND $CommandLine=regex((?i)(.*wmic*.|.*powershell*.))i
-    AND $CommandLine=regex((?i)(.*shadowcopy*.))i AND $CommandLine=regex((?i)(.*create*.))i
-    group count_unique $System limit 0
+- type: sql
+  query: 'SELECT $CommandLine, $System FROM SYSMON-PROCESS WHERE (($CommandLine LIKE
+    "%wmic%" OR $CommandLine LIKE "%powershell%") AND $CommandLine LIKE "%shadowcopy%create%")
+    GROUP BY $System, $CommandLine '
 - type: signal
   DetectionName: Creation of Shadow Copy with wmic and powershell
   DetectionTactic: Impact
   DetectionTechnique: Inhibit System Recovery
-  DetectionScore: 8
+  DetectionScore: '8'
+  DetectionSeverity: High
   DetectionConfidence: High
   TargetHost: $System
-config: {}

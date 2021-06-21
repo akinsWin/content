@@ -2,19 +2,18 @@ id: 7a82da97e56041729c5c092cc9d651af
 name: Malicious PowerShell Process - Connect To Internet With Hidden Window
 path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
-type: standard
+type: auto-scheduled
 author: DNIF
-entity_type: workbooks
 blocks:
 - type: sql
   query: SELECT $System, $User, $Image, $ParentImage, $CommandLine FROM SYSMON-PROCESS
-    WHERE $Image LIKE "%powershell.exe" AND $CommandLine LIKE "%-WindowStyle%" AND
-    $CommandLine LIKE "%hidden%" AND $CommandLine LIKE "%New-Object%" LIMIT 100
+    WHERE $Image LIKE "%powershell%exe%" AND $CommandLine LIKE "%WindowStyle%hidden%New%Object%"
 - type: signal
   DetectionName: Malicious PowerShell Process - Connect To Internet With Hidden Window
   DetectionTactic: Execution
   DetectionTechnique: Command and Scripting Interpreter
-  DetectionScore: 5
-  DetectionConfidence: Low
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $User
   TargetHost: $System
-config: {}

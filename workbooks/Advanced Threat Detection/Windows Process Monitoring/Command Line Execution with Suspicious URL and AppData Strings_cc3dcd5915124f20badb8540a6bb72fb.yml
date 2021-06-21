@@ -1,24 +1,19 @@
 id: cc3dcd5915124f20badb8540a6bb72fb
 name: Command Line Execution with Suspicious URL and AppData Strings
 path: /Advanced Threat Detection/Windows Process Monitoring
-description: Detects a suspicious command line execution that includes an URL and
-  AppData string in the command line parameters as used by several droppers (js/vbs
-  > powershell)
-type: standard
+description: ''
+type: auto-scheduled
 author: community
-entity_type: workbooks
 blocks:
-- type: text
-  code: "|Author|References|\n                 |------|--------|\n               \
-    \  |Florian Roth|https://www.hybrid-analysis.com/sample/3a1f01206684410dbe8f1900bbeaaa543adfcd07368ba646b499fa5274b9edf6?environmentId=100<br>https://www.hybrid-analysis.com/sample/f16c729aad5c74f19784a24257236a8bbe27f7cdc4a89806031ec7f1bebbd475?environmentId=100|"
 - type: sql
-  query: SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "cmd.exe /c %http://%\%AppData\%"
-    OR $CommandLine LIKE "cmd.exe /c %https://%\%AppData\%")
+  query: SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "cmd%c%http%AppData%"
+    OR $CommandLine LIKE "cmd%c%https%AppData%")
 - type: signal
   DetectionName: Command Line Execution with Suspicious URL and AppData Strings
-  DetectionTactic: Command and Control
-  DetectionTechnique: Ingress Tool Transfer
-  DetectionScore: 5
-  DetectionConfidence: Low
+  DetectionTactic: Execution
+  DetectionTechnique: Command and Scripting Interpreter
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $User
   TargetHost: $System
-config: {}

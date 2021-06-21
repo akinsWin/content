@@ -1,0 +1,23 @@
+id: 03d6867cf548434994e98d5b546221f9
+name: Renamed SysInternals Debug View
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: Detects suspicious renamed SysInternals DebugView execution
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://www.epicturla.com/blog/sysinturla|"
+- type: sql
+  query: SELECT * FROM SYSMON-PROCESS WHERE ($Product IN ("Sysinternals DebugView",
+    "Sysinternals Debugview") AND NOT ($OriginalFilename = "Dbgview.exe" AND $Image
+    LIKE "%\\Dbgview.exe%"))
+- type: signal
+  DetectionName: Renamed SysInternals Debug View
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Masquerading
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

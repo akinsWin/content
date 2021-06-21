@@ -1,21 +1,21 @@
 id: 302f1932a54e4d77a29bb87933b71760
 name: Fireball Archer Install
 path: /Advanced Threat Detection/Windows Process Monitoring
-description: Detects Archer malware invocation via rundll32
+description: ''
 type: standard
 author: community
-entity_type: workbooks
 blocks:
 - type: text
   code: "|Author|References|\n                 |------|--------|\n               \
     \  |Florian Roth|https://www.virustotal.com/en/file/9b4971349ae85aa09c0a69852ed3e626c954954a3927b3d1b6646f139b930022/analysis/<br>https://www.hybrid-analysis.com/sample/9b4971349ae85aa09c0a69852ed3e626c954954a3927b3d1b6646f139b930022?environmentId=100|"
 - type: sql
-  query: SELECT * FROM SYSMON-PROCESS WHERE $CommandLine LIKE "%\\rundll32.exe %,InstallArcherSvc"
+  query: SELECT * FROM SYSMON-PROCESS WHERE $CommandLine LIKE "%rundll32.exe%InstallArcherSvc%"
 - type: signal
   DetectionName: Fireball Archer Install
   DetectionTactic: Defense Evasion
   DetectionTechnique: Signed Binary Proxy Execution
-  DetectionScore: 5
-  DetectionConfidence: Low
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $User
   TargetHost: $System
-config: {}

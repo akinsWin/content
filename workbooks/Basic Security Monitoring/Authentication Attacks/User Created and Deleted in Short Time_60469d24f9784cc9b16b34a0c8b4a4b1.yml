@@ -4,10 +4,9 @@ path: /Basic Security Monitoring/Authentication Attacks
 description: ''
 type: auto-scheduled
 author: DNIF
-entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT $User,$TargetUser, COUNT(DISTINCT($Action)) AS $CountAction from IAM
+  query: SELECT $User,$TargetUser, COUNT(DISTINCT($Action)) AS $CountAction FROM IAM
     WHERE $Action='USER_ACCOUNT_CREATED' OR $Action='USER_ACCOUNT_DELETED' GROUP BY
     $User,$TargetUser HAVING $CountAction=2
 - type: signal
@@ -19,4 +18,3 @@ blocks:
   DetectionConfidence: High
   SuspectUser: $User
   TargetUser: $TargetUser
-config: {}

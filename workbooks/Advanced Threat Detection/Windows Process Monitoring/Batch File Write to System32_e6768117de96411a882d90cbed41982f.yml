@@ -4,7 +4,6 @@ path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
 type: auto-scheduled
 author: DNIF
-entity_type: workbooks
 blocks:
 - type: sql
   query: SELECT $System FROM SYSMON-FILE WHERE $Action='FILE_CREATED' AND $TargetFileName
@@ -16,4 +15,3 @@ blocks:
   DetectionScore: 5
   DetectionConfidence: Medium
   TargetHost: $System
-config: {}

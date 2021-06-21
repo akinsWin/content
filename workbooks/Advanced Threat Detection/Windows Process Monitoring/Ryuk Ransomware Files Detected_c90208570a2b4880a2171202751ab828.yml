@@ -4,16 +4,16 @@ path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
 type: standard
 author: DNIF
-entity_type: workbooks
 blocks:
 - type: dql
-  query: _fetch * from event where $Stream=SYSMON-FILE AND $TargetFilename=regex(C:\\*Ryuk.*)
-    AND $Action=FILE_CREATED group count_unique $System, $TargetFile limit 100
+  query: _fetch * from event where $Stream=SYSMON-FILE AND $TargetFilename=regex(C:\.*Ryuk.*)
+    AND $Action=FILE_CREATED group count_unique $System, $TargetFilename
+    limit 100
 - type: signal
   DetectionName: Ryuk Ransomware Files Detected
   DetectionTactic: Impact
   DetectionTechnique: Data Encrypted for Impact
   DetectionScore: 5
+  DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
-config: {}

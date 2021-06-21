@@ -1,0 +1,23 @@
+id: a24b300453864fe5b8a8ced86eb9fb36
+name: "Threat Detected on Host\_ - URL"
+path: /Basic Security Monitoring/Threat Alerts
+description: ''
+type: auto-scheduled
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $Threat, $System, $URL, $DstIP FROM THREAT WHERE $Vector='HOST' AND
+    $Action='THREAT_DETECTED' AND $Threat IS NOT NULL AND $System IS NOT NULL AND
+    $URL IS NOT NULL AND $DstIP IS NOT NULL GROUP BY $Threat, $System, $URL, $DstIP
+- type: signal
+  DetectionName: _$Threat_
+  DetectionTactic: Execution
+  DetectionTechnique: User Execution
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectHost: $DstIP
+  TargetHost: $System
+config:
+  parameters: []

@@ -1,23 +1,23 @@
 id: daf2e7f6a4fe43d28ba757747ec9baac
 name: Process Dump via Comsvcs DLL
 path: /Advanced Threat Detection/Windows Process Monitoring
-description: Detects process memory dump via comsvcs.dll and rundll32
+description: ''
 type: standard
 author: community
-entity_type: workbooks
 blocks:
 - type: text
   code: "|Author|References|\n                 |------|--------|\n               \
     \  |Modexp (idea)|https://modexp.wordpress.com/2019/08/30/minidumpwritedump-via-com-services-dll/<br>https://twitter.com/SBousseaden/status/1167417096374050817|"
 - type: sql
-  query: SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%\\rundll32.exe" OR $OriginalFileName
+  query: SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%rundll32%exe%" OR $OriginalFileName
     = "RUNDLL32.EXE") AND ($CommandLine LIKE "%comsvcs%MiniDump%full%" OR $CommandLine
     LIKE "%comsvcs%MiniDumpW%full%"))
 - type: signal
   DetectionName: Process Dump via Comsvcs DLL
   DetectionTactic: Credential Access
   DetectionTechnique: OS Credential Dumping
-  DetectionScore: 5
-  DetectionConfidence: Low
+  DetectionScore: '6'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $User
   TargetHost: $System
-config: {}

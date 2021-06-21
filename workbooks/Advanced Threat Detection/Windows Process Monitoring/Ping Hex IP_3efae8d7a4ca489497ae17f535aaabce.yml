@@ -1,22 +1,22 @@
 id: 3efae8d7a4ca489497ae17f535aaabce
 name: Ping Hex IP
 path: /Advanced Threat Detection/Windows Process Monitoring
-description: Detects a ping command that uses a hex encoded IP address
+description: ''
 type: standard
 author: community
-entity_type: workbooks
 blocks:
 - type: text
   code: "|Author|References|\n                 |------|--------|\n               \
     \  |Florian Roth|https://github.com/vysec/Aggressor-VYSEC/blob/master/ping.cna<br>https://twitter.com/vysecurity/status/977198418354491392|"
 - type: sql
-  query: SELECT * FROM SYSMON-PROCESS WHERE (($CommandLine LIKE "%\\ping.exe 0x%"
-    OR $CommandLine LIKE "%\\ping 0x%") AND ($Image LIKE "%ping.exe%"))
+  query: SELECT * FROM SYSMON-PROCESS WHERE $Image LIKE "%PING\.EXE%" AND $CommandLine
+    LIKE "%PING.\EXE%0X%"
 - type: signal
   DetectionName: Ping Hex IP
   DetectionTactic: Defense Evasion
   DetectionTechnique: Obfuscated Files or Information
-  DetectionScore: 5
-  DetectionConfidence: Low
+  DetectionScore: '3'
+  DetectionSeverity: Low
+  DetectionConfidence: Medium
+  SuspectUser: $User
   TargetHost: $System
-config: {}

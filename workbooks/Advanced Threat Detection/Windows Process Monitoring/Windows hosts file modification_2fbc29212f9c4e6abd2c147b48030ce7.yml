@@ -4,17 +4,16 @@ path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
 type: standard
 author: DNIF
-entity_type: workbooks
 blocks:
-- type: sql
-  query: SELECT $System, $User,$Image, COUNT ($TaregetFileName) AS FILE FROM SYSMON-FILE
-    WHERE $TargetFileName LIKE '%hosts%' AND $Image LIKE '%Windows\\System32\\%'  GROUP
-    BY $Image, $TargetFileName, $User limit 100
+- type: dql
+  query: _fetch * from event where $Stream=SYSMON-FILE AND $TargetFilename=*hosts*
+    AND $Image=*Windows*System32* group count_unique $User, $Image, $TargetFilename,
+    $System limit 1
 - type: signal
   DetectionName: Windows hosts file modification
   DetectionTactic: Discovery
   DetectionTechnique: Remote System Discovery
   DetectionScore: 5
+  DetectionSeverity: ''
   DetectionConfidence: Low
   TargetHost: $System
-config: {}
