@@ -4,6 +4,7 @@ path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
 type: auto-scheduled
 author: community
+entity_type: workbooks
 blocks:
 - type: sql
   query: SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "cmd%c%http%AppData%"

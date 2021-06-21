@@ -4,6 +4,7 @@ path: /Compliance/HIPAA/Weekly
 description: ''
 type: standard
 author: DNIF
+entity_type: workbooks
 blocks:
 - type: dql
   query: _fetch * from event where $Stream=THREAT  AND $Action=THREAT_DETECTED AND

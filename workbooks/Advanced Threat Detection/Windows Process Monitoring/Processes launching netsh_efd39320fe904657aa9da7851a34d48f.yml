@@ -4,6 +4,7 @@ path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
 type: standard
 author: DNIF
+entity_type: workbooks
 blocks:
 - type: sql
   query: SELECT $System,$Image,$User,$ParentCommandLine,$ParentImage, COUNT ($CommandLine)

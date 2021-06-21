@@ -4,6 +4,7 @@ path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
 type: auto-scheduled
 author: DNIF
+entity_type: workbooks
 blocks:
 - type: sql
   query: SELECT $System FROM SYSMON-PROCESS WHERE $Image LIKE '%fsutil.exe' AND $Commandline

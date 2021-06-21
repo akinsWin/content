@@ -4,6 +4,7 @@ path: /Basic Security Monitoring/Authentication Attacks
 description: ''
 type: auto-scheduled
 author: DNIF
+entity_type: workbooks
 blocks:
 - type: sql
   query: SELECT $User,$TargetUser, COUNT(DISTINCT($Action)) AS $CountAction FROM IAM

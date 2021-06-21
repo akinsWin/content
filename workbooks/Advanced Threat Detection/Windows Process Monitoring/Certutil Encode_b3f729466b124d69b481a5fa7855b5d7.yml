@@ -4,6 +4,7 @@ path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
 type: standard
 author: community
+entity_type: workbooks
 blocks:
 - type: text
   code: "|Author|References|\n                 |------|--------|\n               \
