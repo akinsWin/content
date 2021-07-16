@@ -1,0 +1,24 @@
+id: d4741a7cd3d54a3faa5f579ae17a67be
+name: Enumeration of Local Shares
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $User, $System, $CommandLine, $Image, $ParentImage FROM SYSMON-PROCESS
+    WHERE ($Image LIKE "%net.exe%" OR ($Image LIKE "%net1.exe%" AND NOT $ParentImage
+    LIKE "%net.exe%")) AND $CommandLine LIKE "%share%" GROUP BY $User, $System, $CommandLine,
+    $Image, $ParentImage
+- type: signal
+  DetectionName: Enumeration of Local Shares
+  DetectionTactic: Discovery
+  DetectionTechnique: Network Share Discovery
+  DetectionScore: '3'
+  DetectionSeverity: Low
+  DetectionConfidence: Low
+  SuspectUser: $User
+cron: null
+config:
+  parameters: []

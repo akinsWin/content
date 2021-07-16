@@ -1,0 +1,23 @@
+id: 81d84164e9d54fa485cb01a8bff35b53
+name: Enumeration using SMB and Powershell
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $User, $System, $CommandLine, $ParentCommandLine FROM SYSMON-PROCESS
+    WHERE ($ParentCommandLine LIKE "%powershell.exe%" AND $CommandLine LIKE "%get-SmbShare%")
+    GROUP BY $User, $System, $CommandLine, $ParentCommandLine
+- type: signal
+  DetectionName: Enumeration using SMB and Powershell
+  DetectionTactic: Discovery
+  DetectionTechnique: Network Share Discovery
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

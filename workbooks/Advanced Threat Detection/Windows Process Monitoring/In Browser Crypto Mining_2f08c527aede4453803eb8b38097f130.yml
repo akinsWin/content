@@ -1,0 +1,22 @@
+id: 2f08c527aede4453803eb8b38097f130
+name: /Advanced Threat Detection/Windows Process Monitoring
+path: /drafts
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT * FROM SYSMON-NETWORK WHERE ($Image LIKE "%iexplore%exe" OR $Image
+    LIKE "%chrome%exe%" OR $Image LIKE "firefox%exe%") AND $DstPort='3888'
+- type: signal
+  DetectionName: In Browser Crypto Mining
+  DetectionTactic: Impact
+  DetectionTechnique: Resource Hijacking
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  TargetUser: $User
+cron: null
+config:
+  parameters: []

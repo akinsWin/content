@@ -1,0 +1,25 @@
+id: 89d426e5840d44a4a0e3909967b96cf3
+name: Data writes from SMB shares
+path: /Advanced Threat Detection/Windows Network Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=SYSMON-NETWORK AND $DstPort IN [139,445]
+    group count_unique $Image,$User limit 100
+- type: dql
+  query: _fetch * from event where $Stream=SYSMON-PROCESS AND $Image IN [_Image_]
+    AND $CommandLine=*write* group count_unique $Image, $User limit 10
+- type: signal
+  DetectionName: Data writes from SMB shares
+  DetectionTactic: Collection
+  DetectionTechnique: Data from Network Shared Drive
+  DetectionScore: '6'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $User
+cron: null
+config:
+  parameters: []

@@ -1,0 +1,26 @@
+id: 1f24c5df16e0406d8376688e60fb5f7b
+name: Detection Of Malicious Automated Collection
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT * FROM SYSMON-PROCESS WHERE $Action='PROCESS_ADDED' AND ($ParentImage
+    LIKE "%cmd%" OR $ParentImage LIKE "%powershell%") AND ($Image LIKE "%findstr%exe%"
+    OR $Image LIKE "%sc%exe%" OR $Image LIKE "%wmic%exe%") AND ($CommandLine LIKE
+    "%findstr%\/e%" OR $CommandLine LIKE "%get%childitem%" OR $CommandLine LIKE "%Get%ChildItem%Recurse%"
+    OR $CommandLine LIKE "%Get%Service%" OR $CommandLine LIKE "%Get%process%" OR $CommandLine
+    LIKE "%query%" OR $CommandLine LiKE "%Process%list%" OR $CommandLine LIKE "%service%list%")
+- type: signal
+  DetectionName: Detection Of Malicious Automated Collection
+  DetectionTactic: Collection
+  DetectionTechnique: Automated Collection
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

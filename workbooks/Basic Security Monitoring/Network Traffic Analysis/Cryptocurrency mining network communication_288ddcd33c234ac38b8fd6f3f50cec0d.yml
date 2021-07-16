@@ -1,0 +1,22 @@
+id: 288ddcd33c234ac38b8fd6f3f50cec0d
+name: Cryptocurrency mining network communication
+path: /Basic Security Monitoring/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: 'SELECT * FROM FIREWALL WHERE $Action=''PACKET_ALLOWED'' AND $DstPort=''8333''
+    AND $Proto=''TCP'' '
+- type: signal
+  DetectionName: Cryptocurrency Mining Traffic Detected
+  DetectionTactic: Impact
+  DetectionTechnique: Resource Hijacking
+  DetectionScore: '3'
+  DetectionSeverity: Low
+  DetectionConfidence: Medium
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

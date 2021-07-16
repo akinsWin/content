@@ -1,0 +1,29 @@
+id: 8800334c1d054398ae3f8cc46082f899
+name: Solarwinds backdoor C2 host name detected
+path: /Advanced Threat Detection/Proxy Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT * FROM WEBFILTER WHERE $URL LIKE "%avsvmcloud%com%" OR $URL LIKE "%databasegalore%com%"
+    OR $URL LIKE "%deftsecurity%com%" OR $URL LIKE "%freescanonline%com%" OR $URL
+    LIKE "%panhardware%com%" OR $URL LIKE "%thedoccloud%com%" OR $URL LIKE "%incomeupdate%com%"
+    OR $URL LIKE "%zupertech%com%" OR $URL LIKE "%digitalcollege%org%" OR $URL LIKE
+    "%virtualdataserver%com%" OR $URL LIKE "%lcomputers%com%" OR $URL LIKE "%webcodez%com%"
+- type: text
+  code: This rule was converted from the FireEye hxioc DNS rules. This rule identifies
+    the Sunburst C2 channel used in the compromise.
+- type: signal
+  DetectionName: Solarwinds backdoor C2 host name detected
+  DetectionTactic: Initial Access
+  DetectionTechnique: Supply Chain Compromise
+  DetectionScore: '3'
+  DetectionSeverity: Low
+  DetectionConfidence: Low
+  SuspectHost: $SrcIP
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

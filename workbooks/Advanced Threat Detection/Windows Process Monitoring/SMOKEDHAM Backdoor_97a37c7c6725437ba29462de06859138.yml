@@ -1,0 +1,26 @@
+id: 97a37c7c6725437ba29462de06859138
+name: SMOKEDHAM Backdoor
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: text
+  code: "This rule detects Smoking Out a DARKSIDE Affiliate\u2019s Supply Chain Software\
+    \ Compromise"
+- type: sql
+  query: SELECT * FROM SYSMON-REGISTRY WHERE $Action='OBJECT_MODIFIED' AND $Image
+    LIKE "%smartpss%exe%" AND ($TargetObject LIKE "%HKCU%SOFTWARE%Microsoft%Windows%CurrentVersion%Run%v%WindNT%d%C%ProgramData%WindNT%VirtualHost%vbs%"
+    OR TargetObject LIKE "%HKCU%SOFTWARE%Microsoft%Windows%CurrentVersion%Run%v%ConhostNT%d%appdata%Chrome%winvnc%exe%")
+- type: signal
+  DetectionName: 'SMOKEDHAM Backdoor '
+  DetectionTactic: Initial Access
+  DetectionTechnique: Supply Chain Compromise
+  DetectionScore: '4'
+  DetectionSeverity: Medium
+  DetectionConfidence: Low
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

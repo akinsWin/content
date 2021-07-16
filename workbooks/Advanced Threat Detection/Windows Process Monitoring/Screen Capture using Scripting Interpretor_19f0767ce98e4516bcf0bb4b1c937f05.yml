@@ -1,0 +1,22 @@
+id: 19f0767ce98e4516bcf0bb4b1c937f05
+name: Screen Capture using Scripting Interpretor
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT * FROM SYSMON-PROCESS WHERE $Action='PROCESS_ADDED' AND ($ParentImage
+    LIKE "%powershell%" OR $ParentImage LIKE "%cmd%") AND $CommandLine LIKE "%psr%exe%"
+- type: signal
+  DetectionName: Screen Capture using Scripting Interpretor
+  DetectionTactic: Collection
+  DetectionTechnique: Screen Capture
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  TargetHost: $System
+cron: null
+config:
+  parameters: []
