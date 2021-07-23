@@ -1,7 +1,7 @@
 id: 3f231614bb8343278f56e08dd0987683
 name: Koadic Execution
 path: /Advanced Threat Detection/Windows Process Monitoring
-description: Detects command line parameters used by Koadic hack tool
+description: ''
 type: standard
 author: community
 entity_type: workbooks
@@ -10,13 +10,16 @@ blocks:
   code: "|Author|References|\n                 |------|--------|\n               \
     \  |wagga|https://unit42.paloaltonetworks.com/unit42-sofacy-groups-parallel-attacks/<br>https://github.com/zerosum0x0/koadic/blob/master/data/stager/js/stdlib.js#L955<br>https://blog.f-secure.com/hunting-for-koadic-a-com-based-rootkit/|"
 - type: sql
-  query: SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "%cmd.exe% /q /c chcp
-    %")
+  query: SELECT * FROM SYSMON-PROCESS WHERE $Image LIKE "%cmd%exe%" AND $CommandLine
+    LIKE "%q%c%chcp%"
 - type: signal
   DetectionName: Koadic Execution
   DetectionTactic: Execution
   DetectionTechnique: Command and Scripting Interpreter
   DetectionScore: 5
+  DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []

@@ -1,8 +1,7 @@
 id: 1b643a42e6e24ea5a3975e667cfce4ee
 name: RDP Over Reverse SSH Tunnel
 path: /Advanced Threat Detection/Windows Process Monitoring
-description: Detects svchost hosting RDP termsvcs communicating with the loopback
-  address and on TCP port 3389
+description: ''
 type: standard
 author: community
 entity_type: workbooks
@@ -11,13 +10,16 @@ blocks:
   code: "|Author|References|\n                 |------|--------|\n               \
     \  |Samir Bousseaden|https://twitter.com/SBousseaden/status/1096148422984384514|"
 - type: sql
-  query: SELECT * FROM SYSMON-NETWORK WHERE ($Image LIKE "%\\svchost.exe" AND $Action='NETWORK_CONNECTION'
-    AND $Status='PASSED' AND $SrcPort = "3389" AND ($DstIP='127.0.0.1%' OR $DstIP="::1"))
+  query: SELECT * FROM SYSMON-NETWORK WHERE ($Image LIKE "%svchost%exe%" AND $Action='NETWORK_CONNECTION'
+    AND $Status='PASSED' AND $SrcPort='3389' AND ($DstIP='127.0.0.1' OR $DstIP='::1'))
 - type: signal
   DetectionName: RDP Over Reverse SSH Tunnel
   DetectionTactic: Lateral Movement
   DetectionTechnique: Remote Services
   DetectionScore: 5
+  DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []

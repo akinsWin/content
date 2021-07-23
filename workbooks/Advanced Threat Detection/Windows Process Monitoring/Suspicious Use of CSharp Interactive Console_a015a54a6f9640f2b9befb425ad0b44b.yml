@@ -1,7 +1,7 @@
 id: a015a54a6f9640f2b9befb425ad0b44b
 name: Suspicious Use of CSharp Interactive Console
 path: /Advanced Threat Detection/Windows Process Monitoring
-description: Detects the execution of CSharp interactive console by PowerShell
+description: ''
 type: standard
 author: community
 entity_type: workbooks
@@ -10,13 +10,16 @@ blocks:
   code: "|Author|References|\n                 |------|--------|\n               \
     \  |Michael R. (@nahamike01)|https://redcanary.com/blog/detecting-attacks-leveraging-the-net-framework/|"
 - type: sql
-  query: SELECT * FROM SYSMON-PROCESS WHERE ($Image LIKE "%\\csi.exe" AND $ParentImage
-    LIKE "%\\powershell.exe" AND $OriginalFileName = "csi.exe")
+  query: SELECT * FROM SYSMON-PROCESS WHERE ($Image LIKE "%csi%exe%" AND $ParentImage
+    LIKE "%powershell%exe%" AND $OriginalFileName = "csi.exe")
 - type: signal
   DetectionName: Suspicious Use of CSharp Interactive Console
   DetectionTactic: Defense Evasion
   DetectionTechnique: Trusted Developer Utilities Proxy Execution
   DetectionScore: 5
+  DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []

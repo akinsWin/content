@@ -1,7 +1,7 @@
 id: 18a246f6da1c4b8cbebb6bdbb3126493
 name: RedMimicry Winnti Playbook Execute
 path: /Advanced Threat Detection/Windows Process Monitoring
-description: Detects actions caused by the RedMimicry Winnti playbook
+description: ''
 type: standard
 author: community
 entity_type: workbooks
@@ -10,14 +10,17 @@ blocks:
   code: "|Author|References|\n                 |------|--------|\n               \
     \  |Alexander Rausch|https://redmimicry.com|"
 - type: sql
-  query: SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%rundll32.exe%" OR $Image
-    LIKE "%cmd.exe%") AND ($CommandLine LIKE "%gthread-3.6.dll%" OR $CommandLine LIKE
-    "%\\Windows\\Temp\\tmp.bat%" OR $CommandLine LIKE "%sigcmm-2.4.dll%"))
+  query: SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%rundll32%exe%" OR $Image
+    LIKE "%cmd%exe%") AND ($CommandLine LIKE "%gthread%3%6%dll%" OR $CommandLine LIKE
+    "%Windows%Temp%tmp%bat%" OR $CommandLine LIKE "%sigcmm%2%4%dll%"))
 - type: signal
   DetectionName: RedMimicry Winnti Playbook Execute
   DetectionTactic: Defense Evasion
   DetectionTechnique: Signed Binary Proxy Execution
   DetectionScore: 5
+  DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []

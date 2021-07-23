@@ -1,11 +1,7 @@
 id: e943e85b1aa14da99e52dd8f1fccebf7
 name: Svchost DLL Search Order Hijack
 path: /Advanced Threat Detection/Windows Process Monitoring
-description: IKEEXT and SessionEnv service, as they call LoadLibrary on files that
-  do not exist within C:\Windows\System32\ by default. An attacker can place their
-  malicious logic within the PROCESS_ATTACH block of their library and restart the
-  aforementioned services "svchost.exe -k netsvcs" to gain code execution on a remote
-  machine.
+description: ''
 type: standard
 author: community
 entity_type: workbooks
@@ -14,14 +10,17 @@ blocks:
   code: "|Author|References|\n                 |------|--------|\n               \
     \  |SBousseaden|https://posts.specterops.io/lateral-movement-scm-and-dll-hijacking-primer-d2f61e8ab992|"
 - type: sql
-  query: SELECT * FROM SYSMON-IMAGE-LOAD WHERE ((($Image LIKE "%\\svchost.exe") AND
-    ($ImageLoaded LIKE "%\\tsmsisrv.dll" OR $ImageLoaded LIKE "%\\tsvipsrv.dll" OR
-    $ImageLoaded LIKE "%\\wlbsctrl.dll")) AND NOT (($ImageLoaded LIKE "C:\\Windows\\WinSxS\\%")))
+  query: SELECT * FROM SYSMON-IMAGE-LOAD WHERE ((($Image LIKE "%svchost%exe%") AND
+    ($ImageLoaded LIKE "%tsmsisrv%dll%" OR $ImageLoaded LIKE "%tsvipsrv%dll%" OR $ImageLoaded
+    LIKE "%wlbsctrl%dll%")) AND NOT ($ImageLoaded LIKE "%C%Windows%WinSxS%"))
 - type: signal
   DetectionName: Svchost DLL Search Order Hijack
   DetectionTactic: Persistence
   DetectionTechnique: Hijack Execution Flow
   DetectionScore: 5
+  DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []

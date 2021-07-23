@@ -1,7 +1,7 @@
 id: 2ba23c0b754145b489ddb990cf3b6cdc
 name: Grabbing Sensitive Hives via Reg Utility
 path: /Advanced Threat Detection/Windows Process Monitoring
-description: Dump sam, system or security hives using REG.exe utility
+description: ''
 type: standard
 author: community
 entity_type: workbooks
@@ -10,15 +10,19 @@ blocks:
   code: "|Author|References|\n                 |------|--------|\n               \
     \  |Teymur Kheirkhabarov, Endgame, JHasenbusch, Daniil Yugoslavskiy, oscd.community|https://www.slideshare.net/heirhabarov/hunting-for-credentials-dumping-in-windows-environment<br>https://eqllib.readthedocs.io/en/latest/analytics/aed95fc6-5e3f-49dc-8b35-06508613f979.html<br>https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1003/T1003.md|"
 - type: sql
-  query: SELECT * FROM SYSMON-PROCESS WHERE ($Image LIKE "%\\reg.exe" AND ($CommandLine
-    LIKE "%save%" OR $CommandLine LIKE "%export%") AND ($CommandLine LIKE "%hklm%"
-    OR $CommandLine LIKE "%hkey\_local\_machine%") AND ($CommandLine LIKE "%\\system"
-    OR $CommandLine LIKE "%\\sam" OR $CommandLine LIKE "%\\security"))
+  query: SELECT $System, $Image, $CommandLine FROM SYSMON-PROCESS WHERE ($Image LIKE
+    "%reg%exe%" AND ($CommandLine LIKE "%save%" OR $CommandLine LIKE "%export%") AND
+    ($CommandLine LIKE "%hklm%" OR $CommandLine LIKE "%hkey%local%machine%") AND ($CommandLine
+    LIKE "%system%" OR $CommandLine LIKE "%sam%" OR $CommandLine LIKE "%security%"))
+    GROUP BY $System, $Image, $CommandLine
 - type: signal
   DetectionName: Grabbing Sensitive Hives via Reg Utility
   DetectionTactic: Credential Access
   DetectionTechnique: OS Credential Dumping
   DetectionScore: 5
-  DetectionConfidence: Low
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []

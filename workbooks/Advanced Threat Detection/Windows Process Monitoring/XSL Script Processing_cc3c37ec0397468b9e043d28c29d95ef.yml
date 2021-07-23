@@ -1,10 +1,7 @@
 id: cc3c37ec0397468b9e043d28c29d95ef
 name: XSL Script Processing
 path: /Advanced Threat Detection/Windows Process Monitoring
-description: Extensible Stylesheet Language (XSL) files are commonly used to describe
-  the processing and rendering of data within XML files, rule detects when adversaries
-  abuse this functionality to execute arbitrary files while potentially bypassing
-  application whitelisting defenses
+description: ''
 type: standard
 author: community
 entity_type: workbooks
@@ -13,13 +10,16 @@ blocks:
   code: "|Author|References|\n                 |------|--------|\n               \
     \  |Timur Zinniatullin, oscd.community|https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1220/T1220.yaml|"
 - type: sql
-  query: SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%\\wmic.exe" AND $CommandLine
-    LIKE "%/format%") OR $Image LIKE "%\\msxsl.exe")
+  query: SELECT * FROM SYSMON-PROCESS WHERE ($Image LIKE "%WMIC%exe%" AND $CommandLine
+    LIKE "%FORMAT%") OR $Image LIKE "%msxsl%exe%"
 - type: signal
   DetectionName: XSL Script Processing
   DetectionTactic: Defense Evasion
   DetectionTechnique: XSL Script Processing
   DetectionScore: 5
-  DetectionConfidence: Low
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []

@@ -21,4 +21,5 @@ blocks:
   DetectionScore: 5
   DetectionConfidence: Low
   TargetHost: $System
+cron: null
 config: {}

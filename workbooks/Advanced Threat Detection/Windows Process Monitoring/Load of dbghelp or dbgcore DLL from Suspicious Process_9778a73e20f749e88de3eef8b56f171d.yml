@@ -1,0 +1,34 @@
+id: 9778a73e20f749e88de3eef8b56f171d
+name: Load of dbghelp or dbgcore DLL from Suspicious Process
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Perez Diego (@darkquassar), oscd.community, Ecco|https://docs.microsoft.com/en-us/windows/win32/api/minidumpapiset/nf-minidumpapiset-minidumpwritedump<br>https://www.pinvoke.net/default.aspx/dbghelp/MiniDumpWriteDump.html<br>https://medium.com/@fsx30/bypass-edrs-memory-protection-introduction-to-hooking-2efb21acffd6|"
+- type: sql
+  query: SELECT $System, $Image, $ImageLoaded FROM SYSMON-IMAGE-LOAD WHERE (((($ImageLoaded
+    LIKE "%dbghelp%dll%" OR $ImageLoaded LIKE "%dbgcore%dll%") AND ($Image LIKE "%msbuild%exe%"
+    OR $Image LIKE "%cmd%exe%" OR $Image LIKE "%svchost%exe%" OR $Image LIKE "%rundll32%exe%"
+    OR $Image LIKE "%powershell%exe%" OR $Image LIKE "%word%exe%" OR $Image LIKE "%excel%exe%"
+    OR $Image LIKE "%powerpnt%exe%" OR $Image LIKE "%outlook%exe%" OR $Image LIKE
+    "%monitoringhost%exe%" OR $Image LIKE "%wmic%exe%" OR $Image LIKE "%bash%exe%"
+    OR $Image LIKE "%wscript%exe%" OR $Image LIKE "%cscript%exe%" OR $Image LIKE "%mshta%exe%"
+    OR $Image LIKE "%regsvr32%exe%" OR $Image LIKE "%schtasks%exe%" OR $Image LIKE
+    "%dnx%exe%" OR $Image LIKE "%regsvcs%exe%" OR $Image LIKE "%sc%exe%" OR $Image
+    LIKE "%scriptrunner%exe%")) AND NOT ($Image LIKE "%Visual%Studio%")) AND $Signed
+    ='FALSE ') GROUP BY $System, $Image, $ImageLoaded
+- type: signal
+  DetectionName: Load of dbghelp/dbgcore DLL from Suspicious Process
+  DetectionTactic: Credential Access
+  DetectionTechnique: OS Credential Dumping
+  DetectionScore: 5
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

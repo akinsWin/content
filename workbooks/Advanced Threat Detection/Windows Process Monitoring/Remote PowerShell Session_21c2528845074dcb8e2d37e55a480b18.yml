@@ -1,8 +1,7 @@
 id: 21c2528845074dcb8e2d37e55a480b18
 name: Remote PowerShell Session
 path: /Advanced Threat Detection/Windows Process Monitoring
-description: Detects remote PowerShell sections by monitoring for wsmprovhost as a
-  parent or child process (sign of an active ps remote session)
+description: ''
 type: standard
 author: community
 entity_type: workbooks
@@ -11,13 +10,17 @@ blocks:
   code: "|Author|References|\n                 |------|--------|\n               \
     \  |Roberto Rodriguez @Cyb3rWard0g|https://github.com/Cyb3rWard0g/ThreatHunter-Playbook/tree/master/playbooks/windows/02_execution/T1086_powershell/powershell_remote_session.md|"
 - type: sql
-  query: SELECT * FROM SYSMON-PROCESS WHERE ($Image LIKE "%\\wsmprovhost.exe" OR $ParentImage
-    LIKE "%\\wsmprovhost.exe")
+  query: 'SELECT * FROM SYSMON-PROCESS WHERE ($Image LIKE "%wsmprovhost%exe%" OR $ParentImage
+    LIKE "%wsmprovhost%exe%") '
 - type: signal
   DetectionName: Remote PowerShell Session
   DetectionTactic: Execution
   DetectionTechnique: Command and Scripting Interpreter
-  DetectionScore: 5
-  DetectionConfidence: Low
+  DetectionScore: '6'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $User
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []

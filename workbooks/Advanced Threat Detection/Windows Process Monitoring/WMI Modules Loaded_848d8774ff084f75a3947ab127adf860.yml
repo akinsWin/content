@@ -1,7 +1,7 @@
 id: 848d8774ff084f75a3947ab127adf860
 name: WMI Modules Loaded
 path: /Advanced Threat Detection/Windows Process Monitoring
-description: Detects non wmiprvse loading WMI modules
+description: ''
 type: standard
 author: community
 entity_type: workbooks
@@ -10,21 +10,23 @@ blocks:
   code: "|Author|References|\n                 |------|--------|\n               \
     \  |Roberto Rodriguez @Cyb3rWard0g|https://github.com/Cyb3rWard0g/ThreatHunter-Playbook/tree/master/playbooks/windows/02_execution/T1047_windows_management_instrumentation/wmi_wmi_module_load.md|"
 - type: sql
-  query: SELECT * FROM SYSMON-IMAGE-LOAD WHERE (($ImageLoaded LIKE "%\\wmiclnt.dll"
-    OR $ImageLoaded LIKE "%\\WmiApRpl.dll" OR $ImageLoaded LIKE "%\\wmiprov.dll" OR
-    $ImageLoaded LIKE "%\\wmiutils.dll" OR $ImageLoaded LIKE "%\\wbemcomn.dll" OR
-    $ImageLoaded LIKE "%\\wbemprox.dll" OR $ImageLoaded LIKE "%\\WMINet\_Utils.dll"
-    OR $ImageLoaded LIKE "%\\wbemsvc.dll" OR $ImageLoaded LIKE "%\\fastprox.dll")
-    AND NOT (($Image LIKE "%\\WmiPrvSe.exe" OR $Image LIKE "%\\WmiAPsrv.exe" OR $Image
-    LIKE "%\\svchost.exe" OR $Image LIKE "%\\DeviceCensus.exe" OR $Image LIKE "%\\CompatTelRunner.exe"
-    OR $Image LIKE "%\\sdiagnhost.exe" OR $Image LIKE "%\\SIHClient.exe" OR $Image
-    LIKE "%\\ngentask.exe" OR $Image LIKE "%\\windows\\system32\\taskhostw.exe" OR
-    $Image LIKE "%\\windows\\system32\\MoUsoCoreWorker.exe")))
+  query: SELECT * FROM SYSMON-IMAGE-LOAD WHERE ($ImageLoaded LIKE "%wmiclnt.dll" OR
+    $ImageLoaded LIKE "%WmiApRpl.dll" OR $ImageLoaded LIKE "%wmiprov.dll" OR $ImageLoaded
+    LIKE "%wmiutils.dll" OR $ImageLoaded LIKE "%wbemcomn.dll" OR $ImageLoaded LIKE
+    "%wbemprox.dll" OR $ImageLoaded LIKE "%WMINet\_Utils.dll" OR $ImageLoaded LIKE
+    "%wbemsvc.dll" OR $ImageLoaded LIKE "%fastprox.dll") AND NOT ($Image LIKE "%WmiPrvSE.exe"
+    OR $Image LIKE "%WmiAPsrv.exe" OR $Image LIKE "%svchost.exe" OR $Image LIKE "%DeviceCensus.exe"
+    OR $Image LIKE "%CompatTelRunner.exe" OR $Image LIKE "%sdiagnhost.exe%" OR $Image
+    LIKE "%SIHClient%exe%" OR $Image LIKE "%ngentask%exe%" OR $Image LIKE "%windows%system32%taskhostw%exe%"
+    OR $Image LIKE "%windows%system32%MoUsoCoreWorker%exe%")
 - type: signal
   DetectionName: WMI Modules Loaded
   DetectionTactic: Execution
   DetectionTechnique: Windows Management Instrumentation
   DetectionScore: 5
-  DetectionConfidence: Low
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []

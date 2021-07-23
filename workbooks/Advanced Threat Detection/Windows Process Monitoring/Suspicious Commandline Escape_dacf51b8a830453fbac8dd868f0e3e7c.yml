@@ -1,7 +1,7 @@
 id: dacf51b8a830453fbac8dd868f0e3e7c
 name: Suspicious Commandline Escape
 path: /Advanced Threat Detection/Windows Process Monitoring
-description: Detects suspicious process that use escape characters
+description: ''
 type: standard
 author: community
 entity_type: workbooks
@@ -10,13 +10,16 @@ blocks:
   code: "|Author|References|\n                 |------|--------|\n               \
     \  |juju4|https://twitter.com/vysecurity/status/885545634958385153<br>https://twitter.com/Hexacorn/status/885553465417756673<br>https://twitter.com/Hexacorn/status/885570278637678592<br>https://www.fireeye.com/blog/threat-research/2017/06/obfuscation-in-the-wild.html<br>http://www.windowsinspired.com/understanding-the-command-line-string-and-arguments-received-by-a-windows-program/|"
 - type: sql
-  query: SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "%h^t^t^p%" OR $CommandLine
-    LIKE "%h"t"t"p%")
+  query: SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "%h\^t\^t\^p%" OR $CommandLine
+    LIKE "%h\"t\"t\"p%")
 - type: signal
   DetectionName: Suspicious Commandline Escape
   DetectionTactic: Defense Evasion
   DetectionTechnique: Deobfuscate/Decode Files or Information
   DetectionScore: 5
+  DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []

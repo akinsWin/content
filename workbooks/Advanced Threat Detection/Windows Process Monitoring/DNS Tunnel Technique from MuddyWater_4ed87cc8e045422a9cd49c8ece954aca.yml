@@ -1,7 +1,7 @@
 id: 4ed87cc8e045422a9cd49c8ece954aca
 name: DNS Tunnel Technique from MuddyWater
 path: /Advanced Threat Detection/Windows Process Monitoring
-description: Detecting DNS tunnel activity for Muddywater actor
+description: ''
 type: standard
 author: community
 entity_type: workbooks
@@ -10,13 +10,16 @@ blocks:
   code: "|Author|References|\n                 |------|--------|\n               \
     \  |@caliskanfurkan_|https://www.virustotal.com/gui/file/5ad401c3a568bd87dd13f8a9ddc4e450ece61cd9ce4d1b23f68ce0b1f3c190b7/<br>https://www.vmray.com/analyses/5ad401c3a568/report/overview.html|"
 - type: sql
-  query: SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%\\powershell.exe") AND
-    ($ParentImage LIKE "%\\excel.exe") AND ($CommandLine LIKE "%DataExchange.dll%"))
+  query: SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%powershell.exe") AND ($ParentImage
+    LIKE "%excel.exe") AND ($CommandLine LIKE "%DataExchange.dll%"))
 - type: signal
   DetectionName: DNS Tunnel Technique from MuddyWater
   DetectionTactic: Command and Control
   DetectionTechnique: Application Layer Protocol
   DetectionScore: 5
+  DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []

@@ -1,7 +1,7 @@
 id: 4c96a210bbcf4c9198fe4f851e2dcd1e
 name: CLR DLL Loaded Via Office Applications
 path: /Advanced Threat Detection/Windows Process Monitoring
-description: Detects CLR DLL being loaded by an Office Product
+description: ''
 type: standard
 author: community
 entity_type: workbooks
@@ -10,14 +10,18 @@ blocks:
   code: "|Author|References|\n                 |------|--------|\n               \
     \  |Antonlovesdnb|https://medium.com/threatpunter/detecting-adversary-tradecraft-with-image-load-event-logging-and-eql-8de93338c16|"
 - type: sql
-  query: SELECT * FROM SYSMON-IMAGE-LOAD WHERE (($Image LIKE "%\\winword.exe" OR $Image
-    LIKE "%\\powerpnt.exe" OR $Image LIKE "%\\excel.exe" OR $Image LIKE "%\\outlook.exe")
-    AND ($ImageLoaded LIKE "%\\clr.dll%"))
+  query: SELECT $System, $Image, $ImageLoaded FROM SYSMON-IMAGE-LOAD WHERE (($Image
+    LIKE "%winword%exe%" OR $Image LIKE "%powerpnt%exe%" OR $Image LIKE "%excel%exe"
+    OR $Image LIKE "%outlook%exe%") AND ($ImageLoaded LIKE "%clr%dll%")) GROUP BY  $System,
+    $Image, $ImageLoaded
 - type: signal
   DetectionName: CLR DLL Loaded Via Office Applications
   DetectionTactic: Execution
   DetectionTechnique: User Execution
   DetectionScore: 5
-  DetectionConfidence: Low
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []
