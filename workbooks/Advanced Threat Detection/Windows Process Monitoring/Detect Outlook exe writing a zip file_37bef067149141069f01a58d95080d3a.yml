@@ -1,0 +1,20 @@
+id: 37bef067149141069f01a58d95080d3a
+name: Detect Outlook exe writing a zip file
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: auto-scheduled
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $System FROM SYSMON-FILE WHERE $TargetFileName LIKE "%.lnk%" OR $Image
+    LIKE "%.zip%" AND ($TargetFileName LIKE "%Users%" OR $TargetFileName LIKE "%Local%Temp%")
+    AND $Image LIKE "%outlook.exe%" GROUP BY $System
+- type: signal
+  DetectionName: Detect Outlook exe writing a zip file
+  DetectionTactic: Initial access
+  DetectionTechnique: Phishing
+  DetectionScore: 5
+  DetectionConfidence: Medium
+  TargetHost: $System
+config: {}

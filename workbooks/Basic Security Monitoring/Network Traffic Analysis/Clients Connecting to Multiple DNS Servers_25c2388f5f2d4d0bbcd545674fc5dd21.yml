@@ -1,0 +1,19 @@
+id: 25c2388f5f2d4d0bbcd545674fc5dd21
+name: Clients Connecting to Multiple DNS Servers
+path: /Basic Security Monitoring/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcIP, COUNT(DISTINCT($DstIP)) AS $DistinctDNSServers FROM FIREWALL
+    WHERE $DstPort='53' GROUP BY $SrcIP HAVING $DistinctDNSServers > 5
+- type: signal
+  DetectionName: Clients Connecting to Multiple DNS Servers
+  DetectionTactic: Exfiltration
+  DetectionTechnique: Exfiltration Over Alternative Protocol
+  DetectionScore: 3
+  DetectionConfidence: Low
+  SuspectHost: $SrcIP
+config: {}

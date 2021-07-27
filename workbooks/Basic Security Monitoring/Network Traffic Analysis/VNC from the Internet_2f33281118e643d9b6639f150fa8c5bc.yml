@@ -1,0 +1,25 @@
+id: 2f33281118e643d9b6639f150fa8c5bc
+name: VNC from the Internet
+path: /Basic Security Monitoring/Network Traffic Analysis
+description: This rule detects network events that may indicate the use of VNC traffic
+  from the Internet. VNC is commonly used by system administrators to remotely control
+  a system for maintenance or to use shared resources. It should almost never be directly
+  exposed to the Internet, as it is frequently targeted and exploited by threat actors
+  as an initial access or back-door vector.
+type: auto-scheduled
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcIP, COUNT($DstIP) AS $CountDstIP FROM FIREWALL WHERE $DstPort
+    BETWEEN 5800 AND 5810 AND $Proto='TCP' AND $SrcType='PUBLIC' AND $DstType='PRIVATE'
+    GROUP BY $DstIP,$SrcIP
+- type: signal
+  DetectionName: VNC from the Internet
+  DetectionTactic: Initial Access
+  DetectionTechnique: Exploit Public-Facing Application
+  DetectionScore: 5
+  DetectionConfidence: Low
+  SuspectHost: $SrcIP
+  TargetHost: $DstIP
+config: {}

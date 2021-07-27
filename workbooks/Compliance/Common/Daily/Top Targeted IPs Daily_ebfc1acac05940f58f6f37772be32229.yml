@@ -1,0 +1,12 @@
+id: ebfc1acac05940f58f6f37772be32229
+name: Top Targeted IPs Daily
+path: /Compliance/Common/Daily
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=THREAT AND $Duration=1d AND $DstType=PRIVATE
+    group count_unique $Threat, $DstIP limit 10
+config: {}

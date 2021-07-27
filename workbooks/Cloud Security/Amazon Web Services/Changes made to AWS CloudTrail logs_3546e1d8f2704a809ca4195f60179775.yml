@@ -1,0 +1,23 @@
+id: 3546e1d8f2704a809ca4195f60179775
+name: Changes made to AWS CloudTrail logs
+path: /Cloud Security/Amazon Web Services
+description: ''
+type: auto-scheduled
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $EventSource, $SrcIP,$User FROM CLOUDTRAIL WHERE ($EventName='UpdateTrail'
+    OR $EventName='DeleteTrail' OR $EventName='StopLogging' OR $EventName='DeleteFlowLogs'
+    OR $EventName='DeleteEventBus') AND $SrcIP IS NOT NULL AND $User IS NOT NULL AND
+    $EventSource IS NOT NULL GROUP BY $EventSource, $SrcIP, $User
+- type: signal
+  DetectionName: Changes made to AWS CloudTrail logs
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Indicator Removal on Host
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $User
+  TargetHost: $EventSource
+config: {}

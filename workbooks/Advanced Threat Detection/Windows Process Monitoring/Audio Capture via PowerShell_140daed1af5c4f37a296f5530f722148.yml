@@ -1,0 +1,26 @@
+id: 140daed1af5c4f37a296f5530f722148
+name: Audio Capture via PowerShell
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |E.M. Anhaus (orignally from Atomic Blue Detections, Endgame), oscd.community|https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1123/T1123.yaml<br>https://eqllib.readthedocs.io/en/latest/analytics/ab7a6ef4-0983-4275-a4f1-5c6bd3c31c23.html|"
+- type: sql
+  query: SELECT * FROM SYSMON-PROCESS WHERE $Image LIKE "%powershell%" AND $CommandLine
+    LIKE "%WindowsAudioDevice-Powershell-Cmdlet%" AND $Action='PROCESS_ADDED'
+- type: signal
+  DetectionName: Audio Capture via PowerShell
+  DetectionTactic: Collection
+  DetectionTechnique: Audio Capture
+  DetectionScore: 5
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $User
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

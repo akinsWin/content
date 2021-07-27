@@ -1,0 +1,13 @@
+id: 26f784e735674688a9c33b32fb3ab797
+name: Unsuccessful TELNET Logins Monthly
+path: /Compliance/FISMA/Monthly
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Action=LOGIN AND $Status=FAILED
+    AND $Duration=1M AND $AuthProto=TELNET group count_unique $System, $SrcIP, $User
+    limit 100
+config: {}

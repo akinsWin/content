@@ -1,0 +1,13 @@
+id: 44bd22fe14dc4e24b20b15762313f275
+name: Unsuccessful Mail Logins Monthly
+path: /Compliance/Common/Monthly
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Action=LOGIN AND $Status=FAILED
+    AND $Duration=1M AND $SourceType=OFFICE group count_unique $System, $srcIP, $User
+    limit 100
+config: {}

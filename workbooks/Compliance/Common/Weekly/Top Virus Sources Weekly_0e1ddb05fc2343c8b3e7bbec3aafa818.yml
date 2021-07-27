@@ -1,0 +1,12 @@
+id: 0e1ddb05fc2343c8b3e7bbec3aafa818
+name: Top Virus Sources Weekly
+path: /Compliance/Common/Weekly
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=THREAT AND $Action=THREAT_DETECTED AND
+    $Duration=7d  group count_unique $SrcIP , $Threat limit 10
+config: {}

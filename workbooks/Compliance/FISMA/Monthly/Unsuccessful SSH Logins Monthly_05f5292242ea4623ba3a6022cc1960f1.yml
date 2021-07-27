@@ -1,0 +1,13 @@
+id: 05f5292242ea4623ba3a6022cc1960f1
+name: Unsuccessful SSH Logins Monthly
+path: /Compliance/FISMA/Monthly
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event $Stream=AUTHENTICATION where $AuthProto=SSH AND $Duration=1M
+    AND $Action=LOGIN AND $Status=FAILED  group count_unique $System, $SrcIP, $User
+    limit 200
+config: {}

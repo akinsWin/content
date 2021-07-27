@@ -1,0 +1,29 @@
+id: 79bc0f76eb7245d1ad94c9dbe2d8154b
+name: Suspicious Eventlog Clear or Configuration Using Wevtutil
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Ecco, Daniil Yugoslavskiy, oscd.community|https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1070/T1070.yaml<br>https://eqllib.readthedocs.io/en/latest/analytics/5b223758-07d6-4100-9e11-238cfdd0fe97.html|"
+- type: sql
+  query: SELECT * FROM SYSMON-PROCESS WHERE ((($Image LIKE "%powershell%exe%" AND
+    ($CommandLine LIKE "%Clear%EventLog%" OR $CommandLine LIKE "%Remove%EventLog%"
+    OR $CommandLine LIKE "%Limit%EventLog%")) OR ($Image LIKE "%wmic%exe%" AND $CommandLine
+    LIKE "%ClearEventLog%")) OR ($Image LIKE "%wevtutil%exe%" AND ($CommandLine LIKE
+    "%clear%log%" OR $CommandLine LIKE "%cl%" OR $CommandLine LIKE "%set%log%" OR
+    $CommandLine LIKE "%sl%")))
+- type: signal
+  DetectionName: Suspicious Eventlog Clear or Configuration Using Wevtutil
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Indicator Removal on Host
+  DetectionScore: 5
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

@@ -1,0 +1,20 @@
+id: ae832c35781a4acd9a3be63adbdf047f
+name: Azure Storage Account Key Regenerated
+path: /Cloud Security/Azure
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $OperationName, $User, $Status FROM AZURE WHERE $OperationName='MICROSOFT.STORAGE/STORAGEACCOUNTS/REGENERATEKEY/ACTION'
+    AND $Status='Succeeded' GROUP BY $OperationName, $User, $Status
+- type: signal
+  DetectionName: Azure Storage Account Key Regenerated
+  DetectionTactic: Credential Access
+  DetectionTechnique: Steal Application Access Token
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Low
+  SuspectUser: $User
+config: {}

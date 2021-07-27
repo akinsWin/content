@@ -1,0 +1,22 @@
+id: 422b14e9dcfd4d9b83fac783020d684c
+name: Authentication Activity from Source
+path: /Visualization/Authentication Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=1h group count_unique
+    $SrcCN limit 10000
+- type: visual
+  data:
+    widget_name: Authentication Events by Source Country
+    chart_type: geoMap
+    config:
+      type: default
+      key:
+      - $SrcCN
+      - null
+      value: count_unique
+config: {}

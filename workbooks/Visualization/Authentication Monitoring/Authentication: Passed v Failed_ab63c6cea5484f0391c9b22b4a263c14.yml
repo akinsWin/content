@@ -1,0 +1,23 @@
+id: ab63c6cea5484f0391c9b22b4a263c14
+name: 'Authentication: Passed v Failed'
+path: /Visualization/Authentication Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=5m group count_unique
+    $Status limit 100
+- type: visual
+  data:
+    widget_name: Passed vs Failed
+    chart_type: pie
+    config:
+      type: default
+      key:
+      - $Status
+      - null
+      value: count_unique
+config:
+  parameters: []

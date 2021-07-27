@@ -1,0 +1,36 @@
+id: 0dbf5ad018a94be19d7825734e72ce28
+name: Outlier FTP connection patterns by a user
+path: /Basic Security Monitoring/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: ai
+  data:
+    contamination_factor: 0.001
+    result_condition:
+      only_anomaly: true
+      return_graph_result: true
+    query_data:
+      stream: SYSMON-NETWORK
+      entity: $User
+      feature_list:
+      - distinct: $System
+      - distinct: $DstIP
+      filter_list:
+      - field: $DstPort
+        value: '21'
+        operator: '='
+      duration: 1M
+- type: signal
+  DetectionName: Outlier FTP connection patterns by a user
+  DetectionTactic: Lateral Movement
+  DetectionTechnique: Lateral Tool Transfer
+  DetectionScore: '6'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: ''
+cron: null
+config:
+  parameters: []

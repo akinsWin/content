@@ -1,0 +1,20 @@
+id: cbef665c7c6e43ab81cd7e2a734796bb
+name: Virtual Network Deleted
+path: /Cloud Security/Azure
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: Select $OperationName, $User, $Status FROM AZURE WHERE $OperationName='Microsoft.Network/virtualNetworks/delete'
+    AND $Status='Succeeded' GROUP BY $OperationName, $User, $Status
+- type: signal
+  DetectionName: Virtual Network Deleted
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Impair Defenses
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Low
+  SuspectUser: $User
+config: {}

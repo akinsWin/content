@@ -1,0 +1,12 @@
+id: 8be3d2d112a04549a575d56a75858786
+name: Top Virus Destinations Weekly
+path: /Compliance/Common/Weekly
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=THREAT AND $Action=THREAT_DETECTED AND
+    $Duration=7d group count_unique $DstIP, $Threat  limit 10
+config: {}

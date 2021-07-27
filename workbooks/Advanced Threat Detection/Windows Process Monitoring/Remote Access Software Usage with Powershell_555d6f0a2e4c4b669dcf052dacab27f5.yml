@@ -1,0 +1,24 @@
+id: 555d6f0a2e4c4b669dcf052dacab27f5
+name: Remote Access Software Usage with Powershell
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $User, $System, $CommandLine, $ParentCommandLine FROM SYSMON-PROCESS
+    WHERE ($ParentCommandLine LIKE "%powershell.exe%" AND ($CommandLine LIKE "%TeamViewer%"
+    OR $CommandLine LIKE "%AnyDesk%" OR $CommandLine LIKE "%LMIIgnition%" OR $CommandLine
+    LIKE "%VNC%" OR $CommandLine LIKE "%AmmyyAdmin%")) GROUP BY $User, $System, $CommandLine,
+    $ParentCommandLine
+- type: signal
+  DetectionName: Remote Access Software Usage with Powershell
+  DetectionTactic: Command and Control
+  DetectionTechnique: Remote Access Software
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  TargetHost: $System
+config:
+  parameters: []

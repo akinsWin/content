@@ -1,0 +1,20 @@
+id: f5424a037c2e46d382a20b85f1db6ea0
+name: Recent Logins
+path: /Investigate/User
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $System,$SrcIP,$SrcCn FROM AUTHENTICATION WHERE $User={{User}} AND
+    $Action='LOGIN' AND $System IS NOT NULL AND $SrcIP IS NOT NULL AND $SrcCN IS NOT
+    NULL AND $Status='PASSED' AND $Duration=1h GROUP BY $System, $SrcIP, $SrcCn
+config:
+  parameters:
+  - fixed: false
+    name: User
+    query: ''
+    queryFieldValue: []
+    type: Text
+    value: '-'

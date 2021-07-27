@@ -1,0 +1,19 @@
+id: 67e6af7a2c734f65b3bc01aaa62a863e
+name: Socat Process Activity
+path: /Advanced Threat Detection/Linux Process Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $ProcessName,$System  FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
+    $ProcessName='socat' AND $ProcessArgs='-V' GROUP BY $ProcessName,$System
+- type: signal
+  DetectionName: Socat Process Activity
+  DetectionTactic: Persistence
+  DetectionTechnique: Event Triggered Execution
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

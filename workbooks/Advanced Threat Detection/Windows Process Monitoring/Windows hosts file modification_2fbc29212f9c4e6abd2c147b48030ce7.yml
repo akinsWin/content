@@ -1,0 +1,20 @@
+id: 2fbc29212f9c4e6abd2c147b48030ce7
+name: Windows hosts file modification
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=SYSMON-FILE AND $TargetFilename=*hosts*
+    AND $Image=*Windows*System32* group count_unique $User, $Image, $TargetFilename,
+    $System limit 1
+- type: signal
+  DetectionName: Windows hosts file modification
+  DetectionTactic: Discovery
+  DetectionTechnique: Remote System Discovery
+  DetectionScore: 5
+  DetectionSeverity: ''
+  DetectionConfidence: Low
+  TargetHost: $System

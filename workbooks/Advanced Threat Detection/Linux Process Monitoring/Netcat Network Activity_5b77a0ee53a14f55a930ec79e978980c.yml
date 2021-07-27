@@ -1,0 +1,20 @@
+id: 5b77a0ee53a14f55a930ec79e978980c
+name: Netcat Network Activity
+path: /Advanced Threat Detection/Linux Process Monitoring
+description: ''
+type: auto-scheduled
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $ProcessName,$System  FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
+    ($ProcessName='nc' OR $ProcessName='ncat' OR $ProcessName='netcat' OR $ProcessName='netcat.openbsd'
+    OR $ProcessName='netcat.traditional') GROUP BY $ProcessName,$System
+- type: signal
+  DetectionName: Netcat Network Activity
+  DetectionTactic: Discovery
+  DetectionTechnique: System Network Connections Discovery
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

@@ -1,0 +1,26 @@
+id: 316a27a1776c4a8bbf221ef2494751ad
+name: Lazarus Session Highjacker
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Trent Liffick (@tliffick)|https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2018/03/07180244/Lazarus_Under_The_Hood_PDF_final.pdf|"
+- type: sql
+  query: SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%mstdc%exe%" OR $Image
+    LIKE "%gpvc%exe%") AND NOT ($Image LIKE "%C%Windows%System32%%" OR $Image LIKE
+    "%C%Windows%SysWOW64%"))
+- type: signal
+  DetectionName: Lazarus Session Highjacker
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Masquerading
+  DetectionScore: 5
+  DetectionSeverity: Medium
+  DetectionConfidence: Low
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

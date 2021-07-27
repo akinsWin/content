@@ -1,0 +1,106 @@
+id: 373500717cb14066acec1ecde2b21735
+name: IAM Monitoring
+description: ''
+author: DNIF
+entity_type: dashboards
+path: /drafts
+config:
+  blocks: []
+  pollingInterval: 60
+data:
+- taskid: 0
+  visualBlockNum: 1
+  workbook_id: de2a8d20668c45faaac61519f8cdd481
+  path: /Visualization/IAM Monitoring
+  name: Top Systems
+  visual_no: 0
+  pollingInterval: 60
+  position:
+    w: 6
+    h: 2
+    x: 0
+    y: 2
+    i: '0'
+    minW: 2
+    maxW: 12
+    minH: 2
+    maxH: 12
+    moved: false
+    static: false
+- taskid: 0
+  visualBlockNum: 1
+  workbook_id: 319d246c516f466393a0b35c8171cfa8
+  path: /Visualization/IAM Monitoring
+  name: Top Users Creating Accounts
+  visual_no: 1
+  pollingInterval: 60
+  position:
+    w: 6
+    h: 2
+    x: 6
+    y: 2
+    i: '1'
+    minW: 2
+    maxW: 12
+    minH: 2
+    maxH: 12
+    moved: false
+    static: false
+- taskid: 0
+  visualBlockNum: 1
+  workbook_id: 0e32eca5dc9b4b4fb485dec8279bb83f
+  path: /Visualization/IAM Monitoring
+  name: Accounts Creation Activity
+  visual_no: 2
+  pollingInterval: 60
+  position:
+    w: 6
+    h: 2
+    x: 0
+    y: 4
+    i: '2'
+    minW: 2
+    maxW: 12
+    minH: 2
+    maxH: 12
+    moved: false
+    static: false
+- taskid: 0
+  visualBlockNum: 1
+  workbook_id: 9a8d7305ca964c2cb467c9f6e6f225df
+  path: /Visualization/IAM Monitoring
+  name: Account Deletion Activity
+  visual_no: 3
+  pollingInterval: 60
+  position:
+    w: 6
+    h: 2
+    x: 6
+    y: 4
+    i: '3'
+    minW: 2
+    maxW: 12
+    minH: 2
+    maxH: 12
+    moved: false
+    static: false
+- taskid: 0
+  visualBlockNum: 1
+  wbBlocknum: 2
+  workbook_id: 201879dfeec54a47a603b06b40086a4f
+  path: /Visualization/IAM Monitoring
+  name: IAM Activity
+  visual_no: 4
+  pollingInterval: 60
+  position:
+    w: 12
+    h: 2
+    x: 0
+    y: 0
+    i: '4'
+    minW: 2
+    maxW: 12
+    minH: 2
+    maxH: 12
+    moved: false
+    static: false

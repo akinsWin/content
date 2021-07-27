@@ -1,0 +1,19 @@
+id: 344c7338dabe4137ad74a17c8be95cae
+name: Accounts Created by User
+path: /Investigate/User
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $TargetUser FROM IAM WHERE $User={{User}} AND $Action='USER_ACCOUNT_CREATED'
+    AND $Duration=1h GROUP BY $TargetUser
+config:
+  parameters:
+  - fixed: false
+    name: User
+    query: ''
+    queryFieldValue: []
+    type: Text
+    value: '-'

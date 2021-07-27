@@ -1,0 +1,12 @@
+id: 468897ad0d894ad4a981584605d77b9c
+name: Top Targeted IPs Weekly
+path: /Compliance/Common/Weekly
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=THREAT AND $Duration=7d AND $DstType=PRIVATE  AND
+    $Vector=NETWORK group count_unique $Threat, $DstIP limit 10
+config: {}

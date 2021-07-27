@@ -1,0 +1,20 @@
+id: e489fb4fa955415f8c0dcc340ff46406
+name: Azure Conditional Access Policy Modified
+path: /Cloud Security/Azure
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: Select $OperationName, $User, $Status FROM AZURE WHERE $OperationName='Update
+    policy' AND $Status='Succeeded' GROUP BY $OperationName, $User, $Status
+- type: signal
+  DetectionName: Azure Conditional Access Policy Modified
+  DetectionTactic: Persistence
+  DetectionTechnique: Account Manipulation
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Low
+  SuspectUser: $User
+config: {}

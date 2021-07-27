@@ -1,0 +1,27 @@
+id: ee1c2d77075d4cd19c6e9e42125270b9
+name: Suspicious Program Location Process Starts
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://docs.google.com/spreadsheets/d/17pSTDNpa0sf6pHeRhusvWG6rThciE8CsXTSlDUAZDyo|"
+- type: sql
+  query: SELECT * FROM SYSMON-PROCESS WHERE ($Image LIKE "%$Recycle%bin%" OR $Image
+    LIKE "%Users%Public%" OR $Image LIKE "%C%Perflogs%" OR $Image LIKE "%Windows%Fonts%"
+    OR $Image LIKE "%Windows%TIME%" OR $Image LIKE "%Windows%addins%" OR $Image LIKE
+    "%Windows%debug%")
+- type: signal
+  DetectionName: Suspicious Program Location Process Starts
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Masquerading
+  DetectionScore: '4'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

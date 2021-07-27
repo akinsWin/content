@@ -1,0 +1,22 @@
+id: 120bd599f193465c9acf8b5ed13309dd
+name: RDP Sources
+path: /Visualization/Firewall Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcIP, COUNT(*) FROM FIREWALL WHERE $DstPort='3389' AND $Action='PACKET_ALLOWED'
+    GROUP BY $SrcIP
+- type: visual
+  data:
+    widget_name: RDP Sources
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $SrcIP
+      - null
+      value: $Count(1)
+config: {}

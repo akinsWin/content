@@ -1,0 +1,24 @@
+id: 76f52950a36e404b8eab303944ffc2cf
+name: Net Failed Logins
+path: /Visualization/Authentication Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcLOC, count_if($Status='FAILED') AS $FailCount, count_if($Status='PASSED')
+    AS $PassCount FROM AUTHENTICATION WHERE $Duration=1h AND $Action='LOGIN' GROUP
+    BY $SrcLOC HAVING $FailCount >= $PassCount LIMIT 100
+- type: visual
+  data:
+    widget_name: Net Failed Logins
+    chart_type: geoMap
+    config:
+      type: default
+      key:
+      - $SrcLOC
+      - null
+      value: $FailCount
+config:
+  parameters: []

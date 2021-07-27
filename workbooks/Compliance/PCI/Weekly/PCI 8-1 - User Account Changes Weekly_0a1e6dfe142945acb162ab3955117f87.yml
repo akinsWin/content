@@ -1,0 +1,12 @@
+id: 0a1e6dfe142945acb162ab3955117f87
+name: PCI 8-1 - User Account Changes Weekly
+path: /Compliance/PCI/Weekly
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=IAM AND $Duration=7d NOT $Status=FAILED
+    group count_unique  $Action,$User,$TargetUser,$System,$Status  limit 100
+config: {}

@@ -1,0 +1,23 @@
+id: 79d00dc65f404cc3aa53a49928e714a2
+name: Threats by Time
+path: /Visualization/Threat Alerts Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch $Vector from event where $Stream=THREAT AND $Duration=1h group timeslice
+    1m limit 60
+- type: visual
+  data:
+    widget_name: Threats by Time
+    chart_type: timeline
+    config:
+      type: stacked
+      key:
+      - $CNAMTime
+      - $Vector
+      value: count
+config:
+  parameters: []

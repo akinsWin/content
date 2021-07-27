@@ -1,0 +1,13 @@
+id: ed65b55537bb493b9128576d4b1c8193
+name: PCI 10-2 - User Accounts Additions Weekly
+path: /Compliance/PCI/Weekly
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=IAM AND $Action=USER_ACCOUNT_CREATED AND
+    $Status=PASSED  AND $Duration=7d group count_unique $System, $TargetUser limit
+    100
+config: {}

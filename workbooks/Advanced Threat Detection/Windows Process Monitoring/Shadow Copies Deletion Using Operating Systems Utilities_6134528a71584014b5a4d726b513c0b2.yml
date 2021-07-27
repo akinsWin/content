@@ -1,0 +1,27 @@
+id: 6134528a71584014b5a4d726b513c0b2
+name: Shadow Copies Deletion Using Operating Systems Utilities
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth, Michael Haag, Teymur Kheirkhabarov, Daniil Yugoslavskiy, oscd.community|https://www.slideshare.net/heirhabarov/hunting-for-credentials-dumping-in-windows-environment<br>https://blog.talosintelligence.com/2017/05/wannacry.html<br>https://securingtomorrow.mcafee.com/other-blogs/mcafee-labs/new-teslacrypt-ransomware-arrives-via-spam/<br>https://www.bleepingcomputer.com/news/security/why-everyone-should-disable-vssadmin-exe-now/<br>https://www.hybrid-analysis.com/sample/ed01ebfbc9eb5bbea545af4d01bf5f1071661840480439c6e5babe8e080e41aa?environmentId=100|"
+- type: sql
+  query: SELECT * FROM SYSMON-PROCESS WHERE (($Image LIKE "%powershell%exe%" OR $Image
+    LIKE "%wmic%exe%" OR $Image LIKE "%vssadmin%exe%") AND $CommandLine LIKE "%shadow%"
+    AND $CommandLine LIKE "%delete%")
+- type: signal
+  DetectionName: Shadow Copies Deletion Using Operating Systems Utilities
+  DetectionTactic: Impact
+  DetectionTechnique: Inhibit System Recovery
+  DetectionScore: 5
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $User
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

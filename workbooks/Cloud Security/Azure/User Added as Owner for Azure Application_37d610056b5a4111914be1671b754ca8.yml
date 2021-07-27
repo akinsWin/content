@@ -1,0 +1,21 @@
+id: 37d610056b5a4111914be1671b754ca8
+name: User Added as Owner for Azure Application
+path: /Cloud Security/Azure
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: Select $OperationName, $User, $Status FROM AZURE WHERE $OperationName='Add
+    owner to application' AND $Status='Succeeded' GROUP BY $OperationName, $User,
+    $Status
+- type: signal
+  DetectionName: User Added as Owner for Azure Application
+  DetectionTactic: Persistence
+  DetectionTechnique: Account Manipulation
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Low
+  SuspectUser: $User
+config: {}

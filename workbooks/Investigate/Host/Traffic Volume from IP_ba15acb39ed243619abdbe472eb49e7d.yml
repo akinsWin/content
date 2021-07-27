@@ -1,0 +1,19 @@
+id: ba15acb39ed243619abdbe472eb49e7d
+name: Traffic Volume from IP
+path: /Investigate/Host
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: 'SELECT concat_ws(" ",round(sum($TxLen)/1000/1000), "GB") AS $TotalBytes
+    FROM FIREWALL WHERE $SrcIP={{Host}} AND $Duration=1h AND $Action=''PACKET_ALLOWED'' '
+config:
+  parameters:
+  - fixed: false
+    name: Host
+    query: ''
+    queryFieldValue: []
+    type: Text
+    value: '-'

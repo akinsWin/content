@@ -1,0 +1,36 @@
+id: 2cd630d243604f12971af740601bbacd
+name: SOX Monthly Report
+author: DNIF
+path: /Compliance
+entity_type: reports
+report_config:
+- type: table
+  data:
+    name: Top Targeted IPs Monthly
+    path: /Compliance/Common/Monthly
+    workbook_id: 562f11b9da14455691033deb31f81c8c
+- type: table
+  data:
+    name: Top Virus Sources Monthly
+    path: /Compliance/Common/Monthly
+    workbook_id: cc43b8fa14c14056b4f11878293c5d4c
+- type: table
+  data:
+    name: Top Virus Destinations Monthly
+    path: /Compliance/Common/Monthly
+    workbook_id: a68fc82803b448ee81167205fa785a69
+- type: table
+  data:
+    name: Top Users for Remote Access Activity Monthly
+    path: /Compliance/SOX/Monthly
+    workbook_id: f0c5ca3de1cc42aeb989121ca3e30de2
+- type: table
+  data:
+    name: Unsuccessful Mail Logins Monthly
+    path: /Compliance/Common/Monthly
+    workbook_id: 44bd22fe14dc4e24b20b15762313f275
+- type: table
+  data:
+    name: Unsuccessful Web Service Logins Monthly
+    path: /Compliance/Common/Monthly
+    workbook_id: 9f0673a4d63b4ffdbfb2cde79ca221ff

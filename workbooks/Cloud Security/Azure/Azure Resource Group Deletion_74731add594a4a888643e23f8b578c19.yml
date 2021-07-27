@@ -1,0 +1,20 @@
+id: 74731add594a4a888643e23f8b578c19
+name: Azure Resource Group Deletion
+path: /Cloud Security/Azure
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: Select $OperationName, $User, $Status FROM AZURE WHERE $OperationName='MICROSOFT.RESOURCES/SUBSCRIPTIONS/RESOURCEGROUPS/DELETE'
+    AND $Status='Succeeded' GROUP BY $OperationName, $User, $Status
+- type: signal
+  DetectionName: Azure Resource Group Deletion
+  DetectionTactic: Impact
+  DetectionTechnique: Data Destruction
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Low
+  SuspectUser: $User
+config: {}

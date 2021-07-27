@@ -1,0 +1,20 @@
+id: 425ffb4c459b4e688dea9fa695ae0476
+name: Registry Keys Used For Persistence
+path: /Advanced Threat Detection/Windows Registry Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=SYSMON-REGISTRY AND $Duration=1h AND $Action=OBJECT_MODIFIED
+    AND $TargetObject=regex((?i)currentversion\\\\(runservices|run|Windows\\\\Appinit_Dlls.*|Winlogon\\\\(Shell|Userinit|VmApplet)|policies\\\\explorer\\\\run)|.*currentcontrolset\\\\Control\\\\Lsa\\\\|Microsoft\\\\Windows\sNT\\\\CurrentVersion\\\\Image\sFile\sExecution\sOptions|HKLM\\\\SOFTWARE\\\\Microsoft\\\\Netsh.*)
+    group count_unique $TargetObject, $System limit 100
+- type: signal
+  DetectionName: Registry Keys Used For Persistence
+  DetectionTactic: Persistence
+  DetectionTechnique: Boot or Logon Autostart Execution
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

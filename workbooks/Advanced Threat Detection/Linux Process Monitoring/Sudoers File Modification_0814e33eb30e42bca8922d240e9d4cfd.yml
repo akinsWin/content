@@ -1,0 +1,18 @@
+id: 0814e33eb30e42bca8922d240e9d4cfd
+name: Sudoers File Modification
+path: /Advanced Threat Detection/Linux Process Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT * FROM AUDITD WHERE $Action='FILE_MODIFIED' AND $FilePath LIKE "%/etc/sudoers%"
+- type: signal
+  DetectionName: Sudoers File Modification
+  DetectionTactic: Privilege Escalation
+  DetectionTechnique: Abuse Elevation Control Mechanism
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

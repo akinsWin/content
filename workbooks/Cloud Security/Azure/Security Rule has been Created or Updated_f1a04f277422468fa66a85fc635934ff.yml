@@ -1,0 +1,20 @@
+id: f1a04f277422468fa66a85fc635934ff
+name: Security Rule has been Created or Updated
+path: /Cloud Security/Azure
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: Select $OperationName, $User, $Status FROM AZURE WHERE $OperationName='Microsoft.Network/networkSecurityGroups/securityRules/write'
+    AND $Status='Succeeded' GROUP BY $OperationName, $User, $Status
+- type: signal
+  DetectionName: Security Rule has been Created or Updated
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Impair Defenses
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Low
+  SuspectUser: $User
+config: {}

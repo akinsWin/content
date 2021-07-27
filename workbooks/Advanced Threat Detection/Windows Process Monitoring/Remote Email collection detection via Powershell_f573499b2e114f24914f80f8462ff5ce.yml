@@ -1,0 +1,24 @@
+id: f573499b2e114f24914f80f8462ff5ce
+name: Remote Email collection detection via Powershell
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $User, $System, $CommandLine, $ParentCommandLine FROM SYSMON-PROCESS
+    WHERE ($ParentCommandLine LIKE "%powershell.exe%" AND ($CommandLine LIKE "%New-MailboxExportRequest%"
+    OR $CommandLine LIKE "%Get-MailboxExportRequest%")) GROUP BY $User, $System, $CommandLine,
+    $ParentCommandLine
+- type: signal
+  DetectionName: Remote Email collection detection via Powershell
+  DetectionTactic: Collection
+  DetectionTechnique: Email Collection
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

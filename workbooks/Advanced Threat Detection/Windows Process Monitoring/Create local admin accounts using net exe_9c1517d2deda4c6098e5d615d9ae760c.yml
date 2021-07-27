@@ -1,0 +1,20 @@
+id: 9c1517d2deda4c6098e5d615d9ae760c
+name: Create local admin accounts using net exe
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: auto-scheduled
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=SYSMON-PROCESS AND $CommandLine=regex(.*net.exe.*|.*net1.exe.*)
+    AND CommandLine=regex(.*localgroup.*|.*/add.*|.*user.*) group count_unique $System
+    limit 0
+- type: signal
+  DetectionName: Create local admin accounts using net exe
+  DetectionTactic: Persistence
+  DetectionTechnique: 'Create Account: Local Account'
+  DetectionScore: 10
+  DetectionConfidence: High
+  SuspectHost: $System
+config: {}

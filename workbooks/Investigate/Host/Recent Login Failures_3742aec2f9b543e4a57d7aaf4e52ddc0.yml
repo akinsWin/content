@@ -1,0 +1,19 @@
+id: 3742aec2f9b543e4a57d7aaf4e52ddc0
+name: Recent Login Failures
+path: /Investigate/Host
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $User,$SrcIP FROM AUTHENTICATION WHERE $System={{Host}} AND $Action='LOGIN'
+    AND $SrcIP IS NOT NULL AND $Status='FAILED' AND $Duration=1h GROUP BY $User,$SrcIP
+config:
+  parameters:
+  - fixed: false
+    name: Host
+    query: ''
+    queryFieldValue: []
+    type: Text
+    value: '-'

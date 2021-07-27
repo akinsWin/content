@@ -1,0 +1,26 @@
+id: d8aa7bf6e6054d27b290a998bcdded21
+name: Domain Trust Discovery
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |E.M. Anhaus (orignally from Atomic Blue Detections, Tony Lambert), oscd.community|https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1482/T1482.md<br>https://eqllib.readthedocs.io/en/latest/analytics/03e231a6-74bc-467a-acb1-e5676b0fb55e.html|"
+- type: sql
+  query: SELECT $System, $Image, $CommandLine FROM SYSMON-PROCESS WHERE (($Image LIKE
+    "%nltest%exe%" AND $CommandLine LIKE "%domain%trusts%") OR ($Image LIKE "%dsquery%exe%"
+    AND $CommandLine LIKE "%trustedDomain%")) GROUP BY $System, $Image, $CommandLine
+- type: signal
+  DetectionName: Domain Trust Discovery
+  DetectionTactic: Discovery
+  DetectionTechnique: Domain Trust Discovery
+  DetectionScore: 5
+  DetectionSeverity: Medium
+  DetectionConfidence: Low
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

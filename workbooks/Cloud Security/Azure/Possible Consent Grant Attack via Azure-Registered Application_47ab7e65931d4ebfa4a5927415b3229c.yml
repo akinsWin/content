@@ -1,0 +1,20 @@
+id: 47ab7e65931d4ebfa4a5927415b3229c
+name: Possible Consent Grant Attack via Azure-Registered Application
+path: /Cloud Security/Azure
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: Select $OperationName, $User, $Status FROM AZURE WHERE $OperationName='Consent
+    to application' AND $Status='Succeeded' GROUP BY $OperationName, $User, $Status
+- type: signal
+  DetectionName: Possible Consent Grant Attack via Azure-Registered Application
+  DetectionTactic: Credential Access
+  DetectionTechnique: Steal Application Access Token
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Low
+  SuspectUser: $User
+config: {}

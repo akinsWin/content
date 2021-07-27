@@ -1,0 +1,26 @@
+id: 128796bced39454e8eec765d20c84d62
+name: Windows Network Enumeration
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Endgame, JHasenbusch (ported for oscd.community)|https://eqllib.readthedocs.io/en/latest/analytics/b8a94d2f-dc75-4630-9d73-1edc6bd26fff.html<br>https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1018/T1018.yaml|"
+- type: sql
+  query: SELECT * FROM SYSMON-PROCESS WHERE ($Image LIKE "%net%exe%" OR $Image LIKE
+    "%net1%exe%") AND $CommandLine LIKE "%view%" AND NOT ($CommandLine LIKE "%\\\\%")
+- type: signal
+  DetectionName: Windows Network Enumeration
+  DetectionTactic: Discovery
+  DetectionTechnique: Remote System Discovery
+  DetectionScore: 5
+  DetectionSeverity: Medium
+  DetectionConfidence: Low
+  SuspectUser: $User
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

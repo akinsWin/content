@@ -1,0 +1,37 @@
+id: 13696f568d4e4a019994d6a9518ba3a4
+name: Suspicious Network Shares Accessed from SrcIP
+path: /Advanced Threat Detection/Windows Audit Monitoring
+description: Outlier pattern detected for Network Shares Accessed from SrcIP
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: ai
+  data:
+    contamination_factor: 0.001
+    result_condition:
+      only_anomaly: true
+      return_graph_result: true
+    query_data:
+      stream: WIN-AUDIT
+      entity: $SrcIP
+      feature_list:
+      - distinct: $User
+      - distinct: $System
+      - distinct: $Object
+      filter_list:
+      - field: $Action
+        value: NETWORK_SHARE_OBJECT_ACCESSED
+        operator: '='
+      duration: 7d
+- type: signal
+  DetectionName: Suspicious Network Shares Accessed from SrcIP
+  DetectionTactic: Collection
+  DetectionTechnique: Data from Network Shared Drive
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectHost: $SrcIP
+cron: null
+config:
+  parameters: []

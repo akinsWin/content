@@ -1,0 +1,13 @@
+id: 9f0673a4d63b4ffdbfb2cde79ca221ff
+name: Unsuccessful Web Service Logins Monthly
+path: /Compliance/Common/Monthly
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Action=LOGIN AND $Status=FAILED
+    AND $Duration=1M AND $SourceType=WEBSERVER group count_unique $System, $SrcIP,
+    $User  limit 100
+config: {}

@@ -1,0 +1,20 @@
+id: a439c256a11c49dd87ae1d25658a8979
+name: Azure Key Vault Modified
+path: /Cloud Security/Azure
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: Select $OperationName, $User, $Status FROM AZURE WHERE $OperationName='MICROSOFT.KEYVAULT/VAULTS/WRITE'
+    AND $Status='Succeeded' GROUP BY $OperationName, $User, $Status
+- type: signal
+  DetectionName: Azure Key Vault Modified
+  DetectionTactic: Credential Access
+  DetectionTechnique: Unsecured Credentials
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Low
+  SuspectUser: $User
+config: {}

@@ -1,0 +1,29 @@
+id: d4bed7b9b4cb4bbf9feb5fbfe4dcf2bc
+name: Windows Mangement Instrumentation DLL Loaded Via Microsoft Word
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Michael R. (@nahamike01)|https://medium.com/threatpunter/detecting-adversary-tradecraft-with-image-load-event-logging-and-eql-8de93338c16<br>https://www.carbonblack.com/2019/04/24/cb-tau-threat-intelligence-notification-emotet-utilizing-wmi-to-launch-powershell-encoded-code/<br>https://media.cert.europa.eu/static/SecurityAdvisories/2019/CERT-EU-SA2019-021.pdf|"
+- type: sql
+  query: SELECT $System, $Image, $ImageLoaded FROM SYSMON-IMAGE-LOAD WHERE ($Image
+    LIKE "%winword%exe%" OR $Image LIKE "%powerpnt%exe%" OR $Image LIKE "%excel%exe%"
+    OR $Image LIKE "%outlook%exe%") AND ($ImageLoaded LIKE "%wmiutils%dll%" OR $ImageLoaded
+    LIKE "%wbemcomn%dll%" OR $ImageLoaded LIKE "%wbemprox%dll%" OR $ImageLoaded LIKE
+    "%wbemdisp%dll%" OR $ImageLoaded LIKE "%wbemsvc%dll%") GROUP BY $System, $Image,
+    $ImageLoaded
+- type: signal
+  DetectionName: Windows Mangement Instrumentation DLL Loaded Via Microsoft Word
+  DetectionTactic: Execution
+  DetectionTechnique: Windows Management Instrumentation
+  DetectionScore: 5
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

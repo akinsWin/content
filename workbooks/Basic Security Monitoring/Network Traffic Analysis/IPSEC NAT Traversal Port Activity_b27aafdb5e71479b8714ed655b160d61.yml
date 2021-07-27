@@ -1,0 +1,24 @@
+id: b27aafdb5e71479b8714ed655b160d61
+name: IPSEC NAT Traversal Port Activity
+path: /Basic Security Monitoring/Network Traffic Analysis
+description: This rule detects events that could be describing IPSEC NAT Traversal
+  traffic. IPSEC is a VPN technology that allows one system to talk to another using
+  encrypted tunnels. NAT Traversal enables these tunnels to communicate over the Internet
+  where one of the sides is behind a NAT router gateway. This may be common on your
+  network, but this technique is also used by threat actors to avoid detection.
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=FIREWALL AND $Proto=UDP AND $DstPort=4500
+    group count_unique $SrcIP, $DstIP limit 10
+- type: signal
+  DetectionName: IPSEC NAT Traversal Port Activity
+  DetectionTactic: Command and Control
+  DetectionTechnique: Commonly Used Port
+  DetectionScore: 5
+  DetectionConfidence: Low
+  SuspectHost: $SrcIP
+  TargetHost: $DstIP
+config: {}

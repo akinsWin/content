@@ -1,0 +1,21 @@
+id: edc8914c3ba34520909bc2a2c6ade9e7
+name: CobaltStrike Malleable (OCSP) Profile
+path: /Advanced Threat Detection/Proxy Monitoring
+description: Detects Malleable (OCSP) Profile with Typo (OSCP) in URL
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Markus Neis|https://github.com/rsmudge/Malleable-C2-Profiles/blob/master/normal/ocsp.profile|"
+- type: sql
+  query: SELECT * FROM WEBFILTER WHERE ($URL LIKE "%/oscp/%" AND $Domain = "ocsp.verisign.com")
+- type: signal
+  DetectionName: CobaltStrike Malleable (OCSP) Profile
+  DetectionTactic: Command and Control
+  DetectionTechnique: Application Layer Protocol
+  DetectionScore: 5
+  DetectionConfidence: Low
+  SuspectHost: $SrcIP
+config: {}

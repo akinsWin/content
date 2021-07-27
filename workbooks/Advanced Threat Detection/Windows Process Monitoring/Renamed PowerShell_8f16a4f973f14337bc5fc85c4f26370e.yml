@@ -1,0 +1,26 @@
+id: 8f16a4f973f14337bc5fc85c4f26370e
+name: Renamed PowerShell
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://twitter.com/christophetd/status/1164506034720952320|"
+- type: sql
+  query: SELECT * FROM SYSMON-PROCESS WHERE (($Description = "Windows PowerShell"
+    AND $Company = "Microsoft Corporation") AND NOT (($Image LIKE "%powershell.exe"
+    OR $Image LIKE "%powershell\_ise.exe")))
+- type: signal
+  DetectionName: Renamed PowerShell
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Masquerading
+  DetectionScore: 5
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

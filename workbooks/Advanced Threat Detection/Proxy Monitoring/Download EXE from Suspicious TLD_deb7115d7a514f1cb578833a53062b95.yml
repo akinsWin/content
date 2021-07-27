@@ -1,0 +1,28 @@
+id: deb7115d7a514f1cb578833a53062b95
+name: Download EXE from Suspicious TLD
+path: /Advanced Threat Detection/Proxy Monitoring
+description: Detects executable downloads from suspicious remote systems
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|None|"
+- type: sql
+  query: SELECT * FROM WEBFILTER WHERE ($URL IN ("exe", "vbs", "bat", "rar", "ps1",
+    "doc", "docm", "xls", "xlsm", "pptm", "rtf", "hta", "dll", "ws", "wsf", "sct",
+    "zip") AND NOT (($Domain LIKE "%.com" OR $Domain LIKE "%.org" OR $Domain LIKE
+    "%.net" OR $Domain LIKE "%.edu" OR $Domain LIKE "%.gov" OR $Domain LIKE "%.uk"
+    OR $Domain LIKE "%.ca" OR $Domain LIKE "%.de" OR $Domain LIKE "%.jp" OR $Domain
+    LIKE "%.fr" OR $Domain LIKE "%.au" OR $Domain LIKE "%.us" OR $Domain LIKE "%.ch"
+    OR $Domain LIKE "%.it" OR $Domain LIKE "%.nl" OR $Domain LIKE "%.se" OR $Domain
+    LIKE "%.no" OR $Domain LIKE "%.es")))
+- type: signal
+  DetectionName: Download EXE from Suspicious TLD
+  DetectionTactic: Execution
+  DetectionTechnique: User Execution
+  DetectionScore: 5
+  DetectionConfidence: Low
+  SuspectHost: $SrcIP
+config: {}

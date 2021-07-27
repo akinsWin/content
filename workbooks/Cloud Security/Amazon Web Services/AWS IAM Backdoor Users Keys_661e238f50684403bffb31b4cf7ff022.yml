@@ -1,0 +1,23 @@
+id: 661e238f50684403bffb31b4cf7ff022
+name: AWS IAM Backdoor Users Keys
+path: /Cloud Security/Amazon Web Services
+description: ''
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |faloker|https://github.com/RhinoSecurityLabs/pacu/blob/master/modules/iam__backdoor_users_keys/main.py#L6|"
+- type: sql
+  query: SELECT * FROM CLOUDTRAIL WHERE $EventSource='iam.amazonaws.com' AND $EventName='CreateAccessKey'
+    AND $UserIdentityArn NOT LIKE "%responseElements%accessKey%userName%"
+- type: signal
+  DetectionName: AWS IAM Backdoor Users Keys
+  DetectionTactic: Persistence
+  DetectionTechnique: Account Manipulation
+  DetectionScore: 5
+  DetectionSeverity: Medium
+  DetectionConfidence: Low
+  TargetHost: $EventSource
+config: {}

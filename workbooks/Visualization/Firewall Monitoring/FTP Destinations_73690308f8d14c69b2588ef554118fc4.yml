@@ -1,0 +1,23 @@
+id: 73690308f8d14c69b2588ef554118fc4
+name: FTP Destinations
+path: /Visualization/Firewall Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $DstIP, COUNT(*) FROM FIREWALL WHERE ($DstPort='20' OR $DstPort='21')
+    AND $Action='PACKET_ALLOWED' GROUP BY $DstIP
+- type: visual
+  data:
+    widget_name: FTP Destinations
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $DstIP
+      - null
+      value: $Count(1)
+config:
+  parameters: []

@@ -1,0 +1,19 @@
+id: dfd93fa857a349f8989ab251914e7975
+name: Reg exe Manipulating Windows Services Registry Keys
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: auto-scheduled
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $CommandLine, $System FROM SYSMON-PROCESS WHERE $Action='PROCESS_ADDED'
+    AND ($CommandLine LIKE "%reg.exe%reg%add%Services%") GROUP BY $CommandLine, $System
+- type: signal
+  DetectionName: Reg exe Manipulating Windows Services Registry Keys
+  DetectionTactic: Persistence
+  DetectionTechnique: Hijack Execution Flow
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Low
+  TargetHost: $System

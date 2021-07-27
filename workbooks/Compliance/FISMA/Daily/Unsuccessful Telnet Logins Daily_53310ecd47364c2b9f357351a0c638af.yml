@@ -1,0 +1,13 @@
+id: 53310ecd47364c2b9f357351a0c638af
+name: Unsuccessful Telnet Logins Daily
+path: /Compliance/FISMA/Daily
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Action=LOGIN AND $Status=FAILED
+    AND $Duration=1d AND $AuthProto=TELNET group count_unique $System , $SrcIP, $User
+    limit 100
+config: {}

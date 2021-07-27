@@ -1,0 +1,12 @@
+id: 4f93ba2e35464403902476b6e2d0b9a8
+name: "Top Virus Sources And Destinations\_ Monthly"
+path: /Compliance/HIPAA/Monthly
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=THREAT AND $Action=THREAT_DETECTED AND
+    $Duration=1M group count_unique $SrcIP, $DstIP  limit 10
+config: {}

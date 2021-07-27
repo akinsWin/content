@@ -1,0 +1,12 @@
+id: 4001442d837c40df9c5c0b9d3e052496
+name: Successful Login Attempts Weekly
+path: /Compliance/Common/Weekly
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: '_fetch * from event where $Stream=AUTHENTICATION AND $Action=LOGIN AND $Status=PASSED
+    AND $Duration=7d group count_unique $System, $SrcIP, $User limit 100 '
+config: {}

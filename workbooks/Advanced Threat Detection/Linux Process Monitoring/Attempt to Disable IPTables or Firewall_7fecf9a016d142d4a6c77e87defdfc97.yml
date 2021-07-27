@@ -1,0 +1,25 @@
+id: 7fecf9a016d142d4a6c77e87defdfc97
+name: Attempt to Disable IPTables or Firewall
+path: /Advanced Threat Detection/Linux Process Monitoring
+description: ''
+type: auto-scheduled
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $ProcessName,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
+    (($ProcessName='ufw' AND ($ProcessArgs LIKE "allow" OR $ProcessArgs LIKE "disable"
+    OR $ProcessArgs LIKE "reset")) OR (($ProcessName='service' AND $ProcessArgs LIKE
+    "%stop%") OR ($ProcessName='chkconfig' AND $ProcessArgs LIKE "%off%") OR (($ProcessName='%systemctl'
+    AND $ProcessArgs LIKE "%disable%") OR ($ProcessName='systemctl' AND $ProcessArgs
+    LIKE "%stop%") OR ($ProcessName='systemctl' AND $ProcessArgs LIKE "%kill%")) AND($ProcessArgs
+    LIKE "%firewalld%" OR $ProcessArgs LIKE "%ip6tables%" OR $ProcessArgs LIKE "%iptables%"
+    ))) GROUP BY $ProcessName,$System
+- type: signal
+  DetectionName: Attempt to Disable IPTables or Firewall
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Disabling Security Tools
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

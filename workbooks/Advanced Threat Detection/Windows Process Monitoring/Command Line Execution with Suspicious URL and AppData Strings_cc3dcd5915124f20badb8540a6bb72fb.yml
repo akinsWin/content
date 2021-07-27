@@ -1,0 +1,20 @@
+id: cc3dcd5915124f20badb8540a6bb72fb
+name: Command Line Execution with Suspicious URL and AppData Strings
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: auto-scheduled
+author: community
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "cmd%c%http%AppData%"
+    OR $CommandLine LIKE "cmd%c%https%AppData%")
+- type: signal
+  DetectionName: Command Line Execution with Suspicious URL and AppData Strings
+  DetectionTactic: Execution
+  DetectionTechnique: Command and Scripting Interpreter
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $User
+  TargetHost: $System

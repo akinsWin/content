@@ -1,0 +1,12 @@
+id: 04e42ab5c6a2472c9a2c17a8a87720dd
+name: PCI 8-1 - User Account Changes Daily
+path: /Compliance/PCI/Daily
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=IAM AND $Duration=1d NOT $Status=FAILED  group
+    count_unique  $Action,$User,$TargetUser,$System,$Status  limit 100
+config: {}

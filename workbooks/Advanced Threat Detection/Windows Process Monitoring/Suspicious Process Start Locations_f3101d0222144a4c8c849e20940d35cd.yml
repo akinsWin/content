@@ -1,0 +1,28 @@
+id: f3101d0222144a4c8c849e20940d35cd
+name: Suspicious Process Start Locations
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |juju4|https://car.mitre.org/wiki/CAR-2013-05-002|"
+- type: sql
+  query: SELECT $System, $Image FROM SYSMON-PROCESS WHERE ($Image LIKE "%RECYCLER%"
+    OR $Image LIKE "%SystemVolumeInformation%" OR $Image LIKE "C%Windows%Tasks%" OR
+    $Image LIKE "C%Windows%debug%" OR $Image LIKE "C%Windows%fonts%" OR $Image LIKE
+    "C%Windows%help%" OR $Image LIKE "C%Windows%drivers%" OR $Image LIKE "C%Windows%addins%"
+    OR $Image LIKE "C%Windows%cursors%" OR $Image LIKE "C%Windows%system32%tasks%")
+- type: signal
+  DetectionName: Suspicious Process Start Locations
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Masquerading
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

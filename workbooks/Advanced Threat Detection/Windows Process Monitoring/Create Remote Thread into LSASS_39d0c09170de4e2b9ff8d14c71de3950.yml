@@ -1,0 +1,19 @@
+id: 39d0c09170de4e2b9ff8d14c71de3950
+name: Create Remote Thread into LSASS
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: auto-scheduled
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=SYSMON-PROCESS AND $Action=CreateRemoteThread
+    AND $TargetImage=*lsass.exe* group count_unique $System limit 0
+- type: signal
+  DetectionName: Create Remote Thread into LSASS
+  DetectionTactic: Credential Access
+  DetectionTechnique: 'OS Credential Dumping: LSASS Memory'
+  DetectionScore: 10
+  DetectionConfidence: High
+  TargetHost: $System
+config: {}

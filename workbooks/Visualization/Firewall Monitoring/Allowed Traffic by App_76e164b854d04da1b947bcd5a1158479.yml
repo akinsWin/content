@@ -1,0 +1,23 @@
+id: 76e164b854d04da1b947bcd5a1158479
+name: Allowed Traffic by App
+path: /Visualization/Firewall Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $App, SUM($TXLen) AS $TotalBytes FROM FIREWALL WHERE $Duration=1h
+    AND $Action='PACKET_ALLOWED' GROUP BY $App ORDER BY $TotalBytes DESC LIMIT 5
+- type: visual
+  data:
+    widget_name: Allowed Traffic by App
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $App
+      - null
+      value: $TotalBytes
+config:
+  parameters: []

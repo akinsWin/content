@@ -1,0 +1,32 @@
+id: 5f256e6a927d4258be0a854d7bc21b2a
+name: Suspicious Rundll32 Activity
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: auto-scheduled
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|None|"
+- type: sql
+  query: SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "%rundll32.exe%url%dll%OpenURL%"
+    OR $CommandLine LIKE "%rundll32%exe%url%dll%OpenURLA%" OR $CommandLine LIKE "%rundll32%exe%url%dll%FileProtocolHandler%"
+    OR $CommandLine LIKE "%rundll32%exe%%zipfldr%dll%RouteTheCall%" OR $CommandLine
+    LIKE "%rundll32%exe%Shell32%dll%Control%RunDLL%" OR $CommandLine LIKE "%rundll32%exe%javascript\:%"
+    OR $CommandLine LIKE "%url%dll%OpenURL%" OR $CommandLine LIKE "%url%dll%OpenURLA%"
+    OR $CommandLine LIKE "%url%dll%FileProtocolHandler%" OR $CommandLine LIKE "%zipfldr%dll%RouteTheCall%"
+    OR $CommandLine LIKE "%Shell32%dll%Control%RunDLL%" OR $CommandLine LIKE "%javascript\:%"
+    OR $CommandLine LIKE "%RegisterXLL%") with payload
+- type: signal
+  DetectionName: Execution in Non-Executable Folder
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Masquerading
+  DetectionScore: '6'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $User
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

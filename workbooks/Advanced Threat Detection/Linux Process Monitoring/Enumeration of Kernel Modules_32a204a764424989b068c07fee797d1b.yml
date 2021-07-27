@@ -1,0 +1,21 @@
+id: 32a204a764424989b068c07fee797d1b
+name: Enumeration of Kernel Modules
+path: /Advanced Threat Detection/Linux Process Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $ProcessName,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
+    ($ProcessArgs LIKE "%kmod%list%sudo%") OR ($ProcessArgs LIKE "%sudo%" AND ($ProcessArgs
+    LIKE "%depmod%" OR $ProcessArgs LIKE "%lsmod%" OR $ProcessArgs LIKE "%modinfo%"))
+    GROUP BY $ProcessName,$System
+- type: signal
+  DetectionName: Enumeration of Kernel Modules
+  DetectionTactic: Discovery
+  DetectionTechnique: System Information Discovery
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

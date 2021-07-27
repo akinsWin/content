@@ -1,0 +1,41 @@
+id: 7e3cb19f78384918abb461a3a9f1dd30
+name: SOX Weekly Report
+author: DNIF
+path: /Compliance
+entity_type: reports
+report_config:
+- type: table
+  data:
+    name: Top Virus Sources Weekly
+    path: /Compliance/Common/Weekly
+    workbook_id: 0e1ddb05fc2343c8b3e7bbec3aafa818
+- type: table
+  data:
+    name: Top Virus Destinations Weekly
+    path: /Compliance/Common/Weekly
+    workbook_id: 8be3d2d112a04549a575d56a75858786
+- type: table
+  data:
+    name: Successful Login Attempts Weekly
+    path: /Compliance/Common/Weekly
+    workbook_id: 4001442d837c40df9c5c0b9d3e052496
+- type: table
+  data:
+    name: Unsuccessful Logins Summary Weekly
+    path: /Compliance/Common/Weekly
+    workbook_id: 4772371016264d468a913a1a80ab2c54
+- type: table
+  data:
+    name: Unsuccessful SSH Logins Weekly
+    path: /Compliance/Common/Weekly
+    workbook_id: 8ea5a44a2a914282ad2aa8798012978f
+- type: table
+  data:
+    name: Unsuccessful Mail Logins Weekly
+    path: /Compliance/Common/Weekly
+    workbook_id: 48f1a55d11e24669afeac2c7f651782c
+- type: table
+  data:
+    name: Unsuccessful Web Services Logins Weekly
+    path: /Compliance/Common/Weekly
+    workbook_id: f26628f67c8d4de08b61d5259466fbac

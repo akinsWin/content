@@ -1,0 +1,25 @@
+id: d439805217234c4b94a565a53fc01eca
+name: Rundll32 Internet Connection
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://www.hybrid-analysis.com/sample/759fb4c0091a78c5ee035715afe3084686a8493f39014aea72dae36869de9ff6?environmentId=100|"
+- type: sql
+  query: SELECT * FROM SYSMON-NETWORK WHERE (($Image LIKE "%rundll32%exe%" AND $Action='NETWORK_CONNECTION'
+    AND $Status='PASSED') AND NOT ($DstType='PRIVATE' OR $DstIP ="127.0.0.1"))
+- type: signal
+  DetectionName: Rundll32 Internet Connection
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Signed Binary Proxy Execution
+  DetectionScore: 5
+  DetectionSeverity: Medium
+  DetectionConfidence: Low
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

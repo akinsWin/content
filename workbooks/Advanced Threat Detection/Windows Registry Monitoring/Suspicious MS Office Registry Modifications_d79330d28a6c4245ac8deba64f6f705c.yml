@@ -1,0 +1,23 @@
+id: d79330d28a6c4245ac8deba64f6f705c
+name: Suspicious MS Office Registry Modifications
+path: /Advanced Threat Detection/Windows Registry Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: '_fetch * from event where $Stream=SYSMON-REGISTRY AND $Action=OBJECT_MODIFIED
+    AND $Status=PASSED AND $Image=regex(.*excel.exe.*|.*winword.exe.*|.*powerpnt.exe.*)
+    AND $TargetObject=regex(.*\\Software\\Microsoft\\Office\\*\\Word\\Security\\AccessVBOM.*|.*\\Software\\Microsoft\\Office\\*\\Word\\Security\\VBAWarnings.*))
+    group count_unique $System limit 100 '
+- type: signal
+  DetectionName: Suspicious MS Office Registry Modifications
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Modify Registry
+  DetectionScore: '2'
+  DetectionSeverity: Low
+  DetectionConfidence: Low
+  TargetHost: $System
+config:
+  parameters: []

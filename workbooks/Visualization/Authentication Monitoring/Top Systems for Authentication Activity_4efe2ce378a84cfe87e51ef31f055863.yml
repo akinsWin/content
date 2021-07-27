@@ -1,0 +1,22 @@
+id: 4efe2ce378a84cfe87e51ef31f055863
+name: Top Systems for Authentication Activity
+path: /Visualization/Authentication Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=1h group count_unique
+    $System limit 10
+- type: visual
+  data:
+    widget_name: Top Systems by Count of Events
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $System
+      - null
+      value: count_unique
+config: {}

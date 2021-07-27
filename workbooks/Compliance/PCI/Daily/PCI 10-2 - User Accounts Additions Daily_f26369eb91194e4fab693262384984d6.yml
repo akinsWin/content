@@ -1,0 +1,13 @@
+id: f26369eb91194e4fab693262384984d6
+name: PCI 10-2 - User Accounts Additions Daily
+path: /Compliance/PCI/Daily
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=IAM AND $Action=USER_ACCOUNT_CREATED AND
+    $Status=PASSED  AND $Duration=1d group count_unique $System, $TargetUser limit
+    100
+config: {}

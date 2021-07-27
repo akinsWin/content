@@ -1,0 +1,19 @@
+id: 79993024b3c44c24af9c88925fab6a41
+name: Mknod Process Activity
+path: /Advanced Threat Detection/Linux Process Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $ProcessName,$System  FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
+    $ProcessName='mknod' GROUP BY $ProcessName,$System
+- type: signal
+  DetectionName: Mknod Process Activity
+  DetectionTactic: Privilege Escalation
+  DetectionTechnique: Process Injection
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

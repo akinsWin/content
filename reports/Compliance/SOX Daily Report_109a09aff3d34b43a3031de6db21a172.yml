@@ -1,0 +1,36 @@
+id: 109a09aff3d34b43a3031de6db21a172
+name: SOX Daily Report
+author: DNIF
+path: /Compliance
+entity_type: reports
+report_config:
+- type: table
+  data:
+    name: Top Targeted IPs Daily
+    path: /Compliance/Common/Daily
+    workbook_id: ebfc1acac05940f58f6f37772be32229
+- type: table
+  data:
+    name: Top Virus Sources Daily
+    path: /Compliance/Common/Daily
+    workbook_id: 1b712e82e29b4fe48dd7762153822d8c
+- type: table
+  data:
+    name: Top Virus Destinations Daily
+    path: /Compliance/Common/Daily
+    workbook_id: 00923ff167f644deb47a6863e858716c
+- type: table
+  data:
+    name: Top Users by Remote Access Activity Daily
+    path: /Compliance/Common/Daily
+    workbook_id: 480a8306a8a945a6b49461be8af07c66
+- type: table
+  data:
+    name: Unsuccessful Mail Logins Daily
+    path: /Compliance/Common/Daily
+    workbook_id: 56ad00ad4ab240b4bcd45cd6142dab8c
+- type: table
+  data:
+    name: Unsuccessful Web Services Logins Daily
+    path: /Compliance/Common/Daily
+    workbook_id: 7487e1aa67e54ae6b8e91b9b5850c9e6

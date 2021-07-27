@@ -1,0 +1,46 @@
+id: 5e8246d661064bdb9e66e171773999db
+name: Abnormal VPN Login Attempts for a User
+path: /Basic Security Monitoring/Authentication Attacks
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: ai
+  data:
+    contamination_factor: 0.001
+    result_condition:
+      only_anomaly: true
+      return_graph_result: true
+    query_data:
+      stream: AUTHENTICATION
+      entity: $User
+      feature_list:
+      - distinct: $SrcIP
+      - distinct: $System
+      - count: '*'
+      - percentage_of:
+        - $Status
+        - FAILED
+      filter_list:
+      - field: $Action
+        value: LOGIN
+        operator: '='
+      - field: $SrcType
+        value: PUBLIC
+        operator: '='
+      - field: $AuthProto
+        value: VPN
+        operator: '='
+      duration: 1h
+- type: signal
+  DetectionName: Abnormal VPN Login Attempts for a User
+  DetectionTactic: Initial Access
+  DetectionTechnique: External Remote Services
+  DetectionScore: '7'
+  DetectionSeverity: High
+  DetectionConfidence: High
+  SuspectHost: $SrcIP
+cron: null
+config:
+  parameters: []

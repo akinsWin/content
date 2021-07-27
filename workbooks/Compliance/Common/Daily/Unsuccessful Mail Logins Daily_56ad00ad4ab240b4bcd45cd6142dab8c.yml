@@ -1,0 +1,13 @@
+id: 56ad00ad4ab240b4bcd45cd6142dab8c
+name: Unsuccessful Mail Logins Daily
+path: /Compliance/Common/Daily
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Action=LOGIN AND $Status=FAILED
+    AND $Duration=1d AND $SourceType=OFFICE group count_unique $System, $SrcIP, $User
+    limit 100
+config: {}

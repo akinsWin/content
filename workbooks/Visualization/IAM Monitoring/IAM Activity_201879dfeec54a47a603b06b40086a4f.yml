@@ -1,0 +1,23 @@
+id: 201879dfeec54a47a603b06b40086a4f
+name: IAM Activity
+path: /Visualization/IAM Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch $Action from event where $Stream=IAM AND $Duration=1h group timeslice
+    1m limit 0
+- type: visual
+  data:
+    widget_name: IAM Activity
+    chart_type: timeline
+    config:
+      type: stacked
+      key:
+      - $CNAMTime
+      - $Action
+      value: count
+config:
+  parameters: []

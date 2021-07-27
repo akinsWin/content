@@ -1,0 +1,32 @@
+id: 447108223df949738d63ccc27d767fc5
+name: Reconnaissance Activity with Net Command
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth, Markus Neis|https://twitter.com/haroonmeer/status/939099379834658817<br>https://twitter.com/c_APT_ure/status/939475433711722497<br>https://www.fireeye.com/blog/threat-research/2016/05/targeted_attacksaga.html|"
+- type: sql
+  query: SELECT $System, $User, count(*) AS $Agg FROM SYSMON-PROCESS WHERE ($CommandLine
+    LIKE "%tasklist%" OR $CommandLine LIKE "%net%time%" OR $CommandLine LIKE "%systeminfo%"
+    OR $CommandLine LIKE "%whoami%" OR $CommandLine LIKE "%nbtstat%" OR $CommandLine
+    LIKE "%net%start%" OR $CommandLine LIKE "%net1%start%" OR $CommandLine LIKE "%qprocess%"
+    OR $CommandLine LIKE "%nslookup%" OR $CommandLine LIKE "%hostname%exe%" OR $CommandLine
+    LIKE "%net1%user%domain%" OR $CommandLine LIKE "%net1%group%domain%" OR $CommandLine
+    LIKE "%net1%group%domain%admins%" OR $CommandLine LIKE "%net1%group%Exchange%Trusted%Subsystem%domain%"
+    OR $CommandLine LIKE "%net1%accounts%domain%" OR $CommandLine LIKE "%net1%user%net%localgroup%administrators%"
+    OR $CommandLine LIKE "%netstat%an%") GROUP BY $System, $User HAVING Agg>4
+- type: signal
+  DetectionName: Reconnaissance Activity with Net Command
+  DetectionTactic: Discovery
+  DetectionTechnique: System Information Discovery
+  DetectionScore: 5
+  DetectionSeverity: Medium
+  DetectionConfidence: Low
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

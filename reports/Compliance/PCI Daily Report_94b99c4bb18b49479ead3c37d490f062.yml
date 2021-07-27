@@ -1,0 +1,110 @@
+id: 94b99c4bb18b49479ead3c37d490f062
+name: PCI Daily Report
+author: DNIF
+path: /Compliance
+entity_type: reports
+report_config:
+- type: widget
+  data:
+    visualDetails:
+    - TextValue: ''
+      position:
+        h: 3
+        i: '0'
+        maxH: 12
+        maxW: 12
+        minH: 3
+        minW: 3
+        moved: false
+        static: false
+        w: 3
+        x: 0
+        y: 0
+      taskid: 0
+      visualBlockNum: 1
+      workbook_id: 319d246c516f466393a0b35c8171cfa8
+    - TextValue: ''
+      position:
+        h: 3
+        i: '1'
+        maxH: 12
+        maxW: 12
+        minH: 3
+        minW: 3
+        moved: false
+        static: false
+        w: 9
+        x: 3
+        y: 0
+      taskid: 0
+      visualBlockNum: 1
+      workbook_id: 0e32eca5dc9b4b4fb485dec8279bb83f
+- type: table
+  data:
+    name: PCI 10-2 - User Accounts Additions Daily
+    path: /Compliance/PCI
+    workbook_id: f26369eb91194e4fab693262384984d6
+- type: widget
+  data:
+    visualDetails:
+    - TextValue: ''
+      position:
+        h: 3
+        i: '0'
+        maxH: 12
+        maxW: 12
+        minH: 3
+        minW: 3
+        moved: false
+        static: false
+        w: 12
+        x: 0
+        y: 0
+      taskid: 0
+      visualBlockNum: 1
+      workbook_id: 4cdcb4861cc54586ac3686e4a247ead8
+- type: table
+  data:
+    name: PCI 8-1 - User Account Changes Daily
+    path: /Compliance/PCI
+    workbook_id: 04e42ab5c6a2472c9a2c17a8a87720dd
+- type: table
+  data:
+    name: PCI 5-2 Top Malware Activity Daily
+    path: /Compliance/PCI
+    workbook_id: effe6d61abba47caa139bc0a8240bef7
+- type: widget
+  data:
+    visualDetails:
+    - TextValue: ''
+      position:
+        w: 6
+        h: 3
+        x: 0
+        y: 0
+        i: '0'
+        minW: 3
+        maxW: 12
+        minH: 3
+        maxH: 12
+        moved: false
+        static: false
+      taskid: 0
+      visualBlockNum: 1
+      workbook_id: a6a341b6414142729e50f8589aa51de2
+    - TextValue: ''
+      position:
+        w: 6
+        h: 3
+        x: 6
+        y: 0
+        i: '1'
+        minW: 3
+        maxW: 12
+        minH: 3
+        maxH: 12
+        moved: false
+        static: false
+      taskid: 0
+      visualBlockNum: 1
+      workbook_id: 53c0bc4a4a1b47dfba74feae7b34e22a

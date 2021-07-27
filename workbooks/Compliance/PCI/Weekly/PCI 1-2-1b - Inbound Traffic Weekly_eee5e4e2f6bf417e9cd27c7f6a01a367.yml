@@ -1,0 +1,23 @@
+id: eee5e4e2f6bf417e9cd27c7f6a01a367
+name: PCI 1-2-1b - Inbound Traffic Weekly
+path: /Compliance/PCI/Weekly
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT concat_ws(" ",round(sum($TxLen)/1000/1000), "GB") AS $TotalBytes FROM
+    FIREWALL WHERE $Duration=7d AND $SrcType='PUBLIC' AND $DstType='PRIVATE' ORDER
+    BY $TotalBytes DESC
+- type: visual
+  data:
+    widget_name: Inbound Traffic Weekly
+    chart_type: metric
+    config:
+      type: default
+      key:
+      - null
+      - null
+      value: $TotalBytes
+config: {}

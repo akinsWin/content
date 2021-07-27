@@ -1,0 +1,23 @@
+id: 7e08d8e0365841e59f6e8f16fd1fa666
+name: "Threat Detected on\_ Host - File"
+path: /Basic Security Monitoring/Threat Alerts
+description: ''
+type: auto-scheduled
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $Threat, $System, $File FROM THREAT WHERE $Vector='HOST' AND $Action='THREAT_DETECTED'
+    AND $Threat IS NOT NULL AND $System IS NOT NULL AND $FILE IS NOT NULL GROUP BY
+    $Threat, $System, $File
+- type: signal
+  DetectionName: _$Threat_
+  DetectionTactic: Execution
+  DetectionTechnique: User Execution
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  TargetHost: $System
+  SuspectObject: $File
+config:
+  parameters: []

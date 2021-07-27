@@ -1,9 +1,0 @@
-id: 9f35d885af104f9795ecb51bb422dc51
-name: PCI 1-2-1b - Inbound Traffic Daily
-path: /Compliance/PCI
-description: ''
-type: Standard
-author: DNIF
-blocks:
-- type: dql
-  query: _fetch * from event where $Stream=FIREWALL AND $Duration=1d AND $SrcType=PUBLIC AND $DstType=PRIVATE group sum $RXLen limit 100

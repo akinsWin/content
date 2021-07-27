@@ -1,0 +1,23 @@
+id: da57c426abfa4858804882f4a962761f
+name: Threat detected on Network
+path: /Basic Security Monitoring/Threat Alerts
+description: ''
+type: auto-scheduled
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcIP, $DstIP, $Threat FROM THREAT WHERE $Action='THREAT_DETECTED'
+    AND $Vector='NETWORK' AND $SrcIP IS NOT NULL AND $DstIP IS NOT NULL AND $Threat
+    IS NOT NULL GROUP BY $Threat, $SrcIP, $DstIP
+- type: signal
+  DetectionName: _$Threat_
+  DetectionTactic: Unclassified
+  DetectionTechnique: Unclassified
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectHost: $SrcIP
+  TargetHost: $DstIP
+config:
+  parameters: []

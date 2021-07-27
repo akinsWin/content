@@ -1,0 +1,22 @@
+id: a1f141f602db469bbe4d2cfbe70a0545
+name: Top Users
+path: /Visualization/Authentication Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=1h group count_unique
+    $User limit 10
+- type: visual
+  data:
+    widget_name: Top Users
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $User
+      - null
+      value: count_unique
+config: {}

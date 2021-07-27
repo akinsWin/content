@@ -1,0 +1,20 @@
+id: 504df2cd0cee4a0db0f5322e441a8d4b
+name: Kernel Module Removal
+path: /Advanced Threat Detection/Linux Process Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $ProcessName,$System  FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
+    ($ProcessArgs LIKE "%rmmod%sudo%") OR ($ProcessArgs LIKE "%modprobe%sudo%" AND
+    ($ProcessArgs LIKE "%\-\-remove%" OR $ProcessArgs LIKE "%\-r%")) GROUP BY $ProcessName,$System
+- type: signal
+  DetectionName: Kernel Module Removal
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Kernel Modules and Extensions
+  DetectionScore: 5
+  DetectionConfidence: Low
+  TargetHost: $System
+config: {}

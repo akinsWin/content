@@ -1,0 +1,36 @@
+id: f13e95cbba1041bdaedfde0b136e80ef
+name: Suspicious Network Shares Accessed by User
+path: /Advanced Threat Detection/Windows Audit Monitoring
+description: Outlier pattern detected for Network Shares Accessed
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: ai
+  data:
+    contamination_factor: 0.001
+    result_condition:
+      only_anomaly: true
+      return_graph_result: true
+    query_data:
+      stream: WIN-AUDIT
+      entity: $User
+      feature_list:
+      - distinct: $System
+      - distinct: $Object
+      filter_list:
+      - field: $Action
+        value: NETWORK_SHARE_OBJECT_ACCESSED
+        operator: '='
+      duration: 7d
+- type: signal
+  DetectionName: Suspicious Network Shares Accessed by User
+  DetectionTactic: Collection
+  DetectionTechnique: Data from Network Shared Drive
+  DetectionScore: '6'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $User
+cron: null
+config:
+  parameters: []

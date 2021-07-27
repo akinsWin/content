@@ -1,0 +1,22 @@
+id: ec6408b330ea4af0a322ddefa65b4573
+name: Unsuccessful Logins Weekly
+path: /Compliance/FISMA/Weekly
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Action=LOGIN AND $Status=FAILED
+    AND $Duration=7d group timeslice 1h limit 168
+- type: visual
+  data:
+    widget_name: Unsuccessful Logins Weekly
+    chart_type: timeline
+    config:
+      type: default
+      key:
+      - $CNAMTime
+      - null
+      value: count
+config: {}

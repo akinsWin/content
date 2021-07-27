@@ -1,0 +1,22 @@
+id: 26f661fea8cd4a6c978bd994590bf8cf
+name: Top System for Authentication Failures
+path: /Visualization/Authentication Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=1h AND $Action=LOGIN  AND
+    $Status=FAILED group count_unique $System limit 10
+- type: visual
+  data:
+    widget_name: Top Systems by Count of Failures
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $System
+      - null
+      value: count_unique
+config: {}

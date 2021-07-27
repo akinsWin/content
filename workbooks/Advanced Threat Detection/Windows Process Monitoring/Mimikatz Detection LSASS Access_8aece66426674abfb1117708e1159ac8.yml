@@ -1,0 +1,27 @@
+id: 8aece66426674abfb1117708e1159ac8
+name: Mimikatz Detection LSASS Access
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Sherif Eldeeb|https://onedrive.live.com/view.aspx?resid=D026B4699190F1E6!2843&ithint=file%2cpptx&app=PowerPoint&authkey=!AMvCRTKB_V1J5ow<br>https://cyberwardog.blogspot.com/2017/03/chronicles-of-threat-hunter-hunting-for_22.html|"
+- type: sql
+  query: SELECT $System, $TargetImage, $GrantedAccess FROM SYSMON-PROCESS WHERE $Action
+    ='PROCESS_ACCESSED' AND ($TargetImage LIKE "%windows%system32%lsass%exe%" AND
+    $GrantedAccess IN ("0x1410", "0x1010", "0x1438", "0x143a", "0x1418")) GROUP BY
+    $System, $TargetImage, $GrantedAccess
+- type: signal
+  DetectionName: Mimikatz Detection LSASS Access
+  DetectionTactic: Credential Access
+  DetectionTechnique: OS Credential Dumping
+  DetectionScore: 5
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

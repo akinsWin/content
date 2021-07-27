@@ -1,0 +1,29 @@
+id: 41607c98f0574b1ab96900efa4937cc9
+name: In-memory PowerShell
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Tom Kern, oscd.community|https://adsecurity.org/?p=2921<br>https://github.com/p3nt4/PowerShdll|"
+- type: sql
+  query: 'SELECT $System,$Image, $ImageLoaded FROM SYSMON-IMAGE-LOAD WHERE (($ImageLoaded
+    LIKE "%System%Management%Automation%Dll%" OR $ImageLoaded LIKE "%System%Management%Automation%ni%Dll")
+    AND NOT (($Image LIKE "%powershell%exe%" OR $Image LIKE "%powershell%ise%exe%"
+    OR $Image LIKE "%WINDOWS%System32%sdiagnhost%exe%" OR $Image LIKE "%mscorsvw%exe%"
+    OR $Image LIKE "%WINDOWS%System32%RemoteFXvGPUDisablement%exe%"))) GROUP BY $System,$Image,
+    $ImageLoaded '
+- type: signal
+  DetectionName: In-memory PowerShell
+  DetectionTactic: Execution
+  DetectionTechnique: Command and Scripting Interpreter
+  DetectionScore: 5
+  DetectionSeverity: Medium
+  DetectionConfidence: Low
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

@@ -1,0 +1,12 @@
+id: a68fc82803b448ee81167205fa785a69
+name: Top Virus Destinations Monthly
+path: /Compliance/Common/Monthly
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=THREAT AND $Action=THREAT_DETECTED AND
+    $Duration=1M group count_unique $DstIP, $Threat  limit 10
+config: {}

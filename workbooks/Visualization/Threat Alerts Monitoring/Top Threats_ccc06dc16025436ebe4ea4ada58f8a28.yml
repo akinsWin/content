@@ -1,0 +1,23 @@
+id: ccc06dc16025436ebe4ea4ada58f8a28
+name: Top Threats
+path: /Visualization/Threat Alerts Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $Threat,$Vector, COUNT($Threat) AS $CountAtkName FROM THREAT WHERE
+    $Duration=1h GROUP BY $Threat,$Vector ORDER BY $CountAtkName Desc LIMIT 8
+- type: visual
+  data:
+    widget_name: Top Threats
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $Threat
+      - $Vector
+      value: $CountAtkName
+config:
+  parameters: []

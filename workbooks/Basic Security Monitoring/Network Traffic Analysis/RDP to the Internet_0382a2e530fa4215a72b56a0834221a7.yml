@@ -1,0 +1,21 @@
+id: 0382a2e530fa4215a72b56a0834221a7
+name: RDP to the Internet
+path: /Basic Security Monitoring/Network Traffic Analysis
+description: ''
+type: auto-scheduled
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcIP, COUNT($DstIP) AS $CountDstIP FROM FIREWALL WHERE $DstPort='3389'
+    AND $SrcType='PRIVATE' AND $DstType='PUBLIC' AND $Action='PACKET_ALLOWED' GROUP
+    BY $DstIP, $SrcIP
+- type: signal
+  DetectionName: RDP to the Internet
+  DetectionTactic: Exfiltration
+  DetectionTechnique: Exfiltration Over Alternative Protocol
+  DetectionScore: 5
+  DetectionSeverity: Medium
+  DetectionConfidence: Low
+  SuspectHost: $SrcIP
+config: {}

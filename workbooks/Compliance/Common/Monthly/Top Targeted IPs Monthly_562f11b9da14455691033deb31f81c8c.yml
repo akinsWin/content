@@ -1,0 +1,12 @@
+id: 562f11b9da14455691033deb31f81c8c
+name: Top Targeted IPs Monthly
+path: /Compliance/Common/Monthly
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=THREAT AND $Duration=1M AND $DstType=PRIVATE
+    group count_unique $Threat, $DstIP limit 10
+config: {}

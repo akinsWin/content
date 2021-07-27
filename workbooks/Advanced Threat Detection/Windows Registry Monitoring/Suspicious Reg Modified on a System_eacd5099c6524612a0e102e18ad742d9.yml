@@ -1,0 +1,38 @@
+id: eacd5099c6524612a0e102e18ad742d9
+name: Suspicious Reg Modified on a System
+path: /Advanced Threat Detection/Windows Registry Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: ai
+  data:
+    contamination_factor: 0.001
+    result_condition:
+      only_anomaly: true
+      return_graph_result: true
+    query_data:
+      stream: SYSMON-REGISTRY
+      entity: $System
+      feature_list:
+      - percentage_of:
+        - $Status
+        - PASSED
+      - count: $Action
+      filter_list:
+      - field: $Action
+        value: OBJECT_MODIFIED
+        operator: '='
+      duration: 1M
+- type: signal
+  DetectionName: Suspicious Reg Modified on a System
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Modify Registry
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

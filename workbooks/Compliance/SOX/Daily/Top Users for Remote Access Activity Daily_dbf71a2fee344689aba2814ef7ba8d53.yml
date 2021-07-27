@@ -1,0 +1,12 @@
+id: dbf71a2fee344689aba2814ef7ba8d53
+name: Top Users for Remote Access Activity Daily
+path: /Compliance/SOX/Daily
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $AuthProto IN [VPN,SSH]
+    AND $Duration=1d  group count_unique $System, $User limit 100
+config: {}

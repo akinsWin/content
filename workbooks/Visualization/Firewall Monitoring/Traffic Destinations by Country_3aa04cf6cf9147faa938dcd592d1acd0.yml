@@ -1,0 +1,22 @@
+id: 3aa04cf6cf9147faa938dcd592d1acd0
+name: Traffic Destinations by Country
+path: /Visualization/Firewall Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $DstCN, COUNT(*) AS $DstCnt FROM FIREWALL GROUP BY $DstCN
+- type: visual
+  data:
+    widget_name: Traffic Destinations by Country
+    chart_type: geoMap
+    config:
+      type: default
+      key:
+      - $DstCN
+      - null
+      value: $DstCnt
+config:
+  parameters: []

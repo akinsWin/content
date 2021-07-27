@@ -1,0 +1,27 @@
+id: 1c40ce0ce849419288bb9c773a539bed
+name: AWS EC2 Download Userdata
+path: /Cloud Security/Amazon Web Services
+description: ''
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |faloker|https://github.com/RhinoSecurityLabs/pacu/blob/master/modules/ec2__download_userdata/main.py#L24|"
+- type: sql
+  query: SELECT $EventSource,$EventName,$User, COUNT(*) AS $CountValues FROM CLOUDTRAIL
+    WHERE $EventSource='ec2.amazonaws.com' AND $EventName = 'DescribeInstanceAttribute'
+    AND $RequestParametersAttribute = 'userData' AND $EventSource IS NOT NULL AND
+    $EventName IS NOT NULL AND $User IS NOT NULL GROUP BY $EventSource,$EventName,$User
+    HAVING $CountValues>10
+- type: signal
+  DetectionName: AWS EC2 Download Userdata
+  DetectionTactic: Exfiltration
+  DetectionTechnique: Automated Exfiltration
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $User
+  TargetHost: $EventSource
+config: {}

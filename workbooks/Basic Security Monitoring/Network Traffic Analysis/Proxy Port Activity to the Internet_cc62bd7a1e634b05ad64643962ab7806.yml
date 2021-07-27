@@ -1,0 +1,24 @@
+id: cc62bd7a1e634b05ad64643962ab7806
+name: Proxy Port Activity to the Internet
+path: /Basic Security Monitoring/Network Traffic Analysis
+description: This rule detects events that may describe network events of proxy use
+  to the Internet. It includes popular HTTP proxy ports and SOCKS proxy ports. Typically,
+  environments will use an internal IP address for a proxy server. It can also be
+  used to circumvent network controls and detection mechanisms.
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=FIREWALL AND $Proto=TCP AND $DstPort IN
+    [1080,3128,8080] AND $SrcType=PRIVATE NOT $DstType=PRIVATE group count_unique
+    $SrcIP, $DstIP limit 10
+- type: signal
+  DetectionName: Proxy Port Activity to the Internet
+  DetectionTactic: Command and Control
+  DetectionTechnique: Commonly Used Port
+  DetectionScore: 5
+  DetectionConfidence: Low
+  SuspectHost: $SrcIP
+  TargetHost: $DstIP
+config: {}
