@@ -1,7 +1,7 @@
 id: 13696f568d4e4a019994d6a9518ba3a4
 name: Suspicious Network Shares Accessed from SrcIP
-path: /Outlier Detection
-description: /Advanced Threat Detection/Windows Audit Monitoring
+path: /Advanced Threat Detection/Windows Audit Monitoring
+description: Outlier pattern detected for Network Shares Accessed from SrcIP
 type: standard
 author: DNIF
 entity_type: workbooks
