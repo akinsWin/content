@@ -7,16 +7,18 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT $ProcessName,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
-    ($ProcessArgs LIKE "%\/sys\/class\/dmi\/id\/bios\_version%" OR $ProcessArgs LIKE
-    "%\/sys\/class\/dmi\/id\/product\_name%" OR $ProcessArgs LIKE "%\/sys\/class\/dmi\/id\/chassis\_vendor%"
-    OR $ProcessArgs LIKE "%\/proc\/scsi\/scsi%" OR $ProcessArgs LIKE "%\/proc\/ide\/hd0\/model%")
-    AND $User!='root' GROUP BY $ProcessName,$System
+  query: SELECT * FROM AUDITD WHERE $Action='PROCESS_ADDED' AND ($ProcessArgs LIKE
+    "%sys%class%dmi%id%bios%version%" OR $ProcessArgs LIKE "%sys%class%dmi%id%product%name%"
+    OR $ProcessArgs LIKE "%sys%class%dmi%id%chassis%vendor%" OR $ProcessArgs LIKE
+    "%proc%scsi%scsi%" OR $ProcessArgs LIKE "%proc%ide%hd0%model%") AND $User!='root'
 - type: signal
   DetectionName: Virtual Machine Fingerprinting
   DetectionTactic: Discovery
   DetectionTechnique: System Information Discovery
   DetectionScore: 5
+  DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []

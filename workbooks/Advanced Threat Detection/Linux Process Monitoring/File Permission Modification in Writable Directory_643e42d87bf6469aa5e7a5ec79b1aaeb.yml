@@ -7,15 +7,18 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT $ProcessName,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
-    ($ProcessName='chmod' OR $ProcessName='chown' OR $ProcessName='chattr' OR $ProcessName='chgrp')
-    AND ($Process LIKE "%\/tmp%" OR $Process LIKE "%\/var\/tmp%" OR $Process LIKE
-    "%\/dev\/shm%") AND $User!='root' GROUP BY $ProcessName,$System
+  query: SELECT $Process,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND ($Process
+    LIKE "%chmod%" OR $Process LIKE "%chown%" OR $Process LIKE "%chattr%" OR $Process
+    LIKE "%chgrp%") AND ($ProcessArgs LIKE "%tmp%" OR $ProcessArgs LIKE "%var%tmp%"
+    OR $ProcessArgs LIKE "%dev%shm%") AND NOT $User='root' GROUP BY $Process,$System
 - type: signal
   DetectionName: File Permission Modification in Writable Directory
   DetectionTactic: Defense Evasion
   DetectionTechnique: File and Directory Permissions Modification
   DetectionScore: 5
+  DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []

@@ -7,13 +7,16 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT $ProcessName,$System  FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
-    $ProcessName='whoami' GROUP BY $ProcessName,$System
+  query: SELECT $Process,$System  FROM AUDITD WHERE $Action='PROCESS_ADDED' AND $Process
+    LIKE "%whoami%" GROUP BY $Process,$System
 - type: signal
   DetectionName: User Discovery via Whoami
   DetectionTactic: Discovery
   DetectionTechnique: System Owner/User Discovery
   DetectionScore: 5
+  DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []

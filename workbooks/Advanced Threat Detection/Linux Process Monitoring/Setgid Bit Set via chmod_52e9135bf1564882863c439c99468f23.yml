@@ -7,14 +7,17 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT $ProcessName,$System  FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
-    $ProcessName='chmod' AND ($ProcessArgs='g+s' OR $ProcessArgs LIKE "2%") AND $User!='root'
-    GROUP BY $ProcessName,$System
+  query: SELECT $Process,$System, $User  FROM AUDITD WHERE $Action='PROCESS_ADDED'
+    AND $Process LIKE "%chmod" AND ($ProcessArgs LIKE "%g%+%s%" OR $ProcessArgs LIKE
+    "%2%") AND $User!='root' GROUP BY $Process,$System, $User
 - type: signal
   DetectionName: Setgid Bit Set via chmod
   DetectionTactic: Privilege Escalation
   DetectionTechnique: Abuse Elevation Control Mechanism
-  DetectionScore: 5
+  DetectionScore: '3'
+  DetectionSeverity: Low
   DetectionConfidence: Low
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []

@@ -1,0 +1,24 @@
+id: 91af3623da3f4556a2e1369dcf7806b5
+name: DTRACK Process Creation
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: community
+entity_type: workbooks
+blocks:
+- type: text
+  code: "|Author|References|\n                 |------|--------|\n               \
+    \  |Florian Roth|https://securelist.com/my-name-is-dtrack/93338/<br>https://app.any.run/tasks/4bc9860d-ab51-4077-9e09-59ad346b92fd/<br>https://app.any.run/tasks/ce4deab5-3263-494f-93e3-afb2b9d79f14/|"
+- type: sql
+  query: SELECT * FROM SYSMON-PROCESS WHERE $CommandLine LIKE "% echo EEEE > %"
+- type: signal
+  DetectionName: DTRACK Process Creation
+  DetectionTactic: Persistence
+  DetectionTechnique: Create or Modify System Process
+  DetectionScore: 5
+  DetectionSeverity: Medium
+  DetectionConfidence: Low
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

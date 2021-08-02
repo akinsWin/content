@@ -7,13 +7,16 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT $ProcessName,$System  FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
-    $ProcessName='nmap' GROUP BY $ProcessName,$System
+  query: SELECT $Process,$System  FROM AUDITD WHERE $Action='PROCESS_ADDED' AND $Process
+    LIKE "%nmap" GROUP BY $Process,$System
 - type: signal
   DetectionName: Nmap Process Activity
   DetectionTactic: Discovery
   DetectionTechnique: System Network Connections Discovery
-  DetectionScore: 5
+  DetectionScore: '3'
+  DetectionSeverity: Low
   DetectionConfidence: Low
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []

@@ -7,15 +7,18 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT $ProcessName,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
-    ($ProcessArgs LIKE "%kmod%list%sudo%") OR ($ProcessArgs LIKE "%sudo%" AND ($ProcessArgs
-    LIKE "%depmod%" OR $ProcessArgs LIKE "%lsmod%" OR $ProcessArgs LIKE "%modinfo%"))
-    GROUP BY $ProcessName,$System
+  query: SELECT $Process,$System, $ProcessArgs FROM AUDITD WHERE $Action='PROCESS_ADDED'
+    AND ($ProcessArgs LIKE "%kmod%list%sudo%") OR ($ProcessArgs LIKE "%sudo%" AND
+    ($ProcessArgs LIKE "%depmod%" OR $ProcessArgs LIKE "%lsmod%" OR $ProcessArgs LIKE
+    "%modinfo%")) GROUP BY $Process,$System, $ProcessArgs
 - type: signal
   DetectionName: Enumeration of Kernel Modules
   DetectionTactic: Discovery
   DetectionTechnique: System Information Discovery
   DetectionScore: 5
+  DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []

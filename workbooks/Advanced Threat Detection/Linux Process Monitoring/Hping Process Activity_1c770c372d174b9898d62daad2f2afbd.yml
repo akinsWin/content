@@ -7,14 +7,17 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT $ProcessName,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
-    ($ProcessName='hping' OR $ProcessName='hping2' OR $ProcessName='hping3')  GROUP
-    BY $ProcessName,$System
+  query: SELECT $Process,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND ($Process
+    LIKE "%hping%" OR $Process LIKE "%hping2%" OR $Process LIKE "%hping3%")  GROUP
+    BY $Process,$System
 - type: signal
   DetectionName: Hping Process Activity
   DetectionTactic: Discovery
   DetectionTechnique: System Information Discovery
-  DetectionScore: 5
+  DetectionScore: '4'
+  DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []

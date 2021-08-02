@@ -7,14 +7,17 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT $ProcessName,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
-    $ProcessName='rm' AND $ProcessArgs LIKE "%\/\/home%root%\/\/\.bash\_history%"
-    GROUP BY $ProcessName,$System
+  query: SELECT $Process,$System, $User FROM AUDITD WHERE $Action='PROCESS_ADDED'
+    AND $Process LIKE "%rm%" AND $ProcessArgs LIKE "%home%bash%history%" GROUP BY
+    $Process,$System,$User
 - type: signal
   DetectionName: Deletion of Bash Command Line History
   DetectionTactic: Defense Evasion
   DetectionTechnique: Clear Command History
   DetectionScore: 5
+  DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []

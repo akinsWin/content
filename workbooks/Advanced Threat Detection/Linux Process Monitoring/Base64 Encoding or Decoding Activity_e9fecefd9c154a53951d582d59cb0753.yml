@@ -1,5 +1,5 @@
 id: e9fecefd9c154a53951d582d59cb0753
-name: Base64 Encoding-Decoding Activity
+name: Base64 Encoding or Decoding Activity
 path: /Advanced Threat Detection/Linux Process Monitoring
 description: ''
 type: standard
@@ -7,14 +7,17 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT $ProcessName,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
-    ($ProcessName='base64' OR $ProcessName='base64plain' OR $ProcessName='base64url'
-    OR $ProcessName='base64mime' OR $ProcessName='base64pem') GROUP BY $ProcessName,$System
+  query: SELECT $Process,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND ($Process
+    LIKE "%base64%" OR $Process LIKE "%base64plain%" OR $Process LIKE "%base64url%"
+    OR $Process LIKE "%base64mime% OR $Process LIKE "%base64pem%") GROUP BY $Process,$System
 - type: signal
   DetectionName: Base64 Encoding/Decoding Activity
   DetectionTactic: Defense Evasion
   DetectionTechnique: Obfuscated Files or Information
   DetectionScore: 5
+  DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []

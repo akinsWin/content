@@ -7,13 +7,16 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: dql
-  query: _fetch * from event where $Stream=SYSMON-PROCESS AND $Action=CreateRemoteThread
-    AND $TargetImage=*lsass.exe* group count_unique $System limit 0
+  query: _fetch * from event where $Stream=SYSMON-PROCESS AND $Action=CREATE_REMOTE_THREAD
+    AND $TargetImage=*lsass.exe* group count_unique $System, $TargetImage limit 0
 - type: signal
   DetectionName: Create Remote Thread into LSASS
   DetectionTactic: Credential Access
   DetectionTechnique: 'OS Credential Dumping: LSASS Memory'
-  DetectionScore: 10
-  DetectionConfidence: High
+  DetectionScore: '7'
+  DetectionSeverity: High
+  DetectionConfidence: Medium
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []

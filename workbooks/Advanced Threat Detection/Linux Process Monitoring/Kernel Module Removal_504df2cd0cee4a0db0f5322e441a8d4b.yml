@@ -7,14 +7,17 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT $ProcessName,$System  FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
-    ($ProcessArgs LIKE "%rmmod%sudo%") OR ($ProcessArgs LIKE "%modprobe%sudo%" AND
-    ($ProcessArgs LIKE "%\-\-remove%" OR $ProcessArgs LIKE "%\-r%")) GROUP BY $ProcessName,$System
+  query: SELECT $Process,$System  FROM AUDITD WHERE $Action='PROCESS_ADDED' AND ($ProcessArgs
+    LIKE "%sudo%rmmod%") OR ($ProcessArgs LIKE "%sudo%modprobe%" AND ($ProcessArgs
+    LIKE "%remove%" OR $ProcessArgs LIKE "%-r%")) GROUP BY $Process,$System
 - type: signal
   DetectionName: Kernel Module Removal
   DetectionTactic: Defense Evasion
   DetectionTechnique: Kernel Modules and Extensions
   DetectionScore: 5
+  DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []
