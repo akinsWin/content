@@ -1,7 +1,7 @@
 id: 37f1c7de9f744ae2bf2f3397c4190548
 name: Turla ComRAT
 path: /Advanced Threat Detection/Proxy Monitoring
-description: Detects Turla ComRAT patterns
+description: ''
 type: standard
 author: community
 entity_type: workbooks
@@ -10,12 +10,17 @@ blocks:
   code: "|Author|References|\n                 |------|--------|\n               \
     \  |Florian Roth|https://www.welivesecurity.com/wp-content/uploads/2020/05/ESET_Turla_ComRAT.pdf|"
 - type: sql
-  query: SELECT * FROM WEBFILTER WHERE $URL LIKE "%/index/index.php_h=%"
+  query: SELECT $System,$SrcIP,$URL FROM WEBFILTER WHERE $URL LIKE "%index%index.php_h=%"
+    GROUP BY $System,$SrcIP,$URL
 - type: signal
   DetectionName: Turla ComRAT
   DetectionTactic: Command and Control
   DetectionTechnique: Application Layer Protocol
   DetectionScore: 5
+  DetectionSeverity: Medium
   DetectionConfidence: Low
   SuspectHost: $SrcIP
-config: {}
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

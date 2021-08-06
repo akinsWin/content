@@ -1,0 +1,54 @@
+id: e6165e589b944c5996be0cb4a07cb8fd
+name: Suspicious File Delete Activity by User
+path: /Advanced Threat Detection/Documents Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: ai
+  data:
+    contamination_factor: 0.001
+    result_condition:
+      only_anomaly: true
+      return_graph_result: true
+    query_data:
+      stream: DOCUMENTS
+      entity: $User
+      feature_list:
+      - distinct: $File
+      - distinct: $SrcIP
+      - count: $File
+      - percentage_of:
+        - $Status
+        - PASSED
+      filter_list:
+      - field: $Action
+        value: DELETED
+        operator: '='
+      duration: 7d
+- type: signal
+  DetectionName: Suspicious File Delete Activity by User
+  DetectionTactic: Impact
+  DetectionTechnique: Data Destruction
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $User
+- type: text
+  code: 'This AI block detects the unusual/suspicious file destruction  activity performed
+    by a user using AI. In this usecase, suspicious  number of attempts performed
+    by a user  to delete a file over the last one week  will indicate the posibility
+    of Data destruction att&ck  to render stored data irrecoverable by forensic techniques
+    through overwriting files or deleting data on local and remote drives.To maximize
+    impact on the target organization, malware designed for destroying data may have
+    worm-like features to propagate across a network by leveraging additional techniques
+    like Valid Accounts, OS Credential Dumping etc.This can be mitigated by  ensuring
+    backups are stored off system and is protected from common methods adversaries
+    may use to gain access and destroy the backups to prevent recovery.
+
+
+    '
+cron: null
+config:
+  parameters: []

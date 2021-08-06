@@ -1,0 +1,50 @@
+id: ab73c230006a4241926b7cefc1cc7570
+name: Account Creation Anomaly
+path: /Advanced Threat Detection/IAM Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: ai
+  data:
+    contamination_factor: 0.001
+    result_condition:
+      only_anomaly: true
+      return_graph_result: true
+    query_data:
+      stream: IAM
+      entity: $User
+      feature_list:
+      - count: $Action
+      - percentage_of:
+        - $Status
+        - PASSED
+      - distinct: $System
+      filter_list:
+      - field: $Action
+        value: USER_ACCOUNT_CREATED
+        operator: '='
+      duration: 7d
+- type: signal
+  DetectionName: Account Creation Anomaly
+  DetectionTactic: Persistence
+  DetectionTechnique: Create Account
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Low
+  SuspectUser: ''
+- type: text
+  code: 'This AI block detects the unusual/suspicious account creation.
+
+    In this usecase, suspicious  number of attempts have been taken place by a user
+    for creating an account  which indicates Account creation technique.
+
+    Adversaries may create an account to maintain access to victim systems. With a
+    sufficient level of access, creating such accounts may be used to establish secondary
+    credentialed access that do not require persistent remote access tools to be deployed
+    on the system.This att&ck can be mitigated by using MFA, Network segmentation,
+    operation system configuration and Privileged account management. '
+cron: null
+config:
+  parameters: []

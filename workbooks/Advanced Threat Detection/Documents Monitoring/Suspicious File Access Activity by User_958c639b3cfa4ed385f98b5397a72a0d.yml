@@ -1,0 +1,49 @@
+id: 958c639b3cfa4ed385f98b5397a72a0d
+name: Suspicious File Access Activity by User
+path: /Advanced Threat Detection/Documents Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: ai
+  data:
+    contamination_factor: 0.001
+    result_condition:
+      only_anomaly: true
+      return_graph_result: true
+    query_data:
+      stream: DOCUMENTS
+      entity: $User
+      feature_list:
+      - distinct: $File
+      - distinct: $SrcIP
+      - count: $File
+      - percentage_of:
+        - $Status
+        - PASSED
+      filter_list:
+      - field: $Action
+        value: ACCESSED
+        operator: '='
+      duration: 7d
+- type: signal
+  DetectionName: Suspicious File Access Activity by User
+  DetectionTactic: Discovery
+  DetectionTechnique: File and Directory Discovery
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $User
+- type: text
+  code: "This AI block detects the unusual/suspicious system/network  discovery  activity\
+    \ performed by a User .In this usecase, suspicious  number of attempts performed\
+    \ by a User   to access a file over the last one week  will indicate the posibility\
+    \ of File and Directory Discovery att&ck  to gain knowledge about the system and\
+    \ internal network. \nThese technique help adversaries observe the environment\
+    \ and orient themselves before deciding how to act. Adversaries may enumerate\
+    \ files and directories or may search in specific locations of a host or network\
+    \ share for certain information within a file system."
+cron: null
+config:
+  parameters: []

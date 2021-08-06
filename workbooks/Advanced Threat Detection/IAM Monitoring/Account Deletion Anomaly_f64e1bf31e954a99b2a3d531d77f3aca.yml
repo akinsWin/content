@@ -1,0 +1,40 @@
+id: f64e1bf31e954a99b2a3d531d77f3aca
+name: Account Deletion Anomaly
+path: /Advanced Threat Detection/IAM Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: ai
+  data:
+    contamination_factor: 0.001
+    result_condition:
+      only_anomaly: true
+      return_graph_result: true
+    query_data:
+      stream: IAM
+      entity: $User
+      feature_list:
+      - count: $Action
+      - percentage_of:
+        - $Status
+        - PASSED
+      filter_list:
+      - field: $Action
+        value: USER_ACCOUNT_DELETED
+        operator: '='
+      duration: 7d
+- type: text
+  code: 'This AI block detects the unusual/suspicious account deletion  using AI .
+
+    In this usecase, suspicious  number of attempts have been taken place by a user
+    for deleting the account .
+
+    Adversaries may manipulate accounts to interrupt availability of system and network
+    resources to users.Accounts may be deleted, locked, or manipulated to remove access
+    to accounts.This att&ck cannot be easily be mitigated.This can be detected by
+    monitoring the command-line arguments/ execution involving deletion/modification.'
+cron: null
+config:
+  parameters: []

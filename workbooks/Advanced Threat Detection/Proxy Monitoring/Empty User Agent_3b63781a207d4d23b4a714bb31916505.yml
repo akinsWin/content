@@ -1,7 +1,7 @@
 id: 3b63781a207d4d23b4a714bb31916505
 name: Empty User Agent
 path: /Advanced Threat Detection/Proxy Monitoring
-description: Detects suspicious empty user agent strings in proxy logs
+description: ''
 type: standard
 author: community
 entity_type: workbooks
@@ -10,12 +10,17 @@ blocks:
   code: "|Author|References|\n                 |------|--------|\n               \
     \  |Florian Roth|https://twitter.com/Carlos_Perez/status/883455096645931008|"
 - type: sql
-  query: SELECT * FROM WEBFILTER WHERE $UserAgent = ""
+  query: SELECT $System, $SrcIP, $UserAgent FROM WEBFILTER WHERE $UserAgent = "" GROUP
+    BY $System, $SrcIP, $UserAgent
 - type: signal
   DetectionName: Empty User Agent
   DetectionTactic: Command and Control
   DetectionTechnique: Application Layer Protocol
   DetectionScore: 5
+  DetectionSeverity: Medium
   DetectionConfidence: Low
   SuspectHost: $SrcIP
-config: {}
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

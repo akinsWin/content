@@ -7,11 +7,12 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT * FROM WEBFILTER WHERE $URL LIKE "%avsvmcloud%com%" OR $URL LIKE "%databasegalore%com%"
-    OR $URL LIKE "%deftsecurity%com%" OR $URL LIKE "%freescanonline%com%" OR $URL
-    LIKE "%panhardware%com%" OR $URL LIKE "%thedoccloud%com%" OR $URL LIKE "%incomeupdate%com%"
-    OR $URL LIKE "%zupertech%com%" OR $URL LIKE "%digitalcollege%org%" OR $URL LIKE
-    "%virtualdataserver%com%" OR $URL LIKE "%lcomputers%com%" OR $URL LIKE "%webcodez%com%"
+  query: SELECT $System, $URL FROM WEBFILTER WHERE $URL LIKE "%avsvmcloud%com%" OR
+    $URL LIKE "%databasegalore%com%" OR $URL LIKE "%deftsecurity%com%" OR $URL LIKE
+    "%freescanonline%com%" OR $URL LIKE "%panhardware%com%" OR $URL LIKE "%thedoccloud%com%"
+    OR $URL LIKE "%incomeupdate%com%" OR $URL LIKE "%zupertech%com%" OR $URL LIKE
+    "%digitalcollege%org%" OR $URL LIKE "%virtualdataserver%com%" OR $URL LIKE "%lcomputers%com%"
+    OR $URL LIKE "%webcodez%com%" GROUP BY $System, $URL
 - type: text
   code: This rule was converted from the FireEye hxioc DNS rules. This rule identifies
     the Sunburst C2 channel used in the compromise.
@@ -22,7 +23,6 @@ blocks:
   DetectionScore: '3'
   DetectionSeverity: Low
   DetectionConfidence: Low
-  SuspectHost: $SrcIP
   TargetHost: $System
 cron: null
 config:
