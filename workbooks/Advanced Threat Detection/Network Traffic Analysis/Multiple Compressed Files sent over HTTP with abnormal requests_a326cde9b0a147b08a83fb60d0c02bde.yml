@@ -1,0 +1,33 @@
+id: a326cde9b0a147b08a83fb60d0c02bde
+name: Multiple Compressed Files sent over HTTP with abnormal requests
+path: /Advanced Threat Detection/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: 'SELECT $SrcIP,COUNT($ID) as $AggVal from NTA-HTTP WHERE $Action=''REQUEST_ALLOWED''
+    AND (MimeType = ''application/vnd.ms-cab-compressed'' OR MimeType = ''application/warc''
+    OR MimeType = ''application/x-7z-compressed'' OR MimeType = ''application/x-ace''
+    OR MimeType = ''application/x-arc'' OR MimeType = ''application/x-archive'' OR
+    MimeType = ''application/x-arj'' OR MimeType = ''application/x-compress'' OR MimeType
+    = ''application/x-cpio'' OR MimeType = ''application/x-dmg'' OR MimeType = ''application/x-eet''
+    OR MimeType = ''application/x-gzip'' OR MimeType = ''application/x-lha'' OR MimeType
+    = ''application/x-lrzip'' OR MimeType = ''application/x-lz4'' OR MimeType = ''application/x-lzma''
+    OR MimeType = ''application/x-lzh'' OR MimeType = ''application/x-lzip'' OR MimeType
+    = ''application/x-rar'' OR MimeType = ''application/x-rpm'' OR MimeType = ''application/x-stuffit''
+    OR MimeType = ''application/x-tar'' OR MimeType = ''application/x-xz'' OR MimeType
+    = ''application/x-zoo'' OR MimeType = ''application/zip'') AND $RxLen > 10000000
+    GROUP BY $SrcIP HAVING $AggVal > 10 '
+- type: signal
+  DetectionName: Multiple Compressed Files sent over HTTP with abnormal requests
+  DetectionTactic: Collection
+  DetectionTechnique: Archive Collected Data
+  DetectionScore: '6'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectHost: $SrcIP
+cron: null
+config:
+  parameters: []

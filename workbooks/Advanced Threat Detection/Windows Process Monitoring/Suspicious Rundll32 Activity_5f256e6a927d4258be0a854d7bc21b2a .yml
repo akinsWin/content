@@ -17,7 +17,7 @@ blocks:
     OR $CommandLine LIKE "%url%dll%OpenURL%" OR $CommandLine LIKE "%url%dll%OpenURLA%"
     OR $CommandLine LIKE "%url%dll%FileProtocolHandler%" OR $CommandLine LIKE "%zipfldr%dll%RouteTheCall%"
     OR $CommandLine LIKE "%Shell32%dll%Control%RunDLL%" OR $CommandLine LIKE "%javascript\:%"
-    OR $CommandLine LIKE "%RegisterXLL%") with payload
+    OR $CommandLine LIKE "%RegisterXLL%")
 - type: signal
   DetectionName: Execution in Non-Executable Folder
   DetectionTactic: Defense Evasion

@@ -1,0 +1,25 @@
+id: 42fb055a88954c349490301a19216e76
+name: Detection of Expired Certificates
+path: /Advanced Threat Detection/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $CNAMTime AS $CurrentTime, (($Expiry)*1000) AS ExpiryTime, $CertificateSubject
+    FROM NTA-CERTIFICATE WHERE $Duration=7d
+- type: dql
+  query: _field $Difference expr $ExpiryTime - $CurrentTime
+- type: dql
+  query: _checkif str_compare $Difference regex '-' include
+- type: signal
+  DetectionName: Detection of Expired Certificates
+  DetectionTactic: Unclassified
+  DetectionTechnique: Unclassified
+  DetectionScore: '6'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+cron: null
+config:
+  parameters: []

@@ -1,0 +1,22 @@
+id: 07149e3241b048e29eff9cd0860a84b3
+name: External SMB Communication detected
+path: /Advanced Threat Detection/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT * FROM NTA-SMB WHERE $SrcType='PUBLIC' OR $DstType='PUBLIC'
+- type: signal
+  DetectionName: External SMB Communication detected
+  DetectionTactic: Exfiltration
+  DetectionTechnique: Exfiltration Over Alternative Protocol
+  DetectionScore: '3'
+  DetectionSeverity: Low
+  DetectionConfidence: Low
+  SuspectHost: $SrcIP
+  TargetHost: $DstIP
+cron: null
+config:
+  parameters: []

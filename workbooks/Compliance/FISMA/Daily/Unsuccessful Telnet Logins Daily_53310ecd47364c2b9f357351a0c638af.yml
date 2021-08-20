@@ -9,5 +9,7 @@ blocks:
 - type: dql
   query: _fetch * from event where $Stream=AUTHENTICATION AND $Action=LOGIN AND $Status=FAILED
     AND $Duration=1d AND $AuthProto=TELNET group count_unique $System , $SrcIP, $User
-    limit 100
-config: {}
+    limit 10
+cron: null
+config:
+  parameters: []

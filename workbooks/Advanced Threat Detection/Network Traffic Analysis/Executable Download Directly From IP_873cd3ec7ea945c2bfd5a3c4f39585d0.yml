@@ -1,0 +1,40 @@
+id: 873cd3ec7ea945c2bfd5a3c4f39585d0
+name: Executable Download Directly From IP
+path: /Advanced Threat Detection/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT * FROM NTA-HTTP WHERE $Action='REQUEST_ALLOWED' AND ((($Host LIKE
+    "%1%" OR $Host LIKE "%2%" OR $Host LIKE "%3%" OR $Host LIKE "%4%" OR $Host LIKE
+    "%5%" OR $Host LIKE "%6%" OR $Host LIKE "%7%" OR $Host LIKE "%8%" OR $Host LIKE
+    "%9%" OR $Host LIKE "%0%") AND ($Host LIKE "%\.%") OR Host LIKE "%\:%")) AND (URI
+    LIKE "%\.apm" OR URI LIKE "%\.app" OR URI LIKE "%\.appref-ms" OR URI LIKE "%\.bas"
+    OR URI LIKE "%\.bat" OR URI LIKE "%\.chi" OR URI LIKE "%\.chm" OR URI LIKE "%\.chq"
+    OR URI LIKE "%\.chw" OR URI LIKE "%\.dll" OR URI LIKE "%\.exe" OR URI LIKE "%\.gadget"
+    OR URI LIKE "%\.hta" OR URI LIKE "%\.inf" OR URI LIKE "%\.jar" OR URI LIKE "%\.jnlp"
+    OR URI LIKE "%\.jse" OR URI LIKE "%\.lnk" OR URI LIKE "%\.mde" OR URI LIKE "%\.mht"
+    OR URI LIKE "%\.msi" OR URI LIKE "%\.msix" OR URI LIKE "%\.msixbundle" OR URI
+    LIKE "%\.pif" OR URI LIKE "%\.pkg" OR URI LIKE "%\.pl" OR URI LIKE "%\.ps1" OR
+    URI LIKE "%\.ps1xml" OR URI LIKE "%\.ps2" OR URI LIKE "%\.ps2xml" OR URI LIKE
+    "%\.psc1" OR URI LIKE "%\.psc2" OR URI LIKE "%\.psd1" OR URI LIKE "%\.psd1" OR
+    URI LIKE "%\.psdm1" OR URI LIKE "%\.psm1" OR URI LIKE "%\.py" OR URI LIKE "%\.pyc"
+    OR URI LIKE "%\.pyo" OR URI LIKE "%\.pyw" OR URI LIKE "%\.pyz" OR URI LIKE "%\.reg"
+    OR URI LIKE "%\.scr" OR URI LIKE "%\.sct" OR URI LIKE "%\.vbe" OR URI LIKE "%\.vbs"
+    OR URI LIKE "%\.ws" OR URI LIKE "%\.wsb" OR URI LIKE "%\.wsc" OR URI LIKE "%\.wsf"
+    OR URI LIKE "%\.xpi" OR URI LIKE "%\.xz" OR URI LIKE "%\.z" OR URI LIKE "%\.zip"
+    OR URI LIKE "%\.zipx")
+- type: signal
+  DetectionName: Executable Download Directly From IP
+  DetectionTactic: Execution
+  DetectionTechnique: User Execution
+  DetectionScore: '6'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectHost: $SrcIP
+  TargetHost: $DstIP
+cron: null
+config:
+  parameters: []

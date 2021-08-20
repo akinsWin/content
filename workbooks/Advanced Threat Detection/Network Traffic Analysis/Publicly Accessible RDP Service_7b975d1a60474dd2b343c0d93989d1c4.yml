@@ -1,0 +1,22 @@
+id: 7b975d1a60474dd2b343c0d93989d1c4
+name: Publicly Accessible RDP Service
+path: /Advanced Threat Detection/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT * FROM NTA-RDP WHERE $Action='CONNECTION_ESTABLISHED' AND $SrcType='PUBLIC'
+- type: signal
+  DetectionName: Publicly Accessible RDP Service
+  DetectionTactic: Initial Access
+  DetectionTechnique: External Remote Services
+  DetectionScore: '6'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectHost: $SrcIP
+  TargetHost: $DstIP
+cron: null
+config:
+  parameters: []

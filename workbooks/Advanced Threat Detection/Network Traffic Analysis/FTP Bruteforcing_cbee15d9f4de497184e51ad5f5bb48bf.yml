@@ -1,0 +1,23 @@
+id: cbee15d9f4de497184e51ad5f5bb48bf
+name: FTP Bruteforcing
+path: /Advanced Threat Detection/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcIP, count_if($Status='FAILED') AS $FailCount, count_if($Status='PASSED')
+    AS $PassCount FROM NTA-FTP WHERE $Duration=15m GROUP BY $SrcIP HAVING $FailCount
+    >= 50 AND $FailCount >= $PassCount * 5 LIMIT 100
+- type: signal
+  DetectionName: FTP Bruteforcing
+  DetectionTactic: Credential Access
+  DetectionTechnique: Brute Force
+  DetectionScore: '6'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectHost: $SrcIP
+cron: null
+config:
+  parameters: []

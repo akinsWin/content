@@ -1,0 +1,21 @@
+id: f1797268f51e404996716e879d73822f
+name: Executable from Webdav
+path: /Advanced Threat Detection/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: 'SELECT * FROM NTA-HTTP WHERE $UserAgent LIKE "%WebDAV%" AND ($URI LIKE "%webdav%"
+    OR $URI LIKE "%exe%") AND $MimeType LIKE "%dosexec%" '
+- type: signal
+  DetectionName: Executable from Webdav
+  DetectionTactic: Command and Control
+  DetectionTechnique: Ingress Tool Transfer
+  DetectionScore: '6'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+cron: null
+config:
+  parameters: []

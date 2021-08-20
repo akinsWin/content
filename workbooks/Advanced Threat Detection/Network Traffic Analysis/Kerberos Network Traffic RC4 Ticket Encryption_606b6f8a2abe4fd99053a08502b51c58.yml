@@ -1,0 +1,22 @@
+id: 606b6f8a2abe4fd99053a08502b51c58
+name: Kerberos Network Traffic RC4 Ticket Encryption
+path: /Advanced Threat Detection/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: 'SELECT * FROM NTA-KERBEROS WHERE $RequestType=''TGS'' AND $Cipher LIKE "%RC4%HMAC%"
+    AND $App NOT LIKE "%\$%" '
+- type: signal
+  DetectionName: Kerberos Network Traffic RC4 Ticket Encryption
+  DetectionTactic: Credential Access
+  DetectionTechnique: Steal or Forge Kerberos Tickets
+  DetectionScore: '6'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectHost: $SrcIP
+cron: null
+config:
+  parameters: []

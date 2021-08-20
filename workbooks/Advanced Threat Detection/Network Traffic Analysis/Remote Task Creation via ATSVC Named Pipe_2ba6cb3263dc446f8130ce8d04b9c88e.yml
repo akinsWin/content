@@ -1,0 +1,20 @@
+id: 2ba6cb3263dc446f8130ce8d04b9c88e
+name: Remote Task Creation via ATSVC Named Pipe
+path: /Advanced Threat Detection/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT * FROM NTA-SMB WHERE $Path LIKE "%C$%" AND $Name LIKE "%ATSVC%"
+- type: signal
+  DetectionName: Remote Task Creation via ATSVC Named Pipe
+  DetectionTactic: Persistence
+  DetectionTechnique: Scheduled Task/Job
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+cron: null
+config:
+  parameters: []

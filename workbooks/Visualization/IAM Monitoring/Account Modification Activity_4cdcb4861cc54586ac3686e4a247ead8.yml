@@ -7,8 +7,8 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: dql
-  query: _fetch * from event where $Stream=IAM AND $Duration=1h AND $Action IN [ACCOUNT_PASSWORD_CHANGED,PRIVILEGE_CHANGED,USER_ACCOUNT_CHANGED,SYSTEM_USER_ACCOUNT_CHANGED,PRIVILEGE_SET]
-    group timeslice 1m limit 60
+  query: _fetch * from event where $Stream=IAM AND $Duration=1d AND $Action IN [ACCOUNT_PASSWORD_CHANGED,PRIVILEGE_CHANGED,USER_ACCOUNT_CHANGED,SYSTEM_USER_ACCOUNT_CHANGED,PRIVILEGE_SET]
+    group timeslice 1h limit 24
 - type: visual
   data:
     widget_name: Account Modification Activity
@@ -19,4 +19,6 @@ blocks:
       - $CNAMTime
       - null
       value: count
-config: {}
+cron: null
+config:
+  parameters: []

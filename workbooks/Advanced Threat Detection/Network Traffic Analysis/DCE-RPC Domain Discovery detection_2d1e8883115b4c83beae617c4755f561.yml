@@ -1,0 +1,34 @@
+id: 2d1e8883115b4c83beae617c4755f561
+name: DCE-RPC Domain Discovery detection
+path: /Advanced Threat Detection/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcIP,count(*) AS $Agg FROM NTA-DCE-RPC WHERE $Duration=15m AND ($Endpoint='lsarpc'
+    AND $Operation='LsarEnumerateTrustedDomainsEx') OR ($Endpoint='lsarpc' AND $Operation='LsarQueryDomainInformationPolicy')
+    OR ($Endpoint='lsarpc' AND $Operation='LsarQueryInfoTrustedDomain') OR ($Endpoint='lsarpc'
+    AND $Operation='LsarQueryInformationPolicy') OR ($Endpoint='lsarpc' AND $Operation='LsarQueryInformationPolicy2')
+    OR ($Endpoint='lsarpc' AND $Operation='LsarQueryTrustedDomainInfo') OR ($Endpoint='lsarpc'
+    AND $Operation='LsarQueryTrustedDomainInfoByName') OR ($Endpoint='samr' AND $Operation='SamrLookupNamesInDomain')
+    OR ($Endpoint='samr' AND $Operation='SamrLookupIdsInDomain') OR ($Endpoint='samr'
+    AND $Operation='SamrLookupDomainInSamServer') OR ($Endpoint='samr' AND $Operation='SamrLookupDomainInSamServer')
+    OR ($Endpoint='samr' AND $Operation='SamrEnumerateAliasesInDomain') OR ($Endpoint='samr'
+    AND $Operation='SamrEnumerateUsersInDomain') OR ($Endpoint='samr' AND $Operation='SamrEnumerateGroupsInDomain')
+    OR ($Endpoint='samr' AND $Operation='SamrEnumerateDomainsInSamServer') OR ($Endpoint='samr'
+    AND $Operation='SamrQueryInformationAlias') OR ($Endpoint='samr' AND $Operation='SamrQueryInformationDomain')
+    OR ($Endpoint='samr' AND $Operation='SamrQueryInformationDomain2') GROUP BY $SrcIP
+    HAVING Agg>5
+- type: signal
+  DetectionName: DCE-RPC Domain Discovery detection
+  DetectionTactic: Discovery
+  DetectionTechnique: Domain Trust Discovery
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectHost: $SrcIP
+cron: null
+config:
+  parameters: []

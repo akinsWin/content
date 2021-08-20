@@ -1,0 +1,26 @@
+id: 68685fabe8424018a6e2a385623da576
+name: Domain User Enumeration Network Recon
+path: /Advanced Threat Detection/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcIP,$DstIP, COUNT($SrcIP) AS $CntSrc FROM NTA-DCE-RPC $Action='DCE_RPC_CONNECTION_DETECTED'
+    AND ($Operation LIKE "%LsarLookupNames%" OR $Operation LIKE "%LsarLookupSids3%"
+    OR $Operation LIKE "%SamrGetGroupsForUser%" OR $Operation LIKE "%SamrLookupIdsInDomain%"
+    OR $Operation LIKE "%SamrLookupNamesInDomain%" OR $Operation LIKE "%SamrQuerySecurityObject%"
+    OR  $Operation LIKE "%SamrQueryInformationGroup%") GROUP BY $SrcIP,$DstIP HAVING
+    $CntSrc>4
+- type: signal
+  DetectionName: Domain User Enumeration Network Recon
+  DetectionTactic: Discovery
+  DetectionTechnique: Account Discovery
+  DetectionScore: '4'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectHost: $SrcIP
+cron: null
+config:
+  parameters: []

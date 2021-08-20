@@ -1,0 +1,25 @@
+id: e08f6a6b565c4f038582b65d7a41e578
+name: DCE-RPC Group Discovery
+path: /Advanced Threat Detection/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcIP,count(*) AS $Agg FROM NTA-DCE-RPC WHERE $Duration=15m AND ($Endpoint='samr'
+    AND $Operation='SamrGetGroupsForUser') OR ($Endpoint='samr' AND $Operation='SamrGetAliasMembership')
+    OR ($Endpoint='samr' AND $Operation='SamrGetMembersInAlias') OR ($Endpoint='samr'
+    AND $Operation='SamrGetMembersInGroup') OR ($Endpoint='samr' AND $Operation='SamrQueryInformationGroup')GROUP
+    BY $SrcIP HAVING Agg>5
+- type: signal
+  DetectionName: DCE-RPC Group Discovery
+  DetectionTactic: Discovery
+  DetectionTechnique: Permission Groups Discovery
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectHost: $SrcIP
+cron: null
+config:
+  parameters: []

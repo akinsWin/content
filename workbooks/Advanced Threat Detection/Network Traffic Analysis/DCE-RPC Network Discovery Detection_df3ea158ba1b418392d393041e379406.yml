@@ -1,0 +1,30 @@
+id: df3ea158ba1b418392d393041e379406
+name: DCE-RPC Network Discovery Detection
+path: /Advanced Threat Detection/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcIP,count(*) AS $Agg FROM NTA-DCE-RPC WHERE $Duration=15m AND ($Endpoint='srvsvc'
+    AND $Operation='NetrConnectionEnum') OR ($Endpoint='srvsvc' AND $Operation='NetrFileEnum')
+    OR ($Endpoint='srvsvc' AND $Operation='NetrRemoteTOD') OR ($Endpoint='srvsvc'
+    AND $Operation='NetrServerAliasEnum') OR ($Endpoint='srvsvc' AND $Operation='NetrServerGetInfo')
+    OR ($Endpoint='srvsvc' AND $Operation='NetrServerTransportEnum') OR ($Endpoint='srvsvc'
+    AND $Operation='NetrSessionEnum') OR ($Endpoint='srvsvc' AND $Operation='NetrShareEnum')
+    OR ($Endpoint='srvsvc' AND $Operation='NetrShareGetInfo') OR ($Endpoint='wkssvc'
+    AND $Operation='NetrWkstaGetInfo') OR ($Endpoint='wkssvc' AND $Operation='NetrWkstaTransportEnum')
+    OR ($Endpoint='wkssvc' AND $Operation='NetrWkstaUserEnum') GROUP BY $SrcIP HAVING
+    Agg>5
+- type: signal
+  DetectionName: DCE-RPC Network Discovery Detection
+  DetectionTactic: Discovery
+  DetectionTechnique: Network Sniffing
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectHost: $SrcIP
+cron: null
+config:
+  parameters: []
