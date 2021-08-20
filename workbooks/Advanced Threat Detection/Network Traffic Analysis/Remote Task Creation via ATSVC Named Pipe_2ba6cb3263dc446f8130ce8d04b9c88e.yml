@@ -15,6 +15,7 @@ blocks:
   DetectionScore: '5'
   DetectionSeverity: Medium
   DetectionConfidence: Medium
+  SuspectObject: $Name
 cron: null
 config:
   parameters: []

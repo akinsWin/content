@@ -20,6 +20,7 @@ blocks:
   DetectionScore: '6'
   DetectionSeverity: Medium
   DetectionConfidence: Medium
+  SuspectObject: $CertificateSubject
 cron: null
 config:
   parameters: []
