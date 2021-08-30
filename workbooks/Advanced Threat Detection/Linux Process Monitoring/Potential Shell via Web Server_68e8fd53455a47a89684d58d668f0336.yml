@@ -7,14 +7,17 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT $ProcessName,$System  FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
-    ($ProcessName='bash' OR $ProcessName='dash') AND ($User='apache' OR $User='nginx'
-    OR $User='www' OR $User='www\-data') GROUP BY $ProcessName,$System
+  query: SELECT $Process,$System  FROM AUDITD WHERE $Action='PROCESS_ADDED' AND  ($Process
+    LIKE "%bash%" OR $Process LIKE "%dash%") AND ($User='apache' OR $User='nginx'
+    OR $User='www' OR $User='www\-data') GROUP BY $Process,$System
 - type: signal
   DetectionName: Potential Shell via Web Server
   DetectionTactic: Persistence
   DetectionTechnique: Web Shell
   DetectionScore: 5
+  DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []

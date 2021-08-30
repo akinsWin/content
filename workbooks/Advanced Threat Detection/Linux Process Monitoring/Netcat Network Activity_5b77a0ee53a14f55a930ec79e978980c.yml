@@ -7,14 +7,18 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT $ProcessName,$System  FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
-    ($ProcessName='nc' OR $ProcessName='ncat' OR $ProcessName='netcat' OR $ProcessName='netcat.openbsd'
-    OR $ProcessName='netcat.traditional') GROUP BY $ProcessName,$System
+  query: SELECT $Process,$System,$User  FROM AUDITD WHERE $Action='PROCESS_ADDED'
+    AND ($Process LIKE "%nc%" OR $Process LIKE "%ncat%" OR $Process LIKE "%netcat%"
+    OR $Process LIKE "%nc\.openbsd%" OR $Process LIKE "%nc\.traditional%")
 - type: signal
   DetectionName: Netcat Network Activity
   DetectionTactic: Discovery
   DetectionTechnique: System Network Connections Discovery
   DetectionScore: 5
+  DetectionSeverity: Medium
   DetectionConfidence: Low
+  SuspectUser: $User
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []

@@ -7,19 +7,22 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT $ProcessName,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
-    (($ProcessName='ufw' AND ($ProcessArgs LIKE "allow" OR $ProcessArgs LIKE "disable"
-    OR $ProcessArgs LIKE "reset")) OR (($ProcessName='service' AND $ProcessArgs LIKE
-    "%stop%") OR ($ProcessName='chkconfig' AND $ProcessArgs LIKE "%off%") OR (($ProcessName='%systemctl'
-    AND $ProcessArgs LIKE "%disable%") OR ($ProcessName='systemctl' AND $ProcessArgs
-    LIKE "%stop%") OR ($ProcessName='systemctl' AND $ProcessArgs LIKE "%kill%")) AND($ProcessArgs
-    LIKE "%firewalld%" OR $ProcessArgs LIKE "%ip6tables%" OR $ProcessArgs LIKE "%iptables%"
-    ))) GROUP BY $ProcessName,$System
+  query: SELECT $Process,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND (($Process
+    LIKE "%ufw%" AND ($ProcessArgs LIKE "%allow%" OR $ProcessArgs LIKE "%disable%"
+    OR $ProcessArgs LIKE "%reset%")) OR (($Process LIKE "%service%" AND $ProcessArgs
+    LIKE "%stop%") OR ($Process LIKE "%chkconfig%" AND $ProcessArgs LIKE "%off%")
+    OR (($Process="%systemctl" AND $ProcessArgs LIKE "%disable%") OR ($Process LIKE
+    "%systemctl%" AND $ProcessArgs LIKE "%stop%") OR ($Process LIKE "%systemctl%"
+    AND $ProcessArgs LIKE "%kill%")) AND($ProcessArgs  LIKE "%firewalld%" OR $ProcessArgs
+    LIKE "%ip6tables%" OR $ProcessArgs LIKE "%iptables%"))) GROUP BY $Process,$System
 - type: signal
   DetectionName: Attempt to Disable IPTables or Firewall
   DetectionTactic: Defense Evasion
   DetectionTechnique: Disabling Security Tools
   DetectionScore: 5
+  DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []

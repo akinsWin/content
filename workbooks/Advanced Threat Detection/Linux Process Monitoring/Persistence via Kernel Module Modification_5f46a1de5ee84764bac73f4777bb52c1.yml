@@ -7,14 +7,18 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT $ProcessName,$System  FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
-    ($ProcessName='insmod' OR $ProcessName='kmod' OR $ProcessName='modprobe' OR $ProcessName='rmod')
-    GROUP BY $ProcessName,$System
+  query: 'SELECT $Process,$System, $ProcessArgs  FROM AUDITD WHERE $Action=''PROCESS_ADDED''
+    AND ($ProcessArgs LIKE "%insmod%" OR $ProcessArgs  LIKE "%kmod%" OR $ProcessArgs  LIKE
+    "%modprobe%" OR $ProcessArgs  LIKE "%rmod%") AND $Process LIKE "%kmod%" GROUP
+    BY $Process,$System, $ProcessArgs '
 - type: signal
   DetectionName: Persistence via Kernel Module Modification
   DetectionTactic: Persistence
   DetectionTechnique: Kernel Modules and Extensions
   DetectionScore: 5
+  DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []

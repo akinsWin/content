@@ -1,7 +1,7 @@
 id: 1b613f156eaf47ac8b9ad17d2ca842ba
 name: Windows PowerShell User Agent
 path: /Advanced Threat Detection/Proxy Monitoring
-description: Detects Windows PowerShell Web Access
+description: ''
 type: standard
 author: community
 entity_type: workbooks
@@ -10,12 +10,17 @@ blocks:
   code: "|Author|References|\n                 |------|--------|\n               \
     \  |Florian Roth|https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.utility/Invoke-WebRequest|"
 - type: sql
-  query: SELECT * FROM WEBFILTER WHERE $UserAgent LIKE "% WindowsPowerShell/%"
+  query: SELECT $System, $SrcIP, $UserAgent FROM WEBFILTER WHERE $UserAgent LIKE "%WindowsPowerShell%"
+    GROUP BY $System, $SrcIP, $UserAgent
 - type: signal
   DetectionName: Windows PowerShell User Agent
   DetectionTactic: Command and Control
   DetectionTechnique: Application Layer Protocol
   DetectionScore: 5
+  DetectionSeverity: Medium
   DetectionConfidence: Low
   SuspectHost: $SrcIP
-config: {}
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

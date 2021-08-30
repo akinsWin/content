@@ -1,0 +1,22 @@
+id: cdf7bff4671f40aa8f20796b852c2b7c
+name: Potential Exfiltration of Compressed Files
+path: /Advanced Threat Detection/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT * FROM NTA-HTTP WHERE ($URI LIKE "%7z%" OR $URI LIKE "%rar%" OR $URI
+    LIKE "%zip%") AND $MimeType LIKE "%compressed%"
+- type: signal
+  DetectionName: Potential Exfiltration of Compressed Files
+  DetectionTactic: Collection
+  DetectionTechnique: Data from Local System
+  DetectionScore: '6'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectObject: $URI
+cron: null
+config:
+  parameters: []

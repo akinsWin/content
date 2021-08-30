@@ -1,0 +1,26 @@
+id: 3723207a451b4210aaf7a4cc2a51016c
+name: Suspicious Access to Sensitive File Extensions
+path: /Advanced Threat Detection/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT * FROM NTA-SMB WHERE ($Action='SMB_FILE_OPEN' OR $Action='SMB_FILE_DELETE')
+    AND ($Name LIKE "%pst%" OR $Name LIKE "%ost%" OR $Name LIKE "%msg%" OR $Name LIKE
+    "%nst%" OR $Name LIKE "%oab%" OR $Name LIKE "%nsf%" OR $Name LIKE "%bak%" OR $Name
+    LIKE "%dmp%" OR $Name LIKE "%kirbi%" OR $Name LIKE "%groups%xml%" OR $Name LIKE
+    "%rdp%")
+- type: signal
+  DetectionName: Suspicious Access to Sensitive File Extensions
+  DetectionTactic: Collection
+  DetectionTechnique: Data from Local System
+  DetectionScore: '6'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectHost: $SrcIP
+  TargetHost: $DstIP
+cron: null
+config:
+  parameters: []

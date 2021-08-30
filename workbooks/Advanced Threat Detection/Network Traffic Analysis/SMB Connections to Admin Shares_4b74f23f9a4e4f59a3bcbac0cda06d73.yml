@@ -1,0 +1,23 @@
+id: 4b74f23f9a4e4f59a3bcbac0cda06d73
+name: SMB Connections to Admin Shares
+path: /Advanced Threat Detection/Network Traffic Analysis
+description: ''
+type: auto-scheduled
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT * FROM NTA-SMB WHERE $Action='SMB_FILE_OPEN' AND ($Path LIKE "%ADMIN%"
+    OR $Path LIKE "%C\$%") AND $SrcType='PUBLIC'
+- type: signal
+  DetectionName: SMB Connections to Admin Shares
+  DetectionTactic: Exfiltration
+  DetectionTechnique: Exfiltration Over Alternative Protocol
+  DetectionScore: '7'
+  DetectionSeverity: High
+  DetectionConfidence: High
+  SuspectHost: $SrcIP
+  TargetHost: $DstIP
+cron: null
+config:
+  parameters: []

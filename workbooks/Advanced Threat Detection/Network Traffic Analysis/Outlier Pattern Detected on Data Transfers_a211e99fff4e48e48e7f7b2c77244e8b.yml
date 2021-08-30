@@ -1,0 +1,37 @@
+id: a211e99fff4e48e48e7f7b2c77244e8b
+name: Outlier Pattern Detected on Data Transfers
+path: /Advanced Threat Detection/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: ai
+  data:
+    contamination_factor: 0.001
+    result_condition:
+      only_anomaly: true
+      return_graph_result: true
+    query_data:
+      stream: NTA-HTTP
+      entity: $SrcIP
+      feature_list:
+      - distinct: $DstIP
+      - distinct: $DstPort
+      - sum: $TXLen
+      - percentage_of:
+        - $Status
+        - PASSED
+      filter_list: []
+      duration: 7d
+- type: signal
+  DetectionName: Abnormal data transfers
+  DetectionTactic: Exfiltration
+  DetectionTechnique: Exfiltration Over Alternative Protocol
+  DetectionScore: '6'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectHost: $SrcIP
+cron: null
+config:
+  parameters: []

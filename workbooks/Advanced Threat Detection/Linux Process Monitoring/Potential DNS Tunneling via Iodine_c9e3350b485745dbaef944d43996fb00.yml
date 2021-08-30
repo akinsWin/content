@@ -7,13 +7,16 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT $ProcessName,$System  FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
-    ($ProcessName='iodine' OR $ProcessName='iodined')  GROUP BY $ProcessName,$System
+  query: SELECT $Process,$System  FROM AUDITD WHERE $Action='PROCESS_ADDED' AND ($Process
+    LIKE "%iodine" OR $Process LIKE "%iodined")  GROUP BY $Process,$System
 - type: signal
   DetectionName: Potential DNS Tunneling via Iodine
   DetectionTactic: Command and Control
   DetectionTechnique: Application Layer Protocol
   DetectionScore: 5
+  DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []

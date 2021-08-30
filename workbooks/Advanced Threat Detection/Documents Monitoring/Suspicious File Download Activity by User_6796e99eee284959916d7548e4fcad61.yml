@@ -1,0 +1,51 @@
+id: 6796e99eee284959916d7548e4fcad61
+name: Suspicious File Download Activity by User
+path: /Advanced Threat Detection/Documents Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: ai
+  data:
+    contamination_factor: 0.001
+    result_condition:
+      only_anomaly: true
+      return_graph_result: true
+    query_data:
+      stream: DOCUMENTS
+      entity: $User
+      feature_list:
+      - distinct: $File
+      - distinct: $SrcIP
+      - count: $File
+      - percentage_of:
+        - $Status
+        - PASSED
+      filter_list:
+      - field: $Action
+        value: DOWNLOADED
+        operator: '='
+      duration: 7d
+- type: signal
+  DetectionName: Suspicious File Download Activity by User
+  DetectionTactic: Exfiltration
+  DetectionTechnique: Exfiltration Over Web Service
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $User
+- type: text
+  code: 'ThisAI block detects the unusual/suspicious file download  activity performed
+    by a Use .In this usecase, suspicious  number of attempts performed by a User  to
+    download a file over the last one week  will indicate the posibility of Exfiltration
+    att&ck  to steal data from your network.Adversaries may use an existing, legitimate
+    external Web service to exfiltrate data rather than their primary command and
+    control channel.  User behavior monitoring will help to detect abnormal patterns
+    of activity.This att&ck can be mitigated by  using web proxies to enforce an external
+    network communication policy that prevents use of unauthorized external services.
+
+    '
+cron: null
+config:
+  parameters: []

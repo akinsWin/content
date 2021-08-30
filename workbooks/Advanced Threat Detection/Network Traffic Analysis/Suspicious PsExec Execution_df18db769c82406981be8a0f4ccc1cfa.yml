@@ -1,0 +1,24 @@
+id: df18db769c82406981be8a0f4ccc1cfa
+name: Suspicious PsExec Execution
+path: /Advanced Threat Detection/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT * FROM NTA-SMB WHERE (($Action='SMB_FILE_OPEN' OR $Action='SMB_FILE_DELETE')
+    AND ($Path LIKE "%C$%" AND ($Name LIKE "%stdin%" OR $Name LIKE "%stdout%" OR $Name
+    LIKE "%stderr%"))) AND NOT($Name LIKE "%C$%" AND $Path LIKE "%PSEXESVC%")
+- type: signal
+  DetectionName: Suspicious PsExec Execution
+  DetectionTactic: Lateral Movement
+  DetectionTechnique: Remote Services
+  DetectionScore: '6'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectHost: $SrcIP
+  TargetHost: $DstIP
+cron: null
+config:
+  parameters: []

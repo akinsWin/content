@@ -1,0 +1,22 @@
+id: 99dfad6e2e9e462a8c0c5b980491bd3d
+name: Port scanning detection
+path: /Advanced Threat Detection/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcIP,COUNT($DstPort) AS $CntDstPort FROM NTA-CONNECTION WHERE $Duration=15m
+    AND $DstIP='PRIVATE' GROUP BY $SrcIP HAVING $CntDstPort>999
+- type: signal
+  DetectionName: Port scanning detection
+  DetectionTactic: Discovery
+  DetectionTechnique: Network Service Scanning
+  DetectionScore: '6'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectHost: $SrcIP
+cron: null
+config:
+  parameters: []

@@ -7,14 +7,18 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT $ProcessName,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
-    $ProcessName='touch' AND ($ProcessArgs LIKE "%\-r%" OR $ProcessArgs LIKE "%\-t%"
-    OR $ProcessArgs LIKE "%\-a%" OR $ProcessArgs LIKE "%\-m%") GROUP BY $ProcessName,$System
+  query: SELECT $Process,$System, $ProcessArgs FROM AUDITD WHERE $Action='PROCESS_ADDED'
+    AND $Process LIKE "%touch%" AND ($ProcessArgs LIKE "%\-r%" OR $ProcessArgs LIKE
+    "%\-t%" OR $ProcessArgs LIKE "%\-a%" OR $ProcessArgs LIKE "%\-m%") GROUP BY $Process,$System,
+    $ProcessArgs
 - type: signal
   DetectionName: Timestomping using Touch Command
   DetectionTactic: Defense Evasion
   DetectionTechnique: Timestomp
   DetectionScore: 5
+  DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []

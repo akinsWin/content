@@ -7,14 +7,17 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT $ProcessName,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
-    $ProcessName='shred' AND ($ProcessArgs='-u' OR $ProcessArgs='--remove' OR $ProcessArgs='-z'
-    OR $ProcessArgs='--zero') GROUP BY $ProcessName,$System
+  query: SELECT $Process,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND $Process
+    LIKE "%shred" AND ($ProcessArgs LIKE "%-u%" OR $ProcessArgs LIKE "%--remove%"
+    OR $ProcessArgs LIKE "%-z%" OR $ProcessArgs LIKE "%--zero%") GROUP BY $Process,$System
 - type: signal
   DetectionName: File Deletion via Shred
   DetectionTactic: Defense Evasion
   DetectionTechnique: File Deletion
   DetectionScore: 5
+  DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []

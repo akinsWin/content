@@ -1,7 +1,7 @@
 id: baf612b242e8436b9238a50f554a84ff
 name: Empire UserAgent URI Combo
 path: /Advanced Threat Detection/Proxy Monitoring
-description: Detects user agent and URI paths used by empire agents
+description: ''
 type: standard
 author: community
 entity_type: workbooks
@@ -10,14 +10,19 @@ blocks:
   code: "|Author|References|\n                 |------|--------|\n               \
     \  |Florian Roth|https://github.com/BC-SECURITY/Empire|"
 - type: sql
-  query: SELECT * FROM WEBFILTER WHERE ($UserAgent = "Mozilla/5.0 (Windows NT 6.1;
-    WOW64; Trident/7.0; rv:11.0) like Gecko" AND $URL IN ("/admin/get.php", "/news.php",
-    "/login/process.php") AND $Method = "POST")
+  query: SELECT $System, $SrcIP, $URL FROM WEBFILTER WHERE $UserAgent LIKE "Mozilla/5.0%Windows
+    NT 6.1%WOW64%Trident/7.0%rv%11.0%like%Gecko%" AND ($URL LIKE "%admin%get.php"
+    OR $URL LIKE "%news.php" OR $URL LIKE "%login%process.php") AND $HTTPMethod =
+    'POST' GROUP BY $System, $SrcIP, $URL
 - type: signal
   DetectionName: Empire UserAgent URI Combo
   DetectionTactic: Command and Control
   DetectionTechnique: Application Layer Protocol
   DetectionScore: 5
+  DetectionSeverity: Medium
   DetectionConfidence: Low
   SuspectHost: $SrcIP
-config: {}
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

@@ -7,15 +7,18 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT $ProcessName,$System  FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
-    $ProcessName='python' AND ($ProcessArgs LIKE "%\"import pty\; pty.spawn\(\/bin\/sh\)\"%"
-    OR $ProcessArgs LIKE "%\"import pty\; pty.spawn\(\/bin\/dash\)%" OR $ProcessArgs
-    LIKE "%\"import pty\; pty.spawn\(\/bin\/bash\)%") GROUP BY $ProcessName,$System
+  query: SELECT $Process,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND $Process
+    LIKE "%python%" AND ($ProcessArgs LIKE "%import%pty%pty%spawn%bin%sh%" OR $ProcessArgs
+    LIKE "%import%pty%pty%spawn%bin%dash%" OR $ProcessArgs LIKE "%import%pty%pty%spawn%bin%bash%")
+    GROUP BY $Process,$System
 - type: signal
   DetectionName: Interactive Terminal Spawned via Python
   DetectionTactic: Execution
   DetectionTechnique: Command and Scripting Interpreter
   DetectionScore: 5
+  DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []

@@ -7,14 +7,17 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT $ProcessName,$System  FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
-    $ProcessName='chmod' AND ($ProcessArgs='u+s' OR $ProcessArgs LIKE "4%") AND $User!='root'
-    GROUP BY $ProcessName,$System
+  query: SELECT $Process,$System  FROM AUDITD WHERE $Action='PROCESS_ADDED' AND $Process
+    LIKE "%chmod%" AND ($ProcessArgs LIKE "%u%s%" OR $ProcessArgs LIKE "%4%") AND
+    NOT $User='root' GROUP BY $Process,$System
 - type: signal
   DetectionName: Setuid Bit Set via chmod
   DetectionTactic: Privilege Escalation
   DetectionTechnique: Abuse Elevation Control Mechanism
   DetectionScore: 5
+  DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
-config: {}
+cron: null
+config:
+  parameters: []
