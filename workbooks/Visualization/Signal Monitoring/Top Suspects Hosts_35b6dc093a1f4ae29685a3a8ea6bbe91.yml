@@ -1,0 +1,24 @@
+id: 35b6dc093a1f4ae29685a3a8ea6bbe91
+name: Top Suspects Hosts
+path: /Visualization/Signal Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SuspectHost, COUNT($SuspectHost) AS Count FROM SIGNALS WHERE $Duration=7d  AND
+    NOT $SuspectHost='' GROUP BY $SuspectHost ORDER BY Count DESC LIMIT 10
+- type: visual
+  data:
+    widget_name: Top Suspects Hosts
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $SuspectHost
+      - null
+      value: $Count
+cron: null
+config:
+  parameters: []

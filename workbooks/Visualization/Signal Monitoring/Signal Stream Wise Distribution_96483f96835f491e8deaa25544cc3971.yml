@@ -1,0 +1,24 @@
+id: 96483f96835f491e8deaa25544cc3971
+name: Signal Stream Wise Distribution
+path: /Visualization/Signal Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SourceStream, COUNT($SourceStream) AS Count FROM SIGNALS WHERE $Duration=7d
+    GROUP BY $SourceStream  ORDER BY Count DESC LIMIT 10
+- type: visual
+  data:
+    widget_name: Signal Stream Wise Distribution
+    chart_type: pie
+    config:
+      type: donut
+      key:
+      - $SourceStream
+      - null
+      value: $Count
+cron: null
+config:
+  parameters: []
