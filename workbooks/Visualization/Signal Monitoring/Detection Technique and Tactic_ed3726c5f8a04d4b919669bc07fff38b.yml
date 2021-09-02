@@ -1,0 +1,25 @@
+id: ed3726c5f8a04d4b919669bc07fff38b
+name: Detection Technique and Tactic
+path: /Visualization/Signal Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $DetectionTechnique , COUNT($DetectionTechnique) AS Count , $DetectionTactic  FROM
+    SIGNALS WHERE $Duration=7d AND NOT $DetectionTechnique='Unclassified' GROUP BY
+    $DetectionTechnique, $DetectionTactic ORDER BY Count DESC limit 10
+- type: visual
+  data:
+    widget_name: Top Detection Technique and Tactic
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $DetectionTechnique
+      - $DetectionTactic
+      value: $Count
+cron: null
+config:
+  parameters: []

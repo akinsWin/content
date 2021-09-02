@@ -1,0 +1,23 @@
+id: 1a302b468d5647fd9a11adf865f50932
+name: Total Signal Count -Weekly
+path: /Visualization/Signal Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT COUNT(*)  AS TotalCount FROM SIGNALS WHERE $Duration=7d  LIMIT 100
+- type: visual
+  data:
+    widget_name: Total Signal Count -Monthly
+    chart_type: metric
+    config:
+      type: default
+      key:
+      - null
+      - null
+      value: $TotalCount
+cron: null
+config:
+  parameters: []

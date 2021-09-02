@@ -1,0 +1,24 @@
+id: 7eaf62698fdd4fffb2a42426a2640c79
+name: Top Hit Targets
+path: /Visualization/Signal Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $TargetHost, COUNT($TargetHost) AS Count FROM SIGNALS WHERE $Duration=7d
+    AND NOT $TargetHost='' GROUP BY $TargetHost ORDER BY Count DESC LIMIT 10
+- type: visual
+  data:
+    widget_name: Top Hit Targets
+    chart_type: column
+    config:
+      type: stacked
+      key:
+      - $TargetHost
+      - $TargetHost
+      value: $Count
+cron: null
+config:
+  parameters: []

@@ -1,0 +1,24 @@
+id: bf416e8aa5dd4379a189d4c85cf5362a
+name: Top Signals
+path: /Visualization/Signal Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $DetectionName , COUNT($DetectionName) AS Count FROM SIGNALS WHERE
+    $Duration=7d GROUP BY $DetectionName ORDER BY Count DESC LIMIT 10
+- type: visual
+  data:
+    widget_name: Top Signals Raised
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $DetectionName
+      - null
+      value: $Count
+cron: null
+config:
+  parameters: []

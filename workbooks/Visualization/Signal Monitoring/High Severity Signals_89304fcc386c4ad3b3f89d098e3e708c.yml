@@ -1,0 +1,25 @@
+id: 89304fcc386c4ad3b3f89d098e3e708c
+name: High Severity Signals
+path: /Visualization/Signal Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $DetectionName , COUNT($DetectionName) AS Count FROM SIGNALS WHERE
+    $Duration=7d AND $DetectionSeverity='High' GROUP BY $DetectionName ORDER BY Count
+    DESC LIMIT 10
+- type: visual
+  data:
+    widget_name: High Severity Signals
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $DetectionName
+      - $DetectionName
+      value: $Count
+cron: null
+config:
+  parameters: []
