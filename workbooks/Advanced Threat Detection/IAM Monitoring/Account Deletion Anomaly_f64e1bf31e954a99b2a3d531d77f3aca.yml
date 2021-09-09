@@ -26,15 +26,11 @@ blocks:
         operator: '='
       duration: 7d
 - type: text
-  code: 'This AI block detects the unusual/suspicious account deletion  using AI .
-
-    In this usecase, suspicious  number of attempts have been taken place by a user
-    for deleting the account .
-
-    Adversaries may manipulate accounts to interrupt availability of system and network
-    resources to users.Accounts may be deleted, locked, or manipulated to remove access
-    to accounts.This att&ck cannot be easily be mitigated.This can be detected by
-    monitoring the command-line arguments/ execution involving deletion/modification.'
+  code: This detection rule attempts to find the outlier user from the IAM stream
+    based on their account deletion activities. In this, count of all account deletion
+    events along with percentage of deletion events of a user are compared with every
+    other user in last one week. Here The percentage of status passed is used to identify
+    the ratio of successful deletion activity among other users.
 cron: null
 config:
   parameters: []

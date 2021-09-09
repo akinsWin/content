@@ -1,7 +1,7 @@
 id: 13696f568d4e4a019994d6a9518ba3a4
 name: Suspicious Network Shares Accessed from SrcIP
 path: /Advanced Threat Detection/Windows Audit Monitoring
-description: Outlier pattern detected for Network Shares Accessed from SrcIP
+description: ''
 type: standard
 author: DNIF
 entity_type: workbooks
@@ -32,6 +32,15 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Medium
   SuspectHost: $SrcIP
+- type: text
+  code: '
+
+    This detection rule attempts to find the outlier Source IP from the WIN-AUDIT
+    stream based on their network share access activities.In this, count of all  Network
+    Share Accessed events of a Source IP having distinct user,system and object  is
+    captured by comparing with every other Source IP in last one week. This outlier
+    detection rule, will help in nailing those outlier Source IP who show unusually
+    high  network share access activities as compared to the other senders  behaviour.'
 cron: null
 config:
   parameters: []

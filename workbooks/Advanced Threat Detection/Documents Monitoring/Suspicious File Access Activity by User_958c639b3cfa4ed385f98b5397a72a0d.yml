@@ -36,14 +36,12 @@ blocks:
   DetectionConfidence: Medium
   SuspectUser: $User
 - type: text
-  code: "This AI block detects the unusual/suspicious system/network  discovery  activity\
-    \ performed by a User .In this usecase, suspicious  number of attempts performed\
-    \ by a User   to access a file over the last one week  will indicate the posibility\
-    \ of File and Directory Discovery att&ck  to gain knowledge about the system and\
-    \ internal network. \nThese technique help adversaries observe the environment\
-    \ and orient themselves before deciding how to act. Adversaries may enumerate\
-    \ files and directories or may search in specific locations of a host or network\
-    \ share for certain information within a file system."
+  code: This detection rule attempts to find the outlier User from the DOCUMENTS stream
+    based on their file access   activities. In this, count of all distinct file access
+    events for a User having distinct Source IP along with the  percentage of file
+    access events is compared with every other User having distinct Source IP and
+    file in last one week. Here, The percentage of status passed  is used to identify
+    the ratio of successful file access activity  among other Users.
 cron: null
 config:
   parameters: []

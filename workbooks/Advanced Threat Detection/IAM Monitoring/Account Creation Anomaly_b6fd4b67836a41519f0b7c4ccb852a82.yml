@@ -1,6 +1,6 @@
-id: ab73c230006a4241926b7cefc1cc7570
+id: b6fd4b67836a41519f0b7c4ccb852a82
 name: Account Creation Anomaly
-path: /Advanced Threat Detection/IAM Monitoring
+path: /Outlier Detection
 description: ''
 type: standard
 author: DNIF
@@ -33,18 +33,13 @@ blocks:
   DetectionScore: '5'
   DetectionSeverity: Medium
   DetectionConfidence: Low
-  SuspectUser: ''
+  SuspectUser: $User
 - type: text
-  code: 'This AI block detects the unusual/suspicious account creation.
-
-    In this usecase, suspicious  number of attempts have been taken place by a user
-    for creating an account  which indicates Account creation technique.
-
-    Adversaries may create an account to maintain access to victim systems. With a
-    sufficient level of access, creating such accounts may be used to establish secondary
-    credentialed access that do not require persistent remote access tools to be deployed
-    on the system.This att&ck can be mitigated by using MFA, Network segmentation,
-    operation system configuration and Privileged account management. '
+  code: This detection rule attempts to find the outlier user from the IAM stream
+    based on their account creation activities. In this, count of all account creation
+    events along with percentage of creation events of a user are compared with every
+    other user in last one week. Here The percentage of status passed is used to identify
+    the ratio of successful creation activity among other users.
 cron: null
 config:
   parameters: []

@@ -36,14 +36,13 @@ blocks:
   DetectionConfidence: Medium
   SuspectHost: $SrcIP
 - type: text
-  code: "This AI block detects the unusual/suspicious file download  activity performed\
-    \ by a Source IP .In this usecase, suspicious  number of attempts performed by\
-    \ a Source IP  to download a file over the last one week  will indicate the posibility\
-    \ of Exfiltration att&ck  to steal data from your network.Adversaries may use\
-    \ an existing, legitimate external Web service to exfiltrate data rather than\
-    \ their primary command and control channel. \nThis can be mitigated by  using\
-    \ web proxies to enforce an external network communication policy that prevents\
-    \ use of unauthorized external services.\n"
+  code: This detection rule attempts to find the outlier IP from the DOCUMENTS stream
+    based on their file download  activities. In this, count of all distinct file
+    download events for a Source IP having distinct user along with the  percentage
+    of file download events is compared with every other Source IP having distinct
+    User and file in last one week. Here, The percentage of status passed  is used
+    to identify the ratio of successful file download activity  among other Source
+    IPs.
 cron: null
 config:
   parameters: []

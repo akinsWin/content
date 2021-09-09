@@ -41,6 +41,14 @@ blocks:
   DetectionSeverity: High
   DetectionConfidence: High
   SuspectHost: $SrcIP
+- type: text
+  code: This detection rule attempts to find the outlier User from the AUTHENTICATION
+    stream based on their VPN  login failure activities. In this, count of all VPN
+    login failure events occured due to incorrect/bad password for a User having distinct
+    public  Source IP,System  along with percentage of login failure events   is compared
+    with every other user having distinct public Source IP, System   in last one hour.
+    Here, the percentage of status failed is used to identify the ratio of unsuccessful
+    login failure activity occured due to incorrect/bad password among other Users.
 cron: null
 config:
   parameters: []

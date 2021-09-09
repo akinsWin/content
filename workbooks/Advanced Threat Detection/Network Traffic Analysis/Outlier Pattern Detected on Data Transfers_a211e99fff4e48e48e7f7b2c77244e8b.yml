@@ -32,6 +32,13 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Medium
   SuspectHost: $SrcIP
+- type: text
+  code: This detection rule attempts to find the outlier Source IP from the NTA-HTTP
+    stream based on the data transfer activities. In this,  the sum of TXLen is calculated
+    having  distinct Destination port, Destination IP  along with the  percentage
+    of data transfer events is compared with every other User having distinct Destination
+    IP and Destination port in last one week. Here, The percentage of status passed  is
+    used to identify the ratio of successful data transfer activity  among other Users.
 cron: null
 config:
   parameters: []

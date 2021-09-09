@@ -36,16 +36,12 @@ blocks:
   DetectionConfidence: Medium
   SuspectUser: $User
 - type: text
-  code: 'ThisAI block detects the unusual/suspicious file download  activity performed
-    by a Use .In this usecase, suspicious  number of attempts performed by a User  to
-    download a file over the last one week  will indicate the posibility of Exfiltration
-    att&ck  to steal data from your network.Adversaries may use an existing, legitimate
-    external Web service to exfiltrate data rather than their primary command and
-    control channel.  User behavior monitoring will help to detect abnormal patterns
-    of activity.This att&ck can be mitigated by  using web proxies to enforce an external
-    network communication policy that prevents use of unauthorized external services.
-
-    '
+  code: This detection rule attempts to find the outlier User from the DOCUMENTS stream
+    based on their file download  activities. In this, count of all distinct file
+    download events for a User having distinct Source IP along with the  percentage
+    of file download events is compared with every other user having distinct Source
+    IP and file in last one week. Here, The percentage of status passed  is used to
+    identify the ratio of successful file download activity  among other Users.
 cron: null
 config:
   parameters: []

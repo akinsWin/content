@@ -1,6 +1,6 @@
 id: e192a064480b46f78350cc3fd080f910
 name: Abnormal SSH Login Attempts for a User
-path: /Basic Security Monitoring/Authentication Attacks
+path: /Outlier Detection
 description: ''
 type: standard
 author: DNIF
@@ -32,7 +32,7 @@ blocks:
       - field: $AuthProto
         value: SSH
         operator: '='
-      duration: 1h
+      duration: 7d
 - type: signal
   DetectionName: Abnormal VPN Login Attempts for a User
   DetectionTactic: Initial Access
@@ -41,6 +41,14 @@ blocks:
   DetectionSeverity: High
   DetectionConfidence: High
   SuspectHost: $SrcIP
+- type: text
+  code: This detection rule attempts to find the outlier User from the AUTHENTICATION
+    stream based on their SSH  login failure activities. In this, count of all SSH
+    login failure events occured due to incorrect/bad password for a User having distinct
+    public  Source IP,System  along with percentage of login failure events   is compared
+    with every other user having distinct public Source IP, System   in last one hour.
+    Here, the percentage of status failed is used to identify the ratio of unsuccessful
+    login failure activity occured due to incorrect/bad password among other Users.
 cron: null
 config:
   parameters: []

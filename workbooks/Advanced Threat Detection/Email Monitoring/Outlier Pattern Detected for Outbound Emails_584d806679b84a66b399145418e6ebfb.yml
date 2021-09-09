@@ -35,14 +35,12 @@ blocks:
   DetectionConfidence: Medium
   SuspectHost: $Sender
 - type: text
-  code: This use case detects the unusual/suspicious outgoing emails over the Web
-    Service  using AI .In this usecase, suspicious  number of attempts performed by
-    a sender to send emails over the Web Service is observed.Adversaries may use an
-    existing, legitimate external Web service to exfiltrate data rather than their
-    primary command and control channel.User behavior monitoring will help to detect
-    abnormal patterns of activity.This att&ck can be mitigated by  using web proxies
-    to enforce an external network communication policy that prevents use of unauthorized
-    external services.
+  code: This detection rule attempts to find the outlier Sender from the EMAIL-GATEWAY
+    stream based on the outgoing email activities. In this, count of all recipients  having
+    distinct  subject name for  outgoing email activities of a sender  is captured  by
+    comparing with every other sender in last one week. This outlier detection rule,
+    will help in nailing those outlier senders who show unusually high outgoing email
+    activities as compared to the other senders  behaviour over the last  one week.
 cron: null
 config:
   parameters: []

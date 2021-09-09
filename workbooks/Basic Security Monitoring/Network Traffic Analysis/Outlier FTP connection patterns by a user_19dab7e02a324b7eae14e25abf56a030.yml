@@ -1,4 +1,4 @@
-id: 0dbf5ad018a94be19d7825734e72ce28
+id: 19dab7e02a324b7eae14e25abf56a030
 name: Outlier FTP connection patterns by a user
 path: /Basic Security Monitoring/Network Traffic Analysis
 description: ''
@@ -22,15 +22,22 @@ blocks:
       - field: $DstPort
         value: '21'
         operator: '='
-      duration: 1M
+      duration: 7d
 - type: signal
   DetectionName: Outlier FTP connection patterns by a user
   DetectionTactic: Lateral Movement
   DetectionTechnique: Lateral Tool Transfer
-  DetectionScore: '6'
+  DetectionScore: '4'
   DetectionSeverity: Medium
   DetectionConfidence: Medium
-  SuspectUser: ''
+  SuspectUser: $User
+- type: text
+  code: This detection rule attempts to find the outlier User from the SYSMON-NETWORK  stream
+    based on their FTP connection activities.In this,  distinct system and distinct
+    Destination IP having Destination port as 21     is captured  and compared with
+    every other User in the last one week. This outlier detection rule, will help
+    in nailing those outlier Users who show unusual FTP connection  pattern as compared
+    to the other Users  behaviour.
 cron: null
 config:
   parameters: []

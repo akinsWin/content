@@ -1,7 +1,7 @@
 id: f13e95cbba1041bdaedfde0b136e80ef
 name: Suspicious Network Shares Accessed by User
 path: /Advanced Threat Detection/Windows Audit Monitoring
-description: Outlier pattern detected for Network Shares Accessed
+description: ''
 type: standard
 author: DNIF
 entity_type: workbooks
@@ -31,6 +31,14 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Medium
   SuspectUser: $User
+- type: text
+  code: "Description \u2013\nThis detection rule attempts to find the outlier User\
+    \ from the WIN-AUDIT stream based on their network share access activities.In\
+    \ this, count of all  Network Share Accessed events of a User having distinct\
+    \ system and object  is captured by comparing with every other User in the last\
+    \ one week. This outlier detection rule, will help in nailing those outlier Users\
+    \ who show unusually high  network share access activities as compared to the\
+    \ other Users  behaviour."
 cron: null
 config:
   parameters: []
