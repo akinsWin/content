@@ -14,7 +14,7 @@ blocks:
   query: SELECT $SrcIP, $DstIP, COUNT(*) FROM FIREWALL WHERE $DstPort='3389' AND $SrcType='PUBLIC'
     AND $Action='PACKET_ALLOWED' GROUP BY $DstIP, $SrcIP
 - type: signal
-  DetectionName: RDP (Remote Desktop Protocol) from the Internet
+  DetectionName: RDP from the Internet
   DetectionTactic: Lateral Movement
   DetectionTechnique: Remote Services
   DetectionScore: 5
