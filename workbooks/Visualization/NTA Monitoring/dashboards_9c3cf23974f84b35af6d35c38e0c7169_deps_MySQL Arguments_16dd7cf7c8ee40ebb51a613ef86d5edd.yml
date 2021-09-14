@@ -1,0 +1,24 @@
+id: 16dd7cf7c8ee40ebb51a613ef86d5edd
+name: MySQL Arguments
+path: /Visualization/NTA Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $Args, COUNT($Args) AS COUNT FROM NTA-MYSQL WHERE $Duration=1d GROUP
+    BY $Args ORDER BY COUNT DESC LIMIT 5
+- type: visual
+  data:
+    widget_name: Top MySQL Arguments
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $Args
+      - null
+      value: $COUNT
+cron: null
+config:
+  parameters: []

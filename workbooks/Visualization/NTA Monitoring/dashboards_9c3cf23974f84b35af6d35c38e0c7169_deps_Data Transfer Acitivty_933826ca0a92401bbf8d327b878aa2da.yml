@@ -1,0 +1,24 @@
+id: 933826ca0a92401bbf8d327b878aa2da
+name: Data Transfer Acitivty
+path: /Visualization/NTA Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT SUM(TXLen) AS TotalTxLen, $DstIP FROM NTA-CONNECTION WHERE $Duration=1d
+    GROUP BY $DstIP ORDER BY TotalTxLen DESC LIMIT 10
+- type: visual
+  data:
+    widget_name: Data Transfer Activity
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $DstIP
+      - null
+      value: $TotalTxLen
+cron: null
+config:
+  parameters: []

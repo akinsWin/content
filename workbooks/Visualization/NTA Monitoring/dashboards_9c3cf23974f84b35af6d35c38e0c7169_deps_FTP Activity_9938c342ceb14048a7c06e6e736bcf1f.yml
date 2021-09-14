@@ -1,0 +1,24 @@
+id: 9938c342ceb14048a7c06e6e736bcf1f
+name: FTP Activity
+path: /Visualization/NTA Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=NTA-FTP AND $Duration=1d group timeslice
+    1h limit 100
+- type: visual
+  data:
+    widget_name: FTP Activity
+    chart_type: timeline
+    config:
+      type: default
+      key:
+      - $CNAMTime
+      - null
+      value: count
+cron: null
+config:
+  parameters: []

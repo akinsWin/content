@@ -1,0 +1,24 @@
+id: 54c22304a2d343b4b5160cfb016c4561
+name: SSL Activity By Country Over Last Week
+path: /Visualization/NTA Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcCN, COUNT(*) AS $SrcCount FROM NTA-SSL WHERE $Duration=7d AND
+    NOT $SrcCN='' AND NOT $SrcCN='-' GROUP BY $SrcCN
+- type: visual
+  data:
+    widget_name: SSL Activity By Country
+    chart_type: geoMap
+    config:
+      type: default
+      key:
+      - $SrcCN
+      - null
+      value: $SrcCount
+cron: null
+config:
+  parameters: []
