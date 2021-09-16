@@ -1,0 +1,24 @@
+id: dde9831855b545899d74a0c26d264108
+name: Top 10 Applications
+path: /Visualization/NTA Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $App, COUNT($App) AS COUNT FROM NTA-CONNECTION WHERE $Duration=1d
+    GROUP BY $App ORDER BY COUNT DESC LIMIT 10
+- type: visual
+  data:
+    widget_name: Top Network Applications
+    chart_type: pie
+    config:
+      type: donut
+      key:
+      - $App
+      - null
+      value: $COUNT
+cron: null
+config:
+  parameters: []

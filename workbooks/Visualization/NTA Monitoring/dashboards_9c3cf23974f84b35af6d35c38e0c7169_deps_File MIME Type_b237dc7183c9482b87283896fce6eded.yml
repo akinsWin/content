@@ -1,0 +1,24 @@
+id: b237dc7183c9482b87283896fce6eded
+name: File MIME Type
+path: /Visualization/NTA Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $MimeType, COUNT($MimeType) AS COUNT FROM NTA-FILES WHERE $Duration=1d
+    AND NOT $MimeType='' GROUP BY $MimeType ORDER BY COUNT DESC LIMIT 10
+- type: visual
+  data:
+    widget_name: File MIME Types
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $MimeType
+      - null
+      value: $COUNT
+cron: null
+config:
+  parameters: []

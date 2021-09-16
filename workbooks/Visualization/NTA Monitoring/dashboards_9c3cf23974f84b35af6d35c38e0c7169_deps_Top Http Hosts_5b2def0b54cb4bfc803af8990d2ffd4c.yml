@@ -1,0 +1,24 @@
+id: 5b2def0b54cb4bfc803af8990d2ffd4c
+name: Top Http Hosts
+path: /Visualization/NTA Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=NTA-HTTP AND $Duration=7d group count_unique
+    $Host limit 10
+- type: visual
+  data:
+    widget_name: Top HTTP Hosts
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $Host
+      - $Host
+      value: count_unique
+cron: null
+config:
+  parameters: []

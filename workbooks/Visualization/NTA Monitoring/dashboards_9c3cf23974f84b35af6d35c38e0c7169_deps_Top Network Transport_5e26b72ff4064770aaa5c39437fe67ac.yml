@@ -1,0 +1,24 @@
+id: 5e26b72ff4064770aaa5c39437fe67ac
+name: Top Network Transport
+path: /Visualization/NTA Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $Proto, COUNT($Proto) AS COUNT FROM NTA-CONNECTION WHERE $Duration=1d
+    GROUP BY $Proto ORDER BY COUNT DESC LIMIT 10
+- type: visual
+  data:
+    widget_name: Top Network Transport
+    chart_type: pie
+    config:
+      type: donut
+      key:
+      - $Proto
+      - null
+      value: $COUNT
+cron: null
+config:
+  parameters: []
