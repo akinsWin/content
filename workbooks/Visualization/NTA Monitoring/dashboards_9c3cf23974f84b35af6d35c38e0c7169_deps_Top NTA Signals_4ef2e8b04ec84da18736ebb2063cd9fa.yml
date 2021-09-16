@@ -1,0 +1,25 @@
+id: 4ef2e8b04ec84da18736ebb2063cd9fa
+name: Top NTA Signals
+path: /Visualization/NTA Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $DetectionName, COUNT($DetectionName) AS COUNT FROM SIGNALS WHERE
+    $Duration=7d AND $SourceStream LIKE "NTA-%" GROUP BY $DetectionName ORDER BY COUNT
+    DESC LIMIT 10
+- type: visual
+  data:
+    widget_name: Top NTA Signals
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $DetectionName
+      - null
+      value: $COUNT
+cron: null
+config:
+  parameters: []

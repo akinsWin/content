@@ -1,0 +1,24 @@
+id: bf0a2581f262400ca8d256c8e618e3aa
+name: DNS Destination Ports
+path: /Visualization/NTA Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $DstPort, COUNT($DstPort) AS COUNT FROM NTA-DNS WHERE $Duration=1d
+    GROUP BY $DstPort ORDER BY COUNT DESC LIMIT 10
+- type: visual
+  data:
+    widget_name: DNS Destination Ports
+    chart_type: pie
+    config:
+      type: donut
+      key:
+      - $DstPort
+      - null
+      value: $COUNT
+cron: null
+config:
+  parameters: []

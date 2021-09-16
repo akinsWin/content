@@ -1,0 +1,24 @@
+id: 1cdc0045576941c2a770f0da21f8a8c9
+name: Top Ports Accessed
+path: /Visualization/NTA Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $DstPort , COUNT($DstPort) AS COUNT  FROM NTA-CONNECTION WHERE $Duration=1d
+    GROUP BY $DstPort ORDER BY COUNT DESC  LIMIT 10
+- type: visual
+  data:
+    widget_name: Top Ports Accessed
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $DstPort
+      - null
+      value: $COUNT
+cron: null
+config:
+  parameters: []
