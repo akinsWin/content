@@ -1,0 +1,24 @@
+id: 9100affd513c4317bb581843d36b5fa1
+name: Signal Weekly Activity
+path: /Visualization/Signal Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=SIGNALS AND $Duration=7d group timeslice
+    1h limit 100
+- type: visual
+  data:
+    widget_name: Signal Weekly Activity
+    chart_type: timeline
+    config:
+      type: default
+      key:
+      - $CNAMTime
+      - null
+      value: count
+cron: null
+config:
+  parameters: []
