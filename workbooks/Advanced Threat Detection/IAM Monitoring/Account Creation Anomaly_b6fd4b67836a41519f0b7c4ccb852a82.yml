@@ -1,6 +1,6 @@
-id: b6fd4b67836a41519f0b7c4ccb852a82
+id: ab73c230006a4241926b7cefc1cc7570
 name: Account Creation Anomaly
-path: /Outlier Detection
+path: /Advanced Threat Detection/IAM Monitoring
 description: ''
 type: standard
 author: DNIF
