@@ -1,6 +1,6 @@
 id: e192a064480b46f78350cc3fd080f910
 name: Abnormal SSH Login Attempts for a User
-path: /Outlier Detection
+path: /Basic Security Monitoring/Authentication Attacks
 description: ''
 type: standard
 author: DNIF
