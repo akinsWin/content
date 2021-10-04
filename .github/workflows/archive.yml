@@ -1,0 +1,74 @@
+name: Content Archive Creation
+on:
+  pull_request:
+    branches:
+      - master
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 0
+      - name: Finding diff
+        id: diff_check
+        continue-on-error: true
+        run: |
+          echo "Checking out"
+          git checkout origin/$GITHUB_HEAD_REF
+          echo "Checkout done"
+          git diff origin/$GITHUB_BASE_REF...origin/$GITHUB_HEAD_REF --name-only | grep -E 'dashboards|reports|workbooks' > diff.txt
+          echo "Diff file created"
+      - name: Creating directories
+        id: create_dir
+        if: steps.diff_check.outcome == 'success'
+        run : |
+          if grep -q workbooks/ "diff.txt"; then
+            mkdir -p archives/workbooks;
+          fi
+          if grep -q dashboards/ "diff.txt"; then
+            mkdir -p archives/dashboards;
+          fi
+          if grep -q reports/ "diff.txt"; then
+            mkdir -p archives/reports;
+          fi
+      - name: Moving diff files
+        id: mv_dir
+        if: steps.create_dir.outcome == 'success'
+        run: |
+          IFS=''
+          while read line; do
+            if [[ $line == "workbooks/"* ]]; then
+              mv "$line" archives/workbooks
+            elif [[ $line == "dashboards/"* ]]; then
+              mv "$line" archives/dashboards
+            elif [[ $line == "reports/"* ]]; then
+              mv "$line" archives/reports
+            else
+               echo "Unknown content type!"
+            fi
+          done < diff.txt
+      - name: Archiving directories
+        id: archv_dir
+        if: steps.mv_dir.outcome == 'success'
+        run: |
+          cd archives
+          if [ -d "workbooks" ]
+          then
+              tar czf workbooks.tar.gz workbooks/ && rm -r workbooks
+          fi
+          if [ -d "dashboards" ]
+          then
+              tar czf dashboards.tar.gz dashboards/ && rm -r dashboards
+          fi
+          if [ -d "reports" ]
+          then
+              tar czf reports.tar.gz reports/ && rm -r reports
+          fi
+      - name: Upload content archives
+        if: steps.archv_dir.outcome == 'success'
+        uses: actions/upload-artifact@v2
+        with:
+          name: content
+          path: archives/*
