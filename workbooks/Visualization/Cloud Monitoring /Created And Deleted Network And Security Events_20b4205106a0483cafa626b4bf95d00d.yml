@@ -3,7 +3,7 @@ name: Created And Deleted Network And Security Events
 path: /Visualization/Cloud Monitoring
 description: ''
 type: standard
-author: DNIF'
+author: DNIF
 entity_type: workbooks
 blocks:
 - type: dql
