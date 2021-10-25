@@ -1,0 +1,26 @@
+id: da6c4994df714ed1841156d179dd7fc0
+name: Multiple Failed API Requests From Different Source IPs
+path: /Visualization/Cloud Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: '_fetch * from event where $Stream=CLOUDTRAIL AND $Duration=1h AND $EventType=AwsApiCall
+    AND  $ErrorCode=AccessDenied group count_unique $SrcIP , $ErrorCode limit 100  '
+- type: dql
+  query: '_checkif int_compare count_unique > 30 include '
+- type: visual
+  data:
+    widget_name: Multiple Failed API Requests From Different Source IPs
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $SrcIP
+      - $ErrorCode
+      value: count_unique
+cron: null
+config:
+  parameters: []

@@ -1,0 +1,16 @@
+id: 51a23357c47f4924a937dac7b8e3bae2
+name: Data Ingress from Top Sources
+path: /Reports/FIREWALL
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: 'SELECT $SrcIP,SUM(RXLen) AS TotalBytesReceived FROM FIREWALL WHERE $Duration=7d
+    GROUP BY  $SrcIP ORDER BY TotalBytesReceived DESC LIMIT 10
+
+    '
+cron: null
+config:
+  parameters: []

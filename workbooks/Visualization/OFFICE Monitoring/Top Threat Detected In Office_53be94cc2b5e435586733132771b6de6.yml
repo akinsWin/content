@@ -1,0 +1,25 @@
+id: 53be94cc2b5e435586733132771b6de6
+name: Top Threat Detected In Office
+path: /Visualization/OFFICE Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Duration=1h AND $Stream=THREAT AND $Action=THREAT_DETECTED
+    AND $SourceType=OFFICE AND $Status=PASSED group count_unique $Threat,$SrcIP limit
+    10
+- type: visual
+  data:
+    widget_name: Top Threat Detected In Office
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $Threat
+      - $SrcIP
+      value: count_unique
+cron: null
+config:
+  parameters: []

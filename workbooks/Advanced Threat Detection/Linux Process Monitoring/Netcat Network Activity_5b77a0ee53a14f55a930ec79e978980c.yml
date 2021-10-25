@@ -2,14 +2,14 @@ id: 5b77a0ee53a14f55a930ec79e978980c
 name: Netcat Network Activity
 path: /Advanced Threat Detection/Linux Process Monitoring
 description: ''
-type: auto-scheduled
+type: streamed
 author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
   query: SELECT $Process,$System,$User  FROM AUDITD WHERE $Action='PROCESS_ADDED'
-    AND ($Process LIKE "%nc%" OR $Process LIKE "%ncat%" OR $Process LIKE "%netcat%"
-    OR $Process LIKE "%nc\.openbsd%" OR $Process LIKE "%nc\.traditional%")
+    AND ($Process='nc' OR $Process LIKE "%ncat%" OR $Process LIKE "%netcat%" OR $Process
+    LIKE "%nc\.openbsd%" OR $Process LIKE "%nc\.traditional%")
 - type: signal
   DetectionName: Netcat Network Activity
   DetectionTactic: Discovery

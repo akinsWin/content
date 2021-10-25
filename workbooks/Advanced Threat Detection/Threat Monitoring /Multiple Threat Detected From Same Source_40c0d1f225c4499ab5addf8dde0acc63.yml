@@ -1,0 +1,23 @@
+id: 40c0d1f225c4499ab5addf8dde0acc63
+name: Multiple Threat Detected From Same Source
+path: /Advanced Threat Detection/Threat Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SuspectHost, COUNT(DISTINCT(DetectionName)) AS $CntThreat FROM SIGNALS
+    WHERE $Duration=30m AND $SourceStream='THREAT' AND $SuspectHost IS NOT NULL GROUP
+    BY $SuspectHost  HAVING $CntThreat>5
+- type: signal
+  DetectionName: Multiple Threat Detected From Same Source
+  DetectionTactic: Unclassified
+  DetectionTechnique: Unclassified
+  DetectionScore: '8'
+  DetectionSeverity: High
+  DetectionConfidence: High
+  SuspectHost: $SuspectHost
+cron: null
+config:
+  parameters: []

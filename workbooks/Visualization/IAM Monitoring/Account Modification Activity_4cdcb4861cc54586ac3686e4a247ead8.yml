@@ -7,7 +7,7 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: dql
-  query: _fetch * from event where $Stream=IAM AND $Duration=1d AND $Action IN [ACCOUNT_PASSWORD_CHANGED,PRIVILEGE_CHANGED,USER_ACCOUNT_CHANGED,SYSTEM_USER_ACCOUNT_CHANGED,PRIVILEGE_SET]
+  query: _fetch * from event where $Stream=IAM AND $Duration=1d AND $Action IN [PASSWORD_CHANGED,PRIVILEGE_CHANGED,USER_CHANGED,COMPUTER_ACCOUNT_CHANGED]
     group timeslice 1h limit 24
 - type: visual
   data:

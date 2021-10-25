@@ -1,0 +1,24 @@
+id: 12695f1833d44c7391fe0dfc0e858cab
+name: Same User Enabled And Disabled In A Short Time
+path: /Advanced Threat Detection/IAM Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $User,$TargetUser, COUNT(DISTINCT($Action)) AS $CountAction FROM IAM
+    WHERE $Duration=15m AND $Action='USER_DISABLED' OR $Action='USER_ENABLED' GROUP
+    BY $User, $TargetUser HAVING $CountAction=2
+- type: signal
+  DetectionName: Same User Enabled And Disabled In A Short Time
+  DetectionTactic: Persistence
+  DetectionTechnique: Account Manipulation
+  DetectionScore: '7'
+  DetectionSeverity: High
+  DetectionConfidence: High
+  SuspectUser: $User
+  TargetUser: $TargetUser
+cron: null
+config:
+  parameters: []

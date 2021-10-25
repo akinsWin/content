@@ -1,0 +1,15 @@
+id: acbce48049cb42d8ba1f78e6a714e974
+name: Non Https Url Accessed
+path: /Reports/FIREWALL
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Duration=7d AND $Stream=THREAT AND $Action=URL_ACCESSED
+    AND $SourceType=FIREWALL  NOT $URL=regex(.*https.*)i group count_unique $SrcIP,
+    $System limit 20
+cron: null
+config:
+  parameters: []

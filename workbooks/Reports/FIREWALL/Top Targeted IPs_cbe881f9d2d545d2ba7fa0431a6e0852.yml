@@ -1,0 +1,14 @@
+id: cbe881f9d2d545d2ba7fa0431a6e0852
+name: Top Targeted IPs
+path: /Reports/FIREWALL
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=THREAT AND $Duration=7d AND $SourceType=FIREWALL
+    AND $DstType=PRIVATE group count_unique $Threat, $DstIP limit 10
+cron: null
+config:
+  parameters: []

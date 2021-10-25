@@ -1,0 +1,15 @@
+id: bbfdff31ec484cd28b0222f0eea30843
+name: Blocked Traffic By Port
+path: /Reports/FIREWALL
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $DstPort, SUM($TXLen) AS $TotalBytes FROM FIREWALL WHERE $Duration=7d
+    AND $Action='PACKET_BLOCKED' AND $App!='' AND $DstPort!=''  GROUP BY $DstPort
+    ORDER BY $TotalBytes DESC LIMIT 5
+cron: null
+config:
+  parameters: []

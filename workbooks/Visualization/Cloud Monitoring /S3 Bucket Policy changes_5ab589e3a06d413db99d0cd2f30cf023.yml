@@ -1,0 +1,25 @@
+id: 5ab589e3a06d413db99d0cd2f30cf023
+name: S3 Bucket Policy changes
+path: /Visualization/Cloud Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: '_fetch * from event where $Stream=CLOUDTRAIL AND $Duration=1h  AND  $EventName
+    IN [PutBucketPolicy,PutBucketAcl,PutBucketCors,PutBucketLifecycle]   group count_unique
+    $EventName limit 10  '
+- type: visual
+  data:
+    widget_name: S3 Bucket Policy changes
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $EventName
+      - $EventName
+      value: count_unique
+cron: null
+config:
+  parameters: []

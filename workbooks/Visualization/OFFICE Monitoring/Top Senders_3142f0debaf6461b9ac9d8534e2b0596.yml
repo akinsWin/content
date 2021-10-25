@@ -1,0 +1,24 @@
+id: 3142f0debaf6461b9ac9d8534e2b0596
+name: Top Senders
+path: /Visualization/OFFICE Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Duration=1h AND $Stream=EMAIL-GATEWAY AND $SourceType=OFFICE  group
+    count_unique $Sender limit 10
+- type: visual
+  data:
+    widget_name: Top Senders
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $Sender
+      - $Sender
+      value: count_unique
+cron: null
+config:
+  parameters: []

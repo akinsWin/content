@@ -1,0 +1,23 @@
+id: 4aec48dc09f3472385d35c0be3b1a839
+name: "High DNS requests From\_ Same Source"
+path: /Advanced Threat Detection/DNS Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: 'SELECT $SrcIP,COUNT($Action) AS $TotalCount FROM DNS WHERE $Duration=30m  AND
+    $Action=''REQUEST_ALLOWED'' AND $STATUS=''PASSED'' GROUP BY $SrcIP HAVING $TotalCount
+    > 100000 ORDER BY $TotalCount DESC  '
+- type: signal
+  DetectionName: High DNS requests From  Same Source
+  DetectionTactic: Impact
+  DetectionTechnique: Network Denial of Service
+  DetectionScore: '8'
+  DetectionSeverity: High
+  DetectionConfidence: High
+  SuspectHost: $SrcIP
+cron: null
+config:
+  parameters: []

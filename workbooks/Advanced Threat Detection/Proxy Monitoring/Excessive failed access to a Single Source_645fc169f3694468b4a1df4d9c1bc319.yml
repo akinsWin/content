@@ -1,0 +1,22 @@
+id: 645fc169f3694468b4a1df4d9c1bc319
+name: Excessive Failed URL Access From A Single Source
+path: /Advanced Threat Detection/Proxy Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: 'SELECT $SrcIP, $User, COUNT(*) AS COUNT FROM WEBFILTER WHERE $Action=''URL_BLOCKED''
+    AND $Duration=30m GROUP BY $SrcIP, $User HAVING COUNT >200 '
+- type: signal
+  DetectionName: Excessive Failed URL Access From A Single Source
+  DetectionTactic: Execution
+  DetectionTechnique: User Execution
+  DetectionScore: '4'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectHost: $SrcIP
+cron: null
+config:
+  parameters: []

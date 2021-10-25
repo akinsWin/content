@@ -1,0 +1,25 @@
+id: 89a0de5795fa4e90bca68e47134ce159
+name: Detected A Successful Login To AWS Console From Different Geographies
+path: /Visualization/Cloud Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: '_fetch * from event where $Stream=AUTHENTICATION AND $SourceName=AWS-CLOUDTRAIL
+    AND $SourceType=CLOUD AND $Duration=1h  AND  $Action=LOGIN AND $Status=PASSED
+    NOT $SrcCN=''-''  group count_unique  $SrcCN  limit 10  '
+- type: visual
+  data:
+    widget_name: Successful Logins To AWS Console From Different Geographies
+    chart_type: geoMap
+    config:
+      type: default
+      key:
+      - $SrcCN
+      - null
+      value: count_unique
+cron: null
+config:
+  parameters: []

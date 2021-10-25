@@ -1,0 +1,15 @@
+id: 0c407f9757f1414eaa642a3136c82f22
+name: Unsuccessful Remote Login Attempts
+path: /Reports/FIREWALL
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $AuthProto IN [SSH,VPN]
+    AND $Duration=7d AND $SourceType=FIREWALL AND $Action=LOGIN AND $Status=FAILED
+    group count_unique  $SrcIP, $System, $User  limit 10
+cron: null
+config:
+  parameters: []

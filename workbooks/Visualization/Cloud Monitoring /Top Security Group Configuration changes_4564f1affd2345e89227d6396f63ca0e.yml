@@ -1,0 +1,25 @@
+id: 4564f1affd2345e89227d6396f63ca0e
+name: Top Security Group Configuration changes
+path: /Visualization/Cloud Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: '_fetch * from event where $Stream=CLOUDTRAIL AND $Duration=1h AND $EventType=AwsApiCall
+    AND  $EventName IN [AuthorizeSecurityGroupIngress,CreateSecurityGroup,DeleteGroup,RevokeSecurityGroupIngress,RevokeSecurityGroupEgress,AuthorizeSecurityGroupEgress]  group
+    count_unique  $EventName limit 10 '
+- type: visual
+  data:
+    widget_name: Top Security Group Configuration changes
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $EventName
+      - $EventName
+      value: count_unique
+cron: null
+config:
+  parameters: []

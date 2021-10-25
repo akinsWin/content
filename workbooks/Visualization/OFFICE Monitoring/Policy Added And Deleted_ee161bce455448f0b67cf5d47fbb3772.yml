@@ -1,0 +1,25 @@
+id: ee161bce455448f0b67cf5d47fbb3772
+name: Policy Added And Deleted
+path: /Visualization/OFFICE Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: '_fetch * from event where $Duration=1h AND $Stream=CONFIGURATION  AND $Config
+    IN [Add policy.,Delete policy.] AND $SourceType=OFFICE group count_unique $Config,$User  limit
+    10 '
+- type: visual
+  data:
+    widget_name: Policy Added And Deleted
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $User
+      - $Config
+      value: count_unique
+cron: null
+config:
+  parameters: []

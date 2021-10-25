@@ -1,0 +1,24 @@
+id: 4ea8c006aefe48dda2410937ad051c68
+name: Top Users
+path: /Reports/FIREWALL
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=7d AND $SourceType=FIREWALL
+    group count_unique $User limit 10
+- type: visual
+  data:
+    widget_name: Top Users
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $User
+      - $User
+      value: count_unique
+cron: null
+config:
+  parameters: []

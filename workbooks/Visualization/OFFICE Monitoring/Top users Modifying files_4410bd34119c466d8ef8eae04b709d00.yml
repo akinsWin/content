@@ -1,0 +1,24 @@
+id: 4410bd34119c466d8ef8eae04b709d00
+name: Top users Modifying files
+path: /Visualization/OFFICE Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Duration=1h AND $Stream=DOCUMENTS AND $SourceType=OFFICE
+    AND $Action=MODIFIED group count_unique $File,$User limit 10
+- type: visual
+  data:
+    widget_name: Top users Modifying files
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $User
+      - $File
+      value: count_unique
+cron: null
+config:
+  parameters: []

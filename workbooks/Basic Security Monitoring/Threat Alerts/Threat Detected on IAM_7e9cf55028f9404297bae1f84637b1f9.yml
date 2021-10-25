@@ -1,0 +1,23 @@
+id: 7e9cf55028f9404297bae1f84637b1f9
+name: Threat Detected on IAM
+path: /Basic Security Monitoring/Threat Alerts
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $Threat, $User, $System FROM THREAT WHERE $Action='THREAT_DETECTED'
+    AND $Vector='IAM' AND $Threat IS NOT NULL AND $System IS NOT NULL AND $User IS
+    NOT NULL GROUP BY $Threat, $System, $User
+- type: signal
+  DetectionName: _$Threat_
+  DetectionTactic: Persistence
+  DetectionTechnique: Account Manipulation
+  DetectionScore: '7'
+  DetectionSeverity: High
+  DetectionConfidence: Medium
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

@@ -1,0 +1,25 @@
+id: d37ba642f3704a1fbee6dd722f3d4285
+name: Top AWS Signals
+path: /Visualization/Cloud Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $DetectionName, COUNT($DetectionName) AS COUNT FROM SIGNALS WHERE
+    $Duration=1h AND $SourceStream LIKE "CLOUDTRAIL" GROUP BY $DetectionName ORDER
+    BY COUNT DESC LIMIT 10
+- type: visual
+  data:
+    widget_name: Top AWS Signals
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $DetectionName
+      - $DetectionName
+      value: $COUNT
+cron: null
+config:
+  parameters: []

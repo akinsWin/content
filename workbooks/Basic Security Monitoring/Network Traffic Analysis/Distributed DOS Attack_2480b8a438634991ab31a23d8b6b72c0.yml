@@ -1,0 +1,23 @@
+id: 2480b8a438634991ab31a23d8b6b72c0
+name: Distributed DOS Attack
+path: /Basic Security Monitoring/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $DstIP, COUNT($Action) AS TotalCount, COUNT(DISTINCT $SrcIP) AS DistinctSrcIPs,
+    COUNT(DISTINCT $Proto) AS ProtoCount FROM FIREWALL WHERE $Duration=15m AND $SrcType='PUBLIC'
+    GROUP BY $DstIP HAVING $DistinctSrcIPs > 100 AND  $TotalCount >20000
+- type: signal
+  DetectionName: Distributed DOS Attack
+  DetectionTactic: Impact
+  DetectionTechnique: Network Denial of Service
+  DetectionScore: '8'
+  DetectionSeverity: High
+  DetectionConfidence: High
+  TargetHost: $DstIP
+cron: null
+config:
+  parameters: []

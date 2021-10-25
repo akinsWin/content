@@ -2,7 +2,7 @@ id: 059d157c97ab4edebe54b4952e758477
 name: Threat Detected on Email
 path: /Basic Security Monitoring/Threat Alerts
 description: ''
-type: auto-scheduled
+type: standard
 author: DNIF
 entity_type: workbooks
 blocks:
@@ -19,5 +19,6 @@ blocks:
   DetectionConfidence: Medium
   SuspectUser: $Sender
   TargetUser: $Recipient
+cron: null
 config:
   parameters: []

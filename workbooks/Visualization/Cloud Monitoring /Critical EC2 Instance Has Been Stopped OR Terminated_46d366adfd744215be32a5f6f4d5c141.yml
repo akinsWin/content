@@ -1,0 +1,25 @@
+id: 46d366adfd744215be32a5f6f4d5c141
+name: Critical EC2 Instance Has Been Stopped OR Terminated
+path: /Visualization/Cloud Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: '_fetch * from event where $Stream=CLOUDTRAIL AND $Duration=1h AND $EventType=AwsApiCall
+    AND  $EventName IN [StopInstances,StopInstance,TerminateInstances,DeleteInstance,RebootInstance,RebootInstances]
+    group count_unique $SrcIP , $EventName limit 10  '
+- type: visual
+  data:
+    widget_name: Critical EC2 Instance Has Been Stopped OR Terminated
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $EventName
+      - $SrcIP
+      value: count_unique
+cron: null
+config:
+  parameters: []

@@ -1,0 +1,24 @@
+id: 8f9416b67e124940abdbbf2abee6cf39
+name: Office Email Activity Timeline
+path: /Visualization/OFFICE Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch $Action from event where $Stream=EMAIL-GATEWAY AND $Duration=1h AND
+    $SourceType=OFFICE  group timeslice 1m limit 100
+- type: visual
+  data:
+    widget_name: Office Email Activity Timeline
+    chart_type: timeline
+    config:
+      type: stacked
+      key:
+      - $CNAMTime
+      - $Action
+      value: count
+cron: null
+config:
+  parameters: []

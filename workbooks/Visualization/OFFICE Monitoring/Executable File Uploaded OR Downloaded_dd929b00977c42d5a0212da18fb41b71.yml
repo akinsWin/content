@@ -1,0 +1,26 @@
+id: dd929b00977c42d5a0212da18fb41b71
+name: Executable File Uploaded OR Downloaded
+path: /Visualization/OFFICE Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $Action,$File, COUNT($Action) AS $TotalCount FROM DOCUMENTS WHERE
+    $Duration=1h AND $SourceType="OFFICE" AND ($Action LIKE "UPLOADED" OR $Action="DOWNLOADED")
+    AND  ( $File LIKE "%.exe%" OR $File LIKE "%.scr%" OR  $File LIKE  "%.js%" OR $File
+    LIKE  "%.bat%" )  GROUP BY $Action, $File
+- type: visual
+  data:
+    widget_name: Executable File Uploaded OR Downloaded
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $File
+      - $Action
+      value: $TotalCount
+cron: null
+config:
+  parameters: []

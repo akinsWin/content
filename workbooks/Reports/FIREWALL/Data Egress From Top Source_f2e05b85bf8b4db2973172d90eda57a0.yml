@@ -1,0 +1,16 @@
+id: f2e05b85bf8b4db2973172d90eda57a0
+name: Data Egress From Top Source
+path: /Reports/FIREWALL
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: 'SELECT $SrcIP,SUM(TXLen) AS TotalBytesSent FROM FIREWALL WHERE $Duration=7d
+    GROUP BY  $SrcIP ORDER BY TotalBytesSent DESC LIMIT 10
+
+    '
+cron: null
+config:
+  parameters: []

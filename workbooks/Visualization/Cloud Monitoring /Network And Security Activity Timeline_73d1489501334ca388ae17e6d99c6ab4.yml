@@ -1,0 +1,25 @@
+id: 73d1489501334ca388ae17e6d99c6ab4
+name: Network And Security Activity Timeline
+path: /Visualization/Cloud Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch $EventName from event where $Duration=1h AND $Stream=CLOUDTRAIL  AND
+    $EventName IN [DescribeNetworkAcls,DescribeNetworkInterfaces,ModifyNetworkInterfaceAttribute,AuthorizeSecurityGroupIngress,AuthorizeSecurityGroupEgress,DeleteSecurityGroup,CreateSecurityGroup,CreateNetworkAclEntry,DeleteNetworkAclEntry,DeleteNetworkInterface,CreateNetworkInterface,CreateDBSecurityGroup]  group
+    timeslice 1m  limit 100
+- type: visual
+  data:
+    widget_name: Network And Security Activity Timeline
+    chart_type: timeline
+    config:
+      type: stacked
+      key:
+      - $CNAMTime
+      - $EventName
+      value: count
+cron: null
+config:
+  parameters: []
