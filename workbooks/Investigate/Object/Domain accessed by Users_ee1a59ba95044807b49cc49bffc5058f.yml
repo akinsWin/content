@@ -1,0 +1,20 @@
+id: ee1a59ba95044807b49cc49bffc5058f
+name: Domain accessed by Users
+path: /Investigate/Object
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $User,$Domain FROM WEBFILTER WHERE $Duration=1h AND $Domain={{Object}}
+    AND $Action='URL_ALLOWED' AND $User IS NOT NULL GROUP BY $User,$Domain
+cron: null
+config:
+  parameters:
+  - name: Object
+    value: '-'
+    type: Text
+    fixed: false
+    query: ''
+    queryFieldValue: []

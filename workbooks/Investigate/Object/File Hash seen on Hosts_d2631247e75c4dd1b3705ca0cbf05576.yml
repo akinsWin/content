@@ -1,0 +1,20 @@
+id: d2631247e75c4dd1b3705ca0cbf05576
+name: File Hash seen on Hosts
+path: /Investigate/Object
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=SYSMON-PROCESS AND $Duration=1h AND $Hash=*{{Object}}*
+    group count_unique $Hash,$System,$Image limit 10
+cron: null
+config:
+  parameters:
+  - fixed: false
+    name: Object
+    query: ''
+    queryFieldValue: []
+    type: Text
+    value: '-'

@@ -1,0 +1,20 @@
+id: d2ed1132a27244149fcc55da35a6bbaf
+name: Executable seen on Hosts
+path: /Investigate/Object
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $OriginalFileName,$Image,$CommandLine FROM SYSMON-PROCESS WHERE $Duration=1h
+    AND $OriginalFileName={{Object}} AND $Image IS NOT NULL GROUP BY $OriginalFileName,$Image,$CommandLine
+cron: null
+config:
+  parameters:
+  - fixed: false
+    name: Object
+    query: ''
+    queryFieldValue: []
+    type: Text
+    value: '-'
