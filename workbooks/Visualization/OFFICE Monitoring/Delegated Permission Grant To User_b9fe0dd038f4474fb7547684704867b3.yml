@@ -1,0 +1,25 @@
+id: b9fe0dd038f4474fb7547684704867b3
+name: Delegated Permission Grant To User
+path: /Visualization/OFFICE Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=IAM AND $Duration=1h AND $Action IN [USER_REMOVED,USER_ADDED]
+    AND $Role=Delegated Permission Grant AND $Status=PASSED  group count_unique $User,$Action  limit
+    10
+- type: visual
+  data:
+    widget_name: Delegated Permission Grant To User
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $User
+      - $Action
+      value: count_unique
+cron: null
+config:
+  parameters: []

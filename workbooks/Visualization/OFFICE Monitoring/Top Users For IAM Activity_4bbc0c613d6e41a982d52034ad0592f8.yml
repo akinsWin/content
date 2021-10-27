@@ -1,0 +1,24 @@
+id: 4bbc0c613d6e41a982d52034ad0592f8
+name: Top Users For IAM Activity
+path: /Visualization/OFFICE Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=IAM AND $Duration=1h AND $SourceType=OFFICE
+    group count_unique $User limit 10
+- type: visual
+  data:
+    widget_name: Top Users For IAM Activity
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $User
+      - $User
+      value: count_unique
+cron: null
+config:
+  parameters: []

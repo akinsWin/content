@@ -1,0 +1,25 @@
+id: 347a39b030c848cb8fc31dcac516c49e
+name: "Communication\_ Observed From An Unusual Geo Location Source"
+path: /Reports/FIREWALL
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Duration=7d AND $Stream=FIREWALL AND $SrcCN=CN
+    group count_unique $SrcCN limit 10
+- type: visual
+  data:
+    widget_name: Communication  Observed From An Unusual Geo Location Source Over
+      Last Week
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $SrcCN
+      - $SrcCN
+      value: count_unique
+cron: null
+config:
+  parameters: []

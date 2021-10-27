@@ -1,0 +1,24 @@
+id: 0506cacff7f9427c8c653187494f2121
+name: Top Recipients
+path: /Visualization/OFFICE Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Duration=1h AND $Stream=EMAIL-GATEWAY AND $SourceType=OFFICE  group
+    count_unique $Recipient limit 10
+- type: visual
+  data:
+    widget_name: Top Recipients
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $Recipient
+      - null
+      value: count_unique
+cron: null
+config:
+  parameters: []

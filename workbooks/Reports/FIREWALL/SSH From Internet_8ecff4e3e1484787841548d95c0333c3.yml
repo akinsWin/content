@@ -1,0 +1,14 @@
+id: 8ecff4e3e1484787841548d95c0333c3
+name: SSH From Internet
+path: /Reports/FIREWALL
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcIP, $DstIP, COUNT(*) AS $TotalCount FROM FIREWALL WHERE $DstPort='22'
+    AND $SrcType='PUBLIC' AND $Action='PACKET_ALLOWED' AND $Duration=7d GROUP BY $DstIP,$SrcIP
+cron: null
+config:
+  parameters: []

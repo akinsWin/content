@@ -1,0 +1,24 @@
+id: 0086010d51c24831a1d28fd1672bd368
+name: Top IAM Activity On Firewall
+path: /Reports/FIREWALL
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Duration=7d AND $Stream=IAM AND $SourceType=FIREWALL
+    group count_unique $Action limit 10
+- type: visual
+  data:
+    widget_name: Top IAM Activity On Firewall
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $Action
+      - $Action
+      value: count_unique
+cron: null
+config:
+  parameters: []

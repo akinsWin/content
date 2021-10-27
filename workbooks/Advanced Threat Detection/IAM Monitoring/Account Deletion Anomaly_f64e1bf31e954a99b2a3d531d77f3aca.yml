@@ -22,7 +22,7 @@ blocks:
         - PASSED
       filter_list:
       - field: $Action
-        value: USER_ACCOUNT_DELETED
+        value: USER_DELETED
         operator: '='
       duration: 7d
 - type: text

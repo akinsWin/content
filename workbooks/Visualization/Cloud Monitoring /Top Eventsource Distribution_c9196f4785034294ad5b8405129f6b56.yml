@@ -1,0 +1,24 @@
+id: c9196f4785034294ad5b8405129f6b56
+name: Top Eventsource Distribution
+path: /Visualization/Cloud Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Duration=1h AND $Stream=CLOUDTRAIL NOT $EventSource='-'
+    group count_unique $EventSource limit 10
+- type: visual
+  data:
+    widget_name: Top Eventsource  Distribution
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $EventSource
+      - $EventSource
+      value: count_unique
+cron: null
+config:
+  parameters: []

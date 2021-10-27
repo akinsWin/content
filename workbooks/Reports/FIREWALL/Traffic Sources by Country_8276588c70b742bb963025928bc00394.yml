@@ -1,0 +1,14 @@
+id: 8276588c70b742bb963025928bc00394
+name: Traffic Sources by Country
+path: /Reports/FIREWALL
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcCN, COUNT(*) AS $SrcCount FROM FIREWALL WHERE $Duration=7d GROUP
+    BY $SrcCN
+cron: null
+config:
+  parameters: []

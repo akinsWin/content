@@ -1,0 +1,16 @@
+id: 6e756853536141dbbd4766c4feee4b74
+name: Top Talkers
+path: /Reports/FIREWALL
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: 'SELECT $SrcIP, $DstIP,$DstPort, COUNT(*) AS TotalCount FROM FIREWALL WHERE
+    $Duration=7d GROUP BY $SrcIP,$DstIP,$DstPort ORDER BY TotalCount DESC LIMIT 10
+
+    '
+cron: null
+config:
+  parameters: []

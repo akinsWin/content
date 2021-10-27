@@ -1,0 +1,24 @@
+id: f5155c0f68aa4bec9a032c6e2e2b9b5d
+name: Cloudtrail Activity
+path: /Visualization/Cloud Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch $EventName from event where $Stream=CLOUDTRAIL AND $Duration=1h group
+    timeslice 1m limit 100
+- type: visual
+  data:
+    widget_name: Cloudtrail Activity
+    chart_type: timeline
+    config:
+      type: stacked
+      key:
+      - $CNAMTime
+      - $EventName
+      value: count
+cron: null
+config:
+  parameters: []

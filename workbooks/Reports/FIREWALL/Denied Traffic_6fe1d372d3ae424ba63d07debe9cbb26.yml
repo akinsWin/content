@@ -1,0 +1,14 @@
+id: 6fe1d372d3ae424ba63d07debe9cbb26
+name: Denied Traffic
+path: /Reports/FIREWALL
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=FIREWALL AND $Action=PACKET_BLOCKED AND
+    $Duration=7d group count_unique $SrcIP, $SrcType, $DstPort limit 20
+cron: null
+config:
+  parameters: []

@@ -2,7 +2,7 @@ id: a24b300453864fe5b8a8ced86eb9fb36
 name: "Threat Detected on Host\_ - URL"
 path: /Basic Security Monitoring/Threat Alerts
 description: ''
-type: auto-scheduled
+type: standard
 author: DNIF
 entity_type: workbooks
 blocks:
@@ -19,5 +19,6 @@ blocks:
   DetectionConfidence: Medium
   SuspectHost: $DstIP
   TargetHost: $System
+cron: null
 config:
   parameters: []

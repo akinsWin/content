@@ -1,0 +1,15 @@
+id: e6be9b6612e7430987a7956d49386029
+name: FTP Activity to the Internet
+path: /Reports/FIREWALL
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=FIREWALL AND $Duration=7d AND $Proto=TCP
+    AND $DstPort IN [20,21] AND $SrcType=PRIVATE AND $DstType=PUBLIC group count_unique
+    $SrcIP, $DstIP limit 10
+cron: null
+config:
+  parameters: []

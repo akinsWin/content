@@ -1,0 +1,24 @@
+id: 1a2faf3dd4f44abdb65346d4ae5a59c4
+name: 'Firewall Authentication: Passed v Failed'
+path: /Reports/FIREWALL
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=7d group count_unique
+    $Status limit 10
+- type: visual
+  data:
+    widget_name: Firewall Authentication:Passed v Failed
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $Status
+      - $Status
+      value: count_unique
+cron: null
+config:
+  parameters: []

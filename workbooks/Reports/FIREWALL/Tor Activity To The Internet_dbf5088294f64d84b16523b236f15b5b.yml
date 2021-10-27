@@ -1,0 +1,15 @@
+id: dbf5088294f64d84b16523b236f15b5b
+name: Tor Activity To The Internet
+path: /Reports/FIREWALL
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcIP, COUNT($DstIP) AS $CountDstIP FROM FIREWALL WHERE ($DstPort='9001'
+    OR $DstPort='9030') AND $SrcType='PRIVATE' AND $DstType='PUBLIC'  AND $Proto='TCP'  AND
+    $Duration=7d GROUP BY $DstIP, $SrcIP
+cron: null
+config:
+  parameters: []

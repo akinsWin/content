@@ -1,0 +1,25 @@
+id: 20b4205106a0483cafa626b4bf95d00d
+name: Created And Deleted Network And Security Events
+path: /Visualization/Cloud Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: '_fetch * from event where $Stream=CLOUDTRAIL AND $Duration=1h AND  $EventName
+    IN [DeleteSecurityGroup,CreateSecurityGroup,CreateNetworkAclEntry,DeleteNetworkAclEntry,DeleteNetworkAcl,CreateNetworkAcl,DeleteNetworkInterface,CreateNetworkInterface,CreateDBSecurityGroup]  group
+    count_unique  $EventName limit 100 '
+- type: visual
+  data:
+    widget_name: Created And Deleted Network And Security Events
+    chart_type: pie
+    config:
+      type: default
+      key:
+      - $EventName
+      - null
+      value: count_unique
+cron: null
+config:
+  parameters: []

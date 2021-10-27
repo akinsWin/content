@@ -2,7 +2,7 @@ id: 7e08d8e0365841e59f6e8f16fd1fa666
 name: "Threat Detected on\_ Host - File"
 path: /Basic Security Monitoring/Threat Alerts
 description: ''
-type: auto-scheduled
+type: standard
 author: DNIF
 entity_type: workbooks
 blocks:
@@ -17,7 +17,8 @@ blocks:
   DetectionScore: '5'
   DetectionSeverity: Medium
   DetectionConfidence: Medium
-  TargetHost: $System
   SuspectObject: $File
+  TargetHost: $System
+cron: null
 config:
   parameters: []

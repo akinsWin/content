@@ -1,0 +1,24 @@
+id: 3a3dfd7316994331adf7517ac0b90782
+name: Top Configuration Changes On Firewall
+path: /Reports/FIREWALL
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Duration=7d AND $Stream=CONFIGURATION AND $SourceType=FIREWALL
+    AND $Action=CONFIGURATION_CHANGED group count_unique $Config limit 10
+- type: visual
+  data:
+    widget_name: Top Configuration Changes On Firewall
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $Config
+      - $Config
+      value: count_unique
+cron: null
+config:
+  parameters: []

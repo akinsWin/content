@@ -23,7 +23,7 @@ blocks:
       - distinct: $System
       filter_list:
       - field: $Action
-        value: USER_ACCOUNT_CREATED
+        value: USER_CREATED
         operator: '='
       duration: 7d
 - type: signal

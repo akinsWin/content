@@ -1,0 +1,270 @@
+id: 6b297d2f200644ecacb0c986c0b61ff8
+name: OFFICE Monitoring
+description: ''
+author: DNIF
+entity_type: dashboards
+path: /drafts
+config:
+  blocks: []
+  pollingInterval: 60
+data:
+- taskid: 0
+  visualBlockNum: 1
+  wbBlocknum: 2
+  workbook_id: 53171ff85d6441bd827d124b5381d180
+  path: /Visualization/OFFICE Monitoring
+  name: "Office Authentication\_ By Source Country"
+  visual_no: 0
+  pollingInterval: 60
+  position:
+    w: 4
+    h: 2
+    x: 0
+    y: 8
+    i: '0'
+    minW: 2
+    maxW: 12
+    minH: 2
+    maxH: 12
+    moved: false
+    static: false
+- taskid: 0
+  visualBlockNum: 1
+  wbBlocknum: 2
+  workbook_id: 53be94cc2b5e435586733132771b6de6
+  path: /Visualization/OFFICE Monitoring
+  name: Top Threat Detected In Office
+  visual_no: 1
+  pollingInterval: 60
+  position:
+    w: 4
+    h: 2
+    x: 0
+    y: 2
+    i: '1'
+    minW: 2
+    maxW: 12
+    minH: 2
+    maxH: 12
+    moved: false
+    static: false
+- taskid: 0
+  visualBlockNum: 1
+  wbBlocknum: 2
+  workbook_id: 3142f0debaf6461b9ac9d8534e2b0596
+  path: /Visualization/OFFICE Monitoring
+  name: Top Senders
+  visual_no: 2
+  pollingInterval: 60
+  position:
+    w: 4
+    h: 2
+    x: 4
+    y: 6
+    i: '2'
+    minW: 2
+    maxW: 12
+    minH: 2
+    maxH: 12
+    moved: false
+    static: false
+- taskid: 0
+  visualBlockNum: 1
+  wbBlocknum: 2
+  workbook_id: 0506cacff7f9427c8c653187494f2121
+  path: /Visualization/OFFICE Monitoring
+  name: Top Recipients
+  visual_no: 3
+  pollingInterval: 60
+  position:
+    w: 4
+    h: 2
+    x: 8
+    y: 6
+    i: '3'
+    minW: 2
+    maxW: 12
+    minH: 2
+    maxH: 12
+    moved: false
+    static: false
+- taskid: 0
+  visualBlockNum: 1
+  wbBlocknum: 2
+  workbook_id: dd929b00977c42d5a0212da18fb41b71
+  path: /Visualization/OFFICE Monitoring
+  name: File Upload and Download Activity
+  visual_no: 4
+  pollingInterval: 60
+  position:
+    w: 4
+    h: 2
+    x: 8
+    y: 2
+    i: '4'
+    minW: 2
+    maxW: 12
+    minH: 2
+    maxH: 12
+    moved: false
+    static: false
+- taskid: 0
+  visualBlockNum: 1
+  wbBlocknum: 2
+  workbook_id: 4410bd34119c466d8ef8eae04b709d00
+  path: /Visualization/OFFICE Monitoring
+  name: Modified Files By Users
+  visual_no: 5
+  pollingInterval: 60
+  position:
+    w: 4
+    h: 2
+    x: 4
+    y: 2
+    i: '5'
+    minW: 2
+    maxW: 12
+    minH: 2
+    maxH: 12
+    moved: false
+    static: false
+- taskid: 0
+  visualBlockNum: 1
+  wbBlocknum: 2
+  workbook_id: 8f9416b67e124940abdbbf2abee6cf39
+  path: /Visualization/OFFICE Monitoring
+  name: Office Email Activity Timeline
+  visual_no: 6
+  pollingInterval: 60
+  position:
+    w: 12
+    h: 2
+    x: 0
+    y: 0
+    i: '6'
+    minW: 2
+    maxW: 12
+    minH: 2
+    maxH: 12
+    moved: false
+    static: false
+- taskid: 0
+  visualBlockNum: 1
+  wbBlocknum: 2
+  workbook_id: 73809286ba1c4ce59108c720c8cc1384
+  path: /Visualization/OFFICE Monitoring
+  name: Mailbox Permission Changes
+  visual_no: 7
+  pollingInterval: 60
+  position:
+    w: 4
+    h: 2
+    x: 4
+    y: 4
+    i: '7'
+    minW: 2
+    maxW: 12
+    minH: 2
+    maxH: 12
+    moved: false
+    static: false
+- taskid: 0
+  visualBlockNum: 1
+  wbBlocknum: 2
+  workbook_id: ee161bce455448f0b67cf5d47fbb3772
+  path: /Visualization/OFFICE Monitoring
+  name: Policy Added And Deleted
+  visual_no: 8
+  pollingInterval: 60
+  position:
+    w: 4
+    h: 2
+    x: 8
+    y: 4
+    i: '8'
+    minW: 2
+    maxW: 12
+    minH: 2
+    maxH: 12
+    moved: false
+    static: false
+- taskid: 0
+  visualBlockNum: 1
+  wbBlocknum: 2
+  workbook_id: e5ed8e7884cd433d9f1f45a3e653b69e
+  path: /Visualization/OFFICE Monitoring
+  name: Inbbox Rule Changes
+  visual_no: 9
+  pollingInterval: 60
+  position:
+    w: 4
+    h: 2
+    x: 0
+    y: 4
+    i: '9'
+    minW: 2
+    maxW: 12
+    minH: 2
+    maxH: 12
+    moved: false
+    static: false
+- taskid: 0
+  visualBlockNum: 1
+  wbBlocknum: 2
+  workbook_id: b9fe0dd038f4474fb7547684704867b3
+  path: /Visualization/OFFICE Monitoring
+  name: Delegated Permission Grant To User
+  visual_no: 10
+  pollingInterval: 60
+  position:
+    w: 4
+    h: 2
+    x: 0
+    y: 6
+    i: '10'
+    minW: 2
+    maxW: 12
+    minH: 2
+    maxH: 12
+    moved: false
+    static: false
+- taskid: 2
+  visualBlockNum: 1
+  wbBlocknum: 4
+  workbook_id: 02ca9b7502c445d79f003a4a92c89363
+  path: /Visualization/OFFICE Monitoring
+  name: Multiple Account password reset detected by the same user
+  visual_no: 11
+  pollingInterval: 60
+  position:
+    w: 4
+    h: 2
+    x: 4
+    y: 8
+    i: '11'
+    minW: 2
+    maxW: 12
+    minH: 2
+    maxH: 12
+    moved: false
+    static: false
+- taskid: 0
+  visualBlockNum: 1
+  wbBlocknum: 2
+  workbook_id: 4bbc0c613d6e41a982d52034ad0592f8
+  path: /Visualization/OFFICE Monitoring
+  name: Top Users For IAM Activity
+  visual_no: 12
+  pollingInterval: 60
+  position:
+    w: 4
+    h: 2
+    x: 8
+    y: 8
+    i: '12'
+    minW: 2
+    maxW: 12
+    minH: 2
+    maxH: 12
+    moved: false
+    static: false

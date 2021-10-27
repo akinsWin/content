@@ -1,5 +1,5 @@
 id: 08c93e60859a4950afd9db041f4170e5
-name: AWS Config Disabling Channel-Recorder
+name: AWS Config Disabling Channel Recorder
 path: /Cloud Security/Amazon Web Services
 description: ''
 type: standard
@@ -10,14 +10,16 @@ blocks:
   code: "|Author|References|\n                 |------|--------|\n               \
     \  |vitaliy0x1|None|"
 - type: sql
-  query: SELECT * FROM CLOUDTRAIL WHERE $EventSource='config.amazonaws.com' AND ($EventName='DeleteDeliveryChannel'
-    OR $EventName='StopConfigurationRecorder')
+  query: SELECT * FROM CONFIGURATION WHERE $Action='CONFIGURATION_CHANGED' AND ($Config='DeleteDeliveryChannel'
+    OR $Config='StopConfigurationRecorder')
 - type: signal
   DetectionName: AWS Config Disabling Channel/Recorder
   DetectionTactic: Defense Evasion
   DetectionTechnique: Impair Defenses
-  DetectionScore: 5
+  DetectionScore: '5'
   DetectionSeverity: Medium
   DetectionConfidence: Low
-  TargetHost: $EventSource
-config: {}
+  SuspectUser: $User
+cron: null
+config:
+  parameters: []
