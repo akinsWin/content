@@ -1,7 +1,7 @@
 id: 00759785b35d4702891f7d4544257a16
 name: FIREWALL Weekly Report
 author: DNIF
-path: /drafts
+path: /Network
 entity_type: reports
 report_config:
 - type: table
