@@ -15,6 +15,7 @@ jobs:
         id: diff_check
         continue-on-error: true
         run: |
+          git fetch
           echo "Checking out"
           git checkout origin/$GITHUB_HEAD_REF
           echo "Checkout done"
