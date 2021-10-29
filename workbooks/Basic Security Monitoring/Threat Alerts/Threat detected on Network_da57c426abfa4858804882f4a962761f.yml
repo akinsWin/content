@@ -2,7 +2,7 @@ id: da57c426abfa4858804882f4a962761f
 name: Threat detected on Network
 path: /Basic Security Monitoring/Threat Alerts
 description: ''
-type: auto-scheduled
+type: standard
 author: DNIF
 entity_type: workbooks
 blocks:
@@ -19,5 +19,6 @@ blocks:
   DetectionConfidence: Medium
   SuspectHost: $SrcIP
   TargetHost: $DstIP
+cron: null
 config:
   parameters: []

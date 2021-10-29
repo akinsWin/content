@@ -1,0 +1,299 @@
+id: 00759785b35d4702891f7d4544257a16
+name: FIREWALL Weekly Report
+author: DNIF
+path: /Network
+entity_type: reports
+report_config:
+- type: table
+  data:
+    name: Denied Traffic
+    path: /Reports/FIREWALL
+    workbook_id: 6fe1d372d3ae424ba63d07debe9cbb26
+    wbBlocknum: 0
+- type: table
+  data:
+    name: Traffic Destinations by Country
+    path: /Reports/FIREWALL
+    workbook_id: 715ba0011a9d4011a4c131451d4bb19e
+    wbBlocknum: 0
+- type: table
+  data:
+    name: Traffic Sources by Country
+    path: /Reports/FIREWALL
+    workbook_id: 8276588c70b742bb963025928bc00394
+    wbBlocknum: 0
+- type: widget
+  data:
+    visualDetails:
+    - TextValue: ''
+      position:
+        h: 3
+        i: '0'
+        maxH: 12
+        maxW: 12
+        minH: 2
+        minW: 2
+        moved: false
+        static: false
+        w: 6
+        x: 0
+        y: 0
+      taskid: 0
+      visualBlockNum: 1
+      wbBlocknum: 2
+      workbook_id: 921474ff03994ee6a709926a5cb10c3e
+    - TextValue: ''
+      position:
+        h: 3
+        i: '1'
+        maxH: 12
+        maxW: 12
+        minH: 2
+        minW: 2
+        moved: false
+        static: false
+        w: 3
+        x: 9
+        y: 0
+      taskid: 0
+      visualBlockNum: 1
+      wbBlocknum: 2
+      workbook_id: 609b0a3cce1a4b94b4677fd1624c5e68
+    - TextValue: ''
+      position:
+        h: 3
+        i: '2'
+        maxH: 12
+        maxW: 12
+        minH: 2
+        minW: 2
+        moved: false
+        static: false
+        w: 3
+        x: 6
+        y: 0
+      taskid: 0
+      visualBlockNum: 1
+      wbBlocknum: 2
+      workbook_id: 80cb309ca4a04f2784275d05d7a6e5c3
+- type: table
+  data:
+    name: Blocked Traffic By Port
+    path: /Reports/FIREWALL
+    workbook_id: bbfdff31ec484cd28b0222f0eea30843
+    wbBlocknum: 0
+- type: widget
+  data:
+    visualDetails:
+    - TextValue: ''
+      position:
+        w: 6
+        h: 3
+        x: 0
+        y: 0
+        i: '0'
+        minW: 2
+        maxW: 12
+        minH: 2
+        maxH: 12
+        moved: false
+        static: false
+      taskid: 0
+      visualBlockNum: 1
+      wbBlocknum: 2
+      workbook_id: d4d679e2f2e340b2a3ec0e7cfadca381
+    - TextValue: ''
+      position:
+        w: 6
+        h: 3
+        x: 6
+        y: 0
+        i: '1'
+        minW: 2
+        maxW: 12
+        minH: 2
+        maxH: 12
+        moved: false
+        static: false
+      taskid: 0
+      visualBlockNum: 1
+      wbBlocknum: 2
+      workbook_id: 138c7d16cfb44236944cf00bbcac5640
+- type: table
+  data:
+    name: Data Egress From Top Source
+    path: /Reports/FIREWALL
+    workbook_id: f2e05b85bf8b4db2973172d90eda57a0
+    wbBlocknum: 0
+- type: table
+  data:
+    name: Data Ingress from Top Sources
+    path: /Reports/FIREWALL
+    workbook_id: 51a23357c47f4924a937dac7b8e3bae2
+    wbBlocknum: 0
+- type: table
+  data:
+    name: SSH From Internet
+    path: /Reports/FIREWALL
+    workbook_id: 8ecff4e3e1484787841548d95c0333c3
+    wbBlocknum: 0
+- type: table
+  data:
+    name: Tor Activity To The Internet
+    path: /Reports/FIREWALL
+    workbook_id: dbf5088294f64d84b16523b236f15b5b
+    wbBlocknum: 0
+- type: table
+  data:
+    name: FTP Activity to the Internet
+    path: /Reports/FIREWALL
+    workbook_id: e6be9b6612e7430987a7956d49386029
+    wbBlocknum: 0
+- type: table
+  data:
+    name: Non Https Url Accessed
+    path: /Reports/FIREWALL
+    workbook_id: acbce48049cb42d8ba1f78e6a714e974
+    wbBlocknum: 0
+- type: table
+  data:
+    name: Outbound SMB Traffic Detected
+    path: /Reports/FIREWALL
+    workbook_id: fe427387a9504f93a66db586872f9730
+    wbBlocknum: 0
+- type: widget
+  data:
+    visualDetails:
+    - TextValue: ''
+      position:
+        h: 3
+        i: '0'
+        maxH: 12
+        maxW: 12
+        minH: 2
+        minW: 2
+        moved: false
+        static: false
+        w: 6
+        x: 0
+        y: 0
+      taskid: 0
+      visualBlockNum: 1
+      wbBlocknum: 2
+      workbook_id: 3a3dfd7316994331adf7517ac0b90782
+    - TextValue: ''
+      position:
+        h: 3
+        i: '1'
+        maxH: 12
+        maxW: 12
+        minH: 2
+        minW: 2
+        moved: false
+        static: false
+        w: 6
+        x: 6
+        y: 0
+      taskid: 0
+      visualBlockNum: 1
+      wbBlocknum: 2
+      workbook_id: 0086010d51c24831a1d28fd1672bd368
+- type: table
+  data:
+    name: Unsuccessful Logins Summary
+    path: /Reports/FIREWALL
+    workbook_id: 9a2a646fabc3452bb83db690614f1b0c
+    wbBlocknum: 0
+- type: table
+  data:
+    name: Unsuccessful Remote Login Attempts
+    path: /Reports/FIREWALL
+    workbook_id: 0c407f9757f1414eaa642a3136c82f22
+    wbBlocknum: 0
+- type: widget
+  data:
+    visualDetails:
+    - TextValue: ''
+      position:
+        w: 5
+        h: 3
+        x: 0
+        y: 0
+        i: '0'
+        minW: 2
+        maxW: 12
+        minH: 2
+        maxH: 12
+        moved: false
+        static: false
+      taskid: 0
+      visualBlockNum: 1
+      wbBlocknum: 2
+      workbook_id: 1a2faf3dd4f44abdb65346d4ae5a59c4
+    - TextValue: ''
+      position:
+        w: 7
+        h: 3
+        x: 5
+        y: 0
+        i: '1'
+        minW: 2
+        maxW: 12
+        minH: 2
+        maxH: 12
+        moved: false
+        static: false
+      taskid: 0
+      visualBlockNum: 1
+      wbBlocknum: 2
+      workbook_id: 4ea8c006aefe48dda2410937ad051c68
+- type: table
+  data:
+    name: Threat Detected On Firewall
+    path: /Reports/FIREWALL
+    workbook_id: a96baf37022c4d8e9f489651a4eac2c6
+    wbBlocknum: 0
+- type: widget
+  data:
+    visualDetails:
+    - TextValue: ''
+      position:
+        h: 4
+        i: '0'
+        maxH: 12
+        maxW: 12
+        minH: 2
+        minW: 2
+        moved: false
+        static: false
+        w: 12
+        x: 0
+        y: 0
+      taskid: 0
+      visualBlockNum: 1
+      wbBlocknum: 2
+      workbook_id: 4532f0c1280f454faa003069ef8b1190
+- type: table
+  data:
+    name: Top Targeted IPs
+    path: /Reports/FIREWALL
+    workbook_id: cbe881f9d2d545d2ba7fa0431a6e0852
+    wbBlocknum: 0
+- type: table
+  data:
+    name: Top Threat Sources
+    path: /Reports/FIREWALL
+    workbook_id: a3040810d0db40968de1ec019d2b0bcf
+    wbBlocknum: 0
+- type: table
+  data:
+    name: Top Threat Destinations
+    path: /Reports/FIREWALL
+    workbook_id: 00db05327df743468f25fb1b6ad26b86
+    wbBlocknum: 0
+- type: table
+  data:
+    name: Top Talkers
+    path: /Reports/FIREWALL
+    workbook_id: 6e756853536141dbbd4766c4feee4b74
+    wbBlocknum: 0

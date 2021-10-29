@@ -1,0 +1,15 @@
+id: fe427387a9504f93a66db586872f9730
+name: Outbound SMB Traffic Detected
+path: /Reports/FIREWALL
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcIP FROM FIREWALL WHERE $DstType = 'PUBLIC' AND $Action = 'PACKET_ALLOWED'
+    AND NOT $SrcType = 'PUBLIC' AND $DstPort IN ('139', '445')  AND $Duration=7d GROUP
+    BY $SrcIP LIMIT 20
+cron: null
+config:
+  parameters: []

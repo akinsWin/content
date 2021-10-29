@@ -1,0 +1,24 @@
+id: aa18918d71134f8f8ac92fcadcf26ea5
+name: AWS Regions
+path: /Visualization/Cloud Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Duration=1h AND $Stream=CLOUDTRAIL NOT $AwsRegion=-
+    group count_unique $AwsRegion limit 100
+- type: visual
+  data:
+    widget_name: AWS Regions
+    chart_type: pie
+    config:
+      type: default
+      key:
+      - $AwsRegion
+      - null
+      value: count_unique
+cron: null
+config:
+  parameters: []

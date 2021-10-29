@@ -7,8 +7,8 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT $User, COUNT($Action) AS $AccountCreated FROM IAM WHERE ($Action='USER_ACCOUNT_CREATED'
-    OR $Action='SYSTEM_USER_ACCOUNT_CREATED') AND $Duration=6h GROUP BY $User,$Action
+  query: SELECT $User, COUNT($Action) AS $AccountCreated FROM IAM WHERE ($Action='USER_CREATED'
+    OR $Action='COMPUTER_ACCOUNT_CREATED') AND $Duration=6h GROUP BY $User,$Action
     ORDER BY $AccountCreated DESC LIMIT 10
 - type: visual
   data:
@@ -20,4 +20,6 @@ blocks:
       - $User
       - null
       value: $AccountCreated
-config: {}
+cron: null
+config:
+  parameters: []

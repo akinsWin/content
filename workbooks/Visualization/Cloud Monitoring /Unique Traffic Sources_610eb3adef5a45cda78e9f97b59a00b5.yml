@@ -1,0 +1,24 @@
+id: 610eb3adef5a45cda78e9f97b59a00b5
+name: Unique Traffic Sources
+path: /Visualization/Cloud Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT COUNT( DISTINCT $SrcIP ) AS $SrcCount  FROM CLOUDTRAIL WHERE $Duration=1h
+    limit 100
+- type: visual
+  data:
+    widget_name: Unique Traffic Sources
+    chart_type: metric
+    config:
+      type: default
+      key:
+      - null
+      - null
+      value: $SrcCount
+cron: null
+config:
+  parameters: []

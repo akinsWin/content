@@ -1,0 +1,26 @@
+id: 8f9ad8cbef6e4ec69648ed4a0beb8fe8
+name: Same Threat Detected on Multiple Hosts
+path: /Advanced Threat Detection/Threat Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $DetectionName, COUNT(DISTINCT(TargetHost)) AS $CntHost FROM SIGNALS
+    WHERE $Duration=30m AND $TargetHost IS NOT NULL GROUP BY $DetectionName HAVING
+    $CntHost>4
+- type: dql
+  query: _fetch $TargetHost from event where $Stream=SIGNALS AND $Duration=30m AND
+    $DetectionName IN [_DetectionName_] limit 20
+- type: signal
+  DetectionName: Same Threat Detected on Multiple Hosts
+  DetectionTactic: Unclassified
+  DetectionTechnique: Unclassified
+  DetectionScore: '8'
+  DetectionSeverity: High
+  DetectionConfidence: High
+  SuspectHost: $TargetHost
+cron: null
+config:
+  parameters: []

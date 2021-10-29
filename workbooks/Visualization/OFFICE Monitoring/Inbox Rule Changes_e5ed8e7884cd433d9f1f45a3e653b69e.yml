@@ -1,0 +1,25 @@
+id: e5ed8e7884cd433d9f1f45a3e653b69e
+name: Inbox Rule Changes
+path: /Visualization/OFFICE Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: '_fetch * from event where $Duration=1h AND $Stream=CONFIGURATION AND $SourceType=OFFICE
+    AND $Action=CONFIGURATION_CHANGED AND $Config IN [Disable-InboxRule,Remove-InboxRule,Enable-InboxRule,New-InboxRule]
+    group count_unique $Config,$User  limit  20 '
+- type: visual
+  data:
+    widget_name: Inbox Rule Changes
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $User
+      - $Config
+      value: count_unique
+cron: null
+config:
+  parameters: []

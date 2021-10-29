@@ -1,0 +1,26 @@
+id: 715ba0011a9d4011a4c131451d4bb19e
+name: Traffic Destinations by Country
+path: /Reports/FIREWALL
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: 'SELECT $DstCN, COUNT(*) AS $DstCnt FROM FIREWALL WHERE $Duration=7d AND  NOT
+    $DstCN=''-'' GROUP BY $DstCN
+
+    '
+- type: visual
+  data:
+    widget_name: Traffic Destinations by Country
+    chart_type: geoMap
+    config:
+      type: default
+      key:
+      - $DstCN
+      - null
+      value: $DstCnt
+cron: null
+config:
+  parameters: []

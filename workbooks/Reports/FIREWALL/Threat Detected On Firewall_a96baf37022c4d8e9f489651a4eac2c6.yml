@@ -1,0 +1,15 @@
+id: a96baf37022c4d8e9f489651a4eac2c6
+name: Threat Detected On Firewall
+path: /Reports/FIREWALL
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Duration=7d AND $Stream=THREAT AND $Action=THREAT_DETECTED
+    AND $SourceType=FIREWALL AND $Status=PASSED group count_unique $Threat,$SrcIP
+    limit 20
+cron: null
+config:
+  parameters: []

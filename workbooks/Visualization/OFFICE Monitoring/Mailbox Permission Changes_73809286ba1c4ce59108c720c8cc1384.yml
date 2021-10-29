@@ -1,0 +1,25 @@
+id: 73809286ba1c4ce59108c720c8cc1384
+name: Mailbox Permission Changes
+path: /Visualization/OFFICE Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=IAM AND $Duration=1h AND $SourceType=OFFICE
+    AND $Action IN [MAILBOX_PERMISSION_ADDED,MAILBOX_PERMISSION_REMOVED] group count_unique
+    $Action, $User limit 10
+- type: visual
+  data:
+    widget_name: Mailbox Permission Changes
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $User
+      - $Action
+      value: count_unique
+cron: null
+config:
+  parameters: []

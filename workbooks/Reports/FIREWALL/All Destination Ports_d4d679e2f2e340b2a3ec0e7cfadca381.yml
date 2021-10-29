@@ -1,0 +1,25 @@
+id: d4d679e2f2e340b2a3ec0e7cfadca381
+name: All Destination Ports
+path: /Reports/FIREWALL
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $DstPort, SUM($TXLen) AS $TotalBytes FROM FIREWALL WHERE $Duration=7d
+    AND $Action='PACKET_ALLOWED' GROUP BY $DstPort ORDER BY $TotalBytes DESC LIMIT
+    20
+- type: visual
+  data:
+    widget_name: All Destination Ports
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $DstPort
+      - null
+      value: $TotalBytes
+cron: null
+config:
+  parameters: []

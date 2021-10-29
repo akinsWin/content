@@ -1,0 +1,14 @@
+id: 00db05327df743468f25fb1b6ad26b86
+name: Top Threat Destinations
+path: /Reports/FIREWALL
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=THREAT AND $Action=THREAT_DETECTED AND
+    $Duration=7d group count_unique $DstIP, $Threat limit 10
+cron: null
+config:
+  parameters: []

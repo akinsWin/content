@@ -1,0 +1,41 @@
+id: 41c0a8740d2c4823aec97cb5d1703dee
+name: Anomalous DNS Bytes Observed From Same Source
+path: /Basic Security Monitoring/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: ai
+  data:
+    contamination_factor: 0.001
+    result_condition:
+      only_anomaly: true
+      return_graph_result: true
+    query_data:
+      stream: FIREWALL
+      entity: $SrcIP
+      feature_list:
+      - sum: $TXLen
+      - percentage_of:
+        - $Status
+        - PASSED
+      filter_list:
+      - field: $Action
+        value: PACKET_ALLOWED
+        operator: '='
+      - field: $DstPort
+        value: '53'
+        operator: '='
+      duration: 7d
+- type: signal
+  DetectionName: Anomalous DNS Bytes Observed From Same Source
+  DetectionTactic: Impact
+  DetectionTechnique: Network Denial of Service
+  DetectionScore: '6'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectHost: $SrcIP
+cron: null
+config:
+  parameters: []

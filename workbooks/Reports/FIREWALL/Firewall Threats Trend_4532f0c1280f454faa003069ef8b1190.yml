@@ -1,0 +1,24 @@
+id: 4532f0c1280f454faa003069ef8b1190
+name: Firewall Threats Trend
+path: /Reports/FIREWALL
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch $Vector from event where $Stream=THREAT AND $Duration=7d AND $SourceType=FIREWALL
+    group timeslice 1h limit 100
+- type: visual
+  data:
+    widget_name: Firewall Threats Trend
+    chart_type: timeline
+    config:
+      type: stacked
+      key:
+      - $CNAMTime
+      - $Vector
+      value: count
+cron: null
+config:
+  parameters: []

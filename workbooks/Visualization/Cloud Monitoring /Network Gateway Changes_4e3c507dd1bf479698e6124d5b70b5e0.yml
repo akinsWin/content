@@ -1,0 +1,25 @@
+id: 4e3c507dd1bf479698e6124d5b70b5e0
+name: Network Gateway Changes
+path: /Visualization/Cloud Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: '_fetch * from event where $Stream=CLOUDTRAIL AND $Duration=1h AND $EventType=AwsApiCall
+    AND  $EventName IN [AttachInternetGateway,CreateCustomerGateway,CreateInternetGateway,DeleteCustomerGateway,DeleteInternetGateway,DetachInternetGateway]
+    group count_unique  $EventName  limit 10  '
+- type: visual
+  data:
+    widget_name: Network Gateway Changes
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $EventName
+      - $EventName
+      value: count_unique
+cron: null
+config:
+  parameters: []

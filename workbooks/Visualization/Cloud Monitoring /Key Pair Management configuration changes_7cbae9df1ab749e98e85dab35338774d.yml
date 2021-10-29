@@ -1,0 +1,25 @@
+id: 7cbae9df1ab749e98e85dab35338774d
+name: Key Pair Management configuration changes
+path: /Visualization/Cloud Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: '_fetch * from event where $Stream=CLOUDTRAIL AND $Duration=1h AND $EventType=AwsApiCall
+    AND  $EventName IN [ReEncrypt,Decrypt,GenerateDataKey,CreateKey,DisableKey,ListKeys]
+    group count_unique  $SrcIP , $EventName limit 10  '
+- type: visual
+  data:
+    widget_name: Key Pair Management configuration changes
+    chart_type: pie
+    config:
+      type: default
+      key:
+      - $EventName
+      - null
+      value: count_unique
+cron: null
+config:
+  parameters: []

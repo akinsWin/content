@@ -1,0 +1,23 @@
+id: 62727a8c39f04731a22288fbf4e7fffb
+name: High Denied Traffic Within Short Span Of Time
+path: /Basic Security Monitoring/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcIP, COUNT($Action) AS TotalCount FROM FIREWALL WHERE $Duration=15m
+    AND $Action='PACKET_BLOCKED' AND $Status='PASSED' AND $SrcType='PRIVATE' GROUP
+    BY $SrcIP  HAVING $TotalCount > 30000
+- type: signal
+  DetectionName: High Denied Traffic Within Short Span Of Time
+  DetectionTactic: Impact
+  DetectionTechnique: Network Denial of Service
+  DetectionScore: '8'
+  DetectionSeverity: High
+  DetectionConfidence: High
+  SuspectHost: $SrcIP
+cron: null
+config:
+  parameters: []

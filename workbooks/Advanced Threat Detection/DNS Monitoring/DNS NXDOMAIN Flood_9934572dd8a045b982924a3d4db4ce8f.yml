@@ -1,0 +1,32 @@
+id: 9934572dd8a045b982924a3d4db4ce8f
+name: DNS NXDOMAIN Flood
+path: /Advanced Threat Detection/DNS Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: 'SELECT $SrcIP, $Query, COUNT(*) AS COUNT FROM DNS WHERE  $Action=''DNS_QUERIED''
+    AND $ResponseCode=''NXDOMAIN'' AND $Status=''PASSED'' AND $Duration=15m GROUP
+    BY $SrcIP, $Query HAVING COUNT >500 '
+- type: signal
+  DetectionName: DNS NXDOMAIN Flood
+  DetectionTactic: Impact
+  DetectionTechnique: Network Denial of Service
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectHost: $SrcIP
+- type: text
+  code: When a DNS Proxy server is under a DNS NXDOMAIN Flood DDoS attack, it will
+    constantly send the invalid requests to the respective DNS Authoritative server.
+    As these requests are invalid, the Authoritative server will respond with a NXDOMAIN
+    error response which will be passed back to the client. As the volume of invalid
+    requests increases, the Authoritative server will quickly slow down, resulting
+    in legitimate requests not getting a response. The legitimate clients will then
+    retry the requests, resulting in the load increasing even further on both the
+    Proxy server and the Authoritative server.
+cron: null
+config:
+  parameters: []

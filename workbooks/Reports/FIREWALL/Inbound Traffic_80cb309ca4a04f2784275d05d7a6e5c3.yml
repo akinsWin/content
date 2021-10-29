@@ -1,0 +1,25 @@
+id: 80cb309ca4a04f2784275d05d7a6e5c3
+name: Inbound Traffic
+path: /Reports/FIREWALL
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT concat_ws(" ",round(sum(RxLen)/1000/1000), "GB") AS $TotalBytes FROM
+    FIREWALL WHERE $Duration=7d AND $DstType='PRIVATE' AND $Action='PACKET_ALLOWED'
+    ORDER BY $TotalBytes DESC
+- type: visual
+  data:
+    widget_name: Inbound Traffic
+    chart_type: metric
+    config:
+      type: default
+      key:
+      - $TotalBytes
+      - null
+      value: $TotalBytes
+cron: null
+config:
+  parameters: []

@@ -1,0 +1,24 @@
+id: b778da5e7e4e498cbd442d40a96a569c
+name: Threat Detected on Authentication
+path: /Basic Security Monitoring/Threat Alerts
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $Threat, $SrcIP, $User FROM THREAT WHERE $Action='THREAT_DETECTED'
+    AND $Vector='AUTHENTICATION' AND $Threat IS NOT NULL AND $SrcIP IS NOT NULL AND
+    $User IS NOT NULL GROUP BY $Threat, $SrcIP, $User
+- type: signal
+  DetectionName: _$Threat_
+  DetectionTactic: Credential Access
+  DetectionTechnique: Brute Force
+  DetectionScore: '7'
+  DetectionSeverity: High
+  DetectionConfidence: Medium
+  SuspectHost: $SrcIP
+  TargetUser: $User
+cron: null
+config:
+  parameters: []
