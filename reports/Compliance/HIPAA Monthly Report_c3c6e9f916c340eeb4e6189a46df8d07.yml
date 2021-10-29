@@ -51,7 +51,7 @@ report_config:
     workbook_id: a68fc82803b448ee81167205fa785a69
 - type: table
   data:
-    name: "Top Virus Sources And Destinations\_ Monthly"
+    name: "Top Virus Sources And Destinations Monthly"
     path: /Compliance/HIPAA/Monthly
     workbook_id: 4f93ba2e35464403902476b6e2d0b9a8
 - type: table

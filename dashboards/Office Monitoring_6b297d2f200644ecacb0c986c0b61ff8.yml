@@ -13,7 +13,7 @@ data:
   wbBlocknum: 2
   workbook_id: 53171ff85d6441bd827d124b5381d180
   path: /Visualization/OFFICE Monitoring
-  name: "Office Authentication\_ By Source Country"
+  name: "Office Authentication By Source Country"
   visual_no: 0
   pollingInterval: 60
   position:
