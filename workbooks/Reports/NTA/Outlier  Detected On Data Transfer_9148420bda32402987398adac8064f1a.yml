@@ -1,0 +1,41 @@
+id: 9148420bda32402987398adac8064f1a
+name: "Outlier\_ Detected On Data Transfer"
+path: /Reports/NTA
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: ai
+  data:
+    contamination_factor: 0.001
+    result_condition:
+      only_anomaly: true
+      return_graph_result: true
+    query_data:
+      stream: NTA-HTTP
+      entity: $SrcIP
+      feature_list:
+      - distinct: $DstIP
+      - distinct: $DstPort
+      - sum: $TXLen
+      - percentage_of:
+        - $Status
+        - PASSED
+      filter_list: []
+      duration: 7d
+- type: visual
+  data:
+    widget_name: Outlier  Detected On Data Transfer Over  Last  Week
+    chart_type: column
+    config:
+      type: default
+      key:
+      - $SrcIP
+      - null
+      value: $SumTXLen
+- type: dql
+  query: _table $SrcIP, $SumTXLen, $Prediction
+cron: null
+config:
+  parameters: []

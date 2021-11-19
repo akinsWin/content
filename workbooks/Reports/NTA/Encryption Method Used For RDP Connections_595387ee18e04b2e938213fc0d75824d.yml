@@ -1,0 +1,24 @@
+id: 595387ee18e04b2e938213fc0d75824d
+name: Encryption Method Used For RDP Connections
+path: /Reports/NTA
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Duration=7d AND $Stream=NTA-RDP group count_unique
+    $EncryptionMethod limit 10
+- type: visual
+  data:
+    widget_name: Encryption Method Used For RDP Connections
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $EncryptionMethod
+      - $EncryptionMethod
+      value: count_unique
+cron: null
+config:
+  parameters: []

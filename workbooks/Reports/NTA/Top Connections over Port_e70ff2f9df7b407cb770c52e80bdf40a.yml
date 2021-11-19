@@ -1,0 +1,15 @@
+id: e70ff2f9df7b407cb770c52e80bdf40a
+name: Top Connections over Port
+path: /Reports/NTA
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcIP,$DstIP,$DstPort,SUM(TXLen) AS TotalBytes FROM NTA-CONNECTION
+    WHERE $Duration=7d GROUP BY  $SrcIP,$DstIP,$DstPort ORDER BY TotalBytes DESC LIMIT
+    10
+cron: null
+config:
+  parameters: []

@@ -1,0 +1,25 @@
+id: 1ee60953eb444a23ba41e8d6cf229468
+name: Excessive Nslookup Usage
+path: /Advanced Threat Detection/Linux Process Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $System, $Process, ProcessArgs, COUNT($Action) AS Count FROM AUDITD
+    WHERE  $Action='PROCESS_ADDED' AND Process LIKE '%nslookup%' AND $ProcessArgs
+    LIKE 'nslookup'AND $Duration=5m GROUP BY  $System, $Process, ProcessArgs HAVING
+    Count > 10
+- type: signal
+  DetectionName: Excessive Nslookup Usage
+  DetectionTactic: Command and Control
+  DetectionTechnique: Dynamic Resolution
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $User
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

@@ -1,0 +1,23 @@
+id: c1a319f10b674ac6a09dc53911a295e1
+name: Suspicious Access to lsass Process
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT * FROM SYSMON-PROCESS WHERE $Action='PROCESS_ADDED' AND $Image LIKE
+    "%lsass%exe%" AND ($GrantedAccess='0x1010' OR $GrantedAccess='0x1410' OR $GrantedAccess='0x143A')
+- type: signal
+  DetectionName: Suspicious Access to lsass Process
+  DetectionTactic: Credential Access
+  DetectionTechnique: OS Credential Dumping
+  DetectionScore: '6'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $User
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

@@ -1,0 +1,24 @@
+id: 17bb9621bab243aaab3b8ee23b45b3fc
+name: MySQL Show Databases Attempt
+path: /Reports/NTA
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Duration=7d AND $Stream=NTA-MYSQL AND $Args=show
+    databases group count_unique $SrcIP limit 10
+- type: visual
+  data:
+    widget_name: MySQL Show Databases Attempt
+    chart_type: column
+    config:
+      type: stacked
+      key:
+      - $SrcIP
+      - $SrcIP
+      value: count_unique
+cron: null
+config:
+  parameters: []

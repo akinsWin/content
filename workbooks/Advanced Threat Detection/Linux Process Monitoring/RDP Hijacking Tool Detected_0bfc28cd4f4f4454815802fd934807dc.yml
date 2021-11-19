@@ -1,0 +1,23 @@
+id: 0bfc28cd4f4f4454815802fd934807dc
+name: RDP Hijacking Tool Detected
+path: /Advanced Threat Detection/Linux Process Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $System, $Process, ProcessArgs FROM AUDITD WHERE  $Action='PROCESS_ADDED'
+    AND Status='PASSED' AND Process LIKE '%ngrok%' OR $ProcessArgs LIKE '%tscon%'
+    GROUP BY  $System, $Process, ProcessArgs
+- type: signal
+  DetectionName: RDP Hijacking Tool Detected
+  DetectionTactic: Lateral Movement
+  DetectionTechnique: Remote Service Session Hijacking
+  DetectionScore: '6'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

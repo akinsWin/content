@@ -1,0 +1,27 @@
+id: 82d773d06d8f486aa2ca2b9a9afc7959
+name: Count Of Connections Established By Source Country
+path: /Reports/NTA
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $Action,$SrcCN, COUNT(*) AS $SrcCount FROM NTA-CONNECTION WHERE $Duration=7d
+    AND NOT $SrcCN='' AND NOT $SrcCN='-' AND $Action='CONNECTION_ESTABLISHED' GROUP
+    BY $SrcCN, $Action ORDER BY $SrcCount DESC limit 100
+- type: dql
+  query: _table $SrcCN, $SrcCount
+- type: visual
+  data:
+    widget_name: Count Of Connections Established By Source Country
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $SrcCN
+      - $SrcCN
+      value: $SrcCount
+cron: null
+config:
+  parameters: []

@@ -1,0 +1,26 @@
+id: 91fc507d346f448b9cafd5c467b90dad
+name: Excessive Network Share Access Failures from a Compromised Host
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcIP, COUNT(*) AS $EventCNT FROM WIN-AUDIT WHERE  $Action="OBJECT_ACCESSED"
+    AND $Event="A network share object was accessed." AND $Status="FAILED"  GROUP
+    BY $SrcIP  HAVING $EventCNT > 3
+- type: dql
+  query: _checkif lookup CompromisedHost join $SrcIP = $TargetHost str_compare $SrcIP
+    eq $TargetHost include
+- type: signal
+  DetectionName: Excessive Network Share Access Failures from a Compromised Host
+  DetectionTactic: Discovery
+  DetectionTechnique: Network Share Discovery
+  DetectionScore: '7'
+  DetectionSeverity: High
+  DetectionConfidence: High
+  SuspectHost: $SrcIP
+cron: null
+config:
+  parameters: []

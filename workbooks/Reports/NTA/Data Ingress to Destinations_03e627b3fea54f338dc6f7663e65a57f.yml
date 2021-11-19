@@ -1,0 +1,26 @@
+id: 03e627b3fea54f338dc6f7663e65a57f
+name: Data Ingress to Destinations
+path: /Reports/NTA
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: sql
+  query: 'SELECT $DstIP,SUM(TXLen) AS TotalBytes FROM NTA-CONNECTION WHERE $Duration=7d
+    GROUP BY  $DstIP ORDER BY TotalBytes DESC LIMIT 10
+
+    '
+- type: visual
+  data:
+    widget_name: Data Ingress to Destinations
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $DstIP
+      - $DstIP
+      value: $TotalBytes
+cron: null
+config:
+  parameters: []

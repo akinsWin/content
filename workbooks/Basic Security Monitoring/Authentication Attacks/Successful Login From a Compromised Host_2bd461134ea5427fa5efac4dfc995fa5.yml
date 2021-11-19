@@ -1,0 +1,26 @@
+id: 2bd461134ea5427fa5efac4dfc995fa5
+name: Successful Login From a Compromised Host
+path: /Basic Security Monitoring/Authentication Attacks
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: 'SELECT * FROM AUTHENTICATION WHERE $Action=''LOGIN'' AND $Status=''PASSED''
+
+    '
+- type: dql
+  query: _checkif lookup CompromisedHost join $SrcIP = $TargetHost str_compare $SrcIP
+    eq $TargetHost include
+- type: signal
+  DetectionName: Successful Login From a Compromised Host
+  DetectionTactic: Initial Access
+  DetectionTechnique: Valid Accounts
+  DetectionScore: '7'
+  DetectionSeverity: High
+  DetectionConfidence: High
+  SuspectHost: $SrcIP
+cron: null
+config:
+  parameters: []

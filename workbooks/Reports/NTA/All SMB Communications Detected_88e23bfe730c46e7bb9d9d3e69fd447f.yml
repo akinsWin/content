@@ -1,0 +1,18 @@
+id: 88e23bfe730c46e7bb9d9d3e69fd447f
+name: All SMB Communications Detected
+path: /Reports/NTA
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: sql
+  query: 'SELECT  $SrcIP,$DstIP,$Action,$Path,$DstPort FROM NTA-SMB WHERE $Duration=7d
+    AND $SrcType=''PUBLIC'' OR $DstType=''PUBLIC''  GROUP BY $SrcIP,$DstIP,$Action,$Path,$DstPort
+    LIMIT 10
+
+
+    '
+cron: null
+config:
+  parameters: []

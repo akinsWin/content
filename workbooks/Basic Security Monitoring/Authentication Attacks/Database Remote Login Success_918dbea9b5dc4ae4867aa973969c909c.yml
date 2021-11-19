@@ -1,0 +1,22 @@
+id: 918dbea9b5dc4ae4867aa973969c909c
+name: Database Remote Login Success
+path: /Basic Security Monitoring/Authentication Attacks
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT * FROM AUTHENTICATION WHERE $Action='LOGIN' AND $Status='PASSED' AND
+    $SourceType='DATABASE' AND $SrcType='PUBLIC'
+- type: signal
+  DetectionName: Database Remote Login Success
+  DetectionTactic: Initial Access
+  DetectionTechnique: Valid Accounts
+  DetectionScore: '6'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectHost: $SrcIP
+cron: null
+config:
+  parameters: []

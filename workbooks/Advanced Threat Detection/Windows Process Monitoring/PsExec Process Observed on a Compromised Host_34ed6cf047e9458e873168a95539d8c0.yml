@@ -1,0 +1,26 @@
+id: 34ed6cf047e9458e873168a95539d8c0
+name: PsExec Process Observed on a Compromised Host
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $System, $User, $Image, $ParentImage, $CommandLine FROM SYSMON-PROCESS
+    WHERE ($CommandLine LIKE "%psexec%" AND $CommandLine LIKE "%accepteula%") LIMIT
+    10
+- type: dql
+  query: ' _checkif lookup CompromisedHost join $System = $TargetHost str_compare
+    $System eq $TargetHost include'
+- type: signal
+  DetectionName: PsExec Process Observed on a Compromised Host
+  DetectionTactic: Execution
+  DetectionTechnique: System Services
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

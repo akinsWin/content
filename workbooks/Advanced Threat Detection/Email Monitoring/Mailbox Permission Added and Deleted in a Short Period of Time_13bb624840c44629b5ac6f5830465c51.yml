@@ -1,0 +1,23 @@
+id: 13bb624840c44629b5ac6f5830465c51
+name: Mailbox Permission Added and Deleted in a Short Period of Time
+path: /Advanced Threat Detection/Email Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $User, COUNT(DISTINCT($Action)) AS $CountAction FROM IAM WHERE  $Duration=30m
+    AND $Action='MAILBOX_PERMISSION_ADDED' OR $Action='MAILBOX_PERMISSION_REMOVED'
+    GROUP BY $User HAVING $CountAction=2
+- type: signal
+  DetectionName: Mailbox Permission Added and Deleted in a Short Period of Time
+  DetectionTactic: Persistence
+  DetectionTechnique: Account Manipulation
+  DetectionScore: '7'
+  DetectionSeverity: High
+  DetectionConfidence: High
+  SuspectUser: $User
+cron: null
+config:
+  parameters: []

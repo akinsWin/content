@@ -1,0 +1,24 @@
+id: da27e859f7cb47219f3b0dc3dc0907a9
+name: Traffic Trend Over Last Week
+path: /Reports/NTA
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=NTA-CONNECTION AND $Duration=7d group timeslice
+    1h limit 100
+- type: visual
+  data:
+    widget_name: Traffic Trend Over Last  Week
+    chart_type: timeline
+    config:
+      type: default
+      key:
+      - $CNAMTime
+      - null
+      value: count
+cron: null
+config:
+  parameters: []

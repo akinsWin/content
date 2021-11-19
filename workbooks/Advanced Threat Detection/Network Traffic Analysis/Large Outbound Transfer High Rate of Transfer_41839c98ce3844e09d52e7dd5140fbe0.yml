@@ -1,0 +1,23 @@
+id: 41839c98ce3844e09d52e7dd5140fbe0
+name: Large Outbound Transfer High Rate of Transfer
+path: /Advanced Threat Detection/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcIP, $DstPort, $DstIP, COUNT(*) AS $Cnt FROM FIREWALL WHERE $Duration=12m
+    AND $SrcType='PRIVATE' AND $DstType='PUBLIC' AND $TxLen>200000 GROUP BY $SrcIP,
+    $DstPort, $DstIP HAVING $Cnt>10
+- type: signal
+  DetectionName: Large Outbound Transfer High Rate of Transfer
+  DetectionTactic: Exfiltration
+  DetectionTechnique: Data Transfer Size Limits
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectHost: $SrcIP
+cron: null
+config:
+  parameters: []

@@ -1,0 +1,25 @@
+id: 1c3a525944324387a3dfb3e8b87bb602
+name: Network Share Added to a Compromised Host
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcIP FROM WIN-AUDIT WHERE  $Action="OBJECT_ACCESSED" AND $Event="A
+    network share object was added."  AND $Status="PASSED" GROUP BY $SrcIP
+- type: dql
+  query: _checkif lookup CompromisedHost join $SrcIP = $TargetHost str_compare $SrcIP
+    eq $TargetHost include
+- type: signal
+  DetectionName: Network Share Added to a Compromised Host
+  DetectionTactic: Discovery
+  DetectionTechnique: Network Share Discovery
+  DetectionScore: '6'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectHost: $SrcIP
+cron: null
+config:
+  parameters: []

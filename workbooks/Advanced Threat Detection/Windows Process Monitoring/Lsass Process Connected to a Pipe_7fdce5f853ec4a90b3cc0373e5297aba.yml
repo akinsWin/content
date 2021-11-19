@@ -1,0 +1,23 @@
+id: 7fdce5f853ec4a90b3cc0373e5297aba
+name: Lsass Process Connected to a Pipe
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT * FROM SYSMON-PIPE WHERE $Action='PIPE_CONNECTED' AND $Image LIKE
+    "%lsass.exe%"
+- type: signal
+  DetectionName: Lsass Process Connected to a Pipe
+  DetectionTactic: Privilege Escalation
+  DetectionTechnique: Process Injection
+  DetectionScore: '4'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $User
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

@@ -1,0 +1,25 @@
+id: ee233e9a9f984628b62245e4a7906ad9
+name: Programming Environment Started with a Privileged Account
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT * FROM SYSMON-PROCESS WHERE $Action='PROCESS_ADDED' AND ($Image LIKE
+    "%cmd%" OR $Image LIKE "%powershell%" OR $Image LIKE "%wscript%" OR $Image LIKE
+    "%scrcons%" OR $Image LIKE "%cscript%" OR $Image LIKE "%bash%" OR $Image LIKE
+    "%sh%exe%") AND $User='NT\\sAUTHORITY\\\\SYSTEM'
+- type: signal
+  DetectionName: Programming Environment Started with a Privileged Account
+  DetectionTactic: Privilege Escalation
+  DetectionTechnique: Exploitation for Privilege Escalation
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $User
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

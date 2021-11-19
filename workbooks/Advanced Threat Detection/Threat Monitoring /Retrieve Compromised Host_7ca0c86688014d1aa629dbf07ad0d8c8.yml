@@ -1,0 +1,18 @@
+id: 7ca0c86688014d1aa629dbf07ad0d8c8
+name: Retrieve Compromised Host
+path: /Advanced Threat Detection/Threat Monitoring
+description: ''
+type: streamed
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch $TargetHost, $SuspectHost from event where $Stream=SIGNALS limit 10
+- type: dql
+  query: _fetch * from event where $Stream=SIGNALS AND $TargetHost IN [_SuspectHost_]
+    group count_unique $TargetHost limit 20
+- type: dql
+  query: _store in_disk CompromisedHost stack_replace
+cron: null
+config:
+  parameters: []

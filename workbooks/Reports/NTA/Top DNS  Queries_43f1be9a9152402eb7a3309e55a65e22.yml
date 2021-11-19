@@ -1,0 +1,14 @@
+id: 43f1be9a9152402eb7a3309e55a65e22
+name: "Top DNS\_ Queries"
+path: /Reports/NTA
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $Query, COUNT($Query) AS Count FROM NTA-DNS WHERE $Duration=7d GROUP
+    BY $Query ORDER BY Count DESC LIMIT 10
+cron: null
+config:
+  parameters: []

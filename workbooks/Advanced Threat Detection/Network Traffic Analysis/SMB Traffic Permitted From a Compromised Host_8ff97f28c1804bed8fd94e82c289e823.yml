@@ -1,0 +1,27 @@
+id: 8ff97f28c1804bed8fd94e82c289e823
+name: SMB Traffic Permitted From a Compromised Host
+path: /Advanced Threat Detection/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: 'SELECT $SrcIP FROM FIREWALL WHERE $Action = ''PACKET_ALLOWED'' AND $DstPort=445
+    GROUP BY $SrcIP LIMIT 10
+
+    '
+- type: dql
+  query: _checkif lookup CompromisedHost join $SrcIP = $TargetHost str_compare $SrcIP
+    eq $TargetHost include
+- type: signal
+  DetectionName: SMB Traffic Permitted From a Compromised Host
+  DetectionTactic: Lateral Movement
+  DetectionTechnique: Remote Services
+  DetectionScore: '7'
+  DetectionSeverity: High
+  DetectionConfidence: High
+  SuspectHost: $SrcIP
+cron: null
+config:
+  parameters: []

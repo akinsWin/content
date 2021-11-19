@@ -1,0 +1,24 @@
+id: 2a3d76cff7ed4af98000df0c16be2ce1
+name: Usage of Well Known Ports
+path: /Reports/NTA
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcIP,$DstIP,$DstPort,SUM(TXLen) AS TotalBytes FROM NTA-CONNECTION
+    WHERE $Duration=7d AND $DstPort<1024 GROUP BY  $SrcIP,$DstIP,$DstPort LIMIT 20
+- type: visual
+  data:
+    widget_name: Usage of Well Known Ports
+    chart_type: pie
+    config:
+      type: default
+      key:
+      - $DstPort
+      - null
+      value: $TotalBytes
+cron: null
+config:
+  parameters: []

@@ -1,0 +1,25 @@
+id: 1422993c0a634aa7af2ebc03177a9fd7
+name: Excessive Denied SMB Traffic From a Compromised Host
+path: /Advanced Threat Detection/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: 'SELECT $SrcIP, COUNT(*) AS $SrcCnt FROM FIREWALL WHERE $Action = ''PACKET_BLOCKED''
+    AND $DstPort=445 GROUP BY $SrcIP HAVING $SrcCnt>10 LIMIT 10 '
+- type: dql
+  query: _checkif lookup CompromisedHost join $SrcIP = $TargetHost str_compare $SrcIP
+    eq $TargetHost include
+- type: signal
+  DetectionName: Excessive Denied SMB Traffic From a Compromised Host
+  DetectionTactic: Lateral Movement
+  DetectionTechnique: Remote Services
+  DetectionScore: '7'
+  DetectionSeverity: High
+  DetectionConfidence: High
+  SuspectHost: $SrcIP
+cron: null
+config:
+  parameters: []

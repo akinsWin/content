@@ -1,0 +1,29 @@
+id: a2df74f0531649c08eb7433e9d0f1bc4
+name: Outbound Traffic To Countries
+path: /Reports/NTA
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: sql
+  query: 'SELECT DstCN, SUM(TXLen) AS TotalBytes,$DstCN FROM NTA-CONNECTION WHERE
+    $Duration=7d AND NOT $SrcCN='' '' AND NOT $SrcCN=''-'' GROUP BY $DstCN ORDER BY
+    TotalBytes DESC LIMIT 10
+
+
+
+    '
+- type: visual
+  data:
+    widget_name: Outbound Traffic To Countries
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $DstCN
+      - $DstCN
+      value: $TotalBytes
+cron: null
+config:
+  parameters: []

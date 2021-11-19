@@ -1,0 +1,23 @@
+id: 1bf0b407b4804bffafc0f862e8c35882
+name: Email Attachment with Executable
+path: /Advanced Threat Detection/Email Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $Sender, $RemoteIP, $File FROM EMAIL-GATEWAY WHERE $Action='EMAIL_ACCEPTED' AND  ( $File LIKE "%.exe%" OR $File LIKE  "%.scr%" OR  $File
+    LIKE  "%.js%" OR $File LIKE  "%.dll%"  OR $File LIKE  "%.dll%" )  GROUP BY $Sender,
+    $RemoteIP, $File
+- type: signal
+  DetectionName: Email Attachment with Executable
+  DetectionTactic: Execution
+  DetectionTechnique: User Execution
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $Sender
+cron: null
+config:
+  parameters: []

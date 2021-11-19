@@ -1,0 +1,22 @@
+id: 6d800284e91a479f92f4cb1e187294d6
+name: Multiple Successful Login from Different Country by Single User
+path: /Basic Security Monitoring/Authentication Attacks
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $User, COUNT(DISTINCT($SrcCN)) AS $CountSrcCN FROM AUTHENTICATION
+    WHERE $Action='LOGIN' AND $Status='PASSED' GROUP BY $User HAVING $CountSrcCN>3
+- type: signal
+  DetectionName: Multiple Successful Login from Different Country by Single User
+  DetectionTactic: Persistence
+  DetectionTechnique: Valid Accounts
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $User
+cron: null
+config:
+  parameters: []

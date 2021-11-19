@@ -1,0 +1,16 @@
+id: 2074efad875f44158e9ef4a0461ac3a7
+name: Exfiltration Of Compressed Files
+path: /Reports/NTA
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: sql
+  query: 'SELECT * FROM HTTP WHERE $Duration=7d AND ($URL LIKE "%7z%" OR $URL LIKE
+    "%rar%" OR $URL LIKE "%zip%") AND $OrigMimeType LIKE "%compressed%"
+
+    '
+cron: null
+config:
+  parameters: []

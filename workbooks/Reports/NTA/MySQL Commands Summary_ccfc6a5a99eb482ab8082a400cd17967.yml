@@ -1,0 +1,24 @@
+id: ccfc6a5a99eb482ab8082a400cd17967
+name: MySQL Commands Summary
+path: /Reports/NTA
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Duration=7d AND $Stream=NTA-MYSQL group count_unique
+    $Cmd limit 10
+- type: visual
+  data:
+    widget_name: MySQL Commands Summary
+    chart_type: pie
+    config:
+      type: default
+      key:
+      - $Cmd
+      - null
+      value: count_unique
+cron: null
+config:
+  parameters: []

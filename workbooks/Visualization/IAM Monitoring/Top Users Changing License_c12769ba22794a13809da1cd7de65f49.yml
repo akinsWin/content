@@ -1,0 +1,24 @@
+id: c12769ba22794a13809da1cd7de65f49
+name: Top Users Changing License
+path: /Visualization/IAM Monitoring
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=IAM AND $Duration=1h AND $Action IN [USER_LICENSE_REVOKED,USER_LICENSE_ASSIGNMENT,USER_LICENSE_CHANGED]  group
+    count_unique  $User  limit 60
+- type: visual
+  data:
+    widget_name: Top Users Changing License
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $User
+      - $User
+      value: count_unique
+cron: null
+config:
+  parameters: []

@@ -1,0 +1,27 @@
+id: 5b6e5a88e8a8485abe2e3c202d98d562
+name: Powershell Process Observed On A Compromised Host
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $System, $Image, $ImageLoaded FROM SYSMON-IMAGE-LOAD WHERE $Action='PROCESS_ACCESSED'
+    AND $Status='PASSED' AND ($Description LIKE "%system%management%automation%" AND
+    $ImageLoaded LIKE "%system%management%automation%")  GROUP BY $System, $Image,
+    $ImageLoaded
+- type: dql
+  query: _checkif lookup CompromisedHost join $System = $TargetHost str_compare $System
+    eq $TargetHost include
+- type: signal
+  DetectionName: Powershell Process Observed On A Compromised Host
+  DetectionTactic: Privilege Escalation
+  DetectionTechnique: Scheduled Task/Job
+  DetectionScore: '7'
+  DetectionSeverity: High
+  DetectionConfidence: Medium
+  SuspectHost: $System
+cron: null
+config:
+  parameters: []

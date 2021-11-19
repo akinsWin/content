@@ -1,0 +1,23 @@
+id: 0efbc4d1de904b328e1b982525ca1d8d
+name: File Accessed or Downloaded From Regions with Restricted Access
+path: /Advanced Threat Detection/Documents Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=DOCUMENTS AND $Action
+    IN [ACCESSED,DOWNLOADED] AND $SrcCN IN [CN,KR]  limit 100
+- type: signal
+  DetectionName: File Accessed or Downloaded From Regions or Countries with Restricted
+    Access
+  DetectionTactic: Exfiltration
+  DetectionTechnique: Exfiltration Over Web Service
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $User
+cron: null
+config:
+  parameters: []
