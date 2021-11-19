@@ -17,6 +17,7 @@ blocks:
   DetectionScore: '5'
   DetectionSeverity: ''
   DetectionConfidence: Medium
+  TargetHost: $System
 cron: null
 config:
   parameters: []
