@@ -1,0 +1,26 @@
+id: 52828d83f73f49aeabeea4a57b388580
+name: Potential Leakage of Data via Email Redirection to Non Business Email Service
+  providers
+path: /Advanced Threat Detection/Email Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $Sender, COUNT(ACTION) AS $CntEmails FROM EMAIL-GATEWAY WHERE $Duration=1h
+    AND $Action='EMAIL_REDIRECTED' AND ($Recipient LIKE "%gmail%" OR $Recipient LIKE
+    "%yahoo%" OR $Recipient LIKE "%rediffmail%") GROUP BY $Sender, $Action HAVING
+    $CntEmails>100
+- type: signal
+  DetectionName: Potential leakage of data via email redirection to non business email
+    service providers
+  DetectionTactic: Exfiltration
+  DetectionTechnique: Exfiltration Over Alternative Protocol
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $Sender
+cron: null
+config:
+  parameters: []

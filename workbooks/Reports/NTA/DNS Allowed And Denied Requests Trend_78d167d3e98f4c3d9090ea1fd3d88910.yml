@@ -1,0 +1,24 @@
+id: 78d167d3e98f4c3d9090ea1fd3d88910
+name: DNS Allowed And Denied Requests Trend
+path: /Reports/NTA
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch $Action  from event where $Duration=7d AND $Stream=NTA-DNS group timeslice
+    1h  limit 100
+- type: visual
+  data:
+    widget_name: DNS Allowed And Denied Requests Trend
+    chart_type: timeline
+    config:
+      type: stacked
+      key:
+      - $CNAMTime
+      - $Action
+      value: count
+cron: null
+config:
+  parameters: []

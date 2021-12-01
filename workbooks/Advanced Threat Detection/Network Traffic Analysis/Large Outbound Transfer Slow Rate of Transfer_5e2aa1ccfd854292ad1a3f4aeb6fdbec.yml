@@ -1,0 +1,23 @@
+id: 5e2aa1ccfd854292ad1a3f4aeb6fdbec
+name: Large Outbound Transfer Slow Rate of Transfer
+path: /Advanced Threat Detection/Network Traffic Analysis
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcIP, $DstPort, $DstIP, COUNT(*) AS $Cnt FROM FIREWALL WHERE $Duration=2h
+    AND $SrcType='PRIVATE' AND $DstType='PUBLIC' AND $TxLen>20000 GROUP BY $SrcIP,
+    $DstPort, $DstIP HAVING $Cnt>100
+- type: signal
+  DetectionName: Large Outbound Transfer Slow Rate of Transfer
+  DetectionTactic: Exfiltration
+  DetectionTechnique: Data Transfer Size Limits
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectHost: $SrcIP
+cron: null
+config:
+  parameters: []

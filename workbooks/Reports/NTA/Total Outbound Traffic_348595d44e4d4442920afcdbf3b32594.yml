@@ -1,0 +1,25 @@
+id: 348595d44e4d4442920afcdbf3b32594
+name: Total Outbound Traffic
+path: /Reports/NTA
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT concat_ws(" ",round(sum(TXLen)/1000/1000), "GB") AS $TotalBytes FROM
+    NTA-CONNECTION WHERE $Duration=7d AND $DstType='PUBLIC' AND $Action='CONNECTION_ESTABLISHED'
+    ORDER BY $TotalBytes DESC
+- type: visual
+  data:
+    widget_name: Total Outbound Traffic
+    chart_type: metric
+    config:
+      type: default
+      key:
+      - $TotalBytes
+      - null
+      value: $TotalBytes
+cron: null
+config:
+  parameters: []

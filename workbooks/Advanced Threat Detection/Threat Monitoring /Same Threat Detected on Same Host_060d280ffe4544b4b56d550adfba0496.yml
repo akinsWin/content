@@ -1,0 +1,22 @@
+id: 060d280ffe4544b4b56d550adfba0496
+name: Same Threat Detected on Same Host
+path: /Advanced Threat Detection/Threat Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT * FROM SIGNALS WHERE $Duration=1h AND $SourceStream='THREAT' AND $Occurrences
+    >5
+- type: signal
+  DetectionName: Same Threat Detected on Same Host
+  DetectionTactic: Execution
+  DetectionTechnique: User Execution
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  TargetUser: $System
+cron: null
+config:
+  parameters: []

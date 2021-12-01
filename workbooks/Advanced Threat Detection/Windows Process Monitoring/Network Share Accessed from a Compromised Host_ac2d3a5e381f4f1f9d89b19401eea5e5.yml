@@ -1,0 +1,25 @@
+id: ac2d3a5e381f4f1f9d89b19401eea5e5
+name: Network Share Accessed from a Compromised Host
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcIP FROM WIN-AUDIT WHERE  $Action="OBJECT_ACCESSED" AND $Event="A
+    network share object was accessed."  AND $Status="PASSED" GROUP BY $SrcIP
+- type: dql
+  query: _checkif lookup CompromisedHost join $SrcIP = $TargetHost str_compare $SrcIP
+    eq $TargetHost include
+- type: signal
+  DetectionName: Network Share Accessed from a Compromised Host
+  DetectionTactic: Discovery
+  DetectionTechnique: Network Share Discovery
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectHost: $SrcIP
+cron: null
+config:
+  parameters: []

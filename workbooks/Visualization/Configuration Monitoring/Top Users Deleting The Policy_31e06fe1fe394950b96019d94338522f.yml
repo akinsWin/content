@@ -1,0 +1,25 @@
+id: 31e06fe1fe394950b96019d94338522f
+name: Top Users Deleting The Policy
+path: /Visualization/Configuration Monitoring
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT  $User, COUNT($Config) AS $PolicyCnt FROM CONFIGURATION WHERE $Action='CONFIGURATION_CHANGED'
+    AND $Config='Delete policy.' AND $Duration=1h GROUP BY $User  ORDER BY $PolicyCnt
+    DESC LIMIT 10
+- type: visual
+  data:
+    widget_name: Top Users Deleting The Policy
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $User
+      - null
+      value: $PolicyCnt
+cron: null
+config:
+  parameters: []

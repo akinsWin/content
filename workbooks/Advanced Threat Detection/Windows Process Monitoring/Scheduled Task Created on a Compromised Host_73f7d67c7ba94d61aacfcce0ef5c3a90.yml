@@ -1,0 +1,25 @@
+id: 73f7d67c7ba94d61aacfcce0ef5c3a90
+name: Scheduled Task Created on a Compromised Host
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $System FROM SYSMON-PROCESS WHERE $Image LIKE "%schtasks.exe" AND
+    $CommandLine LIKE "%/create%/s%" GROUP BY $System
+- type: dql
+  query: _checkif lookup CompromisedHost join $System = $TargetHost str_compare $System
+    eq $TargetHost include
+- type: signal
+  DetectionName: Scheduled Task Created on a Compromised Host
+  DetectionTactic: Privilege Escalation
+  DetectionTechnique: Scheduled Task/Job
+  DetectionScore: '7'
+  DetectionSeverity: High
+  DetectionConfidence: Medium
+  SuspectHost: $System
+cron: null
+config:
+  parameters: []

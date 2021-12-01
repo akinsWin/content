@@ -1,0 +1,25 @@
+id: b74b88c54bfa4aac9a2f5b220e992b9b
+name: Total Inbound Traffic
+path: /Reports/NTA
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT concat_ws(" ",round(sum(RXLen)/1000/1000), "GB") AS $TotalBytes FROM
+    NTA-CONNECTION WHERE $Duration=7d AND $DstType='PRIVATE' AND $Action='CONNECTION_ESTABLISHED'
+    ORDER BY $TotalBytes DESC
+- type: visual
+  data:
+    widget_name: Total Inbound Traffic
+    chart_type: metric
+    config:
+      type: default
+      key:
+      - null
+      - null
+      value: $TotalBytes
+cron: null
+config:
+  parameters: []

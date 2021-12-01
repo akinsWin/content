@@ -1,0 +1,22 @@
+id: d8f4182a86f949e7ae23c1cb9960f51b
+name: Configuration Changes Made to Endpoint Devices
+path: /Basic Security Monitoring/Configuration Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT * FROM CONFIGURATION WHERE $Action='CONFIGURATION_CHANGED' AND $SourceTye='ENDPOINT'
+- type: signal
+  DetectionName: Configuration Changes Made to Endpoint Devices
+  DetectionTactic: Defense Evasion
+  DetectionTechnique: Impair Defenses
+  DetectionScore: '6'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $User
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

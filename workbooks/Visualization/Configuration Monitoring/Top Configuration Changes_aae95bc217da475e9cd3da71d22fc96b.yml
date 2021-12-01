@@ -1,0 +1,24 @@
+id: aae95bc217da475e9cd3da71d22fc96b
+name: Top Configuration Changes
+path: /Visualization/Configuration Monitoring
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=CONFIGURATION AND $Duration=1h group count_unique
+    $Config limit 10
+- type: visual
+  data:
+    widget_name: Top Configuration Changes
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $Config
+      - $Config
+      value: count_unique
+cron: null
+config:
+  parameters: []

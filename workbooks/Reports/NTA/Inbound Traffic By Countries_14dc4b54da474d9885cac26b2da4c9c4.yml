@@ -1,0 +1,25 @@
+id: 14dc4b54da474d9885cac26b2da4c9c4
+name: Inbound Traffic By Countries
+path: /Reports/NTA
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT SrcCN, SUM(RXLen) AS TotalOriginBytes,$SrcCN FROM NTA-CONNECTION WHERE
+    $Duration=7d AND NOT $SrcCN=' ' AND NOT $SrcCN='-' GROUP BY $SrcCN ORDER BY TotalOriginBytes
+    DESC LIMIT 10
+- type: visual
+  data:
+    widget_name: Inbound Traffic By Countries
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $SrcCN
+      - $SrcCN
+      value: $TotalOriginBytes
+cron: null
+config:
+  parameters: []

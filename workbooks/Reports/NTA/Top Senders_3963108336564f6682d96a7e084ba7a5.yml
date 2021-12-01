@@ -1,0 +1,14 @@
+id: 3963108336564f6682d96a7e084ba7a5
+name: Top Senders
+path: /Reports/NTA
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Duration=7d AND $Stream=NTA-SMTP group count_unique
+    $Sender limit 10
+cron: null
+config:
+  parameters: []

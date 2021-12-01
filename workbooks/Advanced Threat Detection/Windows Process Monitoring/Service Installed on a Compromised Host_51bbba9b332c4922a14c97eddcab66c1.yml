@@ -1,0 +1,25 @@
+id: 51bbba9b332c4922a14c97eddcab66c1
+name: Service Installed on a Compromised Host
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: sql
+  query: 'SELECT * FROM CONFIGURATION WHERE  $Action=''CONFIGURATION_CHANGED'' AND
+    $Config=''Service Installed'' AND $Status=''PASSED'' '
+- type: dql
+  query: _checkif lookup CompromisedHost join $SrcIP = $TargetHost str_compare $SrcIP
+    eq $TargetHost include
+- type: signal
+  DetectionName: Service Installed on a Compromised Host
+  DetectionTactic: Execution
+  DetectionTechnique: System Services
+  DetectionScore: '8'
+  DetectionSeverity: High
+  DetectionConfidence: High
+  SuspectHost: $SrcIP
+cron: null
+config:
+  parameters: []

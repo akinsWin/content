@@ -1,0 +1,23 @@
+id: 7e91b79702fe4fb699e478386a11f9b6
+name: Email Attachment with Executable Hidden in Double File Extensions
+path: /Advanced Threat Detection/Email Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $Sender, $RemoteIP, $File FROM EMAIL-GATEWAY WHERE $Action='EMAIL_ACCEPTED'
+    AND  ( $File LIKE "%.exe.txt%" OR $File LIKE  "%.scr.pptx%" OR  $File LIKE  "%.js.pdf%"
+    OR $File LIKE  "%.bat.docx%" )  GROUP BY $Sender, $RemoteIP, $File
+- type: signal
+  DetectionName: Email Attachment with Executable Hidden in Double File Extensions
+  DetectionTactic: Execution
+  DetectionTechnique: User Execution
+  DetectionScore: '6'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $Sender
+cron: null
+config:
+  parameters: []

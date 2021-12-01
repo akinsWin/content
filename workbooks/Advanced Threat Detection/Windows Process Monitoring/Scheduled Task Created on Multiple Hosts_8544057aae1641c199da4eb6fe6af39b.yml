@@ -1,0 +1,23 @@
+id: 8544057aae1641c199da4eb6fe6af39b
+name: Scheduled Task Created on Multiple Hosts
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT COUNT(DISTINCT($System)) AS $CountSystem,$System, $CommandLine FROM
+    SYSMON-PROCESS WHERE $Image LIKE "%schtasks.exe" AND $CommandLine LIKE "%/create%/s%"  GROUP
+    BY $CommandLine ORDER BY $CountSystem>3
+- type: signal
+  DetectionName: Scheduled Task Created on Multiple Hosts
+  DetectionTactic: Privilege Escalation
+  DetectionTechnique: Scheduled Task/Job
+  DetectionScore: '5'
+  DetectionSeverity: ''
+  DetectionConfidence: Medium
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

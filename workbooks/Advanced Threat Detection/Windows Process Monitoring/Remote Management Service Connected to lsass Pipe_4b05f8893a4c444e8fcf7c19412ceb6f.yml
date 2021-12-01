@@ -1,0 +1,24 @@
+id: 4b05f8893a4c444e8fcf7c19412ceb6f
+name: Remote Management Service Connected to lsass Pipe
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT * FROM SYSMON-PIPE WHERE $Action='PIPE_CONNECTED' AND ($Image LIKE
+    "%psexesvc%" OR $Image LIKE "%wsmprovhost%" OR $Image LIKE "%wmiprvse%") AND $PipeName
+    LIKE "%lsass%"
+- type: signal
+  DetectionName: Remote Management Service Connected to lsass Pipe
+  DetectionTactic: Lateral Movement
+  DetectionTechnique: Remote Services
+  DetectionScore: '6'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $User
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

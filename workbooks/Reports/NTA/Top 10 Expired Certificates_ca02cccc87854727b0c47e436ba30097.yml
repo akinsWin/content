@@ -1,0 +1,22 @@
+id: ca02cccc87854727b0c47e436ba30097
+name: Top 10 Expired Certificates
+path: /Reports/NTA
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: sql
+  query: 'SELECT $CNAMTime AS $CurrentTime, (($Expiry)*1000) AS ExpiryTime, $CertificateSubject,$ID,
+    $CertIssuerName, $SerialNumber FROM NTA-CERTIFICATE WHERE $Duration=7d '
+- type: dql
+  query: _field $Difference expr $ExpiryTime - $CurrentTime
+- type: dql
+  query: _checkif str_compare $Difference regex '-' include
+- type: dql
+  query: _limit 10
+- type: dql
+  query: _table $ID,$CertificateSubject,$CertIssuerName,$SerialNumber
+cron: null
+config:
+  parameters: []

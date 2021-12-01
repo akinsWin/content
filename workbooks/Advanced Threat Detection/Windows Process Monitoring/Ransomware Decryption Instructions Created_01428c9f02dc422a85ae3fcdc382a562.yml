@@ -1,0 +1,25 @@
+id: 01428c9f02dc422a85ae3fcdc382a562
+name: Ransomware Decryption Instructions Created
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT * FROM SYSMON-FILE WHERE $Action='FILE_CREATED' AND $TargetFilename='where_my_files.txt'
+    OR $TargetFilename='how_to_recover_data.txt' OR $TargetFilename='how_to_decrypt.txt'
+    OR $TargetFilename='contact_here_to_recover_your_files' OR $TargetFilename LIKE
+    "%decrypt-files%readme%txt%" OR $TargetFilename LIKE "%decrypt-files%readme_for_decrypt%txt%"OR
+    $TargetFilename LIKE "%decrypt%txt%" OR $TargetFilename LIKE "%decrypt%html%"
+- type: signal
+  DetectionName: Ransomware Decryption Instructions Created
+  DetectionTactic: Impact
+  DetectionTechnique: Data Encrypted for Impact
+  DetectionScore: '6'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

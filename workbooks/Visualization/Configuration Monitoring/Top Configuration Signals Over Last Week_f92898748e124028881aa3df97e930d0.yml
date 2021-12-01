@@ -1,0 +1,25 @@
+id: f92898748e124028881aa3df97e930d0
+name: Top Configuration Signals Over Last Week
+path: /Visualization/Configuration Monitoring
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $DetectionName, COUNT($DetectionName) AS COUNT FROM SIGNALS WHERE
+    $Duration=1h AND $SourceStream='CONFIGURATION' GROUP BY $DetectionName ORDER BY
+    COUNT DESC LIMIT 10
+- type: visual
+  data:
+    widget_name: Top Configuration Signals Over Last Week
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $DetectionName
+      - null
+      value: $COUNT
+cron: null
+config:
+  parameters: []

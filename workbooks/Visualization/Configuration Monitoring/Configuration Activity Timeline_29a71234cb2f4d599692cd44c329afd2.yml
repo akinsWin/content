@@ -1,0 +1,24 @@
+id: 29a71234cb2f4d599692cd44c329afd2
+name: Configuration Activity Timeline
+path: /Visualization/Configuration Monitoring
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch $Action from event where $Stream=CONFIGURATION AND $Duration=1h group
+    timeslice 1m limit 0
+- type: visual
+  data:
+    widget_name: Configuration Activity Timeline
+    chart_type: timeline
+    config:
+      type: stacked
+      key:
+      - $CNAMTime
+      - $Action
+      value: count
+cron: null
+config:
+  parameters: []

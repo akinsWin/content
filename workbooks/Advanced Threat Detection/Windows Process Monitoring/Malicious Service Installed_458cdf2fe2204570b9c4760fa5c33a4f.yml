@@ -1,0 +1,26 @@
+id: 458cdf2fe2204570b9c4760fa5c33a4f
+name: Malicious Service Installed
+path: /Advanced Threat Detection/Windows Process Monitoring
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT * FROM CONFIGURATION WHERE  $Action='CONFIGURATION_CHANGED' AND $Config='Service
+    Installed' AND $Status='PASSED' AND  ($LogEvent LIKE "%DumpSvc%exe%" OR $LogEvent
+    LIKE "%winexesvc%exe%" OR $LogEvent LIKE "%PAExec%"  OR $LogEvent LIKE "%mssecsvc2.0%"
+    OR $LogEvent LIKE "%WCESERVICE%" OR $LogEvent LIKE "%pwdump%" OR $LogEvent LIKE
+    "%cachedump%" OR $LogEvent LIKE "%gsecdump%" )
+- type: signal
+  DetectionName: Malicious Service Installed
+  DetectionTactic: Execution
+  DetectionTechnique: System Services
+  DetectionScore: '8'
+  DetectionSeverity: High
+  DetectionConfidence: High
+  SuspectHost: $SrcIP
+  TargetHost: $System
+cron: null
+config:
+  parameters: []

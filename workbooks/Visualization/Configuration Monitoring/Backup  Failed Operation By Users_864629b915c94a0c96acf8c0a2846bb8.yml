@@ -1,0 +1,25 @@
+id: 864629b915c94a0c96acf8c0a2846bb8
+name: "Backup\_ Failed Operation By Users"
+path: /Visualization/Configuration Monitoring
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=CONFIGURATION AND $Duration=1h AND $Config
+    IN [The restore job is failing.,Package Backup Failed]  group count_unique  $User,$Config  limit
+    60
+- type: visual
+  data:
+    widget_name: Backup  Failed Operation By Users
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $Config
+      - $User
+      value: count_unique
+cron: null
+config:
+  parameters: []

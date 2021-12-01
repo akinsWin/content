@@ -1,0 +1,25 @@
+id: 7dd0a2a6f4db4400932f4e9101d560fd
+name: Top Users Erasing Configuration
+path: /Visualization/Configuration Monitoring
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT  $User, COUNT($Config) AS $ConfigCnt FROM CONFIGURATION WHERE  $Duration=1h
+    AND $Action='CONFIGURATION_CHANGED' AND $Config='Erase Configuration'  GROUP BY
+    $User  ORDER BY $ConfigCnt DESC LIMIT 10
+- type: visual
+  data:
+    widget_name: Top Users Erasing Configuration
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $User
+      - null
+      value: $ConfigCnt
+cron: null
+config:
+  parameters: []

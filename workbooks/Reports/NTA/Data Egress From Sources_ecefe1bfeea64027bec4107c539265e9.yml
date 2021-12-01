@@ -1,0 +1,24 @@
+id: ecefe1bfeea64027bec4107c539265e9
+name: Data Egress From Sources
+path: /Reports/NTA
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: sql
+  query: "SELECT $SrcIP,SUM(TXLen) AS TotalBytesSent FROM\tFIREWALL WHERE $Duration=7d\
+    \ GROUP BY  $SrcIP ORDER BY TotalBytesSent DESC LIMIT 10\n"
+- type: visual
+  data:
+    widget_name: Data Egress From Sources
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $SrcIP
+      - null
+      value: $TotalBytesSent
+cron: null
+config:
+  parameters: []

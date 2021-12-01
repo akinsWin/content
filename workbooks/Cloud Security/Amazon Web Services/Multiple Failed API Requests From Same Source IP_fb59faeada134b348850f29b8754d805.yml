@@ -1,0 +1,24 @@
+id: fb59faeada134b348850f29b8754d805
+name: Multiple Failed API Requests From Same Source IP
+path: /Cloud Security/Amazon Web Services
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=CLOUDTRAIL AND $Duration=2m AND $EventType=AwsApiCall
+    AND  $ErrorCode=AccessDenied group count_unique $SrcIP , $ErrorCode limit 10
+- type: dql
+  query: _checkif int_compare count_unique > 10 include
+- type: signal
+  DetectionName: Multiple Failed API Requests From Same Source IP
+  DetectionTactic: Credential Access
+  DetectionTechnique: Forced Authentication
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectHost: $SrcIP
+cron: null
+config:
+  parameters: []

@@ -1,0 +1,25 @@
+id: 8f4615eed4094346ba2f26d479be3b7c
+name: FIREWALL Modifications
+path: /Visualization/Configuration Monitoring
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=CONFIGURATION AND $Duration=1h AND $Action=CONFIGURATION_CHANGED
+    AND $Config IN [Firewall Driver Start,Firewall Service Start,Firewall Rule Deleted,Firewall
+    Service Stop,Firewall Driver Stop] group count_unique $System,$Config  limit 100
+- type: visual
+  data:
+    widget_name: FIREWALL Modifications
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $Config
+      - $System
+      value: count_unique
+cron: null
+config:
+  parameters: []

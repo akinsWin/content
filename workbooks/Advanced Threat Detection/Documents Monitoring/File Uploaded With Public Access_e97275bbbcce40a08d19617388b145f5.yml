@@ -1,0 +1,22 @@
+id: e97275bbbcce40a08d19617388b145f5
+name: File Uploaded With Public Access
+path: /Advanced Threat Detection/Documents Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=DOCUMENTS AND $Action='UPLOADED' AND $Status='PASSED'
+    AND $Visibility='PUBLIC' group count_unique $User, $File limit 100
+- type: signal
+  DetectionName: File Uploaded to a Publicly Accessible Folder
+  DetectionTactic: Exfiltration
+  DetectionTechnique: Exfiltration Over Web Service
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $User
+cron: null
+config:
+  parameters: []

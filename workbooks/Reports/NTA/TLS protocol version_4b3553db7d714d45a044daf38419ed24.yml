@@ -1,0 +1,24 @@
+id: 4b3553db7d714d45a044daf38419ed24
+name: TLS protocol version
+path: /Reports/NTA
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=NTA-SSL AND  $Duration=7d group count_unique
+    $Version, $DstIP limit 10
+- type: visual
+  data:
+    widget_name: TLS protocol version
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $Version
+      - $DstIP
+      value: count_unique
+cron: null
+config:
+  parameters: []

@@ -1,0 +1,14 @@
+id: df6f620b3cf945dcaa8d4ecf47b04159
+name: Top Recipient
+path: /Reports/NTA
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Duration=7d AND $Stream=NTA-SMTP group count_unique
+    $Recipient limit 10
+cron: null
+config:
+  parameters: []

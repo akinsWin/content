@@ -1,0 +1,16 @@
+id: 35940f6f2f2249778a6ab9f28fa87935
+name: "Top MYSQL\_ Activity From Sources"
+path: /Reports/NTA
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: sql
+  query: 'SELECT $Args,$SrcIP FROM NTA-MYSQL WHERE $Duration=7d AND $Args LIKE "%drop%"
+    OR Args LIKE "%create%" OR  Args LIKE "%insert%" limit 10
+
+    '
+cron: null
+config:
+  parameters: []

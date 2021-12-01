@@ -1,0 +1,14 @@
+id: bf1f1c4f40e94c83b7aa3c0a8ee7b5c2
+name: Files Accessed By Sources
+path: /Reports/NTA
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=NTA-FILES AND $Action=FILE_RECORD_ACCESSED
+    AND $Duration=7d  group count_unique $File, $SrcIP, $MimeType limit 10
+cron: null
+config:
+  parameters: []

@@ -1,0 +1,24 @@
+id: 8a99c58fbea24774878281fe28228cf5
+name: Protocols Used for Connections
+path: /Reports/NTA
+description: ''
+type: standard
+author: 'DNIF'
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT SUM(TXLen) AS TotalBytes,$Proto FROM NTA-CONNECTION WHERE $Duration=7d
+    GROUP BY  $Proto ORDER BY TotalBytes DESC LIMIT 10
+- type: visual
+  data:
+    widget_name: Protocols Used for Connections
+    chart_type: pie
+    config:
+      type: default
+      key:
+      - $Proto
+      - null
+      value: $TotalBytes
+cron: null
+config:
+  parameters: []
