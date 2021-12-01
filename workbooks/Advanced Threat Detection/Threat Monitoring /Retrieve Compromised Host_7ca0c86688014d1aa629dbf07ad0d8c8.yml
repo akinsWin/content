@@ -7,7 +7,7 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: dql
-  query: _fetch $TargetHost, $SuspectHost from event where $Stream=SIGNALS limit 10
+  query: _fetch * from event where $Stream=SIGNALS group count_unique $SuspectHost limit 10
 - type: dql
   query: _fetch * from event where $Stream=SIGNALS AND $TargetHost IN [_SuspectHost_]
     group count_unique $TargetHost limit 20

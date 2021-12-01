@@ -2,12 +2,12 @@ id: 965e040282384738b13792d51f5ee6f2
 name: Changes to internet facing AWS RDS Database instances
 path: /Cloud Security/Amazon Web Services
 description: ''
-type: auto-scheduled
+type: standard
 author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT $EventSource,$User FROM CLOUDTRAIL WHERE AND ($EventName='AuthorizeDBSecurityGroupIngress'
+  query: SELECT $EventSource,$User FROM CLOUDTRAIL WHERE ($EventName='AuthorizeDBSecurityGroupIngress'
     OR $EventName='CreateDBSecurityGroup' OR $EventName='DeleteDBSecurityGroup' OR
     $EventName='RevokeDBSecurityGroupIngress') AND $User IS NOT NULL AND $EventSource
     IS NOT NULL GROUP BY $EventSource, $SrcIP, $User
@@ -20,4 +20,6 @@ blocks:
   DetectionConfidence: Medium
   SuspectUser: $User
   TargetHost: $EventSource
-config: {}
+cron: null
+config:
+  parameters: []
