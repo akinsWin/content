@@ -34,7 +34,7 @@ blocks:
         operator: '='
       duration: 7d
 - type: signal
-  DetectionName: Abnormal VPN Login Attempts for a User
+  DetectionName: Abnormal SSH Login Attempts for a User
   DetectionTactic: Initial Access
   DetectionTechnique: External Remote Services
   DetectionScore: '7'
