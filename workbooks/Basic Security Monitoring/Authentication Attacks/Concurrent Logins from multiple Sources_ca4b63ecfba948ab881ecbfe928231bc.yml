@@ -2,14 +2,13 @@ id: ca4b63ecfba948ab881ecbfe928231bc
 name: Concurrent Logins from multiple Sources
 path: /Basic Security Monitoring/Authentication Attacks
 description: ''
-type: standard
+type: streamed
 author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT $User, COUNT(DISTINCT($SrcIP)) AS $CountSrcIP FROM AUTHENTICATION
-    WHERE $Action='LOGIN' AND $Status='PASSED' AND $Duration=1h GROUP BY $User HAVING
-    $CountSrcIP>3
+  query: SELECT $User, $System, COUNT(DISTINCT($SrcIP)) AS $CountSrcIP FROM AUTHENTICATION
+    WHERE $Action='LOGIN' AND $Status='PASSED' GROUP BY $User,$System HAVING $CountSrcIP>3
 - type: signal
   DetectionName: Concurrent Logins from multiple Sources
   DetectionTactic: Initial Access
@@ -17,6 +16,8 @@ blocks:
   DetectionScore: '5'
   DetectionSeverity: Medium
   DetectionConfidence: Low
-  SuspectHost: $SrcIP
   TargetUser: $User
-config: {}
+  TargetHost: $System
+cron: null
+config:
+  parameters: []
