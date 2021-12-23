@@ -7,8 +7,9 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: Select $OperationName, $User, $Status FROM AZURE WHERE $OperationName LIKE "%MICROSOFT%AUTOMATION%AUTOMATIONACCOUNTS%RUNBOOKS%DELETE%'
-    AND $Status='Succeeded' GROUP BY $OperationName, $User, $Status
+  query: Select $OperationName, $User, $Status FROM AZURE WHERE $OperationName LIKE
+    "%MICROSOFT%AUTOMATION%AUTOMATIONACCOUNTS%RUNBOOKS%DELETE%' AND $Status='Succeeded'
+    GROUP BY $OperationName, $User, $Status
 - type: signal
   DetectionName: Azure Automation Runbook Deleted
   DetectionTactic: Impact
@@ -17,4 +18,6 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Low
   SuspectUser: $User
+  raw_event_query: SELECT * FROM AZURE WHERE $OperationName LIKE "%MICROSOFT%AUTOMATION%AUTOMATIONACCOUNTS%RUNBOOKS%DELETE%'
+    AND $Status='Succeeded' AND $User='SuspectUser' LIMIT 1000
 config: {}

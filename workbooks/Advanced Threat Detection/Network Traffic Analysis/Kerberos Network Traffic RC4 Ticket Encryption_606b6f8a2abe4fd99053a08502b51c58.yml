@@ -17,6 +17,8 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Medium
   SuspectHost: $SrcIP
+  raw_event_query: SELECT * FROM NTA-KERBEROS WHERE $RequestType='TGS' AND $Cipher
+    LIKE "%RC4%HMAC%" AND $App NOT LIKE "%\$%" AND $SrcIP='SuspectHost' LIMIT 1000
 cron: null
 config:
   parameters: []

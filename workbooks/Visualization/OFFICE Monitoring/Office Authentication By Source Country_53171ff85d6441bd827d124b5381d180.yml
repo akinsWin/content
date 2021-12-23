@@ -3,7 +3,7 @@ name: Office Authentication By Source Country
 path: /Visualization/OFFICE Monitoring
 description: ''
 type: standard
-author: 'DNIF'
+author: DNIF
 entity_type: workbooks
 blocks:
 - type: dql

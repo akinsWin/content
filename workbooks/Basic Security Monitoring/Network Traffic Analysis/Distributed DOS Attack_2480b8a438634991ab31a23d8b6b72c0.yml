@@ -18,6 +18,8 @@ blocks:
   DetectionSeverity: High
   DetectionConfidence: High
   TargetHost: $DstIP
+  raw_event_query: SELECT * FROM FIREWALL WHERE $Duration=15m AND $SrcType='PUBLIC'
+    AND $DstIP='TargetHost' LIMIT 1000
 cron: null
 config:
   parameters: []

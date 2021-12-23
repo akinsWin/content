@@ -17,4 +17,7 @@ blocks:
   DetectionScore: 10
   DetectionConfidence: High
   SuspectHost: $System
+  raw_event_query: _fetch * from event where $Stream=SYSMON-PROCESS AND $CommandLine=regex(.*net.exe.*|.*net1.exe.*)
+    AND CommandLine=regex(.*localgroup.*|.*/add.*|.*user.*) AND $System='SuspectHost'
+    limit 0
 config: {}

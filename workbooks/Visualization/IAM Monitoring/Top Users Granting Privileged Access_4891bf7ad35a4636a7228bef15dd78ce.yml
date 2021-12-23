@@ -3,7 +3,7 @@ name: Top Users Granting Privileged Access
 path: /Visualization/IAM Monitoring
 description: ''
 type: standard
-author: 'DNIF'
+author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql

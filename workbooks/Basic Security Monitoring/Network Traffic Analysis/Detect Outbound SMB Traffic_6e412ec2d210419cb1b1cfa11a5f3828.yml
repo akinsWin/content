@@ -18,6 +18,9 @@ blocks:
   DetectionSeverity: ''
   DetectionConfidence: Low
   SuspectHost: $SrcIP
+  raw_event_query: SELECT * FROM FIREWALL WHERE $DstType = 'PUBLIC' AND $Action =
+    'PACKET_ALLOWED' AND NOT $SrcType = 'PUBLIC' AND $DstPort IN ('139', '445') AND
+    $SrcIP='SuspectHost' LIMIT 10
 cron: null
 config:
   parameters: []

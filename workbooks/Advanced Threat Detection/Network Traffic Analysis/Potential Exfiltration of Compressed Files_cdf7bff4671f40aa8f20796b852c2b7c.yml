@@ -17,6 +17,8 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Medium
   SuspectObject: $URI
+  raw_event_query: SELECT * FROM NTA-HTTP WHERE $Duration=5m AND $URI='SuspectObject'
+    LIMIT 1000
 cron: null
 config:
   parameters: []

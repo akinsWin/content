@@ -3,7 +3,7 @@ name: Multiple Successful Login from Different Country by Single User
 path: /Basic Security Monitoring/Authentication Attacks
 description: ''
 type: standard
-author: 'DNIF'
+author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
@@ -17,6 +17,8 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Medium
   SuspectUser: $User
+  raw_event_query: SELECT * FROM AUTHENTICATION WHERE $Action='LOGIN' AND $Status='PASSED'
+    AND $User='SuspectUser' LIMIT 1000
 cron: null
 config:
   parameters: []

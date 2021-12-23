@@ -19,6 +19,10 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
+  raw_event_query: SELECT * FROM AUDITD WHERE $Action='PROCESS_ADDED' AND ($ProcessArgs
+    LIKE "%kmod%list%sudo%") OR ($ProcessArgs LIKE "%sudo%" AND ($ProcessArgs LIKE
+    "%depmod%" OR $ProcessArgs LIKE "%lsmod%" OR $ProcessArgs LIKE "%modinfo%")) AND
+    $System='TargetHost' LIMIT 1000
 cron: null
 config:
   parameters: []

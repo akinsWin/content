@@ -3,7 +3,7 @@ name: Network Share Added to a Compromised Host
 path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
 type: standard
-author: 'DNIF'
+author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
@@ -20,6 +20,8 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Medium
   SuspectHost: $SrcIP
+  raw_event_query: _fetch * from event where $Duration=5m AND $SrcIP='SuspectHost'
+    limit 1000
 cron: null
 config:
   parameters: []

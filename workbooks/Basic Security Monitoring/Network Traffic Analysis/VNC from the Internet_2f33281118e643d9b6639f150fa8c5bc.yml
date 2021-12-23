@@ -22,4 +22,7 @@ blocks:
   DetectionConfidence: Low
   SuspectHost: $SrcIP
   TargetHost: $DstIP
+  raw_event_query: SELECT * FROM FIREWALL WHERE $DstPort BETWEEN 5800 AND 5810 AND
+    $Proto='TCP' AND $SrcType='PUBLIC' AND $DstType='PRIVATE' AND $DstIP='TargetHost'
+    AND $SrcIP='SuspectHost' LIMIT 1000
 config: {}

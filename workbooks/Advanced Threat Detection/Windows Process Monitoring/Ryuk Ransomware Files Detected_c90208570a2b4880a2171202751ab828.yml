@@ -8,8 +8,7 @@ entity_type: workbooks
 blocks:
 - type: dql
   query: _fetch * from event where $Stream=SYSMON-FILE AND $TargetFilename=regex(C:\.*Ryuk.*)
-    AND $Action=FILE_CREATED group count_unique $System, $TargetFilename
-    limit 100
+    AND $Action=FILE_CREATED group count_unique $System, $TargetFilename limit 100
 - type: signal
   DetectionName: Ryuk Ransomware Files Detected
   DetectionTactic: Impact
@@ -18,3 +17,5 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
+  raw_event_query: _fetch * from event where $Stream=SYSMON-FILE AND $TargetFilename=regex(C:\.*Ryuk.*)
+    AND $Action=FILE_CREATED AND $System='TargetHost' limit 100

@@ -16,4 +16,7 @@ blocks:
   DetectionScore: 5
   DetectionConfidence: Low
   TargetHost: $System
+  raw_event_query: SELECT * FROM SYSMON-PROCESS WHERE $ParentImage LIKE "%cmd.exe"
+    AND ($Image LIKE "%cscript.exe%" OR $Image LIKE "%wscript.exe%") AND $System='TargetHost'
+    LIMIT 1000
 config: {}

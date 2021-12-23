@@ -18,6 +18,9 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
+  raw_event_query: SELECT * FROM AUDITD WHERE $Action='PROCESS_ADDED' AND  ($Process
+    LIKE "%bash%" OR $Process LIKE "%dash%") AND ($User='apache' OR $User='nginx'
+    OR $User='www' OR $User='www\-data') AND $System='TargetHost' LIMIT 1000
 cron: null
 config:
   parameters: []

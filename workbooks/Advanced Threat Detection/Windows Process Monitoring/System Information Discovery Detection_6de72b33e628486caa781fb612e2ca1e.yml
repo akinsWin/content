@@ -21,4 +21,6 @@ blocks:
   DetectionScore: 5
   DetectionConfidence: Low
   SuspectUser: $User
+  raw_event_query: _fetch * from event where $Duration=5m AND $User='SuspectUser'
+    limit 1000
 config: {}

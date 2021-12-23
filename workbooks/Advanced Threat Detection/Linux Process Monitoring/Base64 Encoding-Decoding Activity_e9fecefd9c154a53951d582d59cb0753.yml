@@ -17,4 +17,7 @@ blocks:
   DetectionScore: 5
   DetectionConfidence: Low
   TargetHost: $System
+  raw_event_query: SELECT * FROM AUDITD WHERE $Action='PROCESS_ADDED' AND ($ProcessName='base64'
+    OR $ProcessName='base64plain' OR $ProcessName='base64url' OR $ProcessName='base64mime'
+    OR $ProcessName='base64pem') AND $System='TargetHost' LIMIT 1000
 config: {}

@@ -20,5 +20,9 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Medium
   TargetHost: $System
+  raw_event_query: SELECT * FROM SYSMON-PROCESS WHERE ($ParentCommandLine LIKE "%powershell.exe%"
+    AND ($CommandLine LIKE "%TeamViewer%" OR $CommandLine LIKE "%AnyDesk%" OR $CommandLine
+    LIKE "%LMIIgnition%" OR $CommandLine LIKE "%VNC%" OR $CommandLine LIKE "%AmmyyAdmin%"))
+    AND $System='TargetHost' LIMIT 1000
 config:
   parameters: []

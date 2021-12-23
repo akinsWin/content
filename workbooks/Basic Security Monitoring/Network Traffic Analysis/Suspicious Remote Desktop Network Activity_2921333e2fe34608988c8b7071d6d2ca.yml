@@ -16,4 +16,6 @@ blocks:
   DetectionScore: 5
   DetectionConfidence: Low
   TargetHost: $DstIP
+  raw_event_query: SELECT * FROM FIREWALL WHERE $DstPort=3389 AND $DstIP='TargetHost'
+    LIMIT 100
 config: {}

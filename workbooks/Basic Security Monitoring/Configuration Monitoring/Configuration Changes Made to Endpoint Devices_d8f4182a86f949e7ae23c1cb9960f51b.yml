@@ -17,6 +17,8 @@ blocks:
   DetectionConfidence: Medium
   SuspectUser: $User
   TargetHost: $System
+  raw_event_query: SELECT * FROM CONFIGURATION WHERE $Duration=5m AND $System='TargetHost'
+    AND $User='SuspectUser' LIMIT 1000
 cron: null
 config:
   parameters: []

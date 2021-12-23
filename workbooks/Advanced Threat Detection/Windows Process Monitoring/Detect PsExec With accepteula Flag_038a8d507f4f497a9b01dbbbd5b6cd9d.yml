@@ -18,3 +18,5 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
+  raw_event_query: SELECT * FROM SYSMON-PROCESS WHERE ($CommandLine LIKE "%psexec%"
+    AND $CommandLine LIKE "%accepteula%") AND $System='TargetHost' LIMIT 10

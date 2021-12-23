@@ -26,6 +26,14 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Medium
   TargetHost: $System
+  raw_event_query: SELECT * FROM SYSMON-PROCESS WHERE $Action='PROCESS_ADDED' AND
+    $Status='PASSED'AND ($CommandLine LIKE "%vssadmin%exe%Delete%Shadows%" OR $CommandLine
+    LIKE "%vssadmin%create$shadow%for%C%" OR $CommandLine LIKE "%copy%GLOBALROOT%Device%Windows%NTDS%NTDS%dit%"
+    OR $CommandLine LIKE "%copy%GLOBALROOT%Device%config%SAM%" OR $CommandLine LIKE
+    "%vssadmin%delete%shadows%for%C%" OR $CommandLine LIKE "%reg%SAVE%HKLM%SYSTEM%"
+    OR $CommandLine LIKE "%esentutl%exe%y%vss%NTDS%dit%" OR $CommandLine LIKE "%esentutl%exe%y%vss%SAM%"
+    OR $CommandLine LIKE "%esentutl%exe%y%vss%SYSTEM%") AND $System='TargetHost' LIMIT
+    1000
 cron: null
 config:
   parameters: []

@@ -19,6 +19,9 @@ blocks:
   DetectionConfidence: Low
   SuspectUser: $User
   TargetHost: $System
+  raw_event_query: _fetch * from event where $Stream=SYSMON-PROCESS AND $CommandLine=regex(.*wevtutil.*cl.*)
+    AND $CommandLine=regex(.*System.*|.*Security.*|.*Setup.*|.*Application.*) AND
+    $System='TargetHost' AND $User='SuspectUser' limit 100
 cron: null
 config:
   parameters: []

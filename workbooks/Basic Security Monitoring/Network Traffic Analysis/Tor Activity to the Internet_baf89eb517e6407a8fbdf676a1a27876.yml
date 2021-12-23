@@ -21,4 +21,7 @@ blocks:
   DetectionScore: 5
   DetectionConfidence: Low
   SuspectHost: $SrcIP
+  raw_event_query: SELECT * FROM FIREWALL WHERE ($DstPort='9001' OR $DstPort='9030')
+    AND $SrcType='PRIVATE' AND $DstType='PUBLIC'  AND $Proto='TCP' AND $SrcIP='SuspectHost'
+    LIMIT 1000
 config: {}

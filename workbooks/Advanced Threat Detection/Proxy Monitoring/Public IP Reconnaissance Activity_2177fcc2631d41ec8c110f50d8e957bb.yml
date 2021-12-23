@@ -24,4 +24,11 @@ blocks:
   DetectionScore: 5
   DetectionConfidence: Low
   SuspectHost: $SrcIP
+  raw_event_query: SELECT * FROM WEBFILTER WHERE ($Domain LIKE "%ipecho.net%" OR $Domain
+    LIKE "%ipinfo.io%" OR $Domain LIKE "%ifconfig.co%" OR $Domain LIKE "%ifconfig.me%"
+    OR $Domain LIKE "%icanhazip.com%" OR $Domain LIKE "%myexternalip.com%" OR $Domain
+    LIKE "%api.ipify.org%" OR $Domain LIKE "%bot.whatismyipaddress.com%" OR $Domain
+    LIKE "%ip.anysrc.net%" OR $Domain LIKE "%wtfismyip.com%") AND NOT ($ReturnCode='302'
+    AND $Status='PASSED' AND  $Proxy='httpreferer') AND $SrcIP='SuspectHost' LIMIT
+    1000
 config: {}

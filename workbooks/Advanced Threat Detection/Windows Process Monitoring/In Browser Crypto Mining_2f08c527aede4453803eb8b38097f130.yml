@@ -17,6 +17,8 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Medium
   TargetUser: $User
+  raw_event_query: SELECT * FROM SYSMON-NETWORK WHERE $Duration=5m AND $User='TargetUser'
+    LIMIT 1000
 cron: null
 config:
   parameters: []

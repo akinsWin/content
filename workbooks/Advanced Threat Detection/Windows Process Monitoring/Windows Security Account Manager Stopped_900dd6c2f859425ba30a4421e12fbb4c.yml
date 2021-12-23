@@ -16,4 +16,6 @@ blocks:
   DetectionScore: 5
   DetectionConfidence: Low
   TargetHost: $System
+  raw_event_query: _fetch * from event where $Stream=SYSMON-PROCESS AND $CommandLine=*net.exe*stop*samss*
+    AND $System='TargetHost' limit 100
 config: {}

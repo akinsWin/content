@@ -7,8 +7,8 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: dql
-  query: _fetch * from event where $Stream=DOCUMENTS AND $Action
-    IN [ACCESSED,DOWNLOADED] AND $SrcCN IN [CN,KR]  limit 100
+  query: _fetch * from event where $Stream=DOCUMENTS AND $Action IN [ACCESSED,DOWNLOADED]
+    AND $SrcCN IN [CN,KR]  limit 100
 - type: signal
   DetectionName: File Accessed or Downloaded From Regions or Countries with Restricted
     Access
@@ -18,6 +18,8 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Medium
   SuspectUser: $User
+  raw_event_query: _fetch * from event where $Stream=DOCUMENTS AND $Action IN [ACCESSED,DOWNLOADED]
+    AND $SrcCN IN [CN,KR] AND $User='SuspectUser' limit 100
 cron: null
 config:
   parameters: []

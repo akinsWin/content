@@ -3,7 +3,7 @@ name: Powershell Process Observed On A Compromised Host
 path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
 type: standard
-author: 'DNIF'
+author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
@@ -22,6 +22,8 @@ blocks:
   DetectionSeverity: High
   DetectionConfidence: Medium
   SuspectHost: $System
+  raw_event_query: _fetch * from event where $Duration=5m AND $System='SuspectHost'
+    limit 1000
 cron: null
 config:
   parameters: []

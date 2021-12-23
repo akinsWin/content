@@ -19,6 +19,11 @@ blocks:
   DetectionSeverity: High
   DetectionConfidence: High
   TargetHost: $System
+  raw_event_query: SELECT * FROM SYSMON-PROCESS WHERE $Duration=1d AND ($OriginalFileName
+    ='VSSADMIN.EXE' AND $CommandLine LIKE "%create%shadow%") OR ($OriginalFileName
+    ='ntdsutil.exe' AND $CommandLine LIKE "%ntds%create%") OR ($OriginalFileName =
+    'wmic.exe' AND $CommandLine LIKE "%create%ShadowCopy%") AND $System='TargetHost'
+    LIMIT 1000
 cron: null
 config:
   parameters: []

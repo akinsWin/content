@@ -16,4 +16,6 @@ blocks:
   DetectionScore: 3
   DetectionConfidence: Low
   SuspectHost: $SrcIP
+  raw_event_query: SELECT * FROM FIREWALL WHERE $DstPort='53' AND $SrcIP='SuspectHost'
+    LIMIT 1000
 config: {}

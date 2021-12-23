@@ -17,3 +17,6 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
+  raw_event_query: SELECT * FROM SYSMON-PROCESS WHERE $Action='PROCESS_ADDED' AND
+    ($CommandLine LIKE "%reg.exe%reg%add%Services%") AND $System='TargetHost' LIMIT
+    1000

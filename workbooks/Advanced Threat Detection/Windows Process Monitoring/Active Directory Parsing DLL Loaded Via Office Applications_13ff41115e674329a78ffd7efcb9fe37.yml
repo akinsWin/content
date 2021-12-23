@@ -22,6 +22,9 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Medium
   TargetHost: $System
+  raw_event_query: SELECT * FROM SYSMON-IMAGE-LOAD WHERE (($Image LIKE "%winword%exe%"
+    OR $Image LIKE "%powerpnt%exe%" OR $Image LIKE "%excel%exe" OR $Image LIKE "%outlook%exe%")
+    AND ($ImageLoaded LIKE "%dsparse%dll%")) AND $System='TargetHost' LIMIT 1000
 cron: null
 config:
   parameters: []

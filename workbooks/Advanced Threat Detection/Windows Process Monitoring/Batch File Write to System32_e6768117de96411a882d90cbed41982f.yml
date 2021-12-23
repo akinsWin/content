@@ -7,7 +7,8 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT $System FROM SYSMON-FILE WHERE $Action='FILE_CREATED' AND $TargetFileName LIKE "%System32%bat%" GROUP BY $System
+  query: SELECT $System FROM SYSMON-FILE WHERE $Action='FILE_CREATED' AND $TargetFileName
+    LIKE "%System32%bat%" GROUP BY $System
 - type: signal
   DetectionName: Batch File Write to System32
   DetectionTactic: Execution
@@ -15,3 +16,5 @@ blocks:
   DetectionScore: 5
   DetectionConfidence: Medium
   TargetHost: $System
+  raw_event_query: SELECT * FROM SYSMON-FILE WHERE $Action='FILE_CREATED' AND $TargetFileName
+    LIKE "%System32%bat%" AND $System='TargetHost' LIMIT 1000

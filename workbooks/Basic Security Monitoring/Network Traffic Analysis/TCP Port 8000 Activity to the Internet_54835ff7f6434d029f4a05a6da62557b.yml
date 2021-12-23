@@ -21,4 +21,7 @@ blocks:
   DetectionConfidence: Low
   SuspectHost: $SrcIP
   TargetHost: $DstIP
+  raw_event_query: _fetch * from event where $Stream=FIREWALL AND  $Proto=TCP AND
+    $DstPort=8000 AND $SrcType=PRIVATE NOT $DstType=PRIVATE AND $DstIP='TargetHost'
+    AND $SrcIP='SuspectHost' limit 10
 config: {}

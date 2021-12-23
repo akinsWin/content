@@ -16,6 +16,8 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Medium
   SuspectProcess: $Name
+  raw_event_query: SELECT * FROM NTA-SMB WHERE $Duration=5m AND $Name='SuspectProcess'
+    LIMIT 1000
 cron: null
 config:
   parameters: []

@@ -17,4 +17,8 @@ blocks:
   DetectionScore: 5
   DetectionConfidence: Medium
   TargetHost: $System
+  raw_event_query: SELECT * FROM SYSMON-FILE WHERE $TargetFileName LIKE "%.lnk%" OR
+    $Image LIKE "%.zip%" AND ($TargetFileName LIKE "%Users%" OR $TargetFileName LIKE
+    "%Local%Temp%") AND $Image LIKE "%outlook.exe%" AND $System='TargetHost' LIMIT
+    1000
 config: {}

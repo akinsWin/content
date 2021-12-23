@@ -24,6 +24,8 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Medium
   TargetHost: $System
+  raw_event_query: SELECT * FROM SYSMON-PROCESS WHERE $Duration=5m AND $System='TargetHost'
+    LIMIT 1000
 cron: null
 config:
   parameters: []

@@ -23,4 +23,8 @@ blocks:
   DetectionConfidence: Medium
   SuspectUser: $User
   TargetHost: $EventSource
+  raw_event_query: SELECT * FROM CLOUDTRAIL WHERE $EventSource='ec2.amazonaws.com'
+    AND $EventName = 'ModifyInstanceAttribute' AND $RequestParametersAttribute = 'userData'
+    AND $EventSource IS NOT NULL AND $EventName IS NOT NULL AND $User IS NOT NULL
+    AND $EventSource='TargetHost' AND $User='SuspectUser' LIMIT 1000
 config: {}

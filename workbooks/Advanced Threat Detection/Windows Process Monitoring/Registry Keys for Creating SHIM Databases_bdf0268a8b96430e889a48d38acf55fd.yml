@@ -17,3 +17,7 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
+  raw_event_query: SELECT * FROM SYSMON-REGISTRY WHERE $Action='OBJECT_MODIFIED' AND
+    ($TargetObject LIKE "%CurrentVersion%AppCompatFlags%Custom%" OR $TargetObject
+    LIKE "%CurrentVersion%AppCompatFlags%InstalledSDB%") AND $System='TargetHost'
+    LIMIT 1000

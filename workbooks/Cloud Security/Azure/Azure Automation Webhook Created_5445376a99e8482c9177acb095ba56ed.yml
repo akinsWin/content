@@ -7,10 +7,11 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: Select $OperationName, $User, $Status FROM AZURE WHERE ($OperationName LIKE "%MICROSOFT%AUTOMATION%AUTOMATIONACCOUNTS%RUNBOOKS%DRAFT%WRITE%"
-    OR $OperationName LIKE "%MICROSOFT%AUTOMATION%AUTOMATIONACCOUNTS%RUNBOOKS%WRITE%" OR
-    $OperationName LIKE "%MICROSOFT%AUTOMATION%AUTOMATIONACCOUNTS%RUNBOOKS%PUBLISH%ACTION%")
-    AND $Status='Succeeded' GROUP BY $OperationName, $User, $Status
+  query: Select $OperationName, $User, $Status FROM AZURE WHERE ($OperationName LIKE
+    "%MICROSOFT%AUTOMATION%AUTOMATIONACCOUNTS%RUNBOOKS%DRAFT%WRITE%" OR $OperationName
+    LIKE "%MICROSOFT%AUTOMATION%AUTOMATIONACCOUNTS%RUNBOOKS%WRITE%" OR $OperationName
+    LIKE "%MICROSOFT%AUTOMATION%AUTOMATIONACCOUNTS%RUNBOOKS%PUBLISH%ACTION%") AND
+    $Status='Succeeded' GROUP BY $OperationName, $User, $Status
 - type: signal
   DetectionName: Azure Automation Webhook Created
   DetectionTactic: Persistence
@@ -19,4 +20,8 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Low
   SuspectUser: $User
+  raw_event_query: SELECT * FROM AZURE WHERE ($OperationName LIKE "%MICROSOFT%AUTOMATION%AUTOMATIONACCOUNTS%RUNBOOKS%DRAFT%WRITE%"
+    OR $OperationName LIKE "%MICROSOFT%AUTOMATION%AUTOMATIONACCOUNTS%RUNBOOKS%WRITE%"
+    OR $OperationName LIKE "%MICROSOFT%AUTOMATION%AUTOMATIONACCOUNTS%RUNBOOKS%PUBLISH%ACTION%")
+    AND $Status='Succeeded' AND $User='SuspectUser' LIMIT 1000
 config: {}

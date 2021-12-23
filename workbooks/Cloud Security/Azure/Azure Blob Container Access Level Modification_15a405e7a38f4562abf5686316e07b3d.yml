@@ -17,4 +17,6 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Low
   SuspectUser: $User
+  raw_event_query: SELECT * FROM AZURE WHERE $OperationName='MICROSOFT.STORAGE/STORAGEACCOUNTS/BLOBSERVICES/CONTAINERS/WRITE'
+    AND $Status='Succeeded' AND $User='SuspectUser' LIMIT 1000
 config: {}

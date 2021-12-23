@@ -17,6 +17,8 @@ blocks:
   DetectionSeverity: Low
   DetectionConfidence: Medium
   TargetHost: $System
+  raw_event_query: SELECT * FROM FIREWALL WHERE $Action='PACKET_ALLOWED' AND $DstPort='8333'
+    AND $Proto='TCP' AND $System='TargetHost' LIMIT 1000
 cron: null
 config:
   parameters: []

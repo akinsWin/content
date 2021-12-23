@@ -21,6 +21,8 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Medium
   SuspectObject: $CertificateSubject
+  raw_event_query: _fetch * from event where $Duration=5m AND $CertificateSubject='SuspectObject'
+    limit 1000
 cron: null
 config:
   parameters: []

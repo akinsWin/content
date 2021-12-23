@@ -21,6 +21,9 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Medium
   SuspectUser: $Sender
+  raw_event_query: SELECT * FROM EMAIL-GATEWAY WHERE $Duration=1h AND $Action='EMAIL_REDIRECTED'
+    AND ($Recipient LIKE "%gmail%" OR $Recipient LIKE "%yahoo%" OR $Recipient LIKE
+    "%rediffmail%") AND $Sender='SuspectUser' LIMIT 1000
 cron: null
 config:
   parameters: []

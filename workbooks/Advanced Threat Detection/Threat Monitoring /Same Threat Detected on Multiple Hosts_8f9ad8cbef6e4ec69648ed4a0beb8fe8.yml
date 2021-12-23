@@ -21,6 +21,8 @@ blocks:
   DetectionSeverity: High
   DetectionConfidence: High
   SuspectHost: $TargetHost
+  raw_event_query: _fetch * from event where $Stream=SIGNALS AND $Duration=30m AND
+    $DetectionName IN [_DetectionName_] AND $TargetHost='SuspectHost' limit 20
 cron: null
 config:
   parameters: []

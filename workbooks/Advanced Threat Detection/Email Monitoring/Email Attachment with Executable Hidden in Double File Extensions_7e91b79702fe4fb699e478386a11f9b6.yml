@@ -18,6 +18,9 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Medium
   SuspectUser: $Sender
+  raw_event_query: SELECT * FROM EMAIL-GATEWAY WHERE $Action='EMAIL_ACCEPTED' AND  (
+    $File LIKE "%.exe.txt%" OR $File LIKE  "%.scr.pptx%" OR  $File LIKE  "%.js.pdf%"
+    OR $File LIKE  "%.bat.docx%" ) AND $Sender='SuspectUser' LIMIT 1000
 cron: null
 config:
   parameters: []

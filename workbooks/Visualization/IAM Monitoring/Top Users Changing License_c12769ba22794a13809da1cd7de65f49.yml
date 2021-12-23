@@ -3,7 +3,7 @@ name: Top Users Changing License
 path: /Visualization/IAM Monitoring
 description: ''
 type: standard
-author: 'DNIF'
+author: DNIF
 entity_type: workbooks
 blocks:
 - type: dql

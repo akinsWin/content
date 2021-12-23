@@ -18,3 +18,5 @@ blocks:
   DetectionSeverity: ''
   DetectionConfidence: Low
   TargetHost: $System
+  raw_event_query: _fetch * from event where $Stream=SYSMON-FILE AND $TargetFilename=*hosts*
+    AND $Image=*Windows*System32* AND $System='TargetHost' limit 1

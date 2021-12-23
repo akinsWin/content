@@ -18,6 +18,8 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Medium
   TargetHost: $System
+  raw_event_query: SELECT * FROM SYSMON-PROCESS WHERE ($ParentCommandLine LIKE "%powershell.exe%"
+    AND $CommandLine LIKE "%get-SmbShare%") AND $System='TargetHost' LIMIT 1000
 cron: null
 config:
   parameters: []

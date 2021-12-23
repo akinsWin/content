@@ -16,4 +16,6 @@ blocks:
   DetectionScore: 5
   DetectionConfidence: Medium
   TargetHost: $System
+  raw_event_query: _fetch * from event where $Stream=SYSMON-PROCESS AND $CommandLine=regex((?i)(.*mshta.exe.*))
+    AND $System='TargetHost' limit 0
 config: {}

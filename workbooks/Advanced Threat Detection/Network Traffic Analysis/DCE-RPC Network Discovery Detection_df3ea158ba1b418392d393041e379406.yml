@@ -25,6 +25,16 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Medium
   SuspectHost: $SrcIP
+  raw_event_query: SELECT * FROM NTA-DCE-RPC WHERE $Duration=15m AND ($Endpoint='srvsvc'
+    AND $Operation='NetrConnectionEnum') OR ($Endpoint='srvsvc' AND $Operation='NetrFileEnum')
+    OR ($Endpoint='srvsvc' AND $Operation='NetrRemoteTOD') OR ($Endpoint='srvsvc'
+    AND $Operation='NetrServerAliasEnum') OR ($Endpoint='srvsvc' AND $Operation='NetrServerGetInfo')
+    OR ($Endpoint='srvsvc' AND $Operation='NetrServerTransportEnum') OR ($Endpoint='srvsvc'
+    AND $Operation='NetrSessionEnum') OR ($Endpoint='srvsvc' AND $Operation='NetrShareEnum')
+    OR ($Endpoint='srvsvc' AND $Operation='NetrShareGetInfo') OR ($Endpoint='wkssvc'
+    AND $Operation='NetrWkstaGetInfo') OR ($Endpoint='wkssvc' AND $Operation='NetrWkstaTransportEnum')
+    OR ($Endpoint='wkssvc' AND $Operation='NetrWkstaUserEnum') AND $SrcIP='SuspectHost'
+    LIMIT 1000
 cron: null
 config:
   parameters: []

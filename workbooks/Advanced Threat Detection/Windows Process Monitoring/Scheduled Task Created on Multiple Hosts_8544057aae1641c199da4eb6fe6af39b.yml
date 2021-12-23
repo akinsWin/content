@@ -3,7 +3,7 @@ name: Scheduled Task Created on Multiple Hosts
 path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
 type: standard
-author: 'DNIF'
+author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
@@ -18,6 +18,8 @@ blocks:
   DetectionSeverity: ''
   DetectionConfidence: Medium
   TargetHost: $System
+  raw_event_query: SELECT * FROM SYSMON-PROCESS WHERE $Image LIKE "%schtasks.exe"
+    AND $CommandLine LIKE "%/create%/s%" AND $System='TargetHost' LIMIT 1000
 cron: null
 config:
   parameters: []

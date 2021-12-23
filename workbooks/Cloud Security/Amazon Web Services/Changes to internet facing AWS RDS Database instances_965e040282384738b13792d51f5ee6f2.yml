@@ -20,6 +20,10 @@ blocks:
   DetectionConfidence: Medium
   SuspectUser: $User
   TargetHost: $EventSource
+  raw_event_query: SELECT * FROM CLOUDTRAIL WHERE ($EventName='AuthorizeDBSecurityGroupIngress'
+    OR $EventName='CreateDBSecurityGroup' OR $EventName='DeleteDBSecurityGroup' OR
+    $EventName='RevokeDBSecurityGroupIngress') AND $User IS NOT NULL AND $EventSource
+    IS NOT NULL AND $EventSource='TargetHost' AND $User='SuspectUser' LIMIT 1000
 cron: null
 config:
   parameters: []

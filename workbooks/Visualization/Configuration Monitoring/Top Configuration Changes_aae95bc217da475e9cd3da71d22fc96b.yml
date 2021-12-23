@@ -3,7 +3,7 @@ name: Top Configuration Changes
 path: /Visualization/Configuration Monitoring
 description: ''
 type: standard
-author: 'DNIF'
+author: DNIF
 entity_type: workbooks
 blocks:
 - type: dql

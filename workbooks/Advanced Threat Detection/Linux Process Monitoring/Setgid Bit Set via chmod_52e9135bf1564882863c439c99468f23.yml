@@ -18,6 +18,9 @@ blocks:
   DetectionSeverity: Low
   DetectionConfidence: Low
   TargetHost: $System
+  raw_event_query: SELECT * FROM AUDITD WHERE $Action='PROCESS_ADDED' AND $Process
+    LIKE "%chmod" AND ($ProcessArgs LIKE "%g%+%s%" OR $ProcessArgs LIKE "%2%") AND
+    $User!='root' AND $System='TargetHost' LIMIT 1000
 cron: null
 config:
   parameters: []

@@ -16,3 +16,5 @@ blocks:
   DetectionScore: 5
   DetectionConfidence: Low
   TargetHost: $System
+  raw_event_query: SELECT * FROM SYSMON-PROCESS WHERE $Image LIKE '%fsutil.exe' AND
+    $Commandline LIKE '%deletejournal%usn%' AND $System='TargetHost' LIMIT 1000

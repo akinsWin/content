@@ -3,7 +3,7 @@ name: Malicious Service Installed
 path: /Advanced Threat Detection/Windows Process Monitoring
 description: ''
 type: standard
-author: 'DNIF'
+author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
@@ -21,6 +21,8 @@ blocks:
   DetectionConfidence: High
   SuspectHost: $SrcIP
   TargetHost: $System
+  raw_event_query: SELECT * FROM CONFIGURATION WHERE $Duration=5m AND $System='TargetHost'
+    AND $SrcIP='SuspectHost' LIMIT 1000
 cron: null
 config:
   parameters: []

@@ -18,3 +18,6 @@ blocks:
   DetectionSeverity: High
   DetectionConfidence: High
   TargetHost: $System
+  raw_event_query: SELECT * FROM SYSMON-PROCESS WHERE (($CommandLine LIKE "%wmic%"
+    OR $CommandLine LIKE "%powershell%") AND $CommandLine LIKE "%shadowcopy%create%")
+    AND $System='TargetHost' LIMIT 1000

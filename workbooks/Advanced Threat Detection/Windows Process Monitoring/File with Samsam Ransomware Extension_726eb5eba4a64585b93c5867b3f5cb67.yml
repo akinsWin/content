@@ -18,4 +18,8 @@ blocks:
   DetectionScore: 5
   DetectionConfidence: Low
   TargetHost: $System
+  raw_event_query: SELECT * FROM SYSMON-FILE WHERE $Action='FILE_CREATED' AND ($TargetFileName
+    LIKE "%.stubbin" OR $TargetFileName LIKE "%.berkshire" OR $TargetFileName LIKE
+    "%.satoshi" OR $TargetFileName LIKE "%.sophos" OR $TargetFileName LIKE "%.keyxml")
+    AND $System='TargetHost' LIMIT 100
 config: {}

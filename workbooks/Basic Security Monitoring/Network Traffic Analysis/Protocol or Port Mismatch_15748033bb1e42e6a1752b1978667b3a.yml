@@ -19,4 +19,8 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Low
   SuspectHost: $SrcIP
+  raw_event_query: SELECT * FROM FIREWALL WHERE (($App='HTTP' OR $App='http')  AND
+    $DstPort NOT IN('80','8080','8000')) OR (($App='ssl' OR $App='SSL')  AND $DstPort
+    NOT IN('443','8443')) OR (($App='smtp' OR $App='SMTP')  AND $DstPort NOT IN('25'))
+    AND $SrcIP='SuspectHost' LIMIT 10
 config: {}

@@ -32,6 +32,24 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Medium
   SuspectHost: $SrcIP
+  raw_event_query: SELECT * FROM NTA-DCE-RPC WHERE $Duration=15m AND ($Endpoint='lsarpc'
+    AND $Operation='LsarEnumerateAccounts') OR ($Endpoint='lsarpc' AND $Operation='LsarEnumerateAccountRights')
+    OR ($Endpoint='lsarpc' AND $Operation='LsarEnumerateAccountsWithUserRight') OR
+    ($Endpoint='lsarpc' AND $Operation='LsarEnumeratePrivileges') OR ($Endpoint='lsarpc'
+    AND $Operation='LsarEnumeratePrivilegesAccount') OR ($Endpoint='lsarpc' AND $Operation='LsarGetSystemAccessAccount')
+    OR ($Endpoint='lsarpc' AND $Operation='LsarGetUserName') OR ($Endpoint='lsarpc'
+    AND $Operation='LsarLookupNames') OR ($Endpoint='lsarpc' AND $Operation='LsarLookupNames2')
+    OR ($Endpoint='lsarpc' AND $Operation='LsarLookupNames3') OR ($Endpoint='lsarpc'
+    AND $Operation='LsarLookupNames4') OR ($Endpoint='lsarpc' AND $Operation='LsarLookupPrivilegeDisplayName')
+    OR ($Endpoint='lsarpc' AND $Operation='LsarLookupPrivilegeName') OR ($Endpoint='lsarpc'
+    AND $Operation='LsarLookupPrivilegeValue') OR ($Endpoint='lsarpc' AND $Operation='LsarLookupSids')
+    OR ($Endpoint='lsarpc' AND $Operation='LsarLookupSids2') OR ($Endpoint='lsarpc'
+    AND $Operation='LsarLookupSids3') OR ($Endpoint='samr' AND $Operation='SamrQueryInformationUser')
+    OR ($Endpoint='samr' AND $Operation='SamrQueryInformationUser') OR ($Endpoint='samr'
+    AND $Operation='SamrQueryInformationUser2') OR ($Endpoint='samr' AND $Operation='SamrQueryDisplayInformation')
+    OR ($Endpoint='samr' AND $Operation='SamrQueryDisplayInformation2') OR ($Endpoint='samr'
+    AND $Operation='SamrQueryDisplayInformation3') AND $SrcIP='SuspectHost' LIMIT
+    1000
 cron: null
 config:
   parameters: []

@@ -16,4 +16,6 @@ blocks:
   DetectionScore: 5
   DetectionConfidence: Low
   TargetHost: $System
+  raw_event_query: SELECT * FROM SYSMON-PROCESS WHERE $Image LIKE "%attrib.exe" AND
+    $CommandLine LIKE "%+h%" AND $System='TargetHost' LIMIT 1000
 config: {}

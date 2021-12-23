@@ -28,6 +28,18 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Medium
   SuspectHost: $SrcIP
+  raw_event_query: SELECT * FROM NTA-HTTP WHERE $Action='REQUEST_ALLOWED' AND (MimeType
+    = 'application/vnd.ms-cab-compressed' OR MimeType = 'application/warc' OR MimeType
+    = 'application/x-7z-compressed' OR MimeType = 'application/x-ace' OR MimeType
+    = 'application/x-arc' OR MimeType = 'application/x-archive' OR MimeType = 'application/x-arj'
+    OR MimeType = 'application/x-compress' OR MimeType = 'application/x-cpio' OR MimeType
+    = 'application/x-dmg' OR MimeType = 'application/x-eet' OR MimeType = 'application/x-gzip'
+    OR MimeType = 'application/x-lha' OR MimeType = 'application/x-lrzip' OR MimeType
+    = 'application/x-lz4' OR MimeType = 'application/x-lzma' OR MimeType = 'application/x-lzh'
+    OR MimeType = 'application/x-lzip' OR MimeType = 'application/x-rar' OR MimeType
+    = 'application/x-rpm' OR MimeType = 'application/x-stuffit' OR MimeType = 'application/x-tar'
+    OR MimeType = 'application/x-xz' OR MimeType = 'application/x-zoo' OR MimeType
+    = 'application/zip') AND $RxLen > 10000000 AND $SrcIP='SuspectHost' LIMIT 1000
 cron: null
 config:
   parameters: []

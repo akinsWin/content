@@ -18,6 +18,8 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Medium
   SuspectHost: $SrcIP
+  raw_event_query: SELECT * FROM NTA-FTP WHERE $Duration=15m AND $SrcIP='SuspectHost'
+    LIMIT 100
 cron: null
 config:
   parameters: []

@@ -29,6 +29,20 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Medium
   SuspectHost: $SrcIP
+  raw_event_query: SELECT * FROM NTA-DCE-RPC WHERE $Duration=15m AND ($Endpoint='lsarpc'
+    AND $Operation='LsarEnumerateTrustedDomainsEx') OR ($Endpoint='lsarpc' AND $Operation='LsarQueryDomainInformationPolicy')
+    OR ($Endpoint='lsarpc' AND $Operation='LsarQueryInfoTrustedDomain') OR ($Endpoint='lsarpc'
+    AND $Operation='LsarQueryInformationPolicy') OR ($Endpoint='lsarpc' AND $Operation='LsarQueryInformationPolicy2')
+    OR ($Endpoint='lsarpc' AND $Operation='LsarQueryTrustedDomainInfo') OR ($Endpoint='lsarpc'
+    AND $Operation='LsarQueryTrustedDomainInfoByName') OR ($Endpoint='samr' AND $Operation='SamrLookupNamesInDomain')
+    OR ($Endpoint='samr' AND $Operation='SamrLookupIdsInDomain') OR ($Endpoint='samr'
+    AND $Operation='SamrLookupDomainInSamServer') OR ($Endpoint='samr' AND $Operation='SamrLookupDomainInSamServer')
+    OR ($Endpoint='samr' AND $Operation='SamrEnumerateAliasesInDomain') OR ($Endpoint='samr'
+    AND $Operation='SamrEnumerateUsersInDomain') OR ($Endpoint='samr' AND $Operation='SamrEnumerateGroupsInDomain')
+    OR ($Endpoint='samr' AND $Operation='SamrEnumerateDomainsInSamServer') OR ($Endpoint='samr'
+    AND $Operation='SamrQueryInformationAlias') OR ($Endpoint='samr' AND $Operation='SamrQueryInformationDomain')
+    OR ($Endpoint='samr' AND $Operation='SamrQueryInformationDomain2') AND $SrcIP='SuspectHost'
+    LIMIT 1000
 cron: null
 config:
   parameters: []

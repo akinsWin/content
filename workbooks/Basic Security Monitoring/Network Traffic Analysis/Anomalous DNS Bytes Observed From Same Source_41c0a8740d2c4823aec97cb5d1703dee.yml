@@ -36,6 +36,8 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Medium
   SuspectHost: $SrcIP
+  raw_event_query: SELECT * FROM FIREWALL WHERE $Duration=7d AND $Action='PACKET_ALLOWED'
+    AND $DstPort='53' AND $SrcIP='SuspectHost' LIMIT 1000
 cron: null
 config:
   parameters: []

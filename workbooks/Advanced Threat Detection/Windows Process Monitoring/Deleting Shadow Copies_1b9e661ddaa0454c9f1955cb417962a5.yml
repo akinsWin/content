@@ -19,3 +19,6 @@ blocks:
   DetectionConfidence: High
   SuspectUser: $User
   TargetHost: $System
+  raw_event_query: _fetch * from event where $Stream=SYSMON-PROCESS AND $CommandLine=regex(.*vssadmin.*|.*wmic.*)
+    AND $CommandLine=regex(.*delete.*shadow.*) AND $System='TargetHost' AND $User='SuspectUser'
+    limit 100

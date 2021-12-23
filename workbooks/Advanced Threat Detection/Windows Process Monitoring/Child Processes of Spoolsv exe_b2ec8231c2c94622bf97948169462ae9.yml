@@ -16,3 +16,5 @@ blocks:
   DetectionScore: 5
   DetectionConfidence: Medium
   TargetHost: $System
+  raw_event_query: SELECT * FROM SYSMON-PROCESS WHERE $ParentImage LIKE '%spoolsv.exe'
+    AND $Image NOT LIKE '%regsvr32.exe%' AND $System='TargetHost' LIMIT 1000

@@ -3,7 +3,7 @@ name: Encryption Method Used For RDP Connections
 path: /Reports/NTA
 description: ''
 type: standard
-author: 'DNIF'
+author: DNIF
 entity_type: workbooks
 blocks:
 - type: dql

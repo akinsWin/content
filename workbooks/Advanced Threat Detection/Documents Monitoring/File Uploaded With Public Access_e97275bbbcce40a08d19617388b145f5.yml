@@ -17,6 +17,8 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Medium
   SuspectUser: $User
+  raw_event_query: _fetch * from event where $Stream=DOCUMENTS AND $Action='UPLOADED'
+    AND $Status='PASSED' AND $Visibility='PUBLIC' AND $User='SuspectUser' limit 100
 cron: null
 config:
   parameters: []

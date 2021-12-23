@@ -24,6 +24,11 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
+  raw_event_query: SELECT * FROM SYSMON-IMAGE-LOAD WHERE (($ImageLoaded LIKE "%System%Management%Automation%Dll%"
+    OR $ImageLoaded LIKE "%System%Management%Automation%ni%Dll") AND NOT (($Image
+    LIKE "%powershell%exe%" OR $Image LIKE "%powershell%ise%exe%" OR $Image LIKE "%WINDOWS%System32%sdiagnhost%exe%"
+    OR $Image LIKE "%mscorsvw%exe%" OR $Image LIKE "%WINDOWS%System32%RemoteFXvGPUDisablement%exe%")))
+    AND $System='TargetHost' LIMIT 1000
 cron: null
 config:
   parameters: []

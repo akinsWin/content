@@ -17,4 +17,7 @@ blocks:
   DetectionScore: 5
   DetectionConfidence: Low
   TargetHost: $System
+  raw_event_query: _fetch * from event where $Stream=SYSMON-REGISTRY AND $Duration=1h
+    AND $Action=OBJECT_MODIFIED AND $TargetObject=regex((?i)currentversion\\\\(runservices|run|Windows\\\\Appinit_Dlls.*|Winlogon\\\\(Shell|Userinit|VmApplet)|policies\\\\explorer\\\\run)|.*currentcontrolset\\\\Control\\\\Lsa\\\\|Microsoft\\\\Windows\sNT\\\\CurrentVersion\\\\Image\sFile\sExecution\sOptions|HKLM\\\\SOFTWARE\\\\Microsoft\\\\Netsh.*)
+    AND $System='TargetHost' limit 100
 config: {}

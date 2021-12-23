@@ -3,7 +3,7 @@ name: "Top MYSQL\_ Activity From Sources"
 path: /Reports/NTA
 description: ''
 type: standard
-author: 'DNIF'
+author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql

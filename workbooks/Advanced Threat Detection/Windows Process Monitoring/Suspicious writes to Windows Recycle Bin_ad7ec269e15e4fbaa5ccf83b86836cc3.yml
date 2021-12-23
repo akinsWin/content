@@ -16,3 +16,5 @@ blocks:
   DetectionScore: 5
   DetectionConfidence: Low
   TargetHost: $System
+  raw_event_query: SELECT * FROM SYSMON-FILE WHERE $TargetFileName LIKE '%Recycle.Bin%'
+    AND $Image NOT LIKE '%explorer.exe' AND AND $System='TargetHost' LIMIT 1000

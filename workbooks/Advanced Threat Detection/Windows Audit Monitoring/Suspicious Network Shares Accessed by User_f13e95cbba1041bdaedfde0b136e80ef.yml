@@ -31,6 +31,8 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Medium
   SuspectUser: $User
+  raw_event_query: SELECT * FROM WIN-AUDIT WHERE $Duration=7d AND $Action='NETWORK_SHARE_OBJECT_ACCESSED'
+    AND $User='SuspectUser' LIMIT 1000
 - type: text
   code: "Description \u2013\nThis detection rule attempts to find the outlier User\
     \ from the WIN-AUDIT stream based on their network share access activities.In\

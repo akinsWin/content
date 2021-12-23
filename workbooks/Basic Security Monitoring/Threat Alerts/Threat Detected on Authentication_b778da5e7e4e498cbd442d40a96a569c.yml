@@ -19,6 +19,9 @@ blocks:
   DetectionConfidence: Medium
   SuspectHost: $SrcIP
   TargetUser: $User
+  raw_event_query: SELECT * FROM THREAT WHERE $Action='THREAT_DETECTED' AND $Vector='AUTHENTICATION'
+    AND $Threat IS NOT NULL AND $SrcIP IS NOT NULL AND $User IS NOT NULL AND $User='TargetUser'
+    AND $SrcIP='SuspectHost' LIMIT 1000
 cron: null
 config:
   parameters: []

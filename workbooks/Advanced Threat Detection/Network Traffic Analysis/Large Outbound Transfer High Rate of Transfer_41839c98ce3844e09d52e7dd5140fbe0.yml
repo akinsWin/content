@@ -18,6 +18,8 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Medium
   SuspectHost: $SrcIP
+  raw_event_query: SELECT * FROM FIREWALL WHERE $Duration=12m AND $SrcType='PRIVATE'
+    AND $DstType='PUBLIC' AND $TxLen>200000 AND $SrcIP='SuspectHost' LIMIT 1000
 cron: null
 config:
   parameters: []
