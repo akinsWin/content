@@ -20,4 +20,4 @@ blocks:
   SuspectUser: $User
   TargetUser: $TargetUser
   raw_event_query: SELECT * FROM IAM WHERE $Action='USER_ACCOUNT_CREATED' OR $Action='USER_ACCOUNT_DELETED'
-    AND $TargetUser='TargetUser' AND $User='SuspectUser' LIMIT 1000
+    AND $TargetUser='{TargetUser}' AND $User='{SuspectUser}' LIMIT 1000

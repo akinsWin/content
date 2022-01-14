@@ -18,7 +18,7 @@ blocks:
   DetectionConfidence: Medium
   SuspectUser: $User
   raw_event_query: SELECT * FROM AUTHENTICATION WHERE $Action='LOGIN' AND $Status='PASSED'
-    AND $User='SuspectUser' LIMIT 1000
+    AND $User='{SuspectUser}' LIMIT 1000
 cron: null
 config:
   parameters: []

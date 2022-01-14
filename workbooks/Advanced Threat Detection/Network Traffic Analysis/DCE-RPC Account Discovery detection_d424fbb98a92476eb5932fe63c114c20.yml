@@ -48,7 +48,7 @@ blocks:
     OR ($Endpoint='samr' AND $Operation='SamrQueryInformationUser') OR ($Endpoint='samr'
     AND $Operation='SamrQueryInformationUser2') OR ($Endpoint='samr' AND $Operation='SamrQueryDisplayInformation')
     OR ($Endpoint='samr' AND $Operation='SamrQueryDisplayInformation2') OR ($Endpoint='samr'
-    AND $Operation='SamrQueryDisplayInformation3') AND $SrcIP='SuspectHost' LIMIT
+    AND $Operation='SamrQueryDisplayInformation3') AND $SrcIP='{SuspectHost}' LIMIT
     1000
 cron: null
 config:

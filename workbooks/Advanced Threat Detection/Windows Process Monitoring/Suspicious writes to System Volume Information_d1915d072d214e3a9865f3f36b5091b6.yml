@@ -20,5 +20,5 @@ blocks:
   DetectionConfidence: Low
   TargetHost: $System
   raw_event_query: SELECT * FROM SYSMON-FILE WHERE $Action='FILE_CREATED' AND $TargetFileName
-    LIKE '%System Volume Information%' AND $Image LIKE '%ntoskrnl.exe' AND AND $System='TargetHost'
+    LIKE '%System Volume Information%' AND $Image LIKE '%ntoskrnl.exe' AND AND $System='{TargetHost}'
     LIMIT 100

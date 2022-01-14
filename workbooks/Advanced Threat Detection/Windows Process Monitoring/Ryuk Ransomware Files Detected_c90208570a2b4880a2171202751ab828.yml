@@ -18,4 +18,4 @@ blocks:
   DetectionConfidence: Low
   TargetHost: $System
   raw_event_query: _fetch * from event where $Stream=SYSMON-FILE AND $TargetFilename=regex(C:\.*Ryuk.*)
-    AND $Action=FILE_CREATED AND $System='TargetHost' limit 100
+    AND $Action=FILE_CREATED AND $System='{TargetHost}' limit 100

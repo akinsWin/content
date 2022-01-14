@@ -21,7 +21,7 @@ blocks:
   SuspectUser: $Sender
   raw_event_query: SELECT * FROM EMAIL-GATEWAY WHERE $Action='EMAIL_ACCEPTED' AND  (
     $File LIKE "%.exe%" OR $File LIKE  "%.scr%" OR  $File LIKE  "%.js%" OR $File LIKE  "%.dll%"  OR
-    $File LIKE  "%.dll%" ) AND $Sender='SuspectUser' LIMIT 1000
+    $File LIKE  "%.dll%" ) AND $Sender='{SuspectUser}' LIMIT 1000
 cron: null
 config:
   parameters: []

@@ -29,5 +29,5 @@ blocks:
     AND $ProcessArgs LIKE "%disable%") OR ($ProcessName='systemctl' AND $ProcessArgs
     LIKE "%stop%") OR ($ProcessName='systemctl' AND $ProcessArgs LIKE "%kill%")) AND($ProcessArgs
     LIKE "%firewalld%" OR $ProcessArgs LIKE "%syslog%" OR $rsyslog LIKE "%syslog\-ng%"
-    ))) AND $System='TargetHost' LIMIT 1000
+    ))) AND $System='{TargetHost}' LIMIT 1000
 config: {}

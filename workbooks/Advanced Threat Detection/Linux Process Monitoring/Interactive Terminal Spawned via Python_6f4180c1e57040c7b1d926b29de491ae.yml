@@ -22,7 +22,7 @@ blocks:
   raw_event_query: SELECT * FROM AUDITD WHERE $Action='PROCESS_ADDED' AND $Process
     LIKE "%python%" AND ($ProcessArgs LIKE "%import%pty%pty%spawn%bin%sh%" OR $ProcessArgs
     LIKE "%import%pty%pty%spawn%bin%dash%" OR $ProcessArgs LIKE "%import%pty%pty%spawn%bin%bash%")
-    AND $System='TargetHost' LIMIT 1000
+    AND $System='{TargetHost}' LIMIT 1000
 cron: null
 config:
   parameters: []

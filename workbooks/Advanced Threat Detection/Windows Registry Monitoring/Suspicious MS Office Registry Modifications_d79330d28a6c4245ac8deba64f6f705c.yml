@@ -22,6 +22,6 @@ blocks:
   raw_event_query: _fetch * from event where $Stream=SYSMON-REGISTRY AND $Action=OBJECT_MODIFIED
     AND $Status=PASSED AND $Image=regex(.*excel.exe.*|.*winword.exe.*|.*powerpnt.exe.*)
     AND $TargetObject=regex(.*\\Software\\Microsoft\\Office\\*\\Word\\Security\\AccessVBOM.*|.*\\Software\\Microsoft\\Office\\*\\Word\\Security\\VBAWarnings.*))
-    AND $System='TargetHost' limit 100
+    AND $System='{TargetHost}' limit 100
 config:
   parameters: []

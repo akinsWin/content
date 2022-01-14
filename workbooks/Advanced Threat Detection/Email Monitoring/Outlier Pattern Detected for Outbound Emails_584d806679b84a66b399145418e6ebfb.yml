@@ -35,7 +35,7 @@ blocks:
   DetectionConfidence: Medium
   SuspectHost: $Sender
   raw_event_query: SELECT * FROM EMAIL-GATEWAY WHERE $Duration=7d AND $Action='EMAIL_SENT'
-    AND $Direction='Outgoing' AND $Sender='SuspectHost' LIMIT 1000
+    AND $Direction='Outgoing' AND $Sender='{SuspectHost}' LIMIT 1000
 - type: text
   code: This detection rule attempts to find the outlier Sender from the EMAIL-GATEWAY
     stream based on the outgoing email activities. In this, count of all recipients  having

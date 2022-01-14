@@ -41,7 +41,7 @@ blocks:
     AND $Operation='SamrEnumerateUsersInDomain') OR ($Endpoint='samr' AND $Operation='SamrEnumerateGroupsInDomain')
     OR ($Endpoint='samr' AND $Operation='SamrEnumerateDomainsInSamServer') OR ($Endpoint='samr'
     AND $Operation='SamrQueryInformationAlias') OR ($Endpoint='samr' AND $Operation='SamrQueryInformationDomain')
-    OR ($Endpoint='samr' AND $Operation='SamrQueryInformationDomain2') AND $SrcIP='SuspectHost'
+    OR ($Endpoint='samr' AND $Operation='SamrQueryInformationDomain2') AND $SrcIP='{SuspectHost}'
     LIMIT 1000
 cron: null
 config:

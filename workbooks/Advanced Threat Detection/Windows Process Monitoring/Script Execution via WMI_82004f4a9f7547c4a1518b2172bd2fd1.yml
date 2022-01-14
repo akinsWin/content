@@ -17,5 +17,5 @@ blocks:
   DetectionConfidence: Low
   TargetHost: $System
   raw_event_query: SELECT * FROM SYSMON-PROCESS WHERE $Image LIKE "%scrcons.exe%"
-    AND $System='TargetHost' LIMIT 100
+    AND $System='{TargetHost}' LIMIT 100
 config: {}

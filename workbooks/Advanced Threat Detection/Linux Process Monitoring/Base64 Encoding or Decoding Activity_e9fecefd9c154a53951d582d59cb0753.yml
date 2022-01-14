@@ -20,7 +20,7 @@ blocks:
   TargetHost: $System
   raw_event_query: SELECT * FROM AUDITD WHERE $Action='PROCESS_ADDED' AND ($Process
     LIKE "%base64%" OR $Process LIKE "%base64plain%" OR $Process LIKE "%base64url%"
-    OR $Process LIKE "%base64mime% OR $Process LIKE "%base64pem%") AND $System='TargetHost'
+    OR $Process LIKE "%base64mime% OR $Process LIKE "%base64pem%") AND $System='{TargetHost}'
     LIMIT 1000
 cron: null
 config:

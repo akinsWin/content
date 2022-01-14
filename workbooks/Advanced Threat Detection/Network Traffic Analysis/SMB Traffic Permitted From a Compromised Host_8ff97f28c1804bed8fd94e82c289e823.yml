@@ -22,7 +22,7 @@ blocks:
   DetectionSeverity: High
   DetectionConfidence: High
   SuspectHost: $SrcIP
-  raw_event_query: _fetch * from event where $Duration=5m AND $SrcIP='SuspectHost'
+  raw_event_query: _fetch * from event where $Duration=5m AND $SrcIP='{SuspectHost}'
     limit 1000
 cron: null
 config:

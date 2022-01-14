@@ -23,5 +23,5 @@ blocks:
   raw_event_query: SELECT * FROM CLOUDTRAIL WHERE ($EventName='UpdateTrail' OR $EventName='DeleteTrail'
     OR $EventName='StopLogging' OR $EventName='DeleteFlowLogs' OR $EventName='DeleteEventBus')
     AND $SrcIP IS NOT NULL AND $User IS NOT NULL AND $EventSource IS NOT NULL AND
-    $EventSource='TargetHost' AND $User='SuspectUser' LIMIT 1000
+    $EventSource='{TargetHost}' AND $User='{SuspectUser}' LIMIT 1000
 config: {}

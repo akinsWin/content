@@ -34,7 +34,7 @@ blocks:
   DetectionConfidence: Medium
   TargetHost: $System
   raw_event_query: SELECT * FROM SYSMON-REGISTRY WHERE $Duration=1M AND $Action='OBJECT_MODIFIED'
-    AND $System='TargetHost' LIMIT 1000
+    AND $System='{TargetHost}' LIMIT 1000
 cron: null
 config:
   parameters: []

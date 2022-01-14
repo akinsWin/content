@@ -19,4 +19,4 @@ blocks:
   DetectionConfidence: Low
   TargetHost: $System
   raw_event_query: SELECT * FROM SYSMON-PROCESS WHERE $CommandLine LIKE "%netsh%"
-    AND $System='TargetHost' LIMIT 100
+    AND $System='{TargetHost}' LIMIT 100

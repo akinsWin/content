@@ -29,6 +29,6 @@ blocks:
     OR $Domain LIKE "%icanhazip.com%" OR $Domain LIKE "%myexternalip.com%" OR $Domain
     LIKE "%api.ipify.org%" OR $Domain LIKE "%bot.whatismyipaddress.com%" OR $Domain
     LIKE "%ip.anysrc.net%" OR $Domain LIKE "%wtfismyip.com%") AND NOT ($ReturnCode='302'
-    AND $Status='PASSED' AND  $Proxy='httpreferer') AND $SrcIP='SuspectHost' LIMIT
+    AND $Status='PASSED' AND  $Proxy='httpreferer') AND $SrcIP='{SuspectHost}' LIMIT
     1000
 config: {}

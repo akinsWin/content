@@ -39,7 +39,7 @@ blocks:
     OR MimeType = 'application/x-lzip' OR MimeType = 'application/x-rar' OR MimeType
     = 'application/x-rpm' OR MimeType = 'application/x-stuffit' OR MimeType = 'application/x-tar'
     OR MimeType = 'application/x-xz' OR MimeType = 'application/x-zoo' OR MimeType
-    = 'application/zip') AND $RxLen > 10000000 AND $SrcIP='SuspectHost' LIMIT 1000
+    = 'application/zip') AND $RxLen > 10000000 AND $SrcIP='{SuspectHost}' LIMIT 1000
 cron: null
 config:
   parameters: []

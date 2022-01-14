@@ -19,6 +19,6 @@ blocks:
   DetectionScore: 5
   DetectionConfidence: Low
   SuspectHost: $SrcIP
-  raw_event_query: SELECT * FROM DNS WHERE $Duration=5m AND $SrcIP='SuspectHost' LIMIT
+  raw_event_query: SELECT * FROM DNS WHERE $Duration=5m AND $SrcIP='{SuspectHost}' LIMIT
     1000
 config: {}

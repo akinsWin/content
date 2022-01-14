@@ -20,7 +20,7 @@ blocks:
   SuspectUser: $User
   TargetUser: $TargetUser
   raw_event_query: SELECT * FROM IAM WHERE $Duration=15m AND $Action='USER_DISABLED'
-    OR $Action='USER_ENABLED' AND $TargetUser='TargetUser' AND $User='SuspectUser'
+    OR $Action='USER_ENABLED' AND $TargetUser='{TargetUser}' AND $User='{SuspectUser}'
     LIMIT 1000
 cron: null
 config:

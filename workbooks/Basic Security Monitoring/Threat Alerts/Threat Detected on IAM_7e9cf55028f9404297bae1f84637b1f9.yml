@@ -19,7 +19,7 @@ blocks:
   DetectionConfidence: Medium
   TargetHost: $System
   raw_event_query: SELECT * FROM THREAT WHERE $Action='THREAT_DETECTED' AND $Vector='IAM'
-    AND $Threat IS NOT NULL AND $System IS NOT NULL AND $User IS NOT NULL AND $System='TargetHost'
+    AND $Threat IS NOT NULL AND $System IS NOT NULL AND $User IS NOT NULL AND $System='{TargetHost}'
     LIMIT 1000
 cron: null
 config:

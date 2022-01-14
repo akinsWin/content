@@ -20,4 +20,4 @@ blocks:
   DetectionConfidence: Low
   TargetHost: $System
   raw_event_query: SELECT * FROM SYSMON-PROCESS WHERE $Image LIKE '%ltMC.exe' AND
-    $Commandline LIKE '%unload%SysmonDrv%' AND $System='TargetHost' LIMIT 100
+    $Commandline LIKE '%unload%SysmonDrv%' AND $System='{TargetHost}' LIMIT 100

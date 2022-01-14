@@ -21,7 +21,7 @@ blocks:
   DetectionConfidence: Medium
   SuspectUser: $User
   raw_event_query: _fetch * from event where $Stream=SYSMON-PROCESS AND $Image IN
-    [_Image_] AND $CommandLine=*write* AND $User='SuspectUser' limit 10
+    [_Image_] AND $CommandLine=*write* AND $User='{SuspectUser}' limit 10
 cron: null
 config:
   parameters: []

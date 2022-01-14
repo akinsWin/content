@@ -21,7 +21,7 @@ blocks:
   TargetHost: $System
   raw_event_query: SELECT * FROM AUDITD WHERE $Action='PROCESS_ADDED' AND $Process
     LIKE "%touch%" AND ($ProcessArgs LIKE "%\-r%" OR $ProcessArgs LIKE "%\-t%" OR
-    $ProcessArgs LIKE "%\-a%" OR $ProcessArgs LIKE "%\-m%") AND $System='TargetHost'
+    $ProcessArgs LIKE "%\-a%" OR $ProcessArgs LIKE "%\-m%") AND $System='{TargetHost}'
     LIMIT 1000
 cron: null
 config:

@@ -21,7 +21,7 @@ blocks:
   TargetUser: $Recipient
   raw_event_query: SELECT * FROM THREAT WHERE $Action='THREAT_DETECTED' AND $Vector='EMAIL'
     AND $Threat IS NOT NULL AND $Sender IS NOT NULL AND $Recipient IS NOT NULL AND
-    $Recipient='TargetUser' AND $Sender='SuspectUser' LIMIT 1000
+    $Recipient='{TargetUser}' AND $Sender='{SuspectUser}' LIMIT 1000
 cron: null
 config:
   parameters: []

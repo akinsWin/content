@@ -39,7 +39,7 @@ blocks:
     OR $Image LIKE "%regsvr32%exe%" OR $Image LIKE "%schtasks%exe%" OR $Image LIKE
     "%dnx%exe%" OR $Image LIKE "%regsvcs%exe%" OR $Image LIKE "%sc%exe%" OR $Image
     LIKE "%scriptrunner%exe%")) AND NOT ($Image LIKE "%Visual%Studio%")) AND $Signed
-    ='FALSE ') AND $System='TargetHost' LIMIT 1000
+    ='FALSE ') AND $System='{TargetHost}' LIMIT 1000
 cron: null
 config:
   parameters: []

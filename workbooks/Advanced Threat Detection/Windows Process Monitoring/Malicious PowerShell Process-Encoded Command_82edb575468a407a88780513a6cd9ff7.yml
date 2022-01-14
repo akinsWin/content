@@ -20,4 +20,4 @@ blocks:
   TargetHost: $System
   raw_event_query: SELECT * FROM SYSMON-PROCESS WHERE ($Image LIKE "%powershell.exe"
     AND ($CommandLine LIKE "%-EncodedCommand%" OR $CommandLine LIKE "%-enc%")) AND
-    $System='TargetHost' LIMIT 100
+    $System='{TargetHost}' LIMIT 100

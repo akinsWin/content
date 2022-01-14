@@ -22,7 +22,7 @@ blocks:
   raw_event_query: SELECT * FROM AUDITD WHERE $Action='PROCESS_ADDED' AND ($Process
     LIKE "%chmod%" OR $Process LIKE "%chown%" OR $Process LIKE "%chattr%" OR $Process
     LIKE "%chgrp%") AND ($ProcessArgs LIKE "%tmp%" OR $ProcessArgs LIKE "%var%tmp%"
-    OR $ProcessArgs LIKE "%dev%shm%") AND NOT $User='root' AND $System='TargetHost'
+    OR $ProcessArgs LIKE "%dev%shm%") AND NOT $User='root' AND $System='{TargetHost}'
     LIMIT 1000
 cron: null
 config:

@@ -17,5 +17,5 @@ blocks:
   DetectionConfidence: Low
   TargetHost: $System
   raw_event_query: SELECT * FROM SYSMON-PROCESS WHERE $Image LIKE "%schtasks.exe"
-    AND $CommandLine LIKE "%shutdown%" AND $System='TargetHost' LIMIT 100
+    AND $CommandLine LIKE "%shutdown%" AND $System='{TargetHost}' LIMIT 100
 config: {}

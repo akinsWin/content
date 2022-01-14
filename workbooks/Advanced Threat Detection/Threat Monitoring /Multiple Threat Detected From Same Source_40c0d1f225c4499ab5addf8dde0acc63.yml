@@ -19,7 +19,7 @@ blocks:
   DetectionConfidence: High
   SuspectHost: $SuspectHost
   raw_event_query: SELECT * FROM SIGNALS WHERE $Duration=30m AND $SourceStream='THREAT'
-    AND $SuspectHost IS NOT NULL AND $SuspectHost='SuspectHost' LIMIT 1000
+    AND $SuspectHost IS NOT NULL AND $SuspectHost='{SuspectHost}' LIMIT 1000
 cron: null
 config:
   parameters: []

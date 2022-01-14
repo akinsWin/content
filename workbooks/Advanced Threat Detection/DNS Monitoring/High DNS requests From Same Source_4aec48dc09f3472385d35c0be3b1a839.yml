@@ -19,7 +19,7 @@ blocks:
   DetectionConfidence: High
   SuspectHost: $SrcIP
   raw_event_query: SELECT * FROM DNS WHERE $Duration=30m  AND $Action='REQUEST_ALLOWED'
-    AND $STATUS='PASSED' AND $SrcIP='SuspectHost' LIMIT 1000
+    AND $STATUS='PASSED' AND $SrcIP='{SuspectHost}' LIMIT 1000
 cron: null
 config:
   parameters: []

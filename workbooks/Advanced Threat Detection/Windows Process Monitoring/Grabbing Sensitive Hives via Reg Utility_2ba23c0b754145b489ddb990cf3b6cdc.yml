@@ -27,7 +27,7 @@ blocks:
     ($CommandLine LIKE "%save%" OR $CommandLine LIKE "%export%") AND ($CommandLine
     LIKE "%hklm%" OR $CommandLine LIKE "%hkey%local%machine%") AND ($CommandLine LIKE
     "%system%" OR $CommandLine LIKE "%sam%" OR $CommandLine LIKE "%security%")) AND
-    $System='TargetHost' LIMIT 1000
+    $System='{TargetHost}' LIMIT 1000
 cron: null
 config:
   parameters: []

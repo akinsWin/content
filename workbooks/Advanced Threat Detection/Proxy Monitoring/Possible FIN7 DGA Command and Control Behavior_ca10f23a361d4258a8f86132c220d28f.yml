@@ -21,5 +21,5 @@ blocks:
   TargetHost: $DstIP
   raw_event_query: _fetch * from event where $Stream=WEBFILTER AND $Proto=TCP AND
     $Domain=regex((?i).*[a-zA-Z]{4,5}\.(pw|us|club|info|site|top).*) NOT $Domain=*zoom*us*
-    AND $DstIP='TargetHost' AND $SrcIP='SuspectHost' limit 10
+    AND $DstIP='{TargetHost}' AND $SrcIP='{SuspectHost}' limit 10
 config: {}

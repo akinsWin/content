@@ -19,5 +19,5 @@ blocks:
   DetectionConfidence: Low
   SuspectUser: $User
   raw_event_query: SELECT * FROM AZURE WHERE $OperationName='Add owner to service
-    principal' AND $Status='Succeeded' AND $User='SuspectUser' LIMIT 1000
+    principal' AND $Status='Succeeded' AND $User='{SuspectUser}' LIMIT 1000
 config: {}

@@ -21,8 +21,8 @@ blocks:
   DetectionConfidence: Low
   SuspectHost: $SrcIP
   TargetHost: $System
-  raw_event_query: SELECT * FROM WEBFILTER WHERE $UserAgent = "" AND $System='TargetHost'
-    AND $SrcIP='SuspectHost' LIMIT 1000
+  raw_event_query: SELECT * FROM WEBFILTER WHERE $UserAgent = "" AND $System='{TargetHost}'
+    AND $SrcIP='{SuspectHost}' LIMIT 1000
 cron: null
 config:
   parameters: []

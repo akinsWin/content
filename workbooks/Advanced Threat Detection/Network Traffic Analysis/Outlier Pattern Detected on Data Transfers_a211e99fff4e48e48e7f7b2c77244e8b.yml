@@ -32,7 +32,7 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Medium
   SuspectHost: $SrcIP
-  raw_event_query: SELECT * FROM NTA-HTTP WHERE $Duration=7d AND $SrcIP='SuspectHost'
+  raw_event_query: SELECT * FROM NTA-HTTP WHERE $Duration=7d AND $SrcIP='{SuspectHost}'
     LIMIT 1000
 - type: text
   code: This detection rule attempts to find the outlier Source IP from the NTA-HTTP

@@ -18,5 +18,5 @@ blocks:
   DetectionConfidence: Low
   SuspectUser: $User
   raw_event_query: SELECT * FROM AZURE WHERE $OperationName='Microsoft.Network/networkSecurityGroups/delete'
-    AND $Status='Succeeded' AND $User='SuspectUser' LIMIT 1000
+    AND $Status='Succeeded' AND $User='{SuspectUser}' LIMIT 1000
 config: {}

@@ -26,5 +26,5 @@ blocks:
   raw_event_query: SELECT * FROM CLOUDTRAIL WHERE ($EventSource='cloudtrail.amazonaws.com'
     AND ($EventName='StopLogging' OR $EventName='UpdateTrail' OR $EventName='DeleteTrail'))
     AND $EventSource IS NOT NULL AND $EventName IS NOT NULL AND $User IS NOT NULL
-    AND $EventSource='TargetHost' AND $User='SuspectUser' LIMIT 1000
+    AND $EventSource='{TargetHost}' AND $User='{SuspectUser}' LIMIT 1000
 config: {}

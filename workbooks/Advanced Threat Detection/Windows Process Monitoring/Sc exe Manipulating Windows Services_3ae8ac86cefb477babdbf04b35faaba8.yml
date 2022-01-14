@@ -20,7 +20,7 @@ blocks:
   TargetHost: $System
   raw_event_query: SELECT * FROM SYSMON-PROCESS WHERE $OriginalFileName='sc.exe' AND
     $Image LIKE "%\sc.exe" AND ($CommandLine LIKE "%create%" OR $CommandLine LIKE
-    "%\config%") AND $System='TargetHost' LIMIT 100
+    "%\config%") AND $System='{TargetHost}' LIMIT 100
 cron: null
 config:
   parameters: []

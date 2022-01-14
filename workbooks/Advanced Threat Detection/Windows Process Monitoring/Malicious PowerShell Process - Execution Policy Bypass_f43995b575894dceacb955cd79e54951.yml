@@ -18,6 +18,6 @@ blocks:
   DetectionConfidence: Low
   TargetHost: $System
   raw_event_query: SELECT * FROM SYSMON-PROCESS WHERE $Image LIKE "%powershell.exe"
-    AND ($CommandLine LIKE "% -ex%" OR $CommandLine LIKE "% bypass %") AND $System='TargetHost'
+    AND ($CommandLine LIKE "% -ex%" OR $CommandLine LIKE "% bypass %") AND $System='{TargetHost}'
     LIMIT 100
 config: {}

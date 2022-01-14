@@ -19,8 +19,8 @@ blocks:
   DetectionConfidence: Medium
   SuspectHost: $SrcIP
   TargetHost: $DstIP
-  raw_event_query: SELECT * FROM NTA-SMB WHERE $Duration=5m AND $DstIP='TargetHost'
-    AND $SrcIP='SuspectHost' LIMIT 1000
+  raw_event_query: SELECT * FROM NTA-SMB WHERE $Duration=5m AND $DstIP='{TargetHost}'
+    AND $SrcIP='{SuspectHost}' LIMIT 1000
 cron: null
 config:
   parameters: []

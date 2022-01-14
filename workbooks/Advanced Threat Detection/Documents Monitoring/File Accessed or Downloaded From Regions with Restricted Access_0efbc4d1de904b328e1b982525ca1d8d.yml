@@ -19,7 +19,7 @@ blocks:
   DetectionConfidence: Medium
   SuspectUser: $User
   raw_event_query: _fetch * from event where $Stream=DOCUMENTS AND $Action IN [ACCESSED,DOWNLOADED]
-    AND $SrcCN IN [CN,KR] AND $User='SuspectUser' limit 100
+    AND $SrcCN IN [CN,KR] AND $User='{SuspectUser}' limit 100
 cron: null
 config:
   parameters: []

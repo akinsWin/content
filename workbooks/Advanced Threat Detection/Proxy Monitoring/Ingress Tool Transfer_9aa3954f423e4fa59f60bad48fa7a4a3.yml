@@ -22,5 +22,5 @@ blocks:
   DetectionConfidence: Low
   SuspectHost: $SrcIP
   raw_event_query: _fetch * from event where $Stream=WEBFILTER AND $URL=regex(.*\.(rar|ps1).*)
-    AND $SrcIP='SuspectHost' limit 10
+    AND $SrcIP='{SuspectHost}' limit 10
 config: {}

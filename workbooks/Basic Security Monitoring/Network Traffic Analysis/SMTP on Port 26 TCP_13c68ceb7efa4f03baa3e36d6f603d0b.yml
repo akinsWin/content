@@ -21,5 +21,5 @@ blocks:
   SuspectHost: $SrcIP
   TargetHost: $DstIP
   raw_event_query: _fetch * from event where $Stream=FIREWALL AND $Proto=TCP AND $DstPort=26
-    AND $DstIP='TargetHost' AND $SrcIP='SuspectHost' limit 10
+    AND $DstIP='{TargetHost}' AND $SrcIP='{SuspectHost}' limit 10
 config: {}

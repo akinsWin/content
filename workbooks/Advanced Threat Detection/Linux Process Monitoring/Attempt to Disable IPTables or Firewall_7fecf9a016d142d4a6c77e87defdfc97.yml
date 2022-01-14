@@ -30,7 +30,7 @@ blocks:
     OR (($Process="%systemctl" AND $ProcessArgs LIKE "%disable%") OR ($Process LIKE
     "%systemctl%" AND $ProcessArgs LIKE "%stop%") OR ($Process LIKE "%systemctl%"
     AND $ProcessArgs LIKE "%kill%")) AND($ProcessArgs  LIKE "%firewalld%" OR $ProcessArgs
-    LIKE "%ip6tables%" OR $ProcessArgs LIKE "%iptables%"))) AND $System='TargetHost'
+    LIKE "%ip6tables%" OR $ProcessArgs LIKE "%iptables%"))) AND $System='{TargetHost}'
     LIMIT 1000
 cron: null
 config:

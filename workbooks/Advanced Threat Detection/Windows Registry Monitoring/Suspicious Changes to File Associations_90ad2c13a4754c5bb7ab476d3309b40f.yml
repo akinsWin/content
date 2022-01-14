@@ -21,5 +21,5 @@ blocks:
   TargetHost: $System
   raw_event_query: SELECT * FROM SYSMON-REGISTRY WHERE $Action='OBJECT_MODIFIED' AND
     $TargetObject LIKE "%Explorer%FileExts%" AND NOT($Image LIKE "%Explorer.EXE%"
-    OR $Image LIKE "%OpenWith.exe%") AND $System='TargetHost' LIMIT 1000
+    OR $Image LIKE "%OpenWith.exe%") AND $System='{TargetHost}' LIMIT 1000
 config: {}

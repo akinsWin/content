@@ -32,7 +32,7 @@ blocks:
   DetectionConfidence: Medium
   SuspectUser: $User
   raw_event_query: SELECT * FROM SYSMON-NETWORK WHERE $Duration=7d AND $DstPort='21'
-    AND $User='SuspectUser' LIMIT 1000
+    AND $User='{SuspectUser}' LIMIT 1000
 - type: text
   code: This detection rule attempts to find the outlier User from the SYSMON-NETWORK  stream
     based on their FTP connection activities.In this,  distinct system and distinct

@@ -20,5 +20,5 @@ blocks:
   DetectionSeverity: Medium
   DetectionConfidence: Low
   TargetHost: $System
-  raw_event_query: SELECT * FROM SYSMON-PROCESS WHERE $Duration=5m AND $System='TargetHost'
+  raw_event_query: SELECT * FROM SYSMON-PROCESS WHERE $Duration=5m AND $System='{TargetHost}'
     LIMIT 1000

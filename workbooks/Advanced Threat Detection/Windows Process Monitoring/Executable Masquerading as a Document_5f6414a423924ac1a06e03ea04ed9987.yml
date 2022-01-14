@@ -17,5 +17,5 @@ blocks:
   DetectionConfidence: Low
   TargetHost: $System
   raw_event_query: _fetch * from event where $Stream=SYSMON-PROCESS AND $CommandLine=regex(.*\.xlsx.exe|.*\.xls\.exe|.*\.pdf\.exe|.*\.txt.exe.*|.*\.doc.exe.*|.*\.docx.exe.*|.*\.jpg.exe.*|.*\.vbs.exe.*|.*\.ppt.exe.|.*\.pptx.exe.|.*\.docm.exe.*)
-    AND $System='TargetHost' limit 100
+    AND $System='{TargetHost}' limit 100
 config: {}

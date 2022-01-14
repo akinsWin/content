@@ -23,5 +23,5 @@ blocks:
   SuspectHost: $SrcIP
   TargetHost: $DstIP
   raw_event_query: SELECT * FROM FIREWALL WHERE $DstPort='23' AND $SrcType='PUBLIC'
-    AND $Proto='TCP' AND $DstIP='TargetHost' AND $SrcIP='SuspectHost' LIMIT 1000
+    AND $Proto='TCP' AND $DstIP='{TargetHost}' AND $SrcIP='{SuspectHost}' LIMIT 1000
 config: {}

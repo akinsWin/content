@@ -23,7 +23,7 @@ blocks:
   SuspectHost: $SrcIP
   raw_event_query: SELECT * FROM WEBFILTER WHERE ($URL LIKE "%paste%ee%r%" OR $URL
     LIKE "%pastebin%com%raw/%" OR $URL LIKE "%hastebin%com%raw%" OR $URL LIKE "%ghostbin%co%paste%raw%")
-    AND $SrcIP='SuspectHost' LIMIT 1000
+    AND $SrcIP='{SuspectHost}' LIMIT 1000
 cron: null
 config:
   parameters: []

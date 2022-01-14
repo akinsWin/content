@@ -36,7 +36,7 @@ blocks:
   DetectionConfidence: Medium
   SuspectHost: $SrcIP
   raw_event_query: SELECT * FROM DOCUMENTS WHERE $Duration=7d AND $Action='DOWNLOADED'
-    AND $SrcIP='SuspectHost' LIMIT 1000
+    AND $SrcIP='{SuspectHost}' LIMIT 1000
 - type: text
   code: This detection rule attempts to find the outlier IP from the DOCUMENTS stream
     based on their file download  activities. In this, count of all distinct file

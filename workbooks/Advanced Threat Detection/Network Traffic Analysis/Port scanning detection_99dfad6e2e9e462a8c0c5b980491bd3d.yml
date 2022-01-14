@@ -18,7 +18,7 @@ blocks:
   DetectionConfidence: Medium
   SuspectHost: $SrcIP
   raw_event_query: SELECT * FROM NTA-CONNECTION WHERE $Duration=15m AND $DstIP='PRIVATE'
-    AND $SrcIP='SuspectHost' LIMIT 1000
+    AND $SrcIP='{SuspectHost}' LIMIT 1000
 cron: null
 config:
   parameters: []

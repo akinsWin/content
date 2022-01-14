@@ -28,7 +28,7 @@ blocks:
     OR $Image LIKE "%powerpnt%exe%" OR $Image LIKE "%excel%exe%" OR $Image LIKE "%outlook%exe%")
     AND ($ImageLoaded LIKE "%wmiutils%dll%" OR $ImageLoaded LIKE "%wbemcomn%dll%"
     OR $ImageLoaded LIKE "%wbemprox%dll%" OR $ImageLoaded LIKE "%wbemdisp%dll%" OR
-    $ImageLoaded LIKE "%wbemsvc%dll%") AND $System='TargetHost' LIMIT 1000
+    $ImageLoaded LIKE "%wbemsvc%dll%") AND $System='{TargetHost}' LIMIT 1000
 cron: null
 config:
   parameters: []

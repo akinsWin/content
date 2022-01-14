@@ -19,5 +19,5 @@ blocks:
   DetectionSeverity: Medium
   SuspectUser: $User
   raw_event_query: SELECT * FROM AZURE WHERE $OperationName LIKE "%MICROSOFT%EVENTHUB%NAMESPACES%AUTHORIZATIONRULES%WRITE%"
-    AND $Status='Succeeded' AND $User='SuspectUser' LIMIT 1000
+    AND $Status='Succeeded' AND $User='{SuspectUser}' LIMIT 1000
 config: {}

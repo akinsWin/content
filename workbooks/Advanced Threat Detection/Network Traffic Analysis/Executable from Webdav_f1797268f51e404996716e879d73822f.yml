@@ -18,7 +18,7 @@ blocks:
   DetectionConfidence: Medium
   SuspectUrl: $URI
   raw_event_query: SELECT * FROM NTA-HTTP WHERE $UserAgent LIKE "%WebDAV%" AND ($URI
-    LIKE "%webdav%" OR $URI LIKE "%exe%") AND $MimeType LIKE "%dosexec%" AND $URI='SuspectUrl'
+    LIKE "%webdav%" OR $URI LIKE "%exe%") AND $MimeType LIKE "%dosexec%" AND $URI='{SuspectUrl}'
     LIMIT 1000
 cron: null
 config:

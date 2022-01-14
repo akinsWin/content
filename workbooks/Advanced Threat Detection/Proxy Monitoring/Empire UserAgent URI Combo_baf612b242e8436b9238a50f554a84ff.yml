@@ -26,7 +26,7 @@ blocks:
   raw_event_query: SELECT * FROM WEBFILTER WHERE $UserAgent LIKE "Mozilla/5.0%Windows
     NT 6.1%WOW64%Trident/7.0%rv%11.0%like%Gecko%" AND ($URL LIKE "%admin%get.php"
     OR $URL LIKE "%news.php" OR $URL LIKE "%login%process.php") AND $HTTPMethod =
-    'POST' AND $System='TargetHost' AND $SrcIP='SuspectHost' LIMIT 1000
+    'POST' AND $System='{TargetHost}' AND $SrcIP='{SuspectHost}' LIMIT 1000
 cron: null
 config:
   parameters: []

@@ -18,7 +18,7 @@ blocks:
   DetectionConfidence: Medium
   TargetHost: $System
   raw_event_query: _fetch * from event where $Stream=SYSMON-PROCESS AND $Action=CREATE_REMOTE_THREAD
-    AND $TargetImage=*lsass.exe* AND $System='TargetHost' limit 0
+    AND $TargetImage=*lsass.exe* AND $System='{TargetHost}' limit 0
 cron: null
 config:
   parameters: []

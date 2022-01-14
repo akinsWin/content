@@ -33,7 +33,7 @@ blocks:
   DetectionConfidence: Medium
   SuspectHost: $SrcIP
   raw_event_query: SELECT * FROM WIN-AUDIT WHERE $Duration=7d AND $Action='NETWORK_SHARE_OBJECT_ACCESSED'
-    AND $SrcIP='SuspectHost' LIMIT 1000
+    AND $SrcIP='{SuspectHost}' LIMIT 1000
 - type: text
   code: '
 

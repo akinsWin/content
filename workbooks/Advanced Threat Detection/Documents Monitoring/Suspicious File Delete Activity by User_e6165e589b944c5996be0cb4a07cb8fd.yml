@@ -36,7 +36,7 @@ blocks:
   DetectionConfidence: Medium
   SuspectUser: $User
   raw_event_query: SELECT * FROM DOCUMENTS WHERE $Duration=7d AND $Action='DELETED'
-    AND $User='SuspectUser' LIMIT 1000
+    AND $User='{SuspectUser}' LIMIT 1000
 - type: text
   code: This detection rule attempts to find the outlier User from the DOCUMENTS stream
     based on their file delete  activities. In this, count of all distinct file delete

@@ -19,7 +19,7 @@ blocks:
   DetectionConfidence: Medium
   SuspectHost: $SrcIP
   raw_event_query: SELECT * FROM DNS WHERE $Action='DNS_QUERIED' AND $ResponseCode='NXDOMAIN'
-    AND $Status='PASSED' AND $Duration=15m AND $SrcIP='SuspectHost' LIMIT 1000
+    AND $Status='PASSED' AND $Duration=15m AND $SrcIP='{SuspectHost}' LIMIT 1000
 - type: text
   code: When a DNS Proxy server is under a DNS NXDOMAIN Flood DDoS attack, it will
     constantly send the invalid requests to the respective DNS Authoritative server.

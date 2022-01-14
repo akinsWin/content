@@ -20,8 +20,8 @@ blocks:
   SuspectHost: $SrcIP
   TargetHost: $DstIP
   raw_event_query: SELECT * FROM THREAT WHERE $Action='THREAT_DETECTED' AND $Vector='WEB'
-    AND $SrcIP IS NOT NULL AND $DstIP IS NOT NULL AND $Threat IS NOT NULL AND $DstIP='TargetHost'
-    AND $SrcIP='SuspectHost' LIMIT 1000
+    AND $SrcIP IS NOT NULL AND $DstIP IS NOT NULL AND $Threat IS NOT NULL AND $DstIP='{TargetHost}'
+    AND $SrcIP='{SuspectHost}' LIMIT 1000
 cron: null
 config:
   parameters: []

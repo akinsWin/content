@@ -21,5 +21,5 @@ blocks:
   SuspectHost: $SrcIP
   TargetHost: $System
   raw_event_query: SELECT * FROM AUTHENTICATION WHERE $Duration=1w AND $Action='LOGIN'
-    AND $System='TargetHost' AND $SrcIP='SuspectHost' LIMIT 100
+    AND $System='{TargetHost}' AND $SrcIP='{SuspectHost}' LIMIT 100
 config: {}

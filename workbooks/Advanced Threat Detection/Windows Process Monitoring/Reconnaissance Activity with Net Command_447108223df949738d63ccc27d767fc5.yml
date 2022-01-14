@@ -35,7 +35,7 @@ blocks:
     OR $CommandLine LIKE "%net1%group%domain%" OR $CommandLine LIKE "%net1%group%domain%admins%"
     OR $CommandLine LIKE "%net1%group%Exchange%Trusted%Subsystem%domain%" OR $CommandLine
     LIKE "%net1%accounts%domain%" OR $CommandLine LIKE "%net1%user%net%localgroup%administrators%"
-    OR $CommandLine LIKE "%netstat%an%") AND $System='TargetHost' LIMIT 1000
+    OR $CommandLine LIKE "%netstat%an%") AND $System='{TargetHost}' LIMIT 1000
 cron: null
 config:
   parameters: []

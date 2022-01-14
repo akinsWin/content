@@ -19,5 +19,5 @@ blocks:
   DetectionConfidence: Medium
   SuspectUser: $User
   raw_event_query: SELECT * FROM AUTHENTICATION WHERE $Action='LOGIN' AND $Status='PASSED'
-    AND $Duration=1h AND $User='SuspectUser' LIMIT 1000
+    AND $Duration=1h AND $User='{SuspectUser}' LIMIT 1000
 config: {}

@@ -20,8 +20,8 @@ blocks:
   SuspectObject: $File
   TargetHost: $System
   raw_event_query: SELECT * FROM THREAT WHERE $Vector='HOST' AND $Action='THREAT_DETECTED'
-    AND $Threat IS NOT NULL AND $System IS NOT NULL AND $FILE IS NOT NULL AND $System='TargetHost'
-    AND $File='SuspectObject' LIMIT 1000
+    AND $Threat IS NOT NULL AND $System IS NOT NULL AND $FILE IS NOT NULL AND $System='{TargetHost}'
+    AND $File='{SuspectObject}' LIMIT 1000
 cron: null
 config:
   parameters: []

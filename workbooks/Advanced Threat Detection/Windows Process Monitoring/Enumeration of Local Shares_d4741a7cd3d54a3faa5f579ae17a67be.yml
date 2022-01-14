@@ -21,7 +21,7 @@ blocks:
   SuspectUser: $User
   raw_event_query: SELECT * FROM SYSMON-PROCESS WHERE ($Image LIKE "%net.exe%" OR
     ($Image LIKE "%net1.exe%" AND NOT $ParentImage LIKE "%net.exe%")) AND $CommandLine
-    LIKE "%share%" AND $User='SuspectUser' LIMIT 1000
+    LIKE "%share%" AND $User='{SuspectUser}' LIMIT 1000
 cron: null
 config:
   parameters: []
