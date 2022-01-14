@@ -1,0 +1,24 @@
+id: be9b880798bf4f6f9368665982f9afa7
+name: Phishing URL Accessed
+path: /Visualization/Webfilter Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=WEBFILTER AND $Duration=1h AND $Category=Phishing
+    group count_unique $User limit 100
+- type: visual
+  data:
+    widget_name: Phishing URL Accessed
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $User
+      - null
+      value: count_unique
+cron: null
+config:
+  parameters: []

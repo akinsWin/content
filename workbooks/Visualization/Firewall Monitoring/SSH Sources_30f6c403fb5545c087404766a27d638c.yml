@@ -1,0 +1,24 @@
+id: 30f6c403fb5545c087404766a27d638c
+name: SSH Sources
+path: /Visualization/Firewall Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $SrcIP, COUNT(*) AS Count FROM FIREWALL WHERE $DstPort='443' AND $Action='PACKET_ALLOWED'
+    GROUP BY $SrcIP
+- type: visual
+  data:
+    widget_name: SSH Sources
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $SrcIP
+      - null
+      value: $Count
+cron: null
+config:
+  parameters: []

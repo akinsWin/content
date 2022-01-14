@@ -1,0 +1,24 @@
+id: 47c5f20824404765b4cab230d9634f1e
+name: SSH Destinations
+path: /Visualization/Firewall Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $DstIP, COUNT(*) AS Count FROM FIREWALL WHERE $DstPort='22' AND $Action='PACKET_ALLOWED'
+    GROUP BY $DstIP
+- type: visual
+  data:
+    widget_name: SSH  Destinations
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $DstIP
+      - null
+      value: $Count
+cron: null
+config:
+  parameters: []

@@ -1,0 +1,24 @@
+id: a4d983c96de244358478447d2a10aa7b
+name: Multiple Login Failure From A Disabled Account
+path: /Basic Security Monitoring/Authentication Attacks
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=15m AND $Action=LOGIN
+    AND $Status=FAILED AND $Reason=USER_DISABLED group count_unique $User limit 100
+- type: dql
+  query: '_checkif int_compare count_unique > 3 include '
+- type: signal
+  DetectionName: Multiple Login Failure From A Disabled Account
+  DetectionTactic: Persistence
+  DetectionTechnique: Valid Accounts
+  DetectionScore: '5'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $User
+cron: null
+config:
+  parameters: []

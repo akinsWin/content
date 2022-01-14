@@ -1,0 +1,24 @@
+id: e07f27997e4f431b96efe2ddf39f1b7d
+name: Top Users
+path: /Visualization/Webfilter Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=WEBFILTER  AND $Duration=1h group count_unique
+    $User limit 10
+- type: visual
+  data:
+    widget_name: Top Users
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $User
+      - count_unique
+      value: count_unique
+cron: null
+config:
+  parameters: []

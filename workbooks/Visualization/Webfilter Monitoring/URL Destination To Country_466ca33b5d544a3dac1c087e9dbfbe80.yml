@@ -1,0 +1,24 @@
+id: 466ca33b5d544a3dac1c087e9dbfbe80
+name: URL Destination To Country
+path: /Visualization/Webfilter Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Duration=1h AND $Stream=WEBFILTER group count_unique
+    $DstCN  limit 10
+- type: visual
+  data:
+    widget_name: URL Destination To Country
+    chart_type: geoMap
+    config:
+      type: default
+      key:
+      - $DstCN
+      - null
+      value: count_unique
+cron: null
+config:
+  parameters: []

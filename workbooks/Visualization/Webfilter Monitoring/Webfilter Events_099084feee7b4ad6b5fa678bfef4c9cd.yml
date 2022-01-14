@@ -1,0 +1,24 @@
+id: 099084feee7b4ad6b5fa678bfef4c9cd
+name: Webfilter Events
+path: /Visualization/Webfilter Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=WEBFILTER AND $Duration=1h AND $Status=PASSED
+    group count_unique $Action limit 10
+- type: visual
+  data:
+    widget_name: Webfilter Events
+    chart_type: column
+    config:
+      type: default
+      key:
+      - $Action
+      - null
+      value: count_unique
+cron: null
+config:
+  parameters: []

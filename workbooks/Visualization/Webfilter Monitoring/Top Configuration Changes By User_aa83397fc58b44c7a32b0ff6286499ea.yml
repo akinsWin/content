@@ -1,0 +1,24 @@
+id: aa83397fc58b44c7a32b0ff6286499ea
+name: Top Configuration Changes By User
+path: /Visualization/Webfilter Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=CONFIGURATION AND $Duration=1h AND $SourceType=WEBFILTER
+    AND $Action=CONFIGURATION_CHANGED  group count_unique $Config,$User limit 10
+- type: visual
+  data:
+    widget_name: Top Configuration Changes By User
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $User
+      - $Config
+      value: count_unique
+cron: null
+config:
+  parameters: []
