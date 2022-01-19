@@ -8,7 +8,8 @@ entity_type: workbooks
 blocks:
 - type: dql
   query: '_fetch * from event where $Stream=AUTHENTICATION AND $Duration=15m AND $Action=LOGIN
-    AND $Status=FAILED AND  $Reason=ACCOUNT_EXPIRED  group count_unique $User,$SrcIP limit 100 '
+    AND $Status=FAILED AND  $Reason=ACCOUNT_EXPIRED  group count_unique $User,$SrcIP
+    limit 100 '
 - type: signal
   DetectionName: Login Failure From Expired Account
   DetectionTactic: Initial Access
@@ -18,6 +19,9 @@ blocks:
   DetectionConfidence: Medium
   SuspectUser: $User
   SuspectHost: $SrcIP
+  raw_event_query: _fetch * from event where $Stream=AUTHENTICATION AND $Duration=15m
+    AND $Action=LOGIN AND $Status=FAILED AND  $Reason=ACCOUNT_EXPIRED AND $SrcIP='{SuspectHost}'
+    AND $User='{SuspectUser}' limit 100
 cron: null
 config:
   parameters: []
