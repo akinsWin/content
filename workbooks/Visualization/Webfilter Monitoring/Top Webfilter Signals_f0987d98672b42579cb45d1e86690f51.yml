@@ -1,0 +1,25 @@
+id: f0987d98672b42579cb45d1e86690f51
+name: Top Webfilter Signals
+path: /Visualization/Webfilter Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $DetectionName, COUNT($DetectionName) AS COUNT FROM SIGNALS WHERE
+    $Duration=1h AND $SourceStream LIKE "WEBFILTER" GROUP BY $DetectionName ORDER
+    BY COUNT DESC LIMIT 10
+- type: visual
+  data:
+    widget_name: Top Webfilter Signals
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $DetectionName
+      - $DetectionName
+      value: $COUNT
+cron: null
+config:
+  parameters: []

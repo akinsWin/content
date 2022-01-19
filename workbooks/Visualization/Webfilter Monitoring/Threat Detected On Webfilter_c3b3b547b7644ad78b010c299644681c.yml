@@ -1,0 +1,24 @@
+id: c3b3b547b7644ad78b010c299644681c
+name: Threat Detected On Webfilter
+path: /Visualization/Webfilter Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=THREAT AND $Duration=1h AND $SourceType=WEBFILTER
+    AND $Action=THREAT_DETECTED  group count_unique $Threat limit 10
+- type: visual
+  data:
+    widget_name: Threat Detected On Webfilter
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $Threat
+      - null
+      value: count_unique
+cron: null
+config:
+  parameters: []

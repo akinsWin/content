@@ -1,0 +1,24 @@
+id: 15b42db7ee034e9ca935345b36bddc73
+name: Bandwidth Usage by Users
+path: /Visualization/Webfilter Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $User, SUM($TXLen) AS $TotalBytes FROM WEBFILTER WHERE $Duration=1h
+    AND $Action='URL_ALLOWED' GROUP BY $User ORDER BY $TotalBytes DESC LIMIT 5
+- type: visual
+  data:
+    widget_name: Bandwidth Usage by Users
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $User
+      - null
+      value: $TotalBytes
+cron: null
+config:
+  parameters: []

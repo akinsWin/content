@@ -1,0 +1,25 @@
+id: 5503c8ce17554db885aeafa6ac0697d2
+name: Threat Detected on Host - File
+path: /Visualization/Threat Alerts Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: sql
+  query: SELECT $Threat,$File, COUNT($Threat) AS $CountThreat FROM THREAT WHERE $Duration=1h
+    AND $Vector='HOST' AND $Threat IS NOT NULL AND $System IS NOT NULL AND $FILE IS
+    NOT NULL GROUP BY $Threat,$File ORDER BY $CountThreat DESC LIMIT 10
+- type: visual
+  data:
+    widget_name: Threat Detected on Host - File
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $Threat
+      - $File
+      value: $CountThreat
+cron: null
+config:
+  parameters: []
