@@ -1,0 +1,24 @@
+id: c1ccb39b09694499adc9215d6bf579f7
+name: Top URL Accessed
+path: /Visualization/Webfilter Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=WEBFILTER AND $Duration=1h  AND $Action=URL_ACCESSED
+    group count_unique $URL limit 10
+- type: visual
+  data:
+    widget_name: Top URL Accessed
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $URL
+      - null
+      value: count_unique
+cron: null
+config:
+  parameters: []

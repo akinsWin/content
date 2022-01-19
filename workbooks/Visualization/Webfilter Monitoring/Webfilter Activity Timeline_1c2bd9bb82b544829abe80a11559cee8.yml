@@ -1,0 +1,24 @@
+id: 1c2bd9bb82b544829abe80a11559cee8
+name: Webfilter Activity Timeline
+path: /Visualization/Webfilter Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=WEBFILTER AND $Duration=1h group timeslice
+    1m limit 60
+- type: visual
+  data:
+    widget_name: Webfilter Activity Timeline
+    chart_type: timeline
+    config:
+      type: default
+      key:
+      - $CNAMTime
+      - null
+      value: count
+cron: null
+config:
+  parameters: []

@@ -1,0 +1,24 @@
+id: 7676ac140146482797800643ffc1e172
+name: Top URL Blocked
+path: /Visualization/Webfilter Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=WEBFILTER AND $Action=URL_BLOCKED AND $Duration=1h
+    group count_unique $URL limit 10
+- type: visual
+  data:
+    widget_name: Top URL Blocked
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $URL
+      - null
+      value: count_unique
+cron: null
+config:
+  parameters: []

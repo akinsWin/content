@@ -1,0 +1,24 @@
+id: 21e0d9f6d1234bbdaa362044ad2eb67b
+name: Top Domains
+path: /Visualization/Webfilter Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=WEBFILTER  AND $Duration=1h group count_unique
+    $Domain limit 10
+- type: visual
+  data:
+    widget_name: Top Domains
+    chart_type: bar
+    config:
+      type: stacked
+      key:
+      - $Domain
+      - $Domain
+      value: count_unique
+cron: null
+config:
+  parameters: []

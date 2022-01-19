@@ -1,0 +1,23 @@
+id: 80b3d7f21d66406dad433180349a3bca
+name: Login Failure From Expired Account
+path: /Basic Security Monitoring/Authentication Attacks
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: '_fetch * from event where $Stream=AUTHENTICATION AND $Duration=15m AND $Action=LOGIN
+    AND $Status=FAILED AND  $Reason=ACCOUNT_EXPIRED  group count_unique $User,$SrcIP limit 100 '
+- type: signal
+  DetectionName: Login Failure From Expired Account
+  DetectionTactic: Initial Access
+  DetectionTechnique: Valid Accounts
+  DetectionScore: '6'
+  DetectionSeverity: Medium
+  DetectionConfidence: Medium
+  SuspectUser: $User
+  SuspectHost: $SrcIP
+cron: null
+config:
+  parameters: []

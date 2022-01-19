@@ -1,0 +1,24 @@
+id: 462a9478540848c8b1993b34108dfadc
+name: Top Users Accessing Blocked URLs
+path: /Visualization/Webfilter Monitoring
+description: ''
+type: standard
+author: DNIF
+entity_type: workbooks
+blocks:
+- type: dql
+  query: _fetch * from event where $Stream=WEBFILTER AND $Action=URL_BLOCKED AND $Duration=1h
+    group count_unique $User limit 10
+- type: visual
+  data:
+    widget_name: Top Users Accessing Blocked URLs
+    chart_type: bar
+    config:
+      type: default
+      key:
+      - $User
+      - null
+      value: count_unique
+cron: null
+config:
+  parameters: []
