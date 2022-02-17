@@ -7,8 +7,8 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT $ProcessName,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
-    ($ProcessName='hexdump' OR $ProcessName='od' OR $ProcessName='xxd') GROUP BY $ProcessName,$System
+  query: SELECT $Process,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
+    ($Process='hexdump' OR $Process='od' OR $Process='xxd') GROUP BY $Process,$System
 - type: signal
   DetectionName: Hex Encoding/Decoding Activity
   DetectionTactic: Defense Evasion

@@ -7,14 +7,14 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT $ProcessName,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
-    (($ProcessName='ufw' AND ($ProcessArgs LIKE "allow" OR $ProcessArgs LIKE "disable"
-    OR $ProcessArgs LIKE "reset")) OR (($ProcessName='service' AND $ProcessArgs LIKE
-    "%stop%") OR ($ProcessName='chkconfig' AND $ProcessArgs LIKE "%off%") OR (($ProcessName='%systemctl'
-    AND $ProcessArgs LIKE "%disable%") OR ($ProcessName='systemctl' AND $ProcessArgs
-    LIKE "%stop%") OR ($ProcessName='systemctl' AND $ProcessArgs LIKE "%kill%")) AND($ProcessArgs
+  query: SELECT $Process,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
+    (($Process='ufw' AND ($ProcessArgs LIKE "allow" OR $ProcessArgs LIKE "disable"
+    OR $ProcessArgs LIKE "reset")) OR (($Process='service' AND $ProcessArgs LIKE
+    "%stop%") OR ($Process='chkconfig' AND $ProcessArgs LIKE "%off%") OR (($Process='%systemctl'
+    AND $ProcessArgs LIKE "%disable%") OR ($Process='systemctl' AND $ProcessArgs
+    LIKE "%stop%") OR ($Process='systemctl' AND $ProcessArgs LIKE "%kill%")) AND($ProcessArgs
     LIKE "%firewalld%" OR $ProcessArgs LIKE "%syslog%" OR $rsyslog LIKE "%syslog\-ng%"
-    ))) GROUP BY $ProcessName,$System
+    ))) GROUP BY $Process,$System
 - type: signal
   DetectionName: Attempt to Disable Syslog Service
   DetectionTactic: Defense Evasion
