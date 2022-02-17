@@ -9,7 +9,7 @@ blocks:
 - type: sql
   query: SELECT $Process,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND ($Process
     LIKE "%\/tmp%" OR $Process LIKE "\/var\/tmp" OR $Process LIKE "%\/dev\/shm%")  AND
-    $ProcessArgs LIKE "%\_\-%\_\-\.%" AND  ($Process!='ls' OR  ProcessName!='find')
+    $ProcessArgs LIKE "%\_\-%\_\-\.%" AND  ($Process!='ls' OR  Process!='find')
     GROUP BY $Process,$System
 - type: signal
   DetectionName: Creation of Hidden Files and Directories
