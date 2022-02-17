@@ -7,9 +7,9 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT $ProcessName,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
-    ($ProcessName='base16' OR $ProcessName='base32' OR $ProcessName='base32plain'
-    OR $ProcessName='base32hex') GROUP BY $ProcessName,$System
+  query: SELECT $Process,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
+    ($Process='base16' OR $Process='base32' OR $Process='base32plain'
+    OR $Process='base32hex') GROUP BY $Process,$System
 - type: signal
   DetectionName: Base16 or Base32 Encoding/Decoding Activity
   DetectionTactic: Defense Evasion

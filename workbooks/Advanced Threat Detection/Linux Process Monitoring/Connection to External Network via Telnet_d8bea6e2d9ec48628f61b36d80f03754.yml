@@ -7,8 +7,8 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT $ProcessName,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
-    $ProcessName='telnet' AND $DstType='PUBLIC' GROUP BY $ProcessName,$System
+  query: SELECT $Process,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
+    $Process='telnet' AND $DstType='PUBLIC' GROUP BY $Process,$System
 - type: signal
   DetectionName: Connection to External Network via Telnet
   DetectionTactic: Lateral Movement

@@ -7,9 +7,9 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT $ProcessName,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
-    ($ProcessName='base64' OR $ProcessName='base64plain' OR $ProcessName='base64url'
-    OR $ProcessName='base64mime' OR $ProcessName='base64pem') GROUP BY $ProcessName,$System
+  query: SELECT $Process,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
+    ($Process='base64' OR $Process='base64plain' OR $Process='base64url'
+    OR $Process='base64mime' OR $Process='base64pem') GROUP BY $Process,$System
 - type: signal
   DetectionName: Base64 Encoding/Decoding Activity
   DetectionTactic: Defense Evasion

@@ -7,8 +7,8 @@ author: DNIF
 entity_type: workbooks
 blocks:
 - type: sql
-  query: SELECT $ProcessName,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
-    $Process LIKE "%\/tmp%" GROUP BY $ProcessName,$System
+  query: SELECT $Process,$System FROM AUDITD WHERE $Action='PROCESS_ADDED' AND
+    $Process LIKE "%\/tmp%" GROUP BY $Process,$System
 - type: signal
   DetectionName: Unusual Process Execution - Temp
   DetectionTactic: Defense Evasion
